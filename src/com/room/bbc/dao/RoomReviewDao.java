@@ -86,7 +86,7 @@ public class RoomReviewDao {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "insert into review  (userinfo_Userid, room_Roomid, reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now())";
+			String query = "insert into review  (userinfo_Userid, room_Roomid,reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now())";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
 			preparedStatement.setString(1, userinfo_Userid);
 			preparedStatement.setInt(2, room_Roomid);
@@ -107,7 +107,66 @@ public class RoomReviewDao {
 		}
 	}
 	
-//리뷰 수정하기 
+//리뷰 삭제하기
+	
+	public void delete(String ReviewId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			// 위에 선언된 dataSource 사용
+			connection = dataSource.getConnection();
+			String query = "delete from review where reviewid = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(ReviewId));
+			preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try { // 처음 선언된 부분 닫아준다.
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	//reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now()
+//리뷰 수정하기
+	public int update(String reviewTitle,String reviewContent, double reviewRate,int reviewId) {
+		int check=0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			// 위에 선언된 dataSource 사용
+			connection = dataSource.getConnection();
+			String query = "update mvc_board set reviewtitle = ?, reviewcontent = ?, reviewrate = ?, reviewdate = now() where reviewid = ?";
+			preparedStatement = connection.prepareStatement(query); // query 문장 연결
+			preparedStatement.setString(1, reviewTitle);
+			preparedStatement.setString(2, reviewContent);
+			preparedStatement.setDouble(3, reviewRate);
+			preparedStatement.setInt(4, reviewId);
+			preparedStatement.executeUpdate();
+			check=1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try { // 처음 선언된 부분 닫아준다.
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return check;
+	}
 	
 	
 		
