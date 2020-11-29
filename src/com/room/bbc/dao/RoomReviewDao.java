@@ -78,7 +78,7 @@ public class RoomReviewDao {
 // 리뷰 입력하기
 // 리뷰 아이디는 자동으로 생성(AI)userinfo_userid와 room_Roomid 를 받아와서 넣을것
 	
-	public void write(String userinfo_Userid, int room_Roomid, String reviewTitle, String reviewContent, double reviewRate) {
+	public void write(String userinfo_Userid, int room_Roomid, String ReviewTitle, String ReviewContent, double ReviewRate) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -90,9 +90,9 @@ public class RoomReviewDao {
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
 			preparedStatement.setString(1, userinfo_Userid);
 			preparedStatement.setInt(2, room_Roomid);
-			preparedStatement.setString(3, reviewTitle);
-			preparedStatement.setString(4, reviewContent);
-			preparedStatement.setDouble(5, reviewRate);
+			preparedStatement.setString(3, ReviewTitle);
+			preparedStatement.setString(4, ReviewContent);
+			preparedStatement.setDouble(5, ReviewRate);
 			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
@@ -137,7 +137,7 @@ public class RoomReviewDao {
 	
 	//reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now()
 //리뷰 수정하기
-	public int update(String reviewTitle,String reviewContent, double reviewRate,int reviewId) {
+	public int update(String ReviewTitle,String ReviewContent, double ReviewRate,int ReviewId) {
 		int check=0;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -147,10 +147,10 @@ public class RoomReviewDao {
 			connection = dataSource.getConnection();
 			String query = "update mvc_board set reviewtitle = ?, reviewcontent = ?, reviewrate = ?, reviewdate = now() where reviewid = ?";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
-			preparedStatement.setString(1, reviewTitle);
-			preparedStatement.setString(2, reviewContent);
-			preparedStatement.setDouble(3, reviewRate);
-			preparedStatement.setInt(4, reviewId);
+			preparedStatement.setString(1, ReviewTitle);
+			preparedStatement.setString(2, ReviewContent);
+			preparedStatement.setDouble(3, ReviewRate);
+			preparedStatement.setInt(4, ReviewId);
 			preparedStatement.executeUpdate();
 			check=1;
 		} catch (Exception e) {
