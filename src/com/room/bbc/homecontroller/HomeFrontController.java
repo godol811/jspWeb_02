@@ -15,6 +15,7 @@ import com.room.bbc.command.RoomReviewDeleteCommand;
 import com.room.bbc.command.RoomReviewInsertCommand;
 import com.room.bbc.command.RoomReviewSelectCommand;
 import com.room.bbc.command.RoomReviewUpdateCommand;
+import com.room.bbc.command.UserInsertCommand;
 
 /**
  * Servlet implementation class HomeFrontController
@@ -68,14 +69,13 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "Rating_list.jsp";
 			break;
 		
-		case ("/Rating_write.room"): // 입력화면
+		case ("/Rating_Insert.room"): // 입력화면
 			viewPage = "Rating_write.jsp";
 		break;
 			
-		case ("/write.room"):
+		case ("/Rating_InsertAction.room"):
 			command = new RoomReviewInsertCommand();
 			command.execute(request, response);
-			
 			viewPage = "Rating_list.room";
 			break;
 			
@@ -84,10 +84,31 @@ public class HomeFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "list.do";
 			break;
+			//user CRUD-------------------------
+		
+		case ("/userSignUp.room"): // 입력화면이동
+			viewPage = "SignUp.jsp";
+		break;
+		
+		case ("/userInsertAction.room"): //회원 가입
+			
+			command = new UserInsertCommand();
+			command.execute(request, response);
+			viewPage = "login.room";
+			break;
+		
+		
+		case ("/login.room"): // 회원 로그인화면
+			viewPage = "login.jsp";
+		break;
+		
+		
 			
 		default :
-			viewPage = "list.do";
-			break;
+			viewPage = "login.jsp";
+			break; 
+			
+		
 		
 		}
 		

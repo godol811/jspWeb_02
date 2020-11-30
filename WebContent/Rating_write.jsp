@@ -9,7 +9,7 @@
 </head>
 
 
-		<form name="input" action="write.room" method="post" onsubmit="return check()">
+		<form name="input" action="Rating_InsertAction.room" method="post" onsubmit="return check()">
 		<table style="margin-top: 100px; margin-left: auto; margin-right: auto;">
 			<tr>
 				<td align="center">ID</td>

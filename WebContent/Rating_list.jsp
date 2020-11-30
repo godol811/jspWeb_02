@@ -31,7 +31,7 @@
 		<td>${dto.reviewRate }</td>
 		<td>${dto.reviewDate }</td>
 	</c:forEach>
-		<tr><td colspan="3"><button  type="button" onclick="location.href='Rating_write.room'"  style="margin-top: 100px; margin-left: auto; margin-right: auto;">평점 남기기</button></td></tr>
+		<tr><td colspan="3"><button  type="button" onclick="location.href='Rating_Insert.room'"  style="margin-top: 100px; margin-left: auto; margin-right: auto;">평점 남기기</button></td></tr>
 	</table>
 </body>
 </html>

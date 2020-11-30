@@ -1,73 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 <head>
- <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-  
-  <title>로그인 화면</title>
-  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-  <script type="text/javascript" src="loginCheck.js"></script>
-  
- </head>
-
- <body>
- 
- 	<form name="input" action="#" method="post" onsubmit="return loginCheck()">
- 	<table>
- 	<tr>
-		<td><input type="text" name="userId" placeholder="ID"></td> 
-		<td colspan="2"> <input type="submit" value="로그인"></td>
-	</tr>
-	<tr>
-		<td><input type="password" name="userPw" placeholder="PASSWORD"></td>
-	</tr>
-	<tr>
-		<td><a href="calendar.jsp">회원가입</a></td>
-		<td><a href="#">ID/PW 찾기</a></td>
-	</tr>
-	</table>
-	</form>
-	
- 
- 
-	<a id="kakao-login-btn"></a>
-    <a href="http://developers.kakao.com/logout"></a>
+    <%
+        // 인코딩 처리
+        request.setCharacterEncoding("utf-8"); 
+    %>
+    <title>로그인 화면</title>
     
-    <script type='text/javascript'>
-        //<![CDATA[
-        // 사용할 앱의 JavaScript 키를 설정해 주세요.
-        Kakao.init('83c7535a9cd83c5d680a813162d047fd');
-        
-       
-        Kakao.Auth.createLoginButton({
-            container: '#kakao-login-btn',
-            success: function (authObj) {
-         	 	alert(JSON.stringify(authObj));
-            	
-            	
-             	Kakao.API.request({
-            		url:'/v1/user/me',
-            		success:function(res){
-            			console.log(res);
-    	            			
-    	            			var id = res.id;
-    	            			var name = res.properties.nickname;
-    	            			
-            			console.log(id);
-            			console.log(name);
-            		}, fail: function (err) {
-                        alert(JSON.stringify(err));
-            			}
-            		});
-            	 
-            },
-            fail: function (err) {
-                alert(JSON.stringify(err));
+    <!-- css 파일 분리 -->
+   
+    <script type="text/javascript">
+    
+        function checkValue()
+        {
+            inputForm = eval("document.loginInfo");
+            if(!inputForm.id.value)
+            {
+                alert("아이디를 입력하세요");    
+                inputForm.id.focus();
+                return false;
             }
-        });
-      //]]>
+            if(!inputForm.password.value)
+            {
+                alert("비밀번호를 입력하세요");    
+                inputForm.password.focus();
+                return false;
+            }
+        }
+    
+
     </script>
-	
+ 
+</head>
+<body>
+    <div id="wrap">
+        <form name="loginInfo" method="post" action="loginPro.jsp" 
+                onsubmit="return checkValue()">
+        
+            <!-- 이미지 추가 -->
+            <br><br>
+            
+            <table>
+                <tr>
+                    <td bgcolor="skyblue">아이디</td>
+                    <td><input type="text" name="id" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="skyblue">비밀번호</td>
+                    <td><input type="password" name="password" maxlength="50"></td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="로그인"/>
+            <input type="button" value="회원가입" onclick="location.href='userSignUp.room'">
+        </form>
+        
+        <% 
+            // 아이디, 비밀번호가 틀릴경우 화면에 메시지 표시
+            // LoginPro.jsp에서 로그인 처리 결과에 따른 메시지를 보낸다.
+            String msg=request.getParameter("msg");
+            
+            if(msg!=null && msg.equals("0")) 
+            {
+                out.println("<br>");
+                out.println("<font color='red' size='5'>비밀번호를 확인해 주세요.</font>");
+            }
+            else if(msg!=null && msg.equals("-1"))
+            {    
+                out.println("<br>");
+                out.println("<font color='red' size='5'>아이디를 확인해 주세요.</font>");
+            }
+            else if(msg!=null && msg.equals("-2"))
+            {    
+                out.println("<br>");
+                out.println("<font color='blue' size='5'>잘못된 정보입니다. 다시 입력해주세요.</font>");
+            }
+        %>    
+    </div>    
 </body>
 </html>
+
