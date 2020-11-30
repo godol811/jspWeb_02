@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.room.bbc.dto.RoomReviewDto;
 
@@ -42,7 +41,7 @@ public class RoomReviewDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select  ";
+			String query = "select reviewid, userinfo_userid,room_roomid,reviewtitle,reviewcontent,reviewrate,reviewdate from review";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -86,13 +85,12 @@ public class RoomReviewDao {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "insert into review  (userinfo_Userid, room_Roomid,reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now())";
+			String query = "insert into review  (room_Roomid, reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now())";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
-			preparedStatement.setString(1, userinfo_Userid);
-			preparedStatement.setInt(2, room_Roomid);
-			preparedStatement.setString(3, ReviewTitle);
-			preparedStatement.setString(4, ReviewContent);
-			preparedStatement.setDouble(5, ReviewRate);
+			preparedStatement.setInt(1, room_Roomid);
+			preparedStatement.setString(2, ReviewTitle);
+			preparedStatement.setString(3, ReviewContent);
+			preparedStatement.setDouble(4, ReviewRate);
 			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
