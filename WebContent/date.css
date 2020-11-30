@@ -1,0 +1,101 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+/* body{
+	margin:0;
+	padding:0;
+	font-weight: normal;
+	font-family: sans-serif;	
+} */
+h1{
+	margin: 0 0 10px;
+	padding:0;
+	color: black;
+	font-size: 24px;	
+}
+]
+.box {
+	position:absolute;
+	top: 50%;
+	left:50%;
+	windows:500px;
+	transform: translate(-50%, -50%);
+}
+
+input{
+	position : relative;
+	display: inline-block;
+	font-size: 20px;
+	box-sizing: border-box;
+	transition: .5s;
+}
+
+input[type="text"]
+{	
+	font-size: 14px;
+	font-weight: bold;
+	width: 150px;
+	height: 60px;
+	border : none;
+	outline : none;
+	padding: 0 25px;
+	border-radius: 25px 25px 25px 25px;
+}
+input[type="text"]:hover
+{
+	background: lightgrey;
+	border-radius: 25px 25px 25px 25px;
+}
+
+input[type="submit"]
+{
+	background:lightgrey;
+	position : relative;
+	border-radius: 25px 25px 25px 25px;
+	width: 150px;
+	height: 60px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	
+}
+
+input[type="submit"]:hover
+{
+	background: grey;
+	
+}
+
+
+.menu-icon{
+	display:block;
+	position:absolute;
+	left:10px; top:10px;
+}
+.submenu{
+	width:100%;
+	height:50px;
+	left:0;
+	top:100px;
+	position:absolute;
+	display:none;
+}
+
+.submenu ul{
+	width:100%;
+	list-style:none;
+	background:white;
+}
+
+.submenu ul li{
+	height:50px;
+	line-height:50px;
+	padding:0px 20px;
+	border-bottom:1px solid #76AECD;
+	color:white;
+	text-align:center;
+	font-weight:bold;
+}
+
+li { list-style:none; }

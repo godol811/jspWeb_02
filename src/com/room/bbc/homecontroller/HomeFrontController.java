@@ -55,9 +55,11 @@ public class HomeFrontController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		
 		Command command = null;
-		String viewPage =  null;
+		String viewPage = null;
+		
 		
 		switch(com) {
+		
 		case ("/Rating_list.room"):
 			command = new RoomReviewSelectCommand();
 			command.execute(request, response);
