@@ -31,33 +31,70 @@ input{
 	transition: .5s;
 }
 
+
+table {
+      border-collapse: collapse;
+      border-top: 3px solid #168;
+    }  
+    .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .table th:first-child, .table td:first-child {
+      border-left: 1;
+    }
+    .table th:last-child, .table td:last-child {
+      border-right: 1;
+    }
+    .table tr td:first-child{
+      text-align: center;
+	
+	
+}
+
 input[type="text"]
 {	
 	font-size: 14px;
 	font-weight: bold;
-	width: 150px;
+	width: 280px;
 	height: 60px;
 	border : none;
 	outline : none;
 	padding: 0 25px;
 	border-radius: 25px 25px 25px 25px;
 }
-input[type="text"]:hover
+input[type="text"]:enabled
 {
 	background: lightgrey;
 	border-radius: 25px 25px 25px 25px;
 }
-
+input[type="number"]
+{	
+	font-size: 14px;
+	font-weight: bold;
+	width: 280px;
+	height: 60px;
+	border : none;
+	outline : none;
+	padding: 0 25px;
+	border-radius: 25px 25px 25px 25px;
+}
+input[type="number"]:enabled
+{
+	background: lightgrey;
+	border-radius: 25px 25px 25px 25px;
+}
 input[type="submit"]
 {
 	background:lightgrey;
 	position : relative;
-	border-radius: 25px 25px 25px 25px;
-	width: 150px;
-	height: 60px;
+	border-radius: 15px 15px 15px 15px;
+	width: 200px;
+	height: 50px;
 	border: none;
 	outline: none;
 	cursor: pointer;
+	font-size: 15;
 	
 }
 
@@ -66,6 +103,38 @@ input[type="submit"]:hover
 	background: grey;
 	
 }
+
+button[type="button"]
+{
+	background:lightgrey;
+	position : relative;
+	border-radius: 15px 15px 15px 15px;
+	width: 280px;
+	height: 50px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 15;
+	
+}
+
+button[type="button"]:hover{
+	background: grey;
+	
+}
+
+
+textarea:only-child
+{
+	background: lightgrey;
+	border-radius: 15px 15px 15px 15px;
+	font-size: 15px;
+	width: 280px;
+	height: 250px;
+}
+
+
+
 
 
 .menu-icon{
