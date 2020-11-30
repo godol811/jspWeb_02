@@ -10,10 +10,10 @@ public class RoomReviewDeleteCommand implements Command {
 	
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String ReviewId = request.getParameter("ReviewId");
+		String reviewId = request.getParameter("reviewId");
 		
 		RoomReviewDao dao= new RoomReviewDao();
-		dao.delete(ReviewId);
+		dao.delete(reviewId);
 			
 	}
 

@@ -9,15 +9,15 @@ public class RoomReviewUpdateCommand implements Command {
 
 	
 public void execute(HttpServletRequest request, HttpServletResponse response) {
-	int ReviewId = Integer.parseInt(request.getParameter("ReviewId"));
+	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 	String userinfo_Userid = request.getParameter("userinfo_Userid");
 	int room_Roomid = Integer.parseInt(request.getParameter("room_Roomid"));
-	String ReviewTitle = request.getParameter("ReviewTitle");
-	String ReviewContent = request.getParameter("ReviewContent");
+	String reviewTitle = request.getParameter("reviewTitle");
+	String reviewContent = request.getParameter("reviewContent");
 	double ReviewRate = Double.parseDouble(request.getParameter("ReviewRate"));
 	
 	RoomReviewDao dao = new RoomReviewDao();
-	dao.update(ReviewTitle, ReviewContent, ReviewRate, ReviewId);
+	dao.update(reviewTitle, reviewContent, ReviewRate, reviewId);
 	
 	}
 

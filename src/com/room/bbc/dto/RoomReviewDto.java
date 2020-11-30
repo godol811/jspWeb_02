@@ -3,86 +3,86 @@ package com.room.bbc.dto;
 import java.sql.Timestamp;
 
 public class RoomReviewDto {
-	int ReviewId;
-	String Userinfo_Userid;
-	int Room_Roomid;
-	String ReviewTitle;
-	String ReviewContent;
-	double ReviewRate;
-    Timestamp ReviewDate;
+	int reviewId;
+	String userinfo_Userid;
+	int room_Roomid;
+	String reviewTitle;
+	String reviewContent;
+	double reviewRate;
+    Timestamp reviewDate;
 	
     public RoomReviewDto() {
 		// TODO Auto-generated constructor stub
 	}
-    
-    public RoomReviewDto(int reviewId, String userinfo_Userid, int room_Roomid, String reviewTitle,
+
+	public RoomReviewDto(int reviewId, String userinfo_Userid, int room_Roomid, String reviewTitle,
 			String reviewContent, double reviewRate, Timestamp reviewDate) {
 		super();
-		ReviewId = reviewId;
-		Userinfo_Userid = userinfo_Userid;
-		Room_Roomid = room_Roomid;
-		ReviewTitle = reviewTitle;
-		ReviewContent = reviewContent;
-		ReviewRate = reviewRate;
-		ReviewDate = reviewDate;
+		this.reviewId = reviewId;
+		this.userinfo_Userid = userinfo_Userid;
+		this.room_Roomid = room_Roomid;
+		this.reviewTitle = reviewTitle;
+		this.reviewContent = reviewContent;
+		this.reviewRate = reviewRate;
+		this.reviewDate = reviewDate;
 	}
 
 	public int getReviewId() {
-		return ReviewId;
+		return reviewId;
 	}
 
 	public void setReviewId(int reviewId) {
-		ReviewId = reviewId;
+		this.reviewId = reviewId;
 	}
 
 	public String getUserinfo_Userid() {
-		return Userinfo_Userid;
+		return userinfo_Userid;
 	}
 
 	public void setUserinfo_Userid(String userinfo_Userid) {
-		Userinfo_Userid = userinfo_Userid;
+		this.userinfo_Userid = userinfo_Userid;
 	}
 
 	public int getRoom_Roomid() {
-		return Room_Roomid;
+		return room_Roomid;
 	}
 
 	public void setRoom_Roomid(int room_Roomid) {
-		Room_Roomid = room_Roomid;
+		this.room_Roomid = room_Roomid;
 	}
 
 	public String getReviewTitle() {
-		return ReviewTitle;
+		return reviewTitle;
 	}
 
 	public void setReviewTitle(String reviewTitle) {
-		ReviewTitle = reviewTitle;
+		this.reviewTitle = reviewTitle;
 	}
 
 	public String getReviewContent() {
-		return ReviewContent;
+		return reviewContent;
 	}
 
 	public void setReviewContent(String reviewContent) {
-		ReviewContent = reviewContent;
+		this.reviewContent = reviewContent;
 	}
 
 	public double getReviewRate() {
-		return ReviewRate;
+		return reviewRate;
 	}
 
 	public void setReviewRate(double reviewRate) {
-		ReviewRate = reviewRate;
+		this.reviewRate = reviewRate;
 	}
 
 	public Timestamp getReviewDate() {
-		return ReviewDate;
+		return reviewDate;
 	}
 
 	public void setReviewDate(Timestamp reviewDate) {
-		ReviewDate = reviewDate;
+		this.reviewDate = reviewDate;
 	}
-	
-
+    
+    
     
 }

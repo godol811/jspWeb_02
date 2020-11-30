@@ -15,12 +15,12 @@ public void execute(HttpServletRequest request, HttpServletResponse response) th
 //		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String userinfo_Userid = request.getParameter("userinfo_Userid");
 		int room_Roomid = Integer.parseInt(request.getParameter("room_Roomid"));
-		String ReviewTitle = request.getParameter("ReviewTitle");
-		String ReviewContent = request.getParameter("ReviewContent");
-		double ReviewRate = Double.parseDouble(request.getParameter("ReviewRate"));
+		String reviewTitle = request.getParameter("reviewTitle");
+		String reviewContent = request.getParameter("reviewContent");
+		double reviewRate = Double.parseDouble(request.getParameter("reviewRate"));
 		
 		RoomReviewDao dao = new RoomReviewDao();
-		dao.write(userinfo_Userid, room_Roomid, ReviewTitle, ReviewContent, ReviewRate);
+		dao.write(userinfo_Userid, room_Roomid, reviewTitle, reviewContent, reviewRate);
 		
 		
 	}

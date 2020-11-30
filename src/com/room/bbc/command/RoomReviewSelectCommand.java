@@ -12,10 +12,12 @@ import com.room.bbc.dto.RoomReviewDto;
 public class RoomReviewSelectCommand implements Command {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		
 		RoomReviewDao dao = new RoomReviewDao();
 		ArrayList<RoomReviewDto> dtos = dao.list();
 		
-		request.setAttribute("list", dtos);
+		request.setAttribute("rate", dtos);
 		
 	}
 

@@ -59,22 +59,24 @@ public class HomeFrontController extends HttpServlet {
 		
 		
 		switch(com) {
-		
+
+		//리뷰 CRUD-------------------------------
+
 		case ("/Rating_list.room"):
 			command = new RoomReviewSelectCommand();
 			command.execute(request, response);
 			viewPage = "Rating_list.jsp";
 			break;
 		
-		case ("/Rating_view.room"): // 입력화면
-			viewPage = "Rating_view.jsp";
+		case ("/Rating_write.room"): // 입력화면
+			viewPage = "Rating_write.jsp";
 		break;
 			
-		case ("/write.do"):
+		case ("/write.room"):
 			command = new RoomReviewInsertCommand();
 			command.execute(request, response);
 			
-			viewPage = "list.do";
+			viewPage = "Rating_list.room";
 			break;
 			
 		case ("/delete.do"):
