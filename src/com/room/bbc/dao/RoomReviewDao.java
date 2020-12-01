@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.room.bbc.dto.RoomReviewDto;
 
