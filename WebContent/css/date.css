@@ -14,8 +14,9 @@ h1{
 	color: black;
 	font-size: 24px;	
 }
-
+]
 .box {
+	
 	position:absolute;
 	top: 50%;
 	left:50%;
@@ -47,6 +48,22 @@ input[type="text"]:hover
 	background: lightgrey;
 	border-radius: 25px 25px 25px 25px;
 }
+input[type="number"]
+{	
+	font-size: 14px;
+	font-weight: bold;
+	width: 150px;
+	height: 60px;
+	border : none;
+	outline : none;
+	padding: 0 25px;
+	border-radius: 25px 25px 25px 25px;
+}
+input[type="number"]:hover
+{
+	background: lightgrey;
+	border-radius: 25px 25px 25px 25px;
+}
 
 input[type="submit"]
 {
@@ -67,35 +84,3 @@ input[type="submit"]:hover
 	
 }
 
-
-.menu-icon{
-	display:block;
-	position:absolute;
-	left:10px; top:10px;
-}
-.submenu{
-	width:100%;
-	height:50px;
-	left:0;
-	top:100px;
-	position:absolute;
-	display:none;
-}
-
-.submenu ul{
-	width:100%;
-	list-style:none;
-	background:white;
-}
-
-.submenu ul li{
-	height:50px;
-	line-height:50px;
-	padding:0px 20px;
-	border-bottom:1px solid #76AECD;
-	color:white;
-	text-align:center;
-	font-weight:bold;
-}
-
-li { list-style:none; }
