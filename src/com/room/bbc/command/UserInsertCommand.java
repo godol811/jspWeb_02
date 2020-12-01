@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.room.bbc.dao.RoomReviewDao;
 import com.room.bbc.dao.UserDao;
 
 public class UserInsertCommand implements Command {

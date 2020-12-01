@@ -86,17 +86,23 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "list.do";
 			break;
 			//user CRUD-------------------------
-		
-		case ("/userSignUp.room"): // 입력화면이동
+			
+
+		case ("/login.room"): // 입력화면
+			viewPage = "login.jsp";
+		break;	
+			
+			
+			
+		case ("/SignUpPage.room"):
+			
 			viewPage = "SignUp.jsp";
-		break;
-		
-		case ("/userInsertAction.room"): //회원 가입
+			break;
 			
 		case ("/SignUpAction.room"):
 			command = new UserInsertCommand();
 			command.execute(request, response);
-			viewPage = "login.room";
+			viewPage = "login.jsp";
 			break;
 	
 		
@@ -109,10 +115,6 @@ public class HomeFrontController extends HttpServlet {
 			command.execute(request, response);	
 			viewPage = "mainPage.jsp";
 			break;
-		case ("/login.room"): // 회원 로그인화면
-			viewPage = "login.jsp";
-		break;
-		
 		
 			
 		default :

@@ -7,7 +7,7 @@
       type="image/png" 
       href="/somewhere/myicon.png"/>
 <meta charset="utf-8">
-<script type="text/javascript" src="/WebContent/js/logincheck.js?ver=1.1"></script>
+<script type="text/javascript" src="/WebContent/js/logincheck.js"></script>
 <script type="text/javascript">
 
 window.onload = function(){
@@ -21,7 +21,33 @@ window.onload = function(){
 	document.getElementById("btnSubmit").onclick = inputCheck();
 
 }
+function emailValidation() 	{    
+	var obEmail = document.getElementById("email");
+	if (!obEmail.value) {             
+		alert("이메일을 입력하세요!");
+		obEmail.focus();	
+		return;
+	}               
+	else{          
+		if(!CheckEmail(obEmail.value))	{
+			alert("이메일 형식이 잘못되었습니다");
+			obEmail.focus();
+			return;
+		}                
+	}                      
+}  
 
+
+function CheckEmail(str)
+{                                                 
+     var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+     if(!reg_email.test(str)) {                            
+          return false;         
+     }                            
+     else {                       
+          return true;         
+     }                            
+}          
 </script>
 
 <title>Insert title here</title>
@@ -48,7 +74,7 @@ window.onload = function(){
 
 					<td width="16%">Email</td>
 
-					<td width="57%"><input type="text" name="userId" size="15">
+					<td width="57%"><input type="text" name="userId" size="15" onchange="emailValidation()">
 
 						<input type="button" value="ID중복확인" id="btnId"></td>
 
