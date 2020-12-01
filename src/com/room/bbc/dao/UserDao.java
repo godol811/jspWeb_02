@@ -121,7 +121,7 @@ public ArrayList<UserDto> list() {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select userpw from userinfo where id = ?";
+			String query = "select userpw from userinfo where userid = ? ";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
@@ -134,12 +134,12 @@ public ArrayList<UserDto> list() {
             else                  
                 x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
             
-			} else {
-            x = -1; // 해당 아이디가 없을 경우
-        }
+			 } else {
+	            x = -1; // 해당 아이디가 없을 경우
+	            }
+	 
+	           
 
-        return x;
-        
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -150,9 +150,7 @@ public ArrayList<UserDto> list() {
 				e.printStackTrace();
 			}
 		}
-		x = -2;
-		return x;
-	}
-	
+		 return x;
 
+	}		
 }

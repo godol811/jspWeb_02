@@ -38,17 +38,17 @@
         <form name="loginInfo" method="post" action="loginPro.jsp" 
                 onsubmit="return checkValue()">
         
-            <!-- 이미지 추가 -->
+     
             <br><br>
             
             <table>
                 <tr>
                     <td bgcolor="skyblue">아이디</td>
-                    <td><input type="text" name="id" maxlength="50"></td>
+                    <td><input type="text" name="userId" id ="id" maxlength="50"></td>
                 </tr>
                 <tr>
                     <td bgcolor="skyblue">비밀번호</td>
-                    <td><input type="password" name="password" maxlength="50"></td>
+                    <td><input type="password" name="userPw" id="password" maxlength="50"></td>
                 </tr>
             </table>
             <br>

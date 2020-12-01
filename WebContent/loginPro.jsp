@@ -25,7 +25,7 @@
         { 
             // 세션에 현재 아이디 세팅
             session.setAttribute("userId", userId);
-            msg = "MainForm.jsp";
+            msg = "mainPage.jsp";
         }
         else if(check == 0) // 비밀번호가 틀릴경우
         {
