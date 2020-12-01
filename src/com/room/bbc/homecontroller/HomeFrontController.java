@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.room.bbc.command.Command;
+import com.room.bbc.command.RoomInsertCommand;
 import com.room.bbc.command.RoomReviewDeleteCommand;
 import com.room.bbc.command.RoomReviewInsertCommand;
 import com.room.bbc.command.RoomReviewSelectCommand;
@@ -92,12 +93,22 @@ public class HomeFrontController extends HttpServlet {
 		
 		case ("/userInsertAction.room"): //회원 가입
 			
+		case ("/SignUpAction.room"):
 			command = new UserInsertCommand();
 			command.execute(request, response);
 			viewPage = "login.room";
 			break;
+	
 		
 		
+		//----------------- 호스트 메뉴-------------------------
+		//호스트 숙소 등록
+		case ("/hostRegister.room"):
+			
+			command = new RoomInsertCommand();
+			command.execute(request, response);	
+			viewPage = "mainPage.jsp";
+			break;
 		case ("/login.room"): // 회원 로그인화면
 			viewPage = "login.jsp";
 		break;
