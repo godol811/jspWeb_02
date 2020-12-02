@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.room.bbc.command.Command;
 import com.room.bbc.command.RoomInsertCommand;
@@ -50,6 +51,7 @@ public class HomeFrontController extends HttpServlet {
 
 	//---------------------
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		
 		String uri = request.getRequestURI();

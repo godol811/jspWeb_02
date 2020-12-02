@@ -7,74 +7,79 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h2>숙소 등록 시작하기</h2>
+
+		<h5>2단계</h5> <br>
 	<%
+	request.setCharacterEncoding("utf-8");
+	
 	String roomType = request.getParameter("roomType");
 	String roomCapa = request.getParameter("roomCapa");
-	String roomLocation = request.getParameter("roomLocation");
+	String roomAddress = request.getParameter("address")+request.getParameter("addressDetail");
+	String roomCheckIn = request.getParameter("checkinTime");
+	String roomCheckOut = request.getParameter("checkoutTime");
+	String roomPrice = request.getParameter("roomPrice");
+	
+	session.setAttribute("ROOMCAPA", roomCapa);
+	session.setAttribute("ROOMPRICE", roomPrice);
+	session.setAttribute("ROOMADDRESS", roomAddress);
+	session.setAttribute("ROOMCHECKIN", roomCheckIn);
+	session.setAttribute("ROOMCHECKOUT", roomCheckOut);
+	
 	%>
 	
-	<form action="hostRegisterRoom03.jsp" method="post">		
-		<!-- <h3>등록하실 숙소 종류는 무엇인가요?</h3> -->
-		
+	<script type="text/javascript">
+		function uploadCheck(){
+			
+			theForm = document.load;
+			
+			if(theForm.roomTitle.value.trim()==0){
+				alert("제목을 입력해주세요.");
+				theForm.roomTitle.focus();
+				return false;
+				
+			} else if(theForm.roomContent.value.trim()==0){
+				alert("내용을 입력해주세요.");
+				theForm.roomContent.focus();
+				return false;
+			} else if(theForm.roomImage.value.trim()==0){
+				alert("이미지를 업로드해주세요.");
+				return false;
+			}
+			
+		}
 	
-			<!-- <h4>숙소의 건물 유형을 선택해주세요.</h4> <br>
-			<select name="roomTypeDetail">
-				<option value="allRoom" selected="selected">아파트</option>
-				<option value="personalRoom">주택</option>
-				<option value="groupRoom">별채</option>
-				<option value="groupRoom">부티크 호텔</option>
-			</select> <br><br>
-			아파트: 일반적으로 다세대가 거주하는 건물 또는 여러 사람이 함께 거주하는 단지를 의미합니다.<br><br>
-			 -->
-			
-			<!-- <h4>숙소의 건물 유형을 선택해주세요.</h4> <br>
-			<select name="roomTypeDetail">
-				<option value="allRoom" selected="selected">아파트</option>
-				<option value="personalRoom">공동주택</option>
-				<option value="groupRoom">레지던스</option>
-			</select> <br><br>
-			아파트: 아파트와 공동주택이란 일반적으로 다세대가 거주하는 건물 또는 여러 사람이 함께 거주하는 단지를 의미합니다.
-			<a href="#">설명 모두 검토하기</a>
-			
-			<h4>게스트만 사용하도록 만들어진 숙소인가요?</h4> <br>
-			<input type="radio" name="roomPossible" value="guestRoom" checked="checked">
-			 예. 게시트용으로 따로 마련된 숙소입니다.	<br>
-			<input type="radio" name="roomPossible" value="ownRoom">
-			 아니요. 제 개인 물건이 숙소에 있습니다.
-			 <br><br><br> -->
-
-			 
-	 <h3>숙소 위치를 알려주세요.</h3> <br>
+	</script>
+	
+		<!-- 사진 업로드 -->
+	
+	<form action="hostRegister.room" name="load" method="post" enctype="multipart/form-data" onsubmit="return uploadCheck()">
+	<colgroup>
+		<col width="500px"/>
+	</colgroup>
 		<table>
 			<tr>
-				<td>시</td>
-				<td>구</td>
+				<td colspan="2">1. 숙소의 제목을 만드세요.</td>
 			</tr>
 			<tr>
-				<td><input type="text" name="addressCity" width="60" value="<%=roomLocation %>"></td>
-				<td><input type="text" name="addressPart" width="60"></td>
+				<td colspan="2"><input type="text" name="roomTitle" placeholder="50자 이내"/></td>
 			</tr>
 			<tr>
-				<td>도로명</td>
+				<td colspan="2">2. 게스트에게 숙소에 대해 설명해주세요.</td>
+			</tr>
+			<tr><td colspan="2"><textarea rows="20" cols="50" name="roomContent"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="login.jsp"><input type="text" name="address" width="100"></a></td>
+				<td colspan>3. 멋진 사진으로 숙소가 돋보이게 해주세요.</td>
 			</tr>
 			<tr>
-				<td>동호수(선택사항)</td>
+				<td colspan="2"><input type="file" name="roomImage" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="text" name="addressDetail" width="100"></td>
+				<td><input type="button" value="이전" onClick="history.go(-1)" style="align-items: right"></td>
+				<td><input type="submit" value="등록"/></td>
 			</tr>
-			
-		
 		</table>
-			 
-			 
-			 
-		<input type="button" value="이전" onClick="history.go(-1)"> 
-		<input type="submit" value="다음">
-			 
 	</form>
 	
 </body>

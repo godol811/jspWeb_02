@@ -2,16 +2,20 @@ package com.room.bbc.command;
 
 import java.io.IOException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.room.bbc.dao.RoomReviewDao;
 
 public class RoomReviewInsertCommand implements Command {
 
-public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
-//자동생성 필요없음
+		//자동생성 필요없음
 //		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String userinfo_Userid = request.getParameter("userinfo_Userid");
 		int room_Roomid = Integer.parseInt(request.getParameter("room_Roomid"));
@@ -24,6 +28,12 @@ public void execute(HttpServletRequest request, HttpServletResponse response) th
 		
 		
 	}
-	
-	
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
 }
