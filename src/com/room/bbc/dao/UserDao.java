@@ -230,17 +230,8 @@ public ArrayList<UserDto> list() {
 					if(connection!=null) connection.close();
 				}catch (Exception e) {
 					e.printStackTrace();
-					
 				}
 			}
-
-	
 			return userState;
 	}
-		
-		
-
-	 
-	
-	
 }
