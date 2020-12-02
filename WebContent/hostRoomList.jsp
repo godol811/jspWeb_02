@@ -7,24 +7,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>숙소 리스트</title>
+<title>호스트 등록 숙소 리스트</title>
 </head>
 <body>
 
 	<table border="1">
-		<colgroup>
-			<col width="30">
-			<col width="80">
-			<col width="30">
+	    <colgroup>
+			<col width="80px">
+			<col width="200px">
+			<col width="50px">
+			<col width="50px">
 		</colgroup>
 		
 		<c:forEach items="${hostRoomList}" var="dto"> <!--setAttribute에서 선언된 list -->
 			<tr>
-				<td><img alt="이미지없음" src="${dto.roomImage}"></td>
+				<td rowspan="2"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 				<td>${dto.roomTitle }</td>
-				<td><a href="content_view.do?bId=${dto.bId}&bName=${dto.bName }&bTitle=${dto.bTitle}&bContent=${dto.bContent }">${dto.bTitle }</a></td>
-				<td></td>
+				<td rowspan="2"><input type="button" name="revise" value="수정" onclick="location.href='hostRegisterRoom01.jsp?roomId=${dto.roomId}&
+				roomtitle=${dto.roomTitle}&roomcontent=${dto.roomContent}&roomprice=${dto.roomPrice}&roomcapa=${dto.roomCapa}&
+				roomaddress=${dto.roomAddress}&roomcheckin=${dto.roomCheckIn}&roomcheckout=${dto.roomCheckOut}&roomimage=${dto.roomImage}&roomimagereal=${dto.roomImageReal}'"></td>
+				<td rowspan="2"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
 			</tr>
+			<tr>
+				<td>${dto.roomContent }</td>
+			</tr>
+			
 		</c:forEach>
 		<tr>
 	</table>

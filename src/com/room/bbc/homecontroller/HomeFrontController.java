@@ -14,11 +14,13 @@ import javax.servlet.http.HttpSession;
 import com.room.bbc.command.Command;
 import com.room.bbc.command.HostRoomListCommand;
 import com.room.bbc.command.JoinCheckCommand;
+import com.room.bbc.command.RoomDeleteCommand;
 import com.room.bbc.command.RoomInsertCommand;
 import com.room.bbc.command.RoomReviewDeleteCommand;
 import com.room.bbc.command.RoomReviewInsertCommand;
 import com.room.bbc.command.RoomReviewSelectCommand;
 import com.room.bbc.command.RoomReviewUpdateCommand;
+import com.room.bbc.command.RoomReviseCommand;
 import com.room.bbc.command.UserInsertCommand;
 import com.room.bbc.command.UserSelectCommand;
 import com.room.bbc.command.UserUpdateCommand;
@@ -146,14 +148,31 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "mainPage.jsp";
 			break;
 			
+		//호스트 숙소 리스트
 		case ("/hostRoomList.room"):
 			command = new HostRoomListCommand();
 			command.execute(request, response, session);
 			viewPage = "hostRoomList.jsp";
 			break;
-			
+		
+		// 호스트 숙소 수정
+		case ("/hostRoomRevise.room"):
+			command = new RoomReviseCommand();
+			command.execute(request, response);
+			viewPage = "hostRoomList.jsp";
+			break;
+		
+		// 호스트 숙소 삭제
+		case ("/hostRoomDelete.room"):
+			command = new RoomDeleteCommand();
+			command.execute(request, response);
+			viewPage = "/hostRoomList.room";
+			break;
+		
+		
+		
 		default :
-			viewPage = "login.jsp";
+			viewPage = "mainPage.jsp";
 			break; 
 		
 	}

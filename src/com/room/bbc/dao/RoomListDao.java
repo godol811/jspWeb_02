@@ -68,7 +68,7 @@ DataSource dataSource;
 	}
 	
 	//-------------------------------
-	// 호스트 회원상태 업데이트
+	// 호스트 숙소 등록 시 회원상태 업데이트
 	public void roomHostState(String userId) {
 		
 		Connection connection = null;
@@ -108,23 +108,26 @@ DataSource dataSource;
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomcheckin, roomcheckout, roomimage from room where userid = ?";
-			preparedStatement = connection.prepareStatement(query); // query 문장 연결
+			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomcheckin, roomcheckout, roomimage, ";
+			String query2 = "roomid, roomimagereal from room where userid = ?";
+			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
 				String roomTitle = resultSet.getString("roomtitle"); // index 또는 컬럼명을 작성할 수 있다. (컬럼명으로 뜨는걸 적어줘야한다. ex. cnt)
 				String roomContent = resultSet.getString("roomcontent");
-				String roomPrice = resultSet.getString("roomprice");
-				String roomCapa = resultSet.getString("roomcapa");
+				String roomPrice = Integer.toString(resultSet.getInt("roomprice"));
+				String roomCapa = Integer.toString(resultSet.getInt("roomcapa"));
 				String roomAddress = resultSet.getString("roomaddress");
 				String roomCheckIn = resultSet.getString("roomcheckin");
 				String roomCheckOut = resultSet.getString("roomcheckout");
 				String roomImage = resultSet.getString("roomimage");
+				String roomImageReal = resultSet.getString("roomimagereal");
+				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				
 				// bean 선언
-				RoomListDto dto = new RoomListDto(roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomCheckIn, roomCheckOut, roomImage);
+				RoomListDto dto = new RoomListDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
 				dtos.add(dto); //arraylist에 추가
 				
 			}
@@ -146,6 +149,72 @@ DataSource dataSource;
 		
 		return dtos;
 		
+	}
+	
+	//-------------------------------
+	// 호스트 숙소 삭제
+	public void roomDelete(String roomId) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		//--->
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "delete from room where roomid = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, roomId);
+			preparedStatement.executeUpdate();
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {   //error가 걸렸든 안걸렸든 일로 마지막에는 온다. 쓰레기가 안쌓이도록. 다 close해서 
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace(); //화면상에 보이는 에러는 여기서 찍히는 것이다.  
+			}
+		}
+	}
+	
+	
+	//-------------------------------
+	// 호스트 숙소 수정
+	public void roomRevise(String roomTitle, String roomContent, String roomPrice, String roomCapa, String roomAddress, String roomCheckIn, String roomCheckOut, String roomImage, String roomImageReal) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		//--->
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update room set roomtitle=?, roomcontent=?, roomprice=?, roomcapa=?, roomaddress=?, roomcheckin=?, ";
+			String query2 = "roomcheckout=?, roomimage=?, roomimagereal=? where roomid = ?";
+			preparedStatement = connection.prepareStatement(query+query2);
+			preparedStatement.setString(1, roomTitle);
+			preparedStatement.setString(2, roomContent);
+			preparedStatement.setString(3, roomPrice);
+			preparedStatement.setString(4, roomCapa);
+			preparedStatement.setString(5, roomAddress);
+			preparedStatement.setString(6, roomCheckIn);
+			preparedStatement.setString(7, roomCheckOut);
+			preparedStatement.setString(8, roomImage);
+			preparedStatement.setString(9, roomImageReal);
+			preparedStatement.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {   //error가 걸렸든 안걸렸든 일로 마지막에는 온다. 쓰레기가 안쌓이도록. 다 close해서 
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace(); //화면상에 보이는 에러는 여기서 찍히는 것이다.  
+			}
+		}
 	}
 	
 	
