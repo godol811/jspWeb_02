@@ -7,6 +7,15 @@
 <title>관리자 페이지</title>
 
 
+
+<button type="button" onclick="location.href='AdminUserList.room'"><h2>회원 리스트 보기</h2></button>
+<button type="button" onclick="location.href='roomList.jsp'"><h2>숙소 리스트 보기</h2></button>
+
+
+
+
+
+
 </head>
 <body>
 

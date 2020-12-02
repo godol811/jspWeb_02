@@ -50,11 +50,11 @@ public ArrayList<UserDto> list() {
 				String userName = resultSet.getString("userName");
 				String userAddress = resultSet.getString("userAddress");
 				String userTel = resultSet.getString("userTel");
-				Timestamp userinsertDate = resultSet.getTimestamp("userinsertDate");
+				Timestamp userInsertDate = resultSet.getTimestamp("userInsertDate");
 				String userState = resultSet.getString("userState");
-				Timestamp userDeleteDate = resultSet.getTimestamp("userDeleteDatewdate");
+				Timestamp userDeleteDate = resultSet.getTimestamp("userDeleteDate");
 				
-			UserDto dto = new UserDto(userId, userPw, userName, userAddress, userTel, userinsertDate, userState,userDeleteDate);
+			UserDto dto = new UserDto(userId, userPw, userName, userAddress, userTel, userInsertDate, userState,userDeleteDate);
 			dtos.add(dto);
 				
 			}
@@ -73,11 +73,35 @@ public ArrayList<UserDto> list() {
 		}
 		return dtos;
 	}
+//--------------------------------유저 삭제 but 저장하되 사용 불가------------------------------------------------------------------------------
+public void DeleteUser(String userId) {
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	
+	try {
+		// 위에 선언된 dataSource 사용
+		connection = dataSource.getConnection();
+		String query = "update userinfo set userdeletedate = now(), userstate = '탈퇴' where userId = ?";
+		preparedStatement = connection.prepareStatement(query); // query 문장 연결
+		preparedStatement.setString(1, userId);
+		preparedStatement.executeUpdate();
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try { // 처음 선언된 부분 닫아준다.
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
 
 
 
-
-
+//-----------------------------------------------------------------------------------------------------------------
 	public void write(String userId, String userPw, String userName, String userAddress, String userTel) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -117,11 +141,6 @@ public ArrayList<UserDto> list() {
 		ResultSet resultSet = null;
 		String checkPw ="";
 		
-		if(userId.equals("admin") && userPw.equals("admin") )//관리자 로그인
-		{
-		loginCheck = 99;
-		}
-		else {
 			
 		
 		try {
@@ -159,7 +178,6 @@ public ArrayList<UserDto> list() {
 				}
 			}
 
-	}
 		return loginCheck;
 	}
 	//아이디 중복체 체크 메서드----------------------------------------------
@@ -196,7 +214,7 @@ public ArrayList<UserDto> list() {
 			}
 		return joinCheck;
 	}
-	
+//	----회원 상태 가져오기----------------------
 	public String userState(String userId) {
 		
 		String userState = "";

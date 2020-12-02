@@ -18,6 +18,8 @@ import com.room.bbc.command.RoomReviewInsertCommand;
 import com.room.bbc.command.RoomReviewSelectCommand;
 import com.room.bbc.command.RoomReviewUpdateCommand;
 import com.room.bbc.command.UserInsertCommand;
+import com.room.bbc.command.UserSelectCommand;
+import com.room.bbc.command.UserUpdateCommand;
 
 /**
  * Servlet implementation class HomeFrontController
@@ -116,6 +118,19 @@ public class HomeFrontController extends HttpServlet {
 			}
 		break;
 		 
+		//----------------- 관리자---------------------------------
+		case("/AdminUserList.room"):		
+			command = new UserSelectCommand();
+		command.execute(request, response);
+		viewPage="UserList.jsp";
+		break;
+		
+		case("/UserDelete.room"):		
+			command = new UserUpdateCommand();
+		command.execute(request, response);
+		viewPage="AdminUserList.room";
+		break;
+	
 	
 	
 		
@@ -133,7 +148,8 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "login.jsp";
 			break; 
 			
-		
+			
+			
 		
 		
 	}

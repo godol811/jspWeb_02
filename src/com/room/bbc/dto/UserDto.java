@@ -9,7 +9,7 @@ public class UserDto {
 	String userName;
 	String userAddress;
 	String userTel;
-	Timestamp userinsertDate;
+	Timestamp userInsertDate;
 	String userState;
 	Timestamp userDeleteDate;
 	
@@ -18,14 +18,14 @@ public class UserDto {
 	}
 
 	public UserDto(String userId, String userPw, String userName, String userAddress, String userTel,
-			Timestamp userinsertDate, String userState, Timestamp userDeleteDate) {
+			Timestamp userInsertDate, String userState, Timestamp userDeleteDate) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
 		this.userAddress = userAddress;
 		this.userTel = userTel;
-		this.userinsertDate = userinsertDate;
+		this.userInsertDate = userInsertDate;
 		this.userState = userState;
 		this.userDeleteDate = userDeleteDate;
 	}
@@ -70,12 +70,12 @@ public class UserDto {
 		this.userTel = userTel;
 	}
 
-	public Timestamp getUserinsertDate() {
-		return userinsertDate;
+	public Timestamp getUserInsertDate() {
+		return userInsertDate;
 	}
 
-	public void setUserinsertDate(Timestamp userinsertDate) {
-		this.userinsertDate = userinsertDate;
+	public void setUserInsertDate(Timestamp userInsertDate) {
+		this.userInsertDate = userInsertDate;
 	}
 
 	public String getUserState() {

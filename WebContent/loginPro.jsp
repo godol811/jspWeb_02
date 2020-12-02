@@ -23,28 +23,47 @@
         // URL 및 로그인관련 전달 메시지
         String msg = "";
         
-        if(check == 1)    // 로그인 성공
-        { 
-            // 세션에 현재 아이디 세팅
-            session.setAttribute("USERID", userId);
-            session.setAttribute("USERSTATE", userState);
-            msg = "mainPage.jsp";
+        
+        if(userState.equals("회원")){
+        
+        
+		        if(check == 1)    // 로그인 성공
+		        { 
+		            // 세션에 현재 아이디 세팅
+		            session.setAttribute("USERID", userId);
+		            session.setAttribute("USERSTATE", userState);
+		            msg = "mainPage.jsp";
+		        }
+		        else if(check ==-1)  // 아이디가 틀릴경우
+		        {
+		            msg = "login.jsp?msg=-1";
+		        }
+		        else if(check ==99)   //관리자 로그인
+		        {
+		            msg = "adminCheck.jsp";
+		        }
+		         
+		        else if(check == 0) // 비밀번호가 틀릴경우
+		        {
+		            msg = "login.jsp?msg=0";
+		        }
         }
-        else if(check ==-1)  // 아이디가 틀릴경우
-        {
-            msg = "login.jsp?msg=-1";
+        
+        else if(userState.equals("관리자")){
+        	msg = "adminCheck.jsp";
+        	
         }
-        else if(check ==99)   //관리자 로그인
-        {
-            msg = "adminCheck.jsp";
+
+        else if(userState.equals("탈퇴")){
+        	msg = "login.jsp?msg=2";
+        	
+        
         }
-         
-        else if(check == 0) // 비밀번호가 틀릴경우
-        {
-            msg = "login.jsp?msg=0";
-        }
-     
+        
+        
         // sendRedirect(String URL) : 해당 URL로 이동
         // URL뒤에 get방식 처럼 데이터를 전달가능
         response.sendRedirect(msg);
-    %>
+   
+        
+        %>

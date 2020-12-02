@@ -20,7 +20,7 @@ public class UserSelectCommand implements Command {
 		UserDao dao = new UserDao();
 		ArrayList<UserDto> dtos = dao.list();
 		
-		request.setAttribute("user", dtos);
+		request.setAttribute("list", dtos);
 	}
 
 	@Override

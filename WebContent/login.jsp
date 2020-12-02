@@ -64,17 +64,17 @@
             if(msg!=null && msg.equals("0")) 
             {
                 out.println("<br>");
-                out.println("<font color='red' size='5'>비밀번호를 확인해 주세요.</font>");
+                out.println("<font color='purple' size='5'>비밀번호를 확인해 주세요.</font>");
             }
             else if(msg!=null && msg.equals("-1"))
             {    
                 out.println("<br>");
-                out.println("<font color='red' size='5'>아이디를 확인해 주세요.</font>");
+                out.println("<font color='green' size='5'>아이디를 확인해 주세요.</font>");
             }
-            else if(msg!=null && msg.equals("-2"))
+            else if(msg!=null && msg.equals("2"))
             {    
                 out.println("<br>");
-                out.println("<font color='blue' size='5'>잘못된 정보입니다. 다시 입력해주세요.</font>");
+                out.println("<font color='blue' size='5'>이미 탈퇴된 회원입니다. 다시 가입 해주세요</font>");
             }
         %>    
     </div>    
