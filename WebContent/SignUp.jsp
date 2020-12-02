@@ -1,153 +1,133 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<link rel="icon" 
-      type="image/png" 
-      href="/somewhere/myicon.png"/>
+<head>
 <meta charset="utf-8">
-<script type="text/javascript" src="/WebContent/js/logincheck.js"></script>
-<script type="text/javascript">
+<style type="text/css">
+input::-webkit-input-placeholder { font-size: 50%; }
+input::-moz-placeholder { font-size: 50%; }
+input:-ms-input-placeholder { font-size: 50%; }
+input:-moz-placeholder { font-size: 50%; }
+input::p
 
-window.onload = function(){
+.laceholder { font-size: 50%; }
 
-	regForm.id.focus();
-
-	document.getElementById("btnId").onclick = checkid();
-
-	document.getElementById("btnZip").onclick = checkzip();
-
-	document.getElementById("btnSubmit").onclick = inputCheck();
-
-}
-function emailValidation() 	{    
-	var obEmail = document.getElementById("email");
-	if (!obEmail.value) {             
-		alert("ì´ë©”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”!");
-		obEmail.focus();	
-		return;
-	}               
-	else{          
-		if(!CheckEmail(obEmail.value))	{
-			alert("ì´ë©”ì¼ í˜•ì‹ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤");
-			obEmail.focus();
-			return;
-		}                
-	}                      
-}  
-
-
-function CheckEmail(str)
-{                                                 
-     var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-     if(!reg_email.test(str)) {                            
-          return false;         
-     }                            
-     else {                       
-          return true;         
-     }                            
-}          
-</script>
-
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+</style>
 <title>Insert title here</title>
 </head>
+<body>
 
+<c:set var="fieldCheck" value="${joinfield.fieldCheckmessage}"></c:set>
 
-<table class="table">
+<form action="SignUpCheck.room" method="post">
+<center>
 
-<tr>
-
-	<td align="center" valign="middle" style="background-color: #FFFFCC">
-
-		<form name="regForm" method="post" action="SignUpAction.room">
-
-			<table border="1">
-
-				<tr align="center" style="background-color: #8899aa">
-
-					<td colspan="2"><b style="color: #FFFFFF">íšŒì› ê°€ì…</b></td>
-
-				</tr>
-
-				<tr>
-
-					<td width="16%">Email</td>
-
-					<td width="57%"><input type="text" name="userId" size="15" onchange="emailValidation()">
-
-						<input type="button" value="IDì¤‘ë³µí™•ì¸" id="btnId"></td>
-
-				</tr>
-
-				<tr>
-
-					<td>íŒ¨ìŠ¤ì›Œë“œ</td>
-
-					<td><input type="password" name="userPw" size="15"></td>
-
-				</tr>
-
-				<tr>
-
-					<td>íŒ¨ìŠ¤ì›Œë“œ í™•ì¸</td>
-
-					<td><input type="password" name="userPw2" size="15"></td>
-
-				</tr>
-
-				<tr>
-
-					<td>ì´ë¦„</td>
-
-					<td><input type="text" name="userName" size="15"></td>
-
-				</tr>
-
-				<tr>
-
-					<td>ì „í™”ë²ˆí˜¸</td>
-
-					<td><input type="text" name="userTel" size="20"></td>
-
-				</tr>
-
-
-				<tr>
-
-					<td>ì£¼ì†Œ</td>
-
-					<td><input type="text" name="userAddress" size="60"></td>
-
-				</tr>
-
-
-				<tr>
-
-					<td colspan="2" align="center">
-
-						<input type="button" value="íšŒì›ê°€ì…" id="btnSubmit">
-
-						&nbsp;&nbsp;&nbsp;&nbsp; 
-
-						<input type="reset" value="ë‹¤ì‹œì“°ê¸°">
-
-					</td>
-
-				</tr>
-
-			</table>
-
-		</form>
-
-	</td>
-
-</tr>
-
-</table>
-
-
-
-
+	<table >
+		<!--  ¾ÆÀÌµğ ÀÔ·ÂÃ¢       -->
+		<tr>
+			<td colspan="2">¾ÆÀÌµğ</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="text" name="userId" value="${joinfield.userId}" placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." style="width:400px;height:40px;font-size:18px;"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<c:if test="${fieldCheck eq '¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.'||fieldCheck eq 'Áßº¹µÈ ¾ÆÀÌµğ ÀÔ´Ï´Ù.' ||fieldCheck eq '¿Ã¹Ù¸¥ ¾ÆÀÌµğ(ÀÌ¸ŞÀÏ)°¡ ¾Æ´Õ´Ï´Ù.'}" ><font size="2" color="red"><c:out value="${fieldCheck }"></c:out></font></c:if>
+				<font size="2" color="green">${IDC}</font>
+			</td>
+		</tr>
+		<!--  ¾ÆÀÌµğ ÀÔ·ÂÃ¢       -->
+		
+		
+		<!--  ºñ¹Ğ¹øÈ£ ÀÔ·ÂÃ¢       -->
+		<tr>
+			<td colspan="2">ºñ¹Ğ¹øÈ£</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="password" name="userPw" value="${joinfield.userPw}" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." style="width:400px;height:40px;font-size:18px;"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><c:if test="${fieldCheck eq 'ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.'}" ><font size="2" color="red"><c:out value="${fieldCheck}"></c:out></font></c:if></td>
+		</tr>
+		<!--  ºñ¹Ğ¹øÈ£ ÀÔ·ÂÃ¢       -->
+			
+		<!--  ºñ¹Ğ¹øÈ£ È®ÀÎÃ¢       -->
+		<tr>
+			<td colspan="2">ºñ¹Ğ¹øÈ£ È®ÀÎ</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="password" name="userPwCheck" value="${PWCFIELD}" placeholder="ºñ¹Ğ¹øÈ£ È®ÀÎ." style="width:400px;height:40px;font-size:18px;"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><font size="2" color="red">${ PWCMSG}</font>
+			<font size="2" color="green">${PWC}</font>
+			
+			</td>
+		</tr>
+		
+		<!--  ºñ¹Ğ¹øÈ£ È®ÀÎÃ¢       -->
+		
+		<!--  ÀÌ¸§ÀÔ·Â       -->
+		
+		<tr>
+			<td colspan="2">ÀÌ¸§</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="text" name="userName" value="${joinfield.userName }" placeholder="ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä." style="width:400px;height:40px;font-size:18px;"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><c:if test="${fieldCheck eq 'ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.'}" ><font size="2" color="red"><c:out value="${fieldCheck }"></c:out></font></c:if></td>		
+		</tr>
+		
+		<tr>
+			<td>ÀüÈ­¹øÈ£  <font size="2">( - Æ÷ÇÔÇØ¼­ Àû¾îÁÖ¼¼¿ä.)</font></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="text" name="userTel" value="${joinfield.userTel}" style="width:400px;height:40px;font-size:18px;">
+			</td>
+		</tr>
+		<tr>
+			<td><font size="2" color="red">${telMsg}</font><font size="2">${telMsgEx }</font></td>
+		</tr>
+		
+		<!-- ÀüÈ­¹øÈ£ ÀÔ·Â -->
+		
+		<!-- ÁÖ¼Ò ÀÔ·Â -->
+		<tr>
+			<td>ÁÖ¼Ò ÀÔ·Â</td>
+		</tr>
+		<tr>	
+			<td><input type="text" name="userAddress" style="width:400px;height:40px;font-size:18px;"></td>
+		</tr>
+		<!-- ÁÖ¼Ò ÀÔ·Â -->
+		
+		
+		<tr>
+			<td></td>
+		</tr>
+		
+		
+		
+		
+		
+		<tr>
+			<td colspan="2" align="center"><input type="submit" value="È¸¿ø°¡ÀÔ ¿Ï·á"></td>
+		</tr>
+		
+		
+		
+		
+		
+		
+		
+	</table>
+</form>
+</center>
 </body>
 </html>

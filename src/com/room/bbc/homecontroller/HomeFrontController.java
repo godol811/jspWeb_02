@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.room.bbc.command.Command;
+import com.room.bbc.command.JoinCheckCommand;
 import com.room.bbc.command.RoomInsertCommand;
 import com.room.bbc.command.RoomReviewDeleteCommand;
 import com.room.bbc.command.RoomReviewInsertCommand;
@@ -91,39 +92,39 @@ public class HomeFrontController extends HttpServlet {
 		case ("/login.room"): // 입력화면
 			viewPage = "login.jsp";
 		break;	
+		
 			
 			
 			
-		case ("/SignUpPage.room"):
-			
-			viewPage = "SignUp.jsp";
-			break;
-			
-		case ("/SignUpAction.room"):
-			command = new UserInsertCommand();
+		case("/SignUpCheck.room"):		
+			command = new JoinCheckCommand();
 			command.execute(request, response);
-			viewPage = "login.jsp";
+			viewPage="SignUp.room";
 			break;
-	
+			//회원가입
+		case("/SignUp.room"):
+			String joinCheck = (String)request.getAttribute("JOIN");
+			//회원가입 성공했을떄
+			if(joinCheck.equals("ok")) {	
+				command = new UserInsertCommand();
+				command.execute(request, response);
+				viewPage = "login.jsp";
+			//회원가입 실패했을때
+			}else {
+			viewPage = "SignUp.jsp";
+			}
+		break;
+		
+		}
 		
 		
 		//----------------- 호스트 메뉴-------------------------
 		//호스트 숙소 등록
-		case ("/hostRegister.room"):
-			
-			command = new RoomInsertCommand();
-			command.execute(request, response);	
-			viewPage = "mainPage.jsp";
-			break;
 		
-			
-		default :
-			viewPage = "login.jsp";
-			break; 
 			
 		
 		
-		}
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

@@ -86,7 +86,7 @@ public ArrayList<UserDto> list() {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "insert into userinfo  (userId, userPw, userName, userAddress,  userTel, userinsertDate ) values (?,?,?,?,?,now())";
+			String query = "insert into userinfo  (userId, userPw, userName, userAddress,  userTel, userinsertDate,userstate ) values (?,?,?,?,?,now(),'회원')";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
 			preparedStatement.setString(1, userId);
 			preparedStatement.setString(2, userPw);
@@ -109,84 +109,138 @@ public ArrayList<UserDto> list() {
 	
 	//로그인 아이디 비밀번호 체크 메서드----------------------------------------------
 	
-	public int loginCheck(String userId, String userPw) {
+	public int logincheck(String userId,String userPw) {
+		int loginCheck = 0;
+
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
+		String checkPw ="";
 		
-		String dbPW ="";
-		int x = -1;
-		
+		if(userId.equals("admin") && userPw.equals("admin") )//관리자 로그인
+		{
+		loginCheck = 99;
+		}
+		else {
+			
 		
 		try {
-			// 위에 선언된 dataSource 사용
-			connection = dataSource.getConnection();
-			String query = "select userpw from userinfo where userid = ? ";
-			preparedStatement = connection.prepareStatement(query); // query 문장 연결
-			preparedStatement.setString(1, userId);
-			resultSet = preparedStatement.executeQuery();
-			
-			if(resultSet.next()) {
-			 dbPW = resultSet.getString("userpw");
-			
-			if (dbPW.equals(userPw)) 
-                x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
-            else                  
-                x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-            
-			 } else {
-	            x = -1; // 해당 아이디가 없을 경우
-	            }
-	 
-	           
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try { // 처음 선언된 부분 닫아준다.
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			} catch (Exception e) {
-				e.printStackTrace();
+		     connection = dataSource.getConnection();
+		     String query = "select userpw from userinfo where userid = ?";
+		     preparedStatement = connection.prepareStatement(query);
+		     preparedStatement.setString(1, userId);
+		     resultSet = preparedStatement.executeQuery();
+		     
+		     
+		     if(resultSet.next())
+		     { //아이디가 불려와지는지 여부 확인
+		    	checkPw = resultSet.getString("userpw"); //암호 가져오기
+			 
+		    	if (userPw.equals(checkPw)) { //암호 같으면
+			    		loginCheck= 1; //다음 페이지 진행
+					
+			     	}else {
+			    	 	loginCheck = 0;//다르면 빠꾸
+			     	}
+		    }else {
+		    	loginCheck= -1;
+		    }
+			}catch(Exception e) {
+		    	e.printStackTrace();
+		    	
+		    }finally {
+				try {
+					if(resultSet!=null) resultSet.close();
+					if(preparedStatement!=null) preparedStatement.close();
+					if(connection!=null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+					
+				}
 			}
-		}
-		 return x;
 
-	}	
-	
+	}
+		return loginCheck;
+	}
 	//아이디 중복체 체크 메서드----------------------------------------------
 	
-	public boolean checkId(String userId) {
+	public int joinIdCheck(String userid) {
+		int joinCheck=0;
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+		     connection = dataSource.getConnection();
+		     String query = "select count(*) from userinfo where userid = ?";
+		     preparedStatement = connection.prepareStatement(query);
+		     preparedStatement.setString(1, userid);
+		     resultSet = preparedStatement.executeQuery();
+		     
+		     if(resultSet.next()) {
+		    	joinCheck=resultSet.getInt(1);
+		     }
+		     
+		       
+		    }catch(Exception e) {
+		    	e.printStackTrace();
+   
+		    }finally {
+				try {
+					if(resultSet!=null) resultSet.close();
+					if(preparedStatement!=null) preparedStatement.close();
+					if(connection!=null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		return joinCheck;
+	}
+	
+	public String userState(String userId) {
+		
+		String userState = "";
+
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
-		boolean b = false;
 		
+			
 		
 		try {
-			// 위에 선언된 dataSource 사용
-			connection = dataSource.getConnection();
-			String query = "select userid from userinfo where userid = ? ";
-			preparedStatement = connection.prepareStatement(query); // query 문장 연결
-			preparedStatement.setString(1, userId);
-			resultSet = preparedStatement.executeQuery();
-			b = resultSet.next();
-			
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try { // 처음 선언된 부분 닫아준다.
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			} catch (Exception e) {
-				e.printStackTrace();
+		     connection = dataSource.getConnection();
+		     String query = "select userstate from userinfo where userid = ?";
+		     preparedStatement = connection.prepareStatement(query);
+		     preparedStatement.setString(1, userId);
+		     resultSet = preparedStatement.executeQuery();
+		     
+		     
+		     if(resultSet.next())
+		     { //아이디가 불려와지는지 여부 확인
+		    	userState = resultSet.getString("userstate"); //암호 가져오기
+		     }
+			}catch(Exception e) {
+		    	e.printStackTrace();
+		    	
+		    }finally {
+				try {
+					if(resultSet!=null) resultSet.close();
+					if(preparedStatement!=null) preparedStatement.close();
+					if(connection!=null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+					
+				}
 			}
-		}
-		return b;
 
-	}	
+	
+			return userState;
+	}
+		
+		
+
+	 
 	
 	
 }
