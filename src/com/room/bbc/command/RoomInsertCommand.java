@@ -48,8 +48,8 @@ public class RoomInsertCommand implements Command {
 			String roomImageReal = multi.getFilesystemName ("roomImage");
 			
 			// 확장자 정해주기
-			if(!roomImage.endsWith(".doc") && !roomImage.endsWith(".hwp") &&
-					!roomImage.endsWith(".pdf") && !roomImage.endsWith(".xls") && !roomImage.endsWith(".zip")){
+			if(roomImage.endsWith(".doc") && roomImage.endsWith(".hwp") &&
+					roomImage.endsWith(".pdf") && roomImage.endsWith(".xls") && roomImage.endsWith(".zip")){
 				File file = new File(directory + roomImageReal);
 				file.delete(); 
 				
@@ -57,13 +57,11 @@ public class RoomInsertCommand implements Command {
 			}else{
 				
 				RoomListDao dao = new RoomListDao();
-				boolean insertCheck = dao.roomRegister(userId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				dao.roomRegister(userId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
 				System.out.println("파일명 : " + roomImage + "<br>"); 
 				System.out.println("실제 파일명 : " + roomImageReal + "<br>"); 
 				
-				if(insertCheck == true) {
-					System.out.println("입력 성공");
-				}
+				
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

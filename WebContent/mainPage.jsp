@@ -74,7 +74,17 @@
  		<div id="header">
         	<div id="mainMenuBox">
             	<ul id="menuItem">
-                    <li><a href="hostRegisterRoom01.jsp">호스트되기</a></li>
+            		<c:choose>
+	            		<c:when test = "${empty sessionScope.USERSTATE}">
+	                    	<li><a href="login.jsp">호스트되기</a></li>
+	                     </c:when>
+	            		<c:when test = "${empty sessionScope.USERSTATE}">
+	                    	<li><a href="hostRegisterRoom01.jsp">호스트되기</a></li>
+	                     </c:when>
+		                 <c:otherwise>
+		                   	<li><a href="hostRoomList.jsp">호스트 모드 전환</a></li>
+		                 </c:otherwise>
+                    </c:choose>
                     <li class="menuItemHover"><a href="#"><img src="./images/menuBar.svg"></a></li>
                 </ul>
             </div>
@@ -89,7 +99,7 @@
 	                   	    <li><a href="userSignUp.room">회원가입</a></li>
 	                    </c:when>
 	                    <c:otherwise>
-	                    	<li><a href="#">로그아웃</a></li>
+	                    	<li><a href="mainPage.jsp">로그아웃</a></li>
 	                    </c:otherwise>
                     </c:choose>
                     </ul>

@@ -15,7 +15,7 @@
 	
 	String roomType = request.getParameter("roomType");
 	String roomCapa = request.getParameter("roomCapa");
-	String roomAddress = request.getParameter("address")+request.getParameter("addressDetail");
+	String roomAddress = request.getParameter("address")+ " " + request.getParameter("addressDetail");
 	String roomCheckIn = request.getParameter("checkinTime");
 	String roomCheckOut = request.getParameter("checkoutTime");
 	String roomPrice = request.getParameter("roomPrice");
@@ -45,6 +45,9 @@
 			} else if(theForm.roomImage.value.trim()==0){
 				alert("이미지를 업로드해주세요.");
 				return false;
+			} else{
+				alert("입력이 완료되었습니다.");
+				return true;
 			}
 			
 		}
