@@ -15,6 +15,7 @@ public interface Command {
 	
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException;
+}
 	
 	
 	

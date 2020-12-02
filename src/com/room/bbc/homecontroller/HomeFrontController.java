@@ -115,7 +115,7 @@ public class HomeFrontController extends HttpServlet {
 			}
 		break;
 		
-		}
+		
 		case ("/userInsertAction.room"): //회원 가입
 			
 		case ("/SignUpAction.room"):
@@ -131,18 +131,7 @@ public class HomeFrontController extends HttpServlet {
 		//호스트 숙소 등록
 		
 			
-
-			command = new RoomInsertCommand();
-			command.execute(request, response, session);	
-			viewPage = "mainPage.jsp";
-			break;
-
-		case ("/login.room"): // 회원 로그인화면
-			viewPage = "login.jsp";
-		break;
-		
-		
-
+	
 		default :
 			viewPage = "login.jsp";
 			break; 
@@ -150,9 +139,9 @@ public class HomeFrontController extends HttpServlet {
 		
 		
 		
+	}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-		
-	}
 	
+}
 }
