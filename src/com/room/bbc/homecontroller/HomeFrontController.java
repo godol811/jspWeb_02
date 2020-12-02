@@ -110,7 +110,7 @@ public class HomeFrontController extends HttpServlet {
 		case ("/hostRegister.room"):
 			
 			command = new RoomInsertCommand();
-			command.execute(request, response);	
+			command.execute(request, response, session);	
 			viewPage = "mainPage.jsp";
 			break;
 
