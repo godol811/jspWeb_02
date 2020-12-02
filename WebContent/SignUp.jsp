@@ -1,172 +1,127 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<html>
+<link rel="icon" 
+      type="image/png" 
+      href="/somewhere/myicon.png"/>
+<meta charset="utf-8">
+<script type="text/javascript" src="/WebContent/js/logincheck.js?ver=1.1"></script>
+<script type="text/javascript">
 
-    <head>
-    <meta charset="UTF-8"/>
-  	</head>
-    
-  <body>
-    <div id="wrap">
-      <br><br>
-      <b><font size="6" color="gray">회원가입</font></b>
-      <br><br><br>
-      
-      
-      <!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
-      <!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 JoinPro.jsp -->
-      <form method="post" action="userInsertAction.room" name="userInfo" 
-              onsubmit="return checkValue()">
-          <table>
-            <tr>
-              <td id="title">Email</td>
-              <td>
-                  <input type="text" name="userId" id="email" maxlength="50" onchange="emailValidation();">
-              
-              </td>
-          </tr>
-                      
-              <tr>
-                  <td id="title">비밀번호</td>
-                  <td>
-                      <input type="password" name="userPw" id="pw" maxlength="50" onchange="check_pw();"/>
-                  </td>
-              </tr>
-              
-              <tr>
-                  <td id="title">비밀번호 확인</td>
-                  <td>
-                      <input type="password" name="userPw2" id="pw2" maxlength="50" onchange="check_pw()"/>&nbsp;&nbsp;<span id="check"></span></td>
-              </tr>
-              <tr>
-                  
-			</tr>
-              <tr>
-                  <td id="title">이름</td>
-                  <td>
-                      <input type="text" name="userName" maxlength="50">
-                  </td>
-              </tr>
-                  
-               <tr>
-                  <td id="title">주소</td>
-                  <td>
-                      <input type="text" size="50" name="userAddress"/>
-                  </td>
-              </tr>
-            <tr>
-              <td id="title">전화번호</td>
-              <td>
-                  <input type="text" name="userTel" maxlength="13">
-              </td>
-          </tr>
-            
-          </table>
-          <br>
-          <input type="submit" value="가입"/>  
-          <input type="button" value="취소" onclick="location.href='login.room'" >
-      </form>
-  </div>
+window.onload = function(){
+
+	regForm.id.focus();
+
+	document.getElementById("btnId").onclick = checkid();
+
+	document.getElementById("btnZip").onclick = checkzip();
+
+	document.getElementById("btnSubmit").onclick = inputCheck();
+
+}
+
+</script>
+
+<title>Insert title here</title>
+</head>
 
 
+<table class="table">
 
-  </body>
-  
-  <script>
+<tr>
+
+	<td align="center" valign="middle" style="background-color: #FFFFCC">
+
+		<form name="regForm" method="post" action="SignUpAction.room">
+
+			<table border="1">
+
+				<tr align="center" style="background-color: #8899aa">
+
+					<td colspan="2"><b style="color: #FFFFFF">회원 가입</b></td>
+
+				</tr>
+
+				<tr>
+
+					<td width="16%">Email</td>
+
+					<td width="57%"><input type="text" name="userId" size="15">
+
+						<input type="button" value="ID중복확인" id="btnId"></td>
+
+				</tr>
+
+				<tr>
+
+					<td>패스워드</td>
+
+					<td><input type="password" name="userPw" size="15"></td>
+
+				</tr>
+
+				<tr>
+
+					<td>패스워드 확인</td>
+
+					<td><input type="password" name="userPw2" size="15"></td>
+
+				</tr>
+
+				<tr>
+
+					<td>이름</td>
+
+					<td><input type="text" name="userName" size="15"></td>
+
+				</tr>
+
+				<tr>
+
+					<td>전화번호</td>
+
+					<td><input type="text" name="userTel" size="20"></td>
+
+				</tr>
 
 
-	function emailValidation() 	{    
-		var obEmail = document.getElementById("email");
-		if (!obEmail.value) {             
-			alert("이메일을 입력하세요!");
-			obEmail.focus();	
-			return;
-		}               
-		else{          
-			if(!CheckEmail(obEmail.value))	{
-				alert("이메일 형식이 잘못되었습니다");
-				obEmail.focus();
-				return;
+				<tr>
 
-			}                
+					<td>주소</td>
 
-		}                      
+					<td><input type="text" name="userAddress" size="60"></td>
 
-	}  
+				</tr>
 
 
+				<tr>
 
-    
-    function checkValue(){     	
-                            
+					<td colspan="2" align="center">
+
+						<input type="button" value="회원가입" id="btnSubmit">
+
+						&nbsp;&nbsp;&nbsp;&nbsp; 
+
+						<input type="reset" value="다시쓰기">
+
+					</td>
+
+				</tr>
+
+			</table>
+
+		</form>
+
+	</td>
+
+</tr>
+
+</table>
 
 
 
-    /* 
-      if(!form.id.value){
-        alert("아이디를 입력하세요.")
-        return false
-    }
-    if(!form.idDuplication.value != "idCheck"){
-        alert("아이디 중복체크를 해주세요.")
-        return false
-    } */
 
-
-    if(!form.password.value){
-        alert("비밀번호를 입력하세요.")
-        return false
-    }
-    if(form.password.value != form.passwordcheck.value) {
-        alert("비밀번호를 동일하게 입력해주세요.")
-        return false;
-    
-    }
-
-    if(!form.name.value){
-        alert("이름을 입력하세요.")
-        return false;
-    }
-  }
-    function check_pw(){
-    	 
-        var pw = document.getElementById('pw').value;
-
-        if(pw.length < 6 || pw.length>16){
-            window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
-            document.getElementById('pw').value='';
-        }
-        for(var i=0;i<SC.length;i++){
-            if(pw.indexOf(SC[i]) != -1){
-                check_SC = 1;
-            }
-        }
-        if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
-            if(document.getElementById('pw').value==document.getElementById('pw2').value){
-                document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
-                document.getElementById('check').style.color='blue';
-            }
-            else{
-                document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
-                document.getElementById('check').style.color='red';
-            }
-        }
-    }
-    
-    
-    /*이메일 체크 형식  */
-    
-    
-    function CheckEmail(str)
-    {                                                 
-         var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-         if(!reg_email.test(str)) {                            
-              return false;         
-         }                            
-         else {                       
-              return true;         
-         }                            
-    }                                
-
-    </script>
+</body>
 </html>

@@ -27,6 +27,8 @@ public class UserInsertCommand implements Command {
 		UserDao dao = new UserDao();
 		dao.write(userId, userPw, userName, userAddress, userTel);
 		
+	
+		
 	}
 
 }

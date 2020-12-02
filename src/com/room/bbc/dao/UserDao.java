@@ -107,7 +107,7 @@ public ArrayList<UserDto> list() {
 		}
 	}
 	
-	//로그인 아이디 비밀번호 체크 메서드
+	//로그인 아이디 비밀번호 체크 메서드----------------------------------------------
 	
 	public int loginCheck(String userId, String userPw) {
 		Connection connection = null;
@@ -152,5 +152,41 @@ public ArrayList<UserDto> list() {
 		}
 		 return x;
 
-	}		
+	}	
+	
+	//아이디 중복체 체크 메서드----------------------------------------------
+	
+	public boolean checkId(String userId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		boolean b = false;
+		
+		
+		try {
+			// 위에 선언된 dataSource 사용
+			connection = dataSource.getConnection();
+			String query = "select userid from userinfo where userid = ? ";
+			preparedStatement = connection.prepareStatement(query); // query 문장 연결
+			preparedStatement.setString(1, userId);
+			resultSet = preparedStatement.executeQuery();
+			b = resultSet.next();
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try { // 처음 선언된 부분 닫아준다.
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return b;
+
+	}	
+	
+	
 }
