@@ -71,7 +71,7 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "Rating_list.jsp";
 			break;
 		
-		case ("/Rating_Insert.room"): // 입력화면
+		case ("/Rating_Write.room"): // 입력화면
 			viewPage = "Rating_write.jsp";
 		break;
 			
@@ -116,13 +116,37 @@ public class HomeFrontController extends HttpServlet {
 		break;
 		
 		}
+		case ("/userInsertAction.room"): //회원 가입
+			
+		case ("/SignUpAction.room"):
+			command = new UserInsertCommand();
+			command.execute(request, response);
+			viewPage = "login.room";
+			break;
+
+	
 		
 		
 		//----------------- 호스트 메뉴-------------------------
 		//호스트 숙소 등록
 		
 			
+
+			command = new RoomInsertCommand();
+			command.execute(request, response, session);	
+			viewPage = "mainPage.jsp";
+			break;
+
+		case ("/login.room"): // 회원 로그인화면
+			viewPage = "login.jsp";
+		break;
 		
+		
+
+		default :
+			viewPage = "login.jsp";
+			break; 
+			
 		
 		
 		
