@@ -56,38 +56,27 @@
 
 </head>
 
-
-
 <body>
-<!-- 
-	<div class="guestSelect">
-	   	    <label for="spinner">인원 </label>
- 			 <input type="text" id="spinner" max="16" min="1" step="1" name="guest"><br>
- 			 <h6>만 13세 이상</h6>
-	   	    <label for="spinnerChild">어린이 </label>
- 			 <input type="text" id="spinnerChild" max="5" min="0" step="1" name="child">
- 			 <h6>12세 이하</h6>
-	</div>
-	 -->
-	
 	<div id="wrap">
  		<div id="header">
         	<div id="mainMenuBox">
             	<ul id="menuItem">
             		<c:choose>
 	            		<c:when test = "${empty sessionScope.USERSTATE}">
-	                    	<li><a href="login.jsp">호스트되기</a></li>
+	                    	<li><a href="login.jsp">호스트 되기</a></li>
 	                     </c:when>
-	            		<c:when test = "${empty sessionScope.USERSTATE}">
-	                    	<li><a href="hostRegisterRoom01.jsp">호스트되기</a></li>
+	            		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
+		                   	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
 	                     </c:when>
 		                 <c:otherwise>
-		                   	<li><a href="hostRoomList.jsp">호스트 모드 전환</a></li>
+	                    	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
 		                 </c:otherwise>
                     </c:choose>
+                    
                     <li class="menuItemHover"><a href="#"><img src="./images/menuBar.svg"></a></li>
                 </ul>
             </div>
+            
             <div id="subMenuBox">
                 <div class="subMenuItem" id="subMenuItem1">
                 	<ul>
@@ -96,10 +85,11 @@
                    	 <c:choose>
 	                    <c:when test = "${empty sessionScope.USERID}">
 	                   	    <li><a href="login.jsp">로그인</a></li>
+	                   	    
 	                   	    <li><a href="userSignUp.room">회원가입</a></li>
 	                    </c:when>
 	                    <c:otherwise>
-	                    	<li><a href="mainPage.jsp">로그아웃</a></li>
+	                    	<li><a href="logout.room">로그아웃</a></li>
 	                    </c:otherwise>
                     </c:choose>
                     </ul>
@@ -141,7 +131,7 @@
 	    
 	 <!-- 검색창 -->   
 	<div class="box">
-		<form action="test1.jsp" method="post" name="search" onsubmit="return searchCheck()">
+		<form action="#" method="post" name="search" onsubmit="return searchCheck()">
 		<table style="margin-top: 100px; margin-left: auto; margin-right: auto; text-align: center;">
 		<tr>
 			<td align="center"><h4>위치</h4></td>

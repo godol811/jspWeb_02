@@ -58,6 +58,7 @@ public class RoomInsertCommand implements Command {
 				
 				RoomListDao dao = new RoomListDao();
 				dao.roomRegister(userId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				dao.roomHostState(userId);
 				System.out.println("파일명 : " + roomImage + "<br>"); 
 				System.out.println("실제 파일명 : " + roomImageReal + "<br>"); 
 				

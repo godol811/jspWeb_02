@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.room.bbc.command.Command;
+import com.room.bbc.command.HostRoomListCommand;
 import com.room.bbc.command.JoinCheckCommand;
 import com.room.bbc.command.RoomInsertCommand;
 import com.room.bbc.command.RoomReviewDeleteCommand;
@@ -55,6 +57,7 @@ public class HomeFrontController extends HttpServlet {
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
+		HttpSession session = request.getSession();
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
@@ -66,7 +69,6 @@ public class HomeFrontController extends HttpServlet {
 		switch(com) {
 
 		//리뷰 CRUD-------------------------------
-
 		case ("/Rating_list.room"):
 			command = new RoomReviewSelectCommand();
 			command.execute(request, response);
@@ -88,14 +90,14 @@ public class HomeFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "list.do";
 			break;
-			//user CRUD-------------------------
+			
+			
+		//user CRUD-------------------------
 			
 
 		case ("/login.room"): // 입력화면
 			viewPage = "login.jsp";
 		break;	
-		
-			
 			
 			
 		case("/SignUpCheck.room"):		
@@ -130,29 +132,32 @@ public class HomeFrontController extends HttpServlet {
 		command.execute(request, response);
 		viewPage="AdminUserList.room";
 		break;
-	
-	
-	
+		case ("/logout.room"):
+			session.invalidate();
+		viewPage = "mainPage.jsp";
+		break;
 		
 		
 		//----------------- 호스트 메뉴-------------------------
 		//호스트 숙소 등록
-		
+		case ("/hostRegister.room"):
+			command = new RoomInsertCommand();
+			command.execute(request, response, session);	
+			viewPage = "mainPage.jsp";
+			break;
 			
-	
-		
-		
-		
-		
+		case ("/hostRoomList.room"):
+			command = new HostRoomListCommand();
+			command.execute(request, response, session);
+			viewPage = "hostRoomList.jsp";
+			break;
+			
 		default :
 			viewPage = "login.jsp";
 			break; 
-			
-			
-			
-		
 		
 	}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	
