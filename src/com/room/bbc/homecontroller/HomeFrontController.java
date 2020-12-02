@@ -102,6 +102,7 @@ public class HomeFrontController extends HttpServlet {
 			viewPage="SignUp.room";
 			break;
 			//회원가입
+		
 		case("/SignUp.room"):
 			String joinCheck = (String)request.getAttribute("JOIN");
 			//회원가입 성공했을떄
@@ -114,16 +115,8 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "SignUp.jsp";
 			}
 		break;
-		
-		
-		case ("/userInsertAction.room"): //회원 가입
-			
-		case ("/SignUpAction.room"):
-			command = new UserInsertCommand();
-			command.execute(request, response);
-			viewPage = "login.room";
-			break;
-
+		 
+	
 	
 		
 		
@@ -132,6 +125,10 @@ public class HomeFrontController extends HttpServlet {
 		
 			
 	
+		
+		
+		
+		
 		default :
 			viewPage = "login.jsp";
 			break; 
