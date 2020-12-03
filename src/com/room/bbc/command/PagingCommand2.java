@@ -17,10 +17,22 @@ public class PagingCommand2 implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		RoomSearchDao dao = new RoomSearchDao();
-		ArrayList<RoomSearchDto> dtos = dao.noticeManagementList();
 		
-		int noticeViewRowCount = dao.noticeViewRowCount();
+		
+
+	}
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws ServletException, IOException {
+		String location = request.getParameter("location");
+		int	   guest    = Integer.parseInt(request.getParameter("guest"));
+		
+		
+		RoomSearchDao dao = new RoomSearchDao();
+		ArrayList<RoomSearchDto> dtos = dao.noticeManagementList(location,guest);
+		
+		int noticeViewRowCount = dao.noticeViewRowCount(location,guest);
 		
 		int RowCount = noticeViewRowCount;
 		
@@ -49,19 +61,14 @@ public class PagingCommand2 implements Command {
 		
 		System.out.println("bNUM = "+beginNum);
 		System.out.println("nNum = "+endNum);
-		
+		System.out.println("location = " + location);
+		System.out.println("guest = " + guest);
 		// 리스트
 		request.setAttribute("list", dtos);
 		//페이지
 		request.setAttribute("beginNum", beginNum);
 		request.setAttribute("endNum", endNum);
 		request.setAttribute("totalPage", totalPage);
-
-	}
-
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 	}

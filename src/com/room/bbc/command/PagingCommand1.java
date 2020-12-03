@@ -18,9 +18,27 @@ public class PagingCommand1 implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+	
+		
+		
+	}
+
+	
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String location = request.getParameter("location");
+		int	   guest    = Integer.parseInt(request.getParameter("guest"));
+		session.setAttribute("LOCATION", location);
+		session.setAttribute("GUEST", guest);
 		RoomSearchDao dao = new RoomSearchDao();
-		ArrayList<RoomSearchDto> dtos = dao.noticeManagementList();
-		int noticeViewRowCount = dao.noticeViewRowCount();
+		ArrayList<RoomSearchDto> dtos = dao.noticeManagementList(location,guest);
+		
+		int noticeViewRowCount = dao.noticeViewRowCount(location,guest);
+		
 		int RowCount = noticeViewRowCount;
 		
 		int totalPage=(RowCount/10);
@@ -36,17 +54,8 @@ public class PagingCommand1 implements Command {
 		request.setAttribute("beginNum", beginNum);
 		request.setAttribute("endNum", endNum);
 		request.setAttribute("totalPage", totalPage);
-
-		
-		
-	}
-
-	
-
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setAttribute("location", location);
+		request.setAttribute("guest", guest);
 
 	}
 

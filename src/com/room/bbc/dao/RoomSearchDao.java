@@ -32,7 +32,7 @@ DataSource dataSource;
 	
 	
 	
-	public int noticeViewRowCount() {
+	public int noticeViewRowCount(String location, int guest) {
 		int rowCount=0;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -41,7 +41,7 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select count(*) from room ";
+			String query = "select count(*) from room  where roomaddress like  '%"+ location + "%' and roomcapa>="+guest+" and roomdeletedate is null ";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -67,7 +67,7 @@ DataSource dataSource;
 	}
 	
 	
-	public ArrayList<RoomSearchDto> noticeManagementList(){ //문의 리스트 띄우기 
+	public ArrayList<RoomSearchDto> noticeManagementList(String location, int guest){ //숙소리스트
 		ArrayList<RoomSearchDto> dtos = new ArrayList<RoomSearchDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -78,7 +78,7 @@ DataSource dataSource;
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
 			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, ";
-			String query2 = "roomid, roomimagereal from room where roomdeletedate is null ";
+			String query2 = "roomid, roomimagereal from room where roomaddress like  '%"+ location + "%' and roomcapa>="+guest+" and roomdeletedate is null";
 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			resultSet = preparedStatement.executeQuery();
 			
