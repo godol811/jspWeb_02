@@ -157,7 +157,7 @@
 				<td>상세 주소</td>
 			</tr>
 			<tr>
-				<td><input placeholder="고객입력 상세주소" type="text"  style="width:500px;" id="addrDetail"  name="addressDetail" value="${roomView.roomAddressDetail }"/></td>
+				<td><input placeholder="상세주소" type="text"  style="width:500px;" id="addrDetail"  name="addressDetail" value="${roomView.roomAddressDetail }"/></td>
 			</tr>
 		
 		</table>

@@ -39,19 +39,19 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into room (roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, roomimagereal, userid) values (?,?,?,?,?,?,?,?,?,?)";
+			String query = "insert into room (roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, roomimagereal, userid) values (?,?,?,?,?,?,?,?,?,?,?)";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, roomTitle);
 			preparedStatement.setString(2, roomContent);
-			preparedStatement.setString(3, roomPrice);
-			preparedStatement.setString(4, roomCapa);
+			preparedStatement.setInt(3, Integer.parseInt(roomPrice));
+			preparedStatement.setInt(4, Integer.parseInt(roomCapa));
 			preparedStatement.setString(5, roomAddress);
-			preparedStatement.setString(5, roomAddressDetail);
-			preparedStatement.setString(6, roomCheckIn);
-			preparedStatement.setString(7, roomCheckOut);
-			preparedStatement.setString(8, roomImage);
-			preparedStatement.setString(9, roomImageReal);
-			preparedStatement.setString(10, userId);
+			preparedStatement.setString(6, roomAddressDetail);
+			preparedStatement.setString(7, roomCheckIn);
+			preparedStatement.setString(8, roomCheckOut);
+			preparedStatement.setString(9, roomImage);
+			preparedStatement.setString(10, roomImageReal);
+			preparedStatement.setString(11, userId);
 			preparedStatement.executeUpdate();
 	
 			
@@ -248,8 +248,8 @@ DataSource dataSource;
 			preparedStatement = connection.prepareStatement(query+query2);
 			preparedStatement.setString(1, roomTitle);
 			preparedStatement.setString(2, roomContent);
-			preparedStatement.setString(3, roomPrice);
-			preparedStatement.setString(4, roomCapa);
+			preparedStatement.setInt(3, Integer.parseInt(roomPrice));
+			preparedStatement.setInt(4, Integer.parseInt(roomCapa));
 			preparedStatement.setString(5, roomAddress);
 			preparedStatement.setString(6, roomAddressDetail);
 			preparedStatement.setString(7, roomCheckIn);

@@ -68,13 +68,19 @@
 	</script>
 	
 		<!-- 사진 업로드 -->
-	 <%=session.getAttribute("ROOMID") %>
-	<form name="load" method="post" enctype="multipart/form-data" action="hostRegister.room" onsubmit="return uploadCheck()">
 		<table>
 			<colgroup>
 				<col width="500px"/>
 			</colgroup>
 			
+		<c:choose>
+			<c:when test="${empty sessionScope.ROOMID}">
+				<form name="load" method="post" enctype="multipart/form-data" action="hostRegister.room" onsubmit="return uploadCheck()">
+			</c:when>
+				<c:otherwise>
+				<form name="load" method="post" enctype="multipart/form-data" action="hostRoomRevise.room" onsubmit="return uploadCheck()">
+				</c:otherwise>
+		</c:choose>
 			<tr>
 				<td colspan="2">1. 숙소의 제목을 만드세요.</td>
 			</tr>
@@ -97,15 +103,16 @@
 				<c:choose>
 					<c:when test="${empty sessionScope.ROOMID}">
 						<td><input type="submit" value="등록"/></td>
+						</form>
 					</c:when>
 					<c:otherwise>
-						<td><input type="button" value="수정" onclick="hostRoomRevise.room?roomCapa=
-						" /></td>
+					<!-- 	<td><input type="button" value="수정" enctype="multipart/form-data" onclick="location.href='hostRoomRevise.room'"></td> -->
+						<td><input type="submit" value="수정" /></td>
+						</form>
 					</c:otherwise>
 				</c:choose>
 			</tr>
 		</table>
-	</form>
-	
+
 </body>
 </html>
