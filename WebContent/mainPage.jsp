@@ -37,6 +37,7 @@
 			onClose:function(selectedDate){
 				$("#date2").datepicker("option","minDate", selectedDate);
 			}
+		
 			
 		});
 		
@@ -53,6 +54,7 @@
 	});
 	
 	//]]> */
+	
 	</script>
 
 </head>
@@ -87,7 +89,7 @@
 	                    <c:when test = "${empty sessionScope.USERID}">
 	                   	    <li><a href="login.jsp">로그인</a></li>
 	                   	    
-	                   	    <li><a href="userSignUp.room">회원가입</a></li>
+	                   	    <li><a href="SignUp.jsp">회원가입</a></li>
 	                    </c:when>
 	                    <c:otherwise>
 	                    	<li><a href="logout.room">로그아웃</a></li>
@@ -103,6 +105,7 @@
 	<script type="text/javascript">
 	function searchCheck(){
 		theForm = document.search;
+		
 		
 		if(theForm.location.value.trim().length==0){
 			alert("지역을 입력해주세요.");

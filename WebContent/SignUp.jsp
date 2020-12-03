@@ -102,30 +102,26 @@ input::p
 		<tr>
 			<td>주소 입력</td>
 		</tr>
-		<tr>	
-			<td><input type="text" name="userAddress" style="width:400px;height:40px;font-size:18px;"></td>
+		<tr>
+			<td><input placeholder="도로명 주소" type="text"  style="width:500px;" id="roadAddrPart1"  name="userAddress" readonly="readonly" onClick="goPopup();" value="${roomView.roomAddress}"/>
+			&nbsp;
+			<input type="button" onClick="goPopup();" value="주소 찾기" style="width:500px;"/>
+			</td>
+		</tr>
+		<tr>
+			<td>상세 주소</td>
+		</tr>
+		<tr>
+			<td><input placeholder="상세주소" type="text"  style="width:500px;" id="addrDetail"  name="userAddressDetail" style="width:500px;" /></td>
 		</tr>
 		<!-- 주소 입력 -->
-		
-		
 		<tr>
 			<td></td>
 		</tr>
 		
-		
-		
-		
-		
 		<tr>
 			<td colspan="2" align="center"><input type="submit" value="회원가입 완료"></td>
 		</tr>
-		
-		
-		
-		
-		
-		
-		
 	</table>
 </form>
 </center>

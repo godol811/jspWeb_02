@@ -16,20 +16,30 @@
 	<table border="1">
 	    <colgroup>
 			<col width="80px">
-			<col width="200px">
+			<col width="80px">
+			<col width="500px">
 			<col width="50px">
 			<col width="50px">
 		</colgroup>
 		
 		<c:forEach items="${hostRoomList}" var="dto"> <!--setAttribute에서 선언된 list -->
 			<tr>
-				<td rowspan="2"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
-				<td>${dto.roomTitle }</td>
-				<td rowspan="2"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
-				<td rowspan="2"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
+				<td rowspan="5"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
+				<td>숙소명</td><td>${dto.roomTitle }</td>
+				<td rowspan="5"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
+				<td rowspan="5"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
 			</tr>
 			<tr>
-				<td>${dto.roomContent }</td>
+				<td>숙소설명</td><td>${dto.roomContent }</td>
+			</tr>
+			<tr>
+				<td>체크인</td><td>${dto.roomCheckIn }</td>
+			</tr>
+			<tr>
+				<td>체크아웃</td><td>${dto.roomCheckOut }</td>
+			</tr>
+			<tr>
+				<td>주소</td><td>${dto.roomAddress } &nbsp; ${dto.roomAddressDetail }</td>
 			</tr>
 			
 		</c:forEach>

@@ -195,7 +195,7 @@ public class HomeFrontController extends HttpServlet {
 		// 호스트 숙소 수정
 		case ("/hostRoomRevise.room"):
 			command = new RoomReviseCommand();
-			command.execute(request, response);
+			command.execute(request, response, session);;
 			viewPage = "hostRoomList.room";
 			break;
 		

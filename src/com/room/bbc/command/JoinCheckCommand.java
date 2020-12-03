@@ -21,7 +21,7 @@ public class JoinCheckCommand implements Command {
 		String userPw = request.getParameter("userPw");
 		String userPwCheck = request.getParameter("userPwCheck");
 		String userTel = request.getParameter("userTel");
-		String userAddress = request.getParameter("userAddress");
+		String userAddress = request.getParameter("userAddress") + request.getParameter("userAddressDetail");
 		String idChkMsg="";//사용가능아이디 일때 (((사용가능 메세지))) 계속출력 
 		String pwChkMsg="";// 비밀번호가 일치할때 (((비밀번호일치 메세지))) 계속출력
 		String pwCheckmessage=""; // 비밀번호가 불일치할때 (((불일치메세지))) 계속출력
