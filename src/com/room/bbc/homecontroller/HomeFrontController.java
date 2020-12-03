@@ -22,6 +22,7 @@ import com.room.bbc.command.RoomAdminSelectCommand;
 import com.room.bbc.command.RoomAdminUpdateCommand;
 import com.room.bbc.command.RoomDeleteCommand;
 import com.room.bbc.command.RoomInsertCommand;
+import com.room.bbc.command.RoomReservationInsertCommand;
 import com.room.bbc.command.RoomReviewDeleteCommand;
 import com.room.bbc.command.RoomReviewInsertCommand;
 import com.room.bbc.command.RoomReviewSelectCommand;
@@ -100,11 +101,18 @@ public class HomeFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "list.do";
 			break;
+		
+			
+		//----------------- 예약 -------------------------
+		// 숙소 예약
+		case ("/bookInsert.room"):
+			command = new RoomReservationInsertCommand();
+			command.execute(request, response, session);
+			viewPage = "mainPage.jsp";
+			break;
 			
 			
 		//user CRUD-------------------------
-			
-
 		case ("/login.room"): // 입력화면
 			viewPage = "login.jsp";
 		break;	
@@ -170,6 +178,7 @@ public class HomeFrontController extends HttpServlet {
 		command.execute(request, response);
 		viewPage="AdminRoomList.room";
 		break;
+		
 		//----------------- 호스트 메뉴-------------------------
 		//호스트 숙소 등록
 		case ("/hostRegister.room"):

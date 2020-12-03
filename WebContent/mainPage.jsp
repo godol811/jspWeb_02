@@ -83,16 +83,16 @@
             <div id="subMenuBox">
                 <div class="subMenuItem" id="subMenuItem1">
                 	<ul>
-                    	<li><a href="#">메세지</a></li>
-                    	<li><a href="#">저장목록</a></li>
                    	 <c:choose>
 	                    <c:when test = "${empty sessionScope.USERID}">
 	                   	    <li><a href="login.jsp">로그인</a></li>
-	                   	    
 	                   	    <li><a href="SignUp.jsp">회원가입</a></li>
+	                   	    <li><a href="login.jsp">숙소 호스트 되기</a></li>
 	                    </c:when>
 	                    <c:otherwise>
 	                    	<li><a href="logout.room">로그아웃</a></li>
+	                    	<li><a href="#">메세지</a></li>
+	                    	<li><a href="#">저장목록</a></li>
 	                    </c:otherwise>
                     </c:choose>
                     </ul>
