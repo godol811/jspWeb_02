@@ -1,5 +1,7 @@
 package com.room.bbc.dto;
 
+import java.sql.Timestamp;
+
 public class RoomListDto {
 	String userId;
 	String roomId;
@@ -12,12 +14,35 @@ public class RoomListDto {
 	String roomCheckOut;
 	String roomImage;
 	String roomImageReal;
+	Timestamp roomDeleteDate;
 	
-	
+
+
+
 	public RoomListDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	
+	
+	public RoomListDto(String roomId, String roomTitle, String roomContent, String roomPrice,
+			String roomCapa, String roomAddress, String roomCheckIn, String roomCheckOut, String roomImage,
+			String roomImageReal, Timestamp roomDeleteDate) {
+		super();
+		this.roomId = roomId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.roomPrice = roomPrice;
+		this.roomCapa = roomCapa;
+		this.roomAddress = roomAddress;
+		this.roomCheckIn = roomCheckIn;
+		this.roomCheckOut = roomCheckOut;
+		this.roomImage = roomImage;
+		this.roomImageReal = roomImageReal;
+		this.roomDeleteDate = roomDeleteDate;
+	}
 	
 	
 	public RoomListDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
@@ -184,6 +209,16 @@ public class RoomListDto {
 	public void setRoomImageReal(String roomImageReal) {
 		this.roomImageReal = roomImageReal;
 	}
+
+	public Timestamp getRoomDeleteDate() {
+		return roomDeleteDate;
+	}
+
+
+	public void setRoomDeleteDate(Timestamp roomDeleteDate) {
+		this.roomDeleteDate = roomDeleteDate;
+	}
+
 
 
 }

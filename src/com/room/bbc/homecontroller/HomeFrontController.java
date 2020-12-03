@@ -14,6 +14,9 @@ import javax.servlet.http.HttpSession;
 import com.room.bbc.command.Command;
 import com.room.bbc.command.HostRoomListCommand;
 import com.room.bbc.command.JoinCheckCommand;
+import com.room.bbc.command.RoomAdminDeleteCommand;
+import com.room.bbc.command.RoomAdminSelectCommand;
+import com.room.bbc.command.RoomAdminUpdateCommand;
 import com.room.bbc.command.RoomDeleteCommand;
 import com.room.bbc.command.RoomInsertCommand;
 import com.room.bbc.command.RoomReviewDeleteCommand;
@@ -21,9 +24,11 @@ import com.room.bbc.command.RoomReviewInsertCommand;
 import com.room.bbc.command.RoomReviewSelectCommand;
 import com.room.bbc.command.RoomReviewUpdateCommand;
 import com.room.bbc.command.RoomReviseCommand;
+import com.room.bbc.command.RoomSelectCommand;
+import com.room.bbc.command.RoomUpdateCommand;
 import com.room.bbc.command.UserInsertCommand;
 import com.room.bbc.command.UserSelectCommand;
-import com.room.bbc.command.UserUpdateCommand;
+import com.room.bbc.command.UserAdminDeleteCommand;
 
 /**
  * Servlet implementation class HomeFrontController
@@ -121,23 +126,49 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "SignUp.jsp";
 			}
 		break;
+		case ("/logout.room"):
+			session.invalidate();
+		viewPage = "mainPage.jsp";
+		break;
 		 
 		//----------------- 관리자---------------------------------
 		case("/AdminUserList.room"):		
 			command = new UserSelectCommand();
 		command.execute(request, response);
-		viewPage="UserList.jsp";
+		viewPage="AdminUserList.jsp";
 		break;
 		
-		case("/UserDelete.room"):		
-			command = new UserUpdateCommand();
+		case("/AdminUserDelete.room"):		//삭제라고 해놓고 수정이라고 한다 회원 -> 탈퇴
+			command = new UserAdminDeleteCommand();
 		command.execute(request, response);
 		viewPage="AdminUserList.room";
 		break;
-		case ("/logout.room"):
-			session.invalidate();
-		viewPage = "mainPage.jsp";
+		
+		case("/AdminRoomList.room"):		
+			command = new RoomSelectCommand();
+		command.execute(request, response);
+		viewPage="AdminRoomList.jsp";
 		break;
+		
+		case("/AdminRoomModifyList.room"):		
+			command = new RoomAdminSelectCommand();
+		command.execute(request, response);
+		viewPage="AdminRoomListModify.jsp";
+		break;
+		
+		case("/AdminRoomModify.room"):		
+			command = new RoomAdminUpdateCommand();
+		command.execute(request, response);
+		viewPage="AdminRoomList.room";
+		break;
+		
+		case("/AdminRoomDelete.room"):		
+			command = new RoomAdminDeleteCommand();
+		command.execute(request, response);
+		viewPage="AdminRoomList.room";
+		break;
+		
+		
 		
 		
 		//----------------- 호스트 메뉴-------------------------
