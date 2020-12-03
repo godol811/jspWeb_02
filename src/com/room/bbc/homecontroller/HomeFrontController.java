@@ -219,26 +219,19 @@ public class HomeFrontController extends HttpServlet {
 		//-----------------검색결과-------------------------
 		// 검색	
 		case ("/roomSearchPaging.room"):
-			command = new PagingCommand2();
-			command.execute(request, response);
-			viewPage = "RoomSearchList.jsp";
+			command = new PagingCommand2();  //페이징
+			command.execute(request, response, session);
+			viewPage = "mainPage.jsp";
 			break;
 		
 		
 		
 		case ("/roomSearch.room"):
-			command = new PagingCommand1();
-			command.execute(request, response);
-			viewPage = "RoomSearchList.jsp";
+			command = new PagingCommand1(); //리스트 첫번째 페이지
+			command.execute(request, response, session);
+			viewPage = "mainPage.jsp";
 			break;
-			
-		
-		
 
-		
-		
-		
-		
 		
 		default :
 			viewPage = "mainPage.jsp";
