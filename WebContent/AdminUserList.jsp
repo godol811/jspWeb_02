@@ -20,7 +20,7 @@
 		<th>등록일</th>
 		<th>상태</th>
 		<th>탈퇴일</th>
-		<th>탈퇴></th>
+		<th>탈퇴</th>
 	</tr>
 	<c:forEach items="${list}" var="dto">
 	<tr>
@@ -32,7 +32,7 @@
 		<td>${dto.userInsertDate }</td>
 		<td>${dto.userState }</td>
 		<td>${dto.userDeleteDate }</td>
-		<td><a href="UserDelete.room?userId=${dto.userId}"> 삭제 </a></td>
+		<td><a href="AdminUserDelete.room?userId=${dto.userId}"> 삭제 </a></td>
 	</tr>
 	</c:forEach>
 	</table>

@@ -11,13 +11,14 @@ import javax.servlet.http.HttpSession;
 import com.room.bbc.dao.RoomListDao;
 import com.room.bbc.dto.RoomListDto;
 
-public class RoomSelectCommand implements Command {
+public class RoomAdminSelectCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String roomId = request.getParameter("roomId");
 		RoomListDao dao = new RoomListDao();
-		ArrayList<RoomListDto> dtos = dao.List();
+		ArrayList<RoomListDto> dtos = dao.AdminList(roomId);
 		
 		request.setAttribute("list", dtos);
 		
