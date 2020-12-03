@@ -15,6 +15,8 @@ import com.room.bbc.command.Command;
 import com.room.bbc.command.HostRoomListCommand;
 import com.room.bbc.command.HostRoomViewCommand;
 import com.room.bbc.command.JoinCheckCommand;
+import com.room.bbc.command.PagingCommand1;
+import com.room.bbc.command.PagingCommand2;
 import com.room.bbc.command.RoomAdminDeleteCommand;
 import com.room.bbc.command.RoomAdminSelectCommand;
 import com.room.bbc.command.RoomAdminUpdateCommand;
@@ -168,10 +170,6 @@ public class HomeFrontController extends HttpServlet {
 		command.execute(request, response);
 		viewPage="AdminRoomList.room";
 		break;
-		
-		
-		
-		
 		//----------------- 호스트 메뉴-------------------------
 		//호스트 숙소 등록
 		case ("/hostRegister.room"):
@@ -208,12 +206,36 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "/hostRoomList.room";
 			break;
 		
+			
+		//-----------------검색결과-------------------------
+		// 검색	
+		case ("/roomSearchPaging.room"):
+			command = new PagingCommand2();
+			command.execute(request, response);
+			viewPage = "RoomSearchList.jsp";
+			break;
+		
+		
+		
+		case ("/roomSearch.room"):
+			command = new PagingCommand1();
+			command.execute(request, response);
+			viewPage = "RoomSearchList.jsp";
+			break;
+			
+		
+		
+
+		
+		
+		
+		
+		
 		default :
 			viewPage = "mainPage.jsp";
 			break; 
-		
-	}
-		
+			
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	

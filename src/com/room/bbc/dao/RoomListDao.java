@@ -457,6 +457,44 @@ public void adminRoomUpadate(String roomTitle, String roomContent, String roomPr
 	}
 }
 
+
+
+
+//-------------------------------//-------------------------------//-------------------------------//-------------------------------
+public int noticeViewRowCount() {
+	int rowCount=0;
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	
+	
+	try {
+		connection = dataSource.getConnection();
+		String query = "select count(*) from notice ";
+		preparedStatement = connection.prepareStatement(query);
+		resultSet = preparedStatement.executeQuery();
+		
+		
+		while (resultSet.next()) {
+			rowCount=resultSet.getInt(1);
+
+			
+		}
+	}catch (Exception e) {
+	e.printStackTrace();
+	}finally {
+		try {
+			if(resultSet != null) resultSet.close();
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	return rowCount;
+}
+
 	
 	
 	

@@ -208,5 +208,8 @@
 	</div>
 	
 	</div>
+	
+	<a href="roomSearch.room">숙소리스트</a>
+	
 </body>
 </html>
