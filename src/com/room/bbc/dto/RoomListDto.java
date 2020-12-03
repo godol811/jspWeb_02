@@ -8,6 +8,7 @@ public class RoomListDto {
 	String roomPrice;
 	String roomCapa;
 	String roomAddress;
+	String roomAddressDetail;
 	String roomCheckIn;
 	String roomCheckOut;
 	String roomImage;
@@ -20,8 +21,11 @@ public class RoomListDto {
 	
 	
 	
+	
+	
 	public RoomListDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
-			String roomAddress, String roomCheckIn, String roomCheckOut, String roomImage) {
+			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
+			String roomImageReal) {
 		super();
 		this.roomId = roomId;
 		this.roomTitle = roomTitle;
@@ -29,24 +33,7 @@ public class RoomListDto {
 		this.roomPrice = roomPrice;
 		this.roomCapa = roomCapa;
 		this.roomAddress = roomAddress;
-		this.roomCheckIn = roomCheckIn;
-		this.roomCheckOut = roomCheckOut;
-		this.roomImage = roomImage;
-	}
-
-	
-	
-
-
-	public RoomListDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
-			String roomAddress, String roomCheckIn, String roomCheckOut, String roomImage, String roomImageReal) {
-		super();
-		this.roomId = roomId;
-		this.roomTitle = roomTitle;
-		this.roomContent = roomContent;
-		this.roomPrice = roomPrice;
-		this.roomCapa = roomCapa;
-		this.roomAddress = roomAddress;
+		this.roomAddressDetail = roomAddressDetail;
 		this.roomCheckIn = roomCheckIn;
 		this.roomCheckOut = roomCheckOut;
 		this.roomImage = roomImage;
@@ -61,9 +48,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+
 
 
 
@@ -73,9 +64,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
+
+
 
 
 
@@ -85,9 +80,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomTitle(String roomTitle) {
 		this.roomTitle = roomTitle;
 	}
+
+
 
 
 
@@ -97,9 +96,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomContent(String roomContent) {
 		this.roomContent = roomContent;
 	}
+
+
 
 
 
@@ -109,9 +112,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomPrice(String roomPrice) {
 		this.roomPrice = roomPrice;
 	}
+
+
 
 
 
@@ -121,9 +128,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomCapa(String roomCapa) {
 		this.roomCapa = roomCapa;
 	}
+
+
 
 
 
@@ -133,9 +144,29 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomAddress(String roomAddress) {
 		this.roomAddress = roomAddress;
 	}
+
+
+
+
+
+	public String getRoomAddressDetail() {
+		return roomAddressDetail;
+	}
+
+
+
+
+
+	public void setRoomAddressDetail(String roomAddressDetail) {
+		this.roomAddressDetail = roomAddressDetail;
+	}
+
+
 
 
 
@@ -145,9 +176,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomCheckIn(String roomCheckIn) {
 		this.roomCheckIn = roomCheckIn;
 	}
+
+
 
 
 
@@ -157,9 +192,13 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomCheckOut(String roomCheckOut) {
 		this.roomCheckOut = roomCheckOut;
 	}
+
+
 
 
 
@@ -169,15 +208,21 @@ public class RoomListDto {
 
 
 
+
+
 	public void setRoomImage(String roomImage) {
 		this.roomImage = roomImage;
 	}
 
 
 
+
+
 	public String getRoomImageReal() {
 		return roomImageReal;
 	}
+
+
 
 
 

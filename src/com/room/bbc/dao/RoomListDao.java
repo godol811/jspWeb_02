@@ -30,7 +30,7 @@ DataSource dataSource;
 	
 	//-------------------------------
 	// 호스트 숙소 등록	
-	public void roomRegister(String userId, String roomTitle, String roomContent, String roomPrice, String roomCapa, String roomAddress, String roomCheckIn, String roomCheckOut, String roomImage, String roomImageReal) {
+	public void roomRegister(String userId, String roomTitle, String roomContent, String roomPrice, String roomCapa, String roomAddress, String roomAddressDetail ,String roomCheckIn, String roomCheckOut, String roomImage, String roomImageReal) {
 		
 		//선언자.  --> 무조건 맨 위에/!  // 입력 수정 삭제 다똑같은 패턴.
 		Connection connection = null;
@@ -39,13 +39,14 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into room (roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomcheckin, roomcheckout, roomimage, roomimagereal, userid) values (?,?,?,?,?,?,?,?,?,?)";
+			String query = "insert into room (roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, roomimagereal, userid) values (?,?,?,?,?,?,?,?,?,?)";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, roomTitle);
 			preparedStatement.setString(2, roomContent);
 			preparedStatement.setString(3, roomPrice);
 			preparedStatement.setString(4, roomCapa);
 			preparedStatement.setString(5, roomAddress);
+			preparedStatement.setString(5, roomAddressDetail);
 			preparedStatement.setString(6, roomCheckIn);
 			preparedStatement.setString(7, roomCheckOut);
 			preparedStatement.setString(8, roomImage);
@@ -108,8 +109,8 @@ DataSource dataSource;
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomcheckin, roomcheckout, roomimage, ";
-			String query2 = "roomid, roomimagereal from room where userid = ?";
+			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, ";
+			String query2 = "roomid, roomimagereal from room where roomdeletedate is null and userid = ?";
 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
@@ -120,6 +121,7 @@ DataSource dataSource;
 				String roomPrice = Integer.toString(resultSet.getInt("roomprice"));
 				String roomCapa = Integer.toString(resultSet.getInt("roomcapa"));
 				String roomAddress = resultSet.getString("roomaddress");
+				String roomAddressDetail = resultSet.getString("roomaddressdetail");
 				String roomCheckIn = resultSet.getString("roomcheckin");
 				String roomCheckOut = resultSet.getString("roomcheckout");
 				String roomImage = resultSet.getString("roomimage");
@@ -127,7 +129,7 @@ DataSource dataSource;
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				
 				// bean 선언
-				RoomListDto dto = new RoomListDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				RoomListDto dto = new RoomListDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
 				dtos.add(dto); //arraylist에 추가
 				
 			}
@@ -152,6 +154,57 @@ DataSource dataSource;
 	}
 	
 	//-------------------------------
+	// click 하여 해당 내용 보기 
+	public RoomListDto roomView(String roombId) {
+		RoomListDto dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			// 위에 선언된 dataSource 사용
+			connection = dataSource.getConnection();
+			String query = "select * from room where roomid = ?";
+			preparedStatement = connection.prepareStatement(query); // query 문장 연결
+			preparedStatement.setInt(1, Integer.parseInt(roombId));
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				String roomTitle = resultSet.getString("roomtitle"); // index 또는 컬럼명을 작성할 수 있다. (컬럼명으로 뜨는걸 적어줘야한다. ex. cnt)
+				String roomContent = resultSet.getString("roomcontent");
+				String roomPrice = Integer.toString(resultSet.getInt("roomprice"));
+				String roomCapa = Integer.toString(resultSet.getInt("roomcapa"));
+				String roomAddress = resultSet.getString("roomaddress");
+				String roomAddressDetail = resultSet.getString("roomaddressdetail");
+				String roomCheckIn = resultSet.getString("roomcheckin");
+				String roomCheckOut = resultSet.getString("roomcheckout");
+				String roomImage = resultSet.getString("roomimage");
+				String roomImageReal = resultSet.getString("roomimagereal");
+				String roomId = Integer.toString(resultSet.getInt("roomid"));
+				
+				dto = new RoomListDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try { // 처음 선언된 부분 닫아준다.
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
+
+
+	//-------------------------------
 	// 호스트 숙소 삭제
 	public void roomDelete(String roomId) {
 		
@@ -161,7 +214,7 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "delete from room where roomid = ?";
+			String query = "update room set roomdeletedate = now() where roomid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, roomId);
 			preparedStatement.executeUpdate();
@@ -182,7 +235,7 @@ DataSource dataSource;
 	
 	//-------------------------------
 	// 호스트 숙소 수정
-	public void roomRevise(String roomTitle, String roomContent, String roomPrice, String roomCapa, String roomAddress, String roomCheckIn, String roomCheckOut, String roomImage, String roomImageReal) {
+	public void roomRevise(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa, String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage, String roomImageReal) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -190,7 +243,7 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update room set roomtitle=?, roomcontent=?, roomprice=?, roomcapa=?, roomaddress=?, roomcheckin=?, ";
+			String query = "update room set roomtitle=?, roomcontent=?, roomprice=?, roomcapa=?, roomaddress=?, roomaddressdetail=?, roomcheckin=?, ";
 			String query2 = "roomcheckout=?, roomimage=?, roomimagereal=? where roomid = ?";
 			preparedStatement = connection.prepareStatement(query+query2);
 			preparedStatement.setString(1, roomTitle);
@@ -198,10 +251,12 @@ DataSource dataSource;
 			preparedStatement.setString(3, roomPrice);
 			preparedStatement.setString(4, roomCapa);
 			preparedStatement.setString(5, roomAddress);
-			preparedStatement.setString(6, roomCheckIn);
-			preparedStatement.setString(7, roomCheckOut);
-			preparedStatement.setString(8, roomImage);
-			preparedStatement.setString(9, roomImageReal);
+			preparedStatement.setString(6, roomAddressDetail);
+			preparedStatement.setString(7, roomCheckIn);
+			preparedStatement.setString(8, roomCheckOut);
+			preparedStatement.setString(9, roomImage);
+			preparedStatement.setString(10, roomImageReal);
+			preparedStatement.setString(11, roomId);
 			preparedStatement.executeUpdate();
 			
 			

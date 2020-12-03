@@ -11,6 +11,8 @@
 </head>
 <body>
 
+ 	<input type="button" name="insertRoom" onclick="location.href='hostRegisterRoom01.jsp'" value="숙소 등록">
+
 	<table border="1">
 	    <colgroup>
 			<col width="80px">
@@ -23,9 +25,7 @@
 			<tr>
 				<td rowspan="2"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 				<td>${dto.roomTitle }</td>
-				<td rowspan="2"><input type="button" name="revise" value="수정" onclick="location.href='hostRegisterRoom01.jsp?roomId=${dto.roomId}&
-				roomtitle=${dto.roomTitle}&roomcontent=${dto.roomContent}&roomprice=${dto.roomPrice}&roomcapa=${dto.roomCapa}&
-				roomaddress=${dto.roomAddress}&roomcheckin=${dto.roomCheckIn}&roomcheckout=${dto.roomCheckOut}&roomimage=${dto.roomImage}&roomimagereal=${dto.roomImageReal}'"></td>
+				<td rowspan="2"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
 				<td rowspan="2"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
 			</tr>
 			<tr>

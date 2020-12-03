@@ -41,6 +41,7 @@ public class RoomInsertCommand implements Command {
 			String roomPrice = (String)session.getAttribute("ROOMPRICE");
 			String roomCapa = (String)session.getAttribute("ROOMCAPA");
 			String roomAddress = (String)session.getAttribute("ROOMADDRESS");
+			String roomAddressDetail = (String)session.getAttribute("ROOMADDRESSDETAIL");
 			String roomCheckIn = (String)session.getAttribute("ROOMCHECKIN");;
 			String roomCheckOut = (String)session.getAttribute("ROOMCHECKOUT");
 			//file 이란 이름은 wineList.jsp에 있는 name ="file" / DB에 넣기위해 스트링 변환
@@ -57,7 +58,7 @@ public class RoomInsertCommand implements Command {
 			}else{
 				
 				RoomListDao dao = new RoomListDao();
-				dao.roomRegister(userId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				dao.roomRegister(userId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail ,roomCheckIn, roomCheckOut, roomImage, roomImageReal);
 				dao.roomHostState(userId);
 				System.out.println("파일명 : " + roomImage + "<br>"); 
 				System.out.println("실제 파일명 : " + roomImageReal + "<br>"); 

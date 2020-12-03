@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE
  html>
 <html>
@@ -102,25 +104,26 @@
 		<h5>1단계</h5> <br>
 	
 		<h3>1. 숙박 가능 인원을 선택하세요</h3>
-	<form id="form" name="form" action="hostRegisterRoom02.jsp" method="post" onsubmit="return registerCheck()">	
+	<form id="form" name="form" action="hostRegisterRoom02.jsp?roomTitle=${roomView.roomTitle }&roomContent=${roomView.roomContent }&roomImage=${roomView.roomImage }&roomImageReal=${roomView.roomImageReal }" method="post" onsubmit="return registerCheck()">	
 		<div class="combo">
 			<select name="roomCapa" >
-				<option value="1" <c:if test="${class_m} == 1">selected</c:if>>최대 1명 숙박 가능</option>
-				<option value="2" selected="selected">최대 2명 숙박 가능</option>
-				<option value="3">최대 3명 숙박 가능</option>
-				<option value="4">최대 4명 숙박 가능</option>
-				<option value="5">최대 5명 숙박 가능</option>
-				<option value="6">최대 6명 숙박 가능</option>
-				<option value="7">최대 7명 숙박 가능</option>
-				<option value="8">최대 8명 숙박 가능</option>
-				<option value="9">최대 9명 숙박 가능</option>
-				<option value="10">최대 10명 숙박 가능</option>
-				<option value="11">최대 11명 숙박 가능</option>
-				<option value="12">최대 12명 숙박 가능</option>
-				<option value="13">최대 13명 숙박 가능</option>
-				<option value="14">최대 14명 숙박 가능</option>
-				<option value="15">최대 15명 숙박 가능</option>
-				<option value="16">최대 16명 숙박 가능</option>
+				<option value="1" 
+					<c:if test="${roomView.roomCapa == 1}">selected</c:if>>최대 1명 숙박 가능</option>
+				<option value="2" <c:if test="${roomView.roomCapa == 2}">selected</c:if>>최대 2명 숙박 가능</option>
+				<option value="3" <c:if test="${roomView.roomCapa == 3}">selected</c:if>>최대 3명 숙박 가능</option>
+				<option value="4" <c:if test="${roomView.roomCapa == 4}">selected</c:if>>최대 4명 숙박 가능</option>
+				<option value="5" <c:if test="${roomView.roomCapa == 5}">selected</c:if>>최대 5명 숙박 가능</option>
+				<option value="6" <c:if test="${roomView.roomCapa == 6}">selected</c:if>>최대 6명 숙박 가능</option>
+				<option value="7" <c:if test="${roomView.roomCapa == 7}">selected</c:if>>최대 7명 숙박 가능</option>
+				<option value="8" <c:if test="${roomView.roomCapa == 8}">selected</c:if>>최대 8명 숙박 가능</option>
+				<option value="9" <c:if test="${roomView.roomCapa == 9}">selected</c:if>>최대 9명 숙박 가능</option>
+				<option value="10" <c:if test="${roomView.roomCapa == 10}">selected</c:if>>최대 10명 숙박 가능</option>
+				<option value="11" <c:if test="${roomView.roomCapa == 11}">selected</c:if>>최대 11명 숙박 가능</option>
+				<option value="12" <c:if test="${roomView.roomCapa == 12}">selected</c:if>>최대 12명 숙박 가능</option>
+				<option value="13" <c:if test="${roomView.roomCapa == 13}">selected</c:if>>최대 13명 숙박 가능</option>
+				<option value="14" <c:if test="${roomView.roomCapa == 14}">selected</c:if>>최대 14명 숙박 가능</option>
+				<option value="15" <c:if test="${roomView.roomCapa == 15}">selected</c:if>>최대 15명 숙박 가능</option>
+				<option value="16" <c:if test="${roomView.roomCapa == 16}">selected</c:if>>최대 16명 숙박 가능</option>
 			</select> <br><br>
 	
 	<p>	
@@ -131,8 +134,8 @@
 				<td>체크아웃</td>
 			</tr>
 			<tr>
-				<td><input type="text" id="checkinTime" name="checkinTime" class="form-control" style="width:100px; font-size: 10px;"></td>
-				<td><input type="text" id="checkoutTime" name="checkoutTime" class="form-control" style="width:100px; font-size: 10px;"></td>
+				<td><input type="text" id="checkinTime" name="checkinTime" class="form-control" value="${roomView.roomCheckIn }" style="width:100px; font-size: 10px;"></td>
+				<td><input type="text" id="checkoutTime" name="checkoutTime" class="form-control" value="${roomView.roomCheckOut }"  style="width:100px; font-size: 10px;"></td>
 			</tr>
 		</table>
 	</p>
@@ -145,7 +148,7 @@
 				<td>도로명 주소</td>
 			</tr>
 			<tr>
-				<td><input placeholder="도로명 주소" type="text"  style="width:500px;" id="roadAddrPart1"  name="address" readonly="readonly" onClick="goPopup();" />
+				<td><input placeholder="도로명 주소" type="text"  style="width:500px;" id="roadAddrPart1"  name="address" readonly="readonly" onClick="goPopup();" value="${roomView.roomAddress}"/>
 				&nbsp;
 				<input type="button" onClick="goPopup();" value="주소 찾기"/>
 				</td>
@@ -154,7 +157,7 @@
 				<td>상세 주소</td>
 			</tr>
 			<tr>
-				<td><input placeholder="고객입력 상세주소" type="text"  style="width:500px;" id="addrDetail"  name="addressDetail" /></td>
+				<td><input placeholder="고객입력 상세주소" type="text"  style="width:500px;" id="addrDetail"  name="addressDetail" value="${roomView.roomAddressDetail }"/></td>
 			</tr>
 		
 		</table>
@@ -162,7 +165,7 @@
 		
 		
 		<h3>4. 숙소 요금을 알려주세요.</h3> <br>
-		<input type="text" name="roomPrice" id="roomPrice" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="text-align: right;padding-right: 10px">원 
+		<input type="text" name="roomPrice" id="roomPrice" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="text-align: right;padding-right: 10px" value="${roomView.roomPrice }">원 
 		
 		<input type="submit" value="다음">
 	</form>
