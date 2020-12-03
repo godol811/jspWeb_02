@@ -68,9 +68,9 @@
 	            		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
 		                   	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
 	                     </c:when>
-		                 <c:otherwise>
+		                 <c:when test = "${sessionScope.USERSTATE == '회원'}">
 	                    	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
-		                 </c:otherwise>
+		                 </c:when>
                     </c:choose>
                     
                     <li class="menuItemHover"><a href="#"><img src="./images/menuBar.svg"></a></li>

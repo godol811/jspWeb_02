@@ -104,8 +104,8 @@
 		<h3>1. 숙박 가능 인원을 선택하세요</h3>
 	<form id="form" name="form" action="hostRegisterRoom02.jsp" method="post" onsubmit="return registerCheck()">	
 		<div class="combo">
-			<select name="roomCapa">
-				<option value="1">최대 1명 숙박 가능</option>
+			<select name="roomCapa" >
+				<option value="1" <c:if test="${class_m} == 1">selected</c:if>>최대 1명 숙박 가능</option>
 				<option value="2" selected="selected">최대 2명 숙박 가능</option>
 				<option value="3">최대 3명 숙박 가능</option>
 				<option value="4">최대 4명 숙박 가능</option>

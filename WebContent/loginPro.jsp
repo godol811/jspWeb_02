@@ -51,13 +51,19 @@
         
         else if(userState.equals("관리자")){
         	msg = "adminCheck.jsp";
-        	
         }
+        
+        
+        else if(userState.equals("호스트")){
+        	 // 세션에 현재 아이디 세팅
+            session.setAttribute("USERID", userId);
+            session.setAttribute("USERSTATE", userState);
+            msg = "mainPage.jsp";
+        	}
 
         else if(userState.equals("탈퇴")){
         	msg = "login.jsp?msg=2";
         	
-        
         }
         
         
