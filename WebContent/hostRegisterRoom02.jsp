@@ -96,7 +96,10 @@
 				<td colspan="2">3. 멋진 사진으로 숙소가 돋보이게 해주세요.</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="file" name="roomImage" value="<%=roomImage%>"/></td>
+				<td colspan="2"><input type="file" name="roomImage01"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="file" name="roomImage02"/></td>
 			</tr>
 			<tr>
 				<td><input type="button" value="이전" onClick="history.go(-1)" style="align-items: right"></td>

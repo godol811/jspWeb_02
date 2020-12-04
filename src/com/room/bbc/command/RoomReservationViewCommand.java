@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class RoomReservationUpdateCommand implements Command {
+import com.room.bbc.dao.RoomListDao;
+import com.room.bbc.dao.RoomReservationDao;
+import com.room.bbc.dto.RoomListDto;
+import com.room.bbc.dto.RoomReservationDto;
+
+public class RoomReservationViewCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,8 +23,18 @@ public class RoomReservationUpdateCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		
+		String bookId = request.getParameter("bookId");
+		String userId = (String) session.getAttribute("USERID");
+		
+		session.setAttribute("BOOKID", bookId);
+		
+		RoomReservationDao dao = new RoomReservationDao();
+		RoomReservationDto dto = dao.roomReservationView(bookId, userId);
+		request.setAttribute("bookView", dto);
+		
+		
+		
 	}
 
 }

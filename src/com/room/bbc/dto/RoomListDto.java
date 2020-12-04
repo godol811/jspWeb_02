@@ -16,16 +16,11 @@ public class RoomListDto {
 	String roomImage;
 	String roomImageReal;
 	Timestamp roomDeleteDate;
-	
-
 
 
 	public RoomListDto() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
 	
 	
 
@@ -73,13 +68,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
-
 
 
 
@@ -89,13 +80,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
-
-
 
 
 
@@ -105,13 +92,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomTitle(String roomTitle) {
 		this.roomTitle = roomTitle;
 	}
-
-
 
 
 
@@ -121,13 +104,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomContent(String roomContent) {
 		this.roomContent = roomContent;
 	}
-
-
 
 
 
@@ -137,13 +116,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomPrice(String roomPrice) {
 		this.roomPrice = roomPrice;
 	}
-
-
 
 
 
@@ -153,13 +128,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomCapa(String roomCapa) {
 		this.roomCapa = roomCapa;
 	}
-
-
 
 
 
@@ -169,13 +140,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomAddress(String roomAddress) {
 		this.roomAddress = roomAddress;
 	}
-
-
 
 
 
@@ -185,13 +152,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomAddressDetail(String roomAddressDetail) {
 		this.roomAddressDetail = roomAddressDetail;
 	}
-
-
 
 
 
@@ -201,13 +164,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomCheckIn(String roomCheckIn) {
 		this.roomCheckIn = roomCheckIn;
 	}
-
-
 
 
 
@@ -217,13 +176,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomCheckOut(String roomCheckOut) {
 		this.roomCheckOut = roomCheckOut;
 	}
-
-
 
 
 
@@ -233,13 +188,9 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomImage(String roomImage) {
 		this.roomImage = roomImage;
 	}
-
-
 
 
 
@@ -249,21 +200,21 @@ public class RoomListDto {
 
 
 
-
-
 	public void setRoomImageReal(String roomImageReal) {
 		this.roomImageReal = roomImageReal;
 	}
+
+
 
 	public Timestamp getRoomDeleteDate() {
 		return roomDeleteDate;
 	}
 
 
+
 	public void setRoomDeleteDate(Timestamp roomDeleteDate) {
 		this.roomDeleteDate = roomDeleteDate;
 	}
-
 
 
 }

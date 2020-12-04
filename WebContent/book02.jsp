@@ -34,7 +34,8 @@
 	}
 	</script>
 
-	<form name="book02" action="bookInsert.room" method="post" onclick="return cardCheck()">
+
+	<form name="book02" action="bookInsert.room" method="post" onsubmit="return cardCheck()">
 		<table>
 			<tr>
 				<td>체크인</td>
@@ -49,7 +50,7 @@
 			</tr>
 			<tr>
 			<!--  수정 필요(앞에서 roomCapa 값 가져오기) -->
-				<td><td align="center"><input type="number" name="guest" id="guest" max="${dto.roomCapa}" min="1" step="1" value="${dto.roomCapa}"/> 명 </td>
+				<td align="center"><input type="number" name="guest" id="guest" max="${dto.roomCapa}" min="1" step="1" value="${dto.roomCapa}"/> 명 </td>
 			</tr>
 			<tr>
 				<!--  수정 필요 -->
@@ -72,7 +73,7 @@
 				<td>CVC</td><td><input type="text" name="cardInfoDetail02" placeholder="123"></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="확인 및 결제하기">
+				<td><input type="submit" value="확인 및 결제하기" >
 			</tr>
 			
 		</table>

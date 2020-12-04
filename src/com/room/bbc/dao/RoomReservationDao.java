@@ -2,10 +2,15 @@ package com.room.bbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import com.room.bbc.dto.RoomListDto;
+import com.room.bbc.dto.RoomReservationDto;
 
 public class RoomReservationDao {
 	
@@ -59,6 +64,101 @@ public class RoomReservationDao {
 	}
 	
 	
+	//-------------------------------
+	// 예약 목록 조회(회원)
+	public ArrayList<RoomReservationDto> roomReservationList(String userId) {
+		ArrayList<RoomReservationDto> dtos = new ArrayList<RoomReservationDto>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		//--->
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select bookid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, userId);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String bookId = Integer.toString(resultSet.getInt("bookid"));
+				String roomTitle = resultSet.getString("roomtitle");
+				String roomContent = resultSet.getString("roomcontent");
+				String bookCheckInDate = resultSet.getString("bookcheckindate");
+				String bookCheckOutDate = resultSet.getString("bookcheckoutdate");
+				String bookCapa = Integer.toString(resultSet.getInt("bookcapa"));
+				String roomImage = resultSet.getString("roomimage");
+				
+				// bean 선언
+				RoomReservationDto dto = new RoomReservationDto(bookId, roomTitle, roomContent, bookCheckInDate, bookCheckOutDate, bookCapa, roomImage);
+				dtos.add(dto); //arraylist에 추가
+				
+			}
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {   //error가 걸렸든 안걸렸든 일로 마지막에는 온다. 쓰레기가 안쌓이도록. 다 close해서 
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace(); //화면상에 보이는 에러는 여기서 찍히는 것이다.  
+			}
+		}
+		return dtos;
+		
+	}
+	
+	//-------------------------------
+	// 예약목록 상세 조회
+	public RoomReservationDto roomReservationView(String bookId, String userId) {
+		RoomReservationDto dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			// 위에 선언된 dataSource 사용
+			connection = dataSource.getConnection();
+			String query = "select userid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomaddress, roomaddressdetail, roomimage, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal";
+			String query2 =" from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ? and bookid = ?";
+			preparedStatement = connection.prepareStatement(query+query2); // query 문장 연결
+			preparedStatement.setString(1, userId);
+			preparedStatement.setInt(2, Integer.parseInt(bookId));
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				String roomTitle = resultSet.getString("roomtitle"); // index 또는 컬럼명을 작성할 수 있다. (컬럼명으로 뜨는걸 적어줘야한다. ex. cnt)
+				String roomContent = resultSet.getString("roomcontent");
+				String roomPriceTotal = Integer.toString(resultSet.getInt("pricetotal"));
+				String bookCapa = Integer.toString(resultSet.getInt("bookcapa"));
+				String roomAddress = resultSet.getString("roomaddress");
+				String roomAddressDetail = resultSet.getString("roomaddressdetail");
+				String roomCheckIn = resultSet.getString("bookcheckindate");
+				String roomCheckOut = resultSet.getString("bookcheckoutdate");
+				String roomImage = resultSet.getString("roomimage");
+				
+				dto = new RoomReservationDto(userId, roomTitle, roomContent, roomCheckIn, roomCheckOut, bookCapa, roomImage, roomPriceTotal, roomAddress, roomAddressDetail);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try { // 처음 선언된 부분 닫아준다.
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
 	
 	
 }

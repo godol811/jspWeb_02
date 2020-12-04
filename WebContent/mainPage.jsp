@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta charset="UTF-8">
 <title>Main Page</title>
@@ -27,6 +28,7 @@
 
 	// 입력란 클릭하여 날짜 선택
 	//<![CDATA[
+		
 	$(function(){
 			
 		$("#date1").datepicker({
@@ -37,6 +39,7 @@
 			onClose:function(selectedDate){
 				$("#date2").datepicker("option","minDate", selectedDate);
 			}
+		
 		
 			
 		});
@@ -52,6 +55,7 @@
 		});
 
 	});
+	
 	
 	//]]> */
 	
@@ -92,7 +96,7 @@
 	                    <c:otherwise>
 	                    	<li><a href="logout.room">로그아웃</a></li>
 	                    	<li><a href="#">메세지</a></li>
-	                    	<li><a href="#">저장목록</a></li>
+	                    	<li><a href="bookList.room">예약목록</a></li>
 	                    </c:otherwise>
                     </c:choose>
                     </ul>
