@@ -39,9 +39,9 @@ public class PagingCommand1 implements Command {
 		session.setAttribute("DATE1", date1);
 		session.setAttribute("DATE2", date2);
 		RoomSearchDao dao = new RoomSearchDao();
-		ArrayList<RoomSearchDto> dtos = dao.noticeManagementList(location,guest);
+		ArrayList<RoomSearchDto> dtos = dao.RoomsearchList(location, guest, date1, date2);
 		
-		int noticeViewRowCount = dao.noticeViewRowCount(location,guest);
+		int noticeViewRowCount = dao.RoomSearchListRowCount(location, guest, date1, date2);
 		
 		int RowCount = noticeViewRowCount;
 		
