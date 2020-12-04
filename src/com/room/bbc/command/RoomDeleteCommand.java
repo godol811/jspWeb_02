@@ -15,9 +15,9 @@ public class RoomDeleteCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String roomId = request.getParameter("roomId");
-		
+		System.out.println(roomId);
 		RoomListDao dao = new RoomListDao();
-		dao.roomDelete(roomId);
+		dao.adminRoomDelte(roomId);
 		
 	}
 
@@ -25,7 +25,8 @@ public class RoomDeleteCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
+		
 	}
 
 }

@@ -215,7 +215,9 @@ public class RoomListDao {
 		//--->
 		
 		try {
+			
 			connection = dataSource.getConnection();
+			
 			String query = "update room set roomdeletedate = now() where roomid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, roomId);
@@ -399,7 +401,7 @@ public void adminRoomDelte(String roomId) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update room set roomdeletedate= now() where roomid = ?";
+			String query = "update room set roomdeletedate = now() where roomid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, roomId);
 			preparedStatement.executeUpdate();
