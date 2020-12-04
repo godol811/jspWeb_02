@@ -113,6 +113,16 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "mainPage.jsp";
 			break;
 			
+		case ("/bookPage.room"):
+			command = new RoomReservationSelectCommand();
+			command.execute(request, response, session);
+			viewPage = "book01.jsp"; 
+			break;	
+		case ("/bookPage2.room"):
+			command = new RoomReservationSelectCommand();
+			command.execute(request, response, session);
+			viewPage = "book02.jsp"; 
+			break;	
 		// 숙소 예약 조회(회원)
 		case ("/bookList.room"):
 			command = new RoomReservationSelectCommand();
@@ -237,7 +247,7 @@ public class HomeFrontController extends HttpServlet {
 		case ("/roomSearchPaging.room"):
 			command = new PagingCommand2();  //페이징
 			command.execute(request, response, session);
-			viewPage = "mainPage.jsp";
+			viewPage = "RoomSearchList.jsp";
 			break;
 		
 		
@@ -245,7 +255,7 @@ public class HomeFrontController extends HttpServlet {
 		case ("/roomSearch.room"):
 			command = new PagingCommand1(); //리스트 첫번째 페이지
 			command.execute(request, response, session);
-			viewPage = "mainPage.jsp";
+			viewPage = "RoomSearchList.jsp";
 			break;
 
 		

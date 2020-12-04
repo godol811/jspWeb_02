@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script> 
+	<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 </head>
 <body>
 <h3>예약 내용</h3>
-
 	<script type="text/javascript">
 	
 	function cardCheck(){
@@ -30,35 +36,71 @@
 			return true;
 			
 		}
-		
 	}
+
+	   $(function(){
+			
+	  		$("#date1").datepicker({
+	  			numberOfMonths:[1,2],
+	  			minDate:0,
+	  			nextText:"다음",
+	  			prevText:"이전",
+	  			onClose:function(selectedDate){
+	  				$("#date2").datepicker("option","minDate", selectedDate);
+	  			}
+	  		
+	  			
+	  		});
+	  		
+	  		$("#date2").datepicker({
+	  			numberOfMonths:[1,2],
+	  			nextText:"다음",
+	  			prevText:"이전",
+	  			onClose:function(selectedDate){
+	  				$("#date1").datepicker("option","maxDate", selectedDate);
+	  			}
+	  			
+	  		});
+
+	  	});
+	      
 	</script>
-
-
 	<form name="book02" action="bookInsert.room" method="post" onsubmit="return cardCheck()">
 		<table>
+		<c:forEach items = "${list }" var = "dto">
 			<tr>
 				<td>체크인</td>
 				<td>체크아웃</td>
 			</tr>
 			<tr>
-				<td><input type="text" id="checkinTime" name="checkinTime" class="form-control" value="${roomView.roomCheckIn }" style="width:100px; font-size: 10px;"></td>
-				<td><input type="text" id="checkoutTime" name="checkoutTime" class="form-control" value="${roomView.roomCheckOut }"  style="width:100px; font-size: 10px;"></td>
+				<td><input type="text" id="date1" name="date1" class="form-control" value="${DATE1}" style="width:100px; font-size: 10px;"> ${dto.roomCheckIn }</td>
+				<td><input type="text" id="date2" name="date2" class="form-control" value="${DATE2}"  style="width:100px; font-size: 10px;"> ${dto.roomCheckOut }</td>
+			</tr>
+			
+			<fmt:parseDate value="${DATE1}" var="strPlanDate" pattern="yyyy-MM-dd"/>
+			<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+			<fmt:parseDate value="${DATE2}" var="endPlanDate" pattern="yyyy-MM-dd"/>
+			<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
+					
+
+
+			
+			
+			<tr>
+				<td colspan="2" align="center"><h2>총${endDate - strDate }박</h2></td>
+				
 			</tr>
 			<tr>
 				<td>인원</td>
 			</tr>
 			<tr>
 			<!--  수정 필요(앞에서 roomCapa 값 가져오기) -->
-				<td align="center"><input type="number" name="guest" id="guest" max="${dto.roomCapa}" min="1" step="1" value="${dto.roomCapa}"/> 명 </td>
+				<td><td align="center"><input type="number" name="guest" id="guest" max="${dto.roomCapa}" min="1" step="1" value="<%=session.getAttribute("GUEST")%>"> 명 </td>
 			</tr>
+			
 			<tr>
 				<!--  수정 필요 -->
-				<td>가격/ 박</td><td>₩</td>
-			</tr>
-			<tr>
-				<!--  수정 필요 -->
-				<td>합 계</td><td>₩ <%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
+				<td>합 계</td><td>₩<input type="text"name="roomPriceTotal" value="${dto.roomPrice*(endDate - strDate) }"> <%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
 			</tr>
 			<tr>
 				<td>결제수단</td>
@@ -75,7 +117,7 @@
 			<tr>
 				<td><input type="submit" value="확인 및 결제하기" >
 			</tr>
-			
+			</c:forEach>
 		</table>
 	</form>	
 </body>

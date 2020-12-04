@@ -1,6 +1,10 @@
 package com.room.bbc.command;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -23,15 +27,16 @@ public class RoomReservationSelectCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	String roomId = request.getParameter("roomId");	
+	session.setAttribute("ROOMID", roomId);
+//	System.out.println(roomId);
+	RoomReservationDao dao = new RoomReservationDao();
+	ArrayList<RoomReservationDto> dtos = dao.ReservationData(roomId);
+	
+	
+	request.setAttribute("list", dtos);
+//	System.out.println(dtos);
 
-		
-		
-		String userId = (String)session.getAttribute("USERID");
-		
-		RoomReservationDao dao = new RoomReservationDao();
-		ArrayList<RoomReservationDto> dtos = dao.roomReservationList(userId);
-		
-		request.setAttribute("roomReservationList", dtos);
 		
 	}
 

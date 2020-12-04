@@ -27,12 +27,14 @@ public class PagingCommand2 implements Command {
 			throws ServletException, IOException {
 		String location = request.getParameter("location");
 		int	   guest    = Integer.parseInt(request.getParameter("guest"));
-		
+		String date1	= (String) session.getAttribute("DATE1");
+		String date2	= (String) session.getAttribute("DATE2");
 		
 		RoomSearchDao dao = new RoomSearchDao();
-		ArrayList<RoomSearchDto> dtos = dao.noticeManagementList(location,guest);
+		ArrayList<RoomSearchDto> dtos = dao.RoomsearchList(location, guest, date1, date2);
 		
-		int noticeViewRowCount = dao.noticeViewRowCount(location,guest);
+		
+		int noticeViewRowCount = dao.RoomSearchListRowCount(location, guest, date1, date2);
 		
 		int RowCount = noticeViewRowCount;
 		

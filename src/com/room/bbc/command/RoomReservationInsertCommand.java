@@ -24,13 +24,17 @@ public class RoomReservationInsertCommand implements Command {
 		
 		String userId = (String)session.getAttribute("USERID");
 		String roomId = (String)session.getAttribute("ROOMID");
-		String roomCheckIn = request.getParameter("checkinTime");
-		String roomCheckOut = request.getParameter("checkoutTime");
+		String bookCheckindate= request.getParameter("date1");
+		String bookCheckoutdate = request.getParameter("date2");
+		System.out.println(userId);
+		System.out.println(bookCheckindate);
+	
+		
 		String roomCapa = request.getParameter("guest");
-		String roomPriceTotal = request.getParameter("");
+		String roomPriceTotal = request.getParameter("roomPriceTotal");
 		
 		RoomReservationDao dao = new RoomReservationDao();
-		dao.roomReservation(userId, roomId, roomCheckIn, roomCheckOut, roomCapa, roomPriceTotal);
+		dao.roomReservation(userId, roomId, bookCheckindate, bookCheckoutdate, roomCapa, roomPriceTotal);
 		
 	}
 
