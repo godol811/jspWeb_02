@@ -14,7 +14,8 @@ import com.room.bbc.dto.BoardDto;
 import com.room.bbc.dto.RoomListDto;
 
 public class RoomListDao {
-DataSource dataSource;  
+	
+	DataSource dataSource;  
 	
 	//constructor
 	public RoomListDao() {
@@ -27,10 +28,6 @@ DataSource dataSource;
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
 	
 	
 	//-------------------------------
