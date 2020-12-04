@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
     
 <!DOCTYPE html>
 <html>
@@ -124,19 +126,21 @@
 	
 <body>
 
-<form name="book" action="book02.jsp" method="post" onsubmit="return check()">
+<form name="book" action="bookPage2.room?roomId=<%=session.getAttribute("ROOMID") %>" method="post" onsubmit="return check()">
 	<table border="1">
+		<c:forEach items = "${list }" var = "dto">
 		<colgroup>
 			<col width="80%">
 		</colgroup>
 			<tr>
 				<td colspan="2">${dto.roomTitle }</td>
 			</tr>
-			<tr>
-				<td colspan="2">호스트 : ${dto.userId }님</td>
-			</tr>
+			
 			<tr>
 				<td colspan="2">최대 인원 ${dto.roomCapa }명</td>
+			</tr>
+			<tr>
+				<td colspan="2">${dto.roomContent }</td>
 			</tr>
 			<tr>
 				<td colspan="2">체크인 : ${dto.roomCheckIn }</td>
@@ -144,12 +148,7 @@
 			<tr>
 				<td colspan="2">체크아웃 : ${dto.roomCheckOut }</td>
 			</tr>
-			<tr>
-				<td colspan="2">${dto.roomContent }</td>
-			</tr>
-			<tr>
-				<td colspan="2">주소 : ${dto.roomAddress } <br> 정확한 위치는 예약 완료 후에 표시됩니다.</td>
-			</tr>
+			
 			<tr>
 				<td colspan="2"><div id="map-canvas" style="width: 100%; height: 400px"></div></td>
 			</tr>
@@ -163,8 +162,17 @@
 				<td>체크인</td><td>체크아웃</td>
 			</tr>
 			<tr>
-				<td align="center"><input type="text" name="date1" id="date1" placeholder="날짜 추가" readonly="readonly"/></td>
-				<td align="center"><input type="text" name="date2" id="date2" placeholder="날짜 추가" readonly="readonly"/></td>
+				<td align="center"><input type="text" name="date1" id="date1" value="<%=session.getAttribute("DATE1")%>" placeholder="날짜 추가" readonly="readonly"/></td>
+				<td align="center"><input type="text" name="date2" id="date2" value="<%=session.getAttribute("DATE2")%>" placeholder="날짜 추가" readonly="readonly"/></td>
+			</tr>
+			</c:forEach>
+			
+			
+			
+			<tr>
+			<!-- -------------------------------- -->
+			<!--  수정 해야되는 부분 -->
+				<td align="left" colspan="2">게스트<input type="number" name="guest" id="guest" value="<%=session.getAttribute("GUEST")%>" max="${dto.roomCapa} " min="1" step="1"/> 명 </td>
 			</tr>
 			<tr>
 				<c:choose>
@@ -176,11 +184,6 @@
 
 					</c:otherwise>
 				</c:choose>
-			</tr>
-			<tr>
-			<!-- -------------------------------- -->
-			<!--  수정 해야되는 부분 -->
-				<td align="center" colspan="2"><input type="number" name="guest" id="guest" max="${dto.roomCapa} " min="1" step="1"/>게스트 ${dto.roomCapa}명 </td>
 			</tr>
 			<tr>
 				<td colspan="2">후기</td>

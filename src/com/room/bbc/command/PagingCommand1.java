@@ -32,8 +32,12 @@ public class PagingCommand1 implements Command {
 		// TODO Auto-generated method stub
 		String location = request.getParameter("location");
 		int	   guest    = Integer.parseInt(request.getParameter("guest"));
+		String date1    = request.getParameter("date1");
+		String date2    = request.getParameter("date2");
 		session.setAttribute("LOCATION", location);
 		session.setAttribute("GUEST", guest);
+		session.setAttribute("DATE1", date1);
+		session.setAttribute("DATE2", date2);
 		RoomSearchDao dao = new RoomSearchDao();
 		ArrayList<RoomSearchDto> dtos = dao.noticeManagementList(location,guest);
 		

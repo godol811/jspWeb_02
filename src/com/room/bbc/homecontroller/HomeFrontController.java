@@ -23,6 +23,7 @@ import com.room.bbc.command.RoomAdminUpdateCommand;
 import com.room.bbc.command.RoomDeleteCommand;
 import com.room.bbc.command.RoomInsertCommand;
 import com.room.bbc.command.RoomReservationInsertCommand;
+import com.room.bbc.command.RoomReservationSelectCommand;
 import com.room.bbc.command.RoomReviewDeleteCommand;
 import com.room.bbc.command.RoomReviewInsertCommand;
 import com.room.bbc.command.RoomReviewSelectCommand;
@@ -111,6 +112,16 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "mainPage.jsp";
 			break;
 			
+		case ("/bookPage.room"):
+			command = new RoomReservationSelectCommand();
+			command.execute(request, response, session);
+			viewPage = "book01.jsp"; 
+			break;	
+		case ("/bookPage2.room"):
+			command = new RoomReservationSelectCommand();
+			command.execute(request, response, session);
+			viewPage = "book02.jsp"; 
+			break;	
 			
 		//user CRUD-------------------------
 		case ("/login.room"): // 입력화면
@@ -221,7 +232,7 @@ public class HomeFrontController extends HttpServlet {
 		case ("/roomSearchPaging.room"):
 			command = new PagingCommand2();  //페이징
 			command.execute(request, response, session);
-			viewPage = "mainPage.jsp";
+			viewPage = "RoomSearchList.jsp";
 			break;
 		
 		
@@ -229,7 +240,7 @@ public class HomeFrontController extends HttpServlet {
 		case ("/roomSearch.room"):
 			command = new PagingCommand1(); //리스트 첫번째 페이지
 			command.execute(request, response, session);
-			viewPage = "mainPage.jsp";
+			viewPage = "RoomSearchList.jsp";
 			break;
 
 		
