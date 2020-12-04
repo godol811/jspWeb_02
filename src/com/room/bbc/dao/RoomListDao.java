@@ -157,7 +157,7 @@ public class RoomListDao {
 	
 	//-------------------------------
 	// click 하여 해당 내용 보기 
-	public RoomListDto roomView(String roombId) {
+	public RoomListDto roomView(String stroomId) {
 		RoomListDto dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -168,7 +168,7 @@ public class RoomListDao {
 			connection = dataSource.getConnection();
 			String query = "select * from room where roomid = ?";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
-			preparedStatement.setInt(1, Integer.parseInt(roombId));
+			preparedStatement.setInt(1, Integer.parseInt(stroomId));
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {

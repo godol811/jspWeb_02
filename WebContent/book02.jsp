@@ -65,7 +65,6 @@
 	  	});
 	      
 	</script>
-
 	<form name="book02" action="bookInsert.room" method="post" onsubmit="return cardCheck()">
 		<table>
 		<c:forEach items = "${list }" var = "dto">
@@ -101,10 +100,6 @@
 			
 			<tr>
 				<!--  수정 필요 -->
-				<td>가격/박</td><td>₩${dto.roomPrice}</td>
-			</tr>
-			<tr>
-				<!--  수정 필요 -->
 				<td>합 계</td><td>₩<input type="text"name="roomPriceTotal" value="${dto.roomPrice*(endDate - strDate) }"> <%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
 			</tr>
 			<tr>
@@ -120,7 +115,7 @@
 				<td>CVC</td><td><input type="text" name="cardInfoDetail02" placeholder="123"></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="확인 및 결제하기">
+				<td><input type="submit" value="확인 및 결제하기" >
 			</tr>
 			</c:forEach>
 		</table>

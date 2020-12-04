@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ public class RoomReservationSelectCommand implements Command {
 	request.setAttribute("list", dtos);
 //	System.out.println(dtos);
 
+		
 	}
 
 }

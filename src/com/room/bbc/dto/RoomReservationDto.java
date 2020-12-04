@@ -1,27 +1,7 @@
 package com.room.bbc.dto;
 
 public class RoomReservationDto {
- 
 	
-	
-	
-	public RoomReservationDto() {
-	// TODO Auto-generated constructor stub
-}
-	String roomTitle;
-	String roomContent;
-	String roomPrice;
-	String roomCapa;
-	String roomAddress;
-	String roomAddressDetail;
-	String roomCheckIn;
-	String roomCheckOut;
-	String roomImage;
-	String roomImageReal;
-	String roomId;
-	
-	
-
 	public RoomReservationDto(String roomTitle, String roomContent, String roomPrice, String roomCapa,
 			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
 			String roomImageReal, String roomId) {
@@ -38,8 +18,8 @@ public class RoomReservationDto {
 		this.roomImageReal = roomImageReal;
 		this.roomId = roomId;
 	}
-
-
+	
+	
 	public RoomReservationDto(String roomTitle, String roomContent, String roomPrice, String roomCapa,
 			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
 			String roomImageReal) {
@@ -55,6 +35,84 @@ public class RoomReservationDto {
 		this.roomImage = roomImage;
 		this.roomImageReal = roomImageReal;
 	}
+ 
+	
+	
+	
+	public RoomReservationDto() {
+	// TODO Auto-generated constructor stub
+}
+	String bookId;
+	String roomTitle;
+	String roomContent;
+	String bookCheckInDate;
+	String bookCheckOutDate;
+	String bookCapa;
+	String roomImage;
+	String roomPrice;
+	String roomCapa;
+	String roomAddress;
+	String roomAddressDetail;
+	String roomCheckIn;
+	String roomCheckOut;
+	String roomImageReal;
+	String roomId;	
+	
+	
+	
+
+	public RoomReservationDto(String bookId, String roomTitle, String roomContent, String bookCheckInDate,
+			String bookCheckOutDate, String bookCapa, String roomImage) {
+		super();
+		this.bookId = bookId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.bookCheckInDate = bookCheckInDate;
+		this.bookCheckOutDate = bookCheckOutDate;
+		this.bookCapa = bookCapa;
+		this.roomImage = roomImage;
+	}
+
+
+	public String getBookId() {
+		return bookId;
+	}
+
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
+
+
+	public String getBookCheckInDate() {
+		return bookCheckInDate;
+	}
+
+
+	public void setBookCheckInDate(String bookCheckInDate) {
+		this.bookCheckInDate = bookCheckInDate;
+	}
+
+
+	public String getBookCheckOutDate() {
+		return bookCheckOutDate;
+	}
+
+
+	public void setBookCheckOutDate(String bookCheckOutDate) {
+		this.bookCheckOutDate = bookCheckOutDate;
+	}
+
+
+	public String getBookCapa() {
+		return bookCapa;
+	}
+
+
+	public void setBookCapa(String bookCapa) {
+		this.bookCapa = bookCapa;
+	}
+
 
 
 	public String getRoomTitle() {
@@ -164,4 +222,9 @@ public class RoomReservationDto {
 		this.roomId = roomId;
 	}
 
+	
+
+
+	
+	
 }
