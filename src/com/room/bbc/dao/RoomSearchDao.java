@@ -41,8 +41,8 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query1  = "select count(*) from room.room  where roomaddress like  '%"+ location + "%' and roomcapa>="+ guest +"and roomdeletedate is null";
-			String query2  =" and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "'>= bookcheckindate and '"+ roomCheckoutDate+"' <=bookcheckoutdate)";
+			String query1  = "select count(*) from room.room  where roomaddress like  '%"+ location + "%' and roomcapa>= '"+ guest +"' and roomdeletedate is null";
+			String query2  = " and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "'>= bookcheckindate and '"+ roomCheckoutDate+"' <=bookcheckoutdate)";
 			preparedStatement = connection.prepareStatement(query1+ query2);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -79,7 +79,7 @@ DataSource dataSource;
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
 			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, ";
-			String query2 = "roomid, roomimagereal from room.room where roomaddress like  '%"+ location + "%' and roomcapa>="+guest+" and roomdeletedate is null ";
+			String query2 = "roomid, roomimagereal from room.room where roomaddress like  '%"+ location + "%' and roomcapa>= '" + guest + "' and roomdeletedate is null ";
 			String query3 = "and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "'>= bookcheckindate and '"+ roomCheckoutDate+"' <=bookcheckoutdate) ";
 			preparedStatement = connection.prepareStatement(query + query2 + query3); // query 문장 연결
 			resultSet = preparedStatement.executeQuery();

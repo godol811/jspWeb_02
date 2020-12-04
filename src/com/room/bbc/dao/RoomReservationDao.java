@@ -195,7 +195,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 				String roomCheckOut = resultSet.getString("bookcheckoutdate");
 				String roomImage = resultSet.getString("roomimage");
 				
-				dto = new RoomReservationDto(userId, roomTitle, roomContent, roomCheckIn, roomCheckOut, bookCapa, roomImage, roomPriceTotal, roomAddress, roomAddressDetail);
+				dto = new RoomReservationDto(userId, roomTitle, roomContent, roomCheckIn, roomCheckOut, bookCapa, roomImage, roomAddress, roomAddressDetail, roomPriceTotal);
 				
 			}
 			

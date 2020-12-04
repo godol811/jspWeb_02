@@ -33,6 +33,7 @@ import com.room.bbc.command.RoomReviseCommand;
 import com.room.bbc.command.RoomSelectCommand;
 import com.room.bbc.command.RoomUpdateCommand;
 import com.room.bbc.command.UserInsertCommand;
+import com.room.bbc.command.UserRoomReservationSelectCommand;
 import com.room.bbc.command.UserSelectCommand;
 import com.room.bbc.command.UserAdminDeleteCommand;
 
@@ -118,14 +119,16 @@ public class HomeFrontController extends HttpServlet {
 			command.execute(request, response, session);
 			viewPage = "book01.jsp"; 
 			break;	
+		
 		case ("/bookPage2.room"):
 			command = new RoomReservationSelectCommand();
 			command.execute(request, response, session);
 			viewPage = "book02.jsp"; 
 			break;	
-		// 숙소 예약 조회(회원)
+		
+			// 숙소 예약 조회(회원)
 		case ("/bookList.room"):
-			command = new RoomReservationSelectCommand();
+			command = new UserRoomReservationSelectCommand();
 			command.execute(request, response, session);
 			viewPage = "bookList.jsp";
 			break;
