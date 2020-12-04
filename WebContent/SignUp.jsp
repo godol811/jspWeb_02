@@ -106,7 +106,7 @@ input::p
 			<td>전화번호  <font size="2">( - 포함해서 적어주세요.)</font></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center">
+			<td colspan="2">
 				<input type="text" name="userTel" value="${joinfield.userTel}" style="width:400px;height:40px;font-size:18px;">
 			</td>
 		</tr>
@@ -121,7 +121,7 @@ input::p
 			<td>주소 입력</td>
 		</tr>
 		<tr>
-			<td><input placeholder="도로명 주소" type="text"  style="width:500px;" id="roadAddrPart1"  name="userAddress" readonly="readonly" onClick="goPopup();" value="${roomView.roomAddress}"/>
+			<td><input placeholder="도로명 주소" type="text"  style="width:500px;" id="roadAddrPart1"  name="userAddress" readonly="readonly"  onClick="goPopup();" value="${joinfield.userAddress}"/>
 			&nbsp;
 			<input type="button" onClick="goPopup();" value="주소 찾기" style="width:500px;"/>
 			</td>
@@ -130,7 +130,7 @@ input::p
 			<td>상세 주소</td>
 		</tr>
 		<tr>
-			<td><input placeholder="상세주소" type="text"  style="width:500px;" id="addrDetail"  name="userAddressDetail" style="width:500px;" /></td>
+			<td><input placeholder="상세주소" type="text"  style="width:500px;" id="addrDetail" value="${joinfield.userAddressDetail }"  name="userAddressDetail" style="width:500px;" /></td>
 		</tr>
 		<!-- 주소 입력 -->
 		<tr>
