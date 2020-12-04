@@ -2,6 +2,53 @@ package com.room.bbc.dto;
 
 public class RoomReservationDto {
 	
+	String userId;
+	String bookId;
+	String roomTitle;
+	String roomContent;
+	String bookCheckInDate;
+	String bookCheckOutDate;
+	String bookCapa;
+	String roomImage;
+	String roomPrice;
+	String roomCapa;
+	String roomAddress;
+	String roomAddressDetail;
+	String roomCheckIn;
+	String roomCheckOut;
+	String roomImageReal;
+	String roomId;
+	String roomPriceTotal;
+	
+	
+	public RoomReservationDto() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	
+	public RoomReservationDto(String userId, String roomTitle, String roomContent, String bookCheckInDate,
+			String bookCheckOutDate, String bookCapa, String roomImage, String roomAddress, String roomAddressDetail,
+			String roomPriceTotal) {
+		super();
+		this.userId = userId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.bookCheckInDate = bookCheckInDate;
+		this.bookCheckOutDate = bookCheckOutDate;
+		this.bookCapa = bookCapa;
+		this.roomImage = roomImage;
+		this.roomAddress = roomAddress;
+		this.roomAddressDetail = roomAddressDetail;
+		this.roomPriceTotal = roomPriceTotal;
+	}
+
+
+
+
+
 	public RoomReservationDto(String roomTitle, String roomContent, String roomPrice, String roomCapa,
 			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
 			String roomImageReal, String roomId) {
@@ -20,46 +67,24 @@ public class RoomReservationDto {
 	}
 	
 	
-	public RoomReservationDto(String roomTitle, String roomContent, String roomPrice, String roomCapa,
-			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
-			String roomImageReal) {
-		super();
-		this.roomTitle = roomTitle;
-		this.roomContent = roomContent;
-		this.roomPrice = roomPrice;
-		this.roomCapa = roomCapa;
-		this.roomAddress = roomAddress;
-		this.roomAddressDetail = roomAddressDetail;
-		this.roomCheckIn = roomCheckIn;
-		this.roomCheckOut = roomCheckOut;
-		this.roomImage = roomImage;
-		this.roomImageReal = roomImageReal;
-	}
- 
-	
-	
-	
-	public RoomReservationDto() {
-	// TODO Auto-generated constructor stub
-}
-	String bookId;
-	String roomTitle;
-	String roomContent;
-	String bookCheckInDate;
-	String bookCheckOutDate;
-	String bookCapa;
-	String roomImage;
-	String roomPrice;
-	String roomCapa;
-	String roomAddress;
-	String roomAddressDetail;
-	String roomCheckIn;
-	String roomCheckOut;
-	String roomImageReal;
-	String roomId;	
-	
-	
-	
+//	
+//	public RoomReservationDto(String roomTitle, String roomContent, String roomPrice, String roomCapa,
+//			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
+//			String roomImageReal) {
+//		super();
+//		this.roomTitle = roomTitle;
+//		this.roomContent = roomContent;
+//		this.roomPrice = roomPrice;
+//		this.roomCapa = roomCapa;
+//		this.roomAddress = roomAddress;
+//		this.roomAddressDetail = roomAddressDetail;
+//		this.roomCheckIn = roomCheckIn;
+//		this.roomCheckOut = roomCheckOut;
+//		this.roomImage = roomImage;
+//		this.roomImageReal = roomImageReal;
+//	}
+// 
+//	
 
 	public RoomReservationDto(String bookId, String roomTitle, String roomContent, String bookCheckInDate,
 			String bookCheckOutDate, String bookCapa, String roomImage) {
@@ -74,44 +99,33 @@ public class RoomReservationDto {
 	}
 
 
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+
+
 	public String getBookId() {
 		return bookId;
 	}
+
+
 
 
 	public void setBookId(String bookId) {
 		this.bookId = bookId;
 	}
 
-
-	public String getBookCheckInDate() {
-		return bookCheckInDate;
-	}
-
-
-	public void setBookCheckInDate(String bookCheckInDate) {
-		this.bookCheckInDate = bookCheckInDate;
-	}
-
-
-	public String getBookCheckOutDate() {
-		return bookCheckOutDate;
-	}
-
-
-	public void setBookCheckOutDate(String bookCheckOutDate) {
-		this.bookCheckOutDate = bookCheckOutDate;
-	}
-
-
-	public String getBookCapa() {
-		return bookCapa;
-	}
-
-
-	public void setBookCapa(String bookCapa) {
-		this.bookCapa = bookCapa;
-	}
 
 
 
@@ -120,9 +134,13 @@ public class RoomReservationDto {
 	}
 
 
+
+
 	public void setRoomTitle(String roomTitle) {
 		this.roomTitle = roomTitle;
 	}
+
+
 
 
 	public String getRoomContent() {
@@ -130,69 +148,55 @@ public class RoomReservationDto {
 	}
 
 
+
+
 	public void setRoomContent(String roomContent) {
 		this.roomContent = roomContent;
 	}
 
 
-	public String getRoomPrice() {
-		return roomPrice;
+
+
+	public String getBookCheckInDate() {
+		return bookCheckInDate;
 	}
 
 
-	public void setRoomPrice(String roomPrice) {
-		this.roomPrice = roomPrice;
+
+
+	public void setBookCheckInDate(String bookCheckInDate) {
+		this.bookCheckInDate = bookCheckInDate;
 	}
 
 
-	public String getRoomCapa() {
-		return roomCapa;
+
+
+	public String getBookCheckOutDate() {
+		return bookCheckOutDate;
 	}
 
 
-	public void setRoomCapa(String roomCapa) {
-		this.roomCapa = roomCapa;
+
+
+	public void setBookCheckOutDate(String bookCheckOutDate) {
+		this.bookCheckOutDate = bookCheckOutDate;
 	}
 
 
-	public String getRoomAddress() {
-		return roomAddress;
+
+
+	public String getBookCapa() {
+		return bookCapa;
 	}
 
 
-	public void setRoomAddress(String roomAddress) {
-		this.roomAddress = roomAddress;
+
+
+	public void setBookCapa(String bookCapa) {
+		this.bookCapa = bookCapa;
 	}
 
 
-	public String getRoomAddressDetail() {
-		return roomAddressDetail;
-	}
-
-
-	public void setRoomAddressDetail(String roomAddressDetail) {
-		this.roomAddressDetail = roomAddressDetail;
-	}
-
-
-	public String getRoomCheckIn() {
-		return roomCheckIn;
-	}
-
-
-	public void setRoomCheckIn(String roomCheckIn) {
-		this.roomCheckIn = roomCheckIn;
-	}
-
-
-	public String getRoomCheckOut() {
-		return roomCheckOut;
-	}
-
-
-	public void setRoomCheckOut(String roomCheckOut) {
-		this.roomCheckOut = roomCheckOut;
-	}
 
 
 	public String getRoomImage() {
@@ -200,9 +204,97 @@ public class RoomReservationDto {
 	}
 
 
+
+
 	public void setRoomImage(String roomImage) {
 		this.roomImage = roomImage;
 	}
+
+
+
+
+	public String getRoomPrice() {
+		return roomPrice;
+	}
+
+
+
+
+	public void setRoomPrice(String roomPrice) {
+		this.roomPrice = roomPrice;
+	}
+
+
+
+
+	public String getRoomCapa() {
+		return roomCapa;
+	}
+
+
+
+
+	public void setRoomCapa(String roomCapa) {
+		this.roomCapa = roomCapa;
+	}
+
+
+
+
+	public String getRoomAddress() {
+		return roomAddress;
+	}
+
+
+
+
+	public void setRoomAddress(String roomAddress) {
+		this.roomAddress = roomAddress;
+	}
+
+
+
+
+	public String getRoomAddressDetail() {
+		return roomAddressDetail;
+	}
+
+
+
+
+	public void setRoomAddressDetail(String roomAddressDetail) {
+		this.roomAddressDetail = roomAddressDetail;
+	}
+
+
+
+
+	public String getRoomCheckIn() {
+		return roomCheckIn;
+	}
+
+
+
+
+	public void setRoomCheckIn(String roomCheckIn) {
+		this.roomCheckIn = roomCheckIn;
+	}
+
+
+
+
+	public String getRoomCheckOut() {
+		return roomCheckOut;
+	}
+
+
+
+
+	public void setRoomCheckOut(String roomCheckOut) {
+		this.roomCheckOut = roomCheckOut;
+	}
+
+
 
 
 	public String getRoomImageReal() {
@@ -210,21 +302,38 @@ public class RoomReservationDto {
 	}
 
 
+
+
 	public void setRoomImageReal(String roomImageReal) {
 		this.roomImageReal = roomImageReal;
 	}
+
+
+
+
 	public String getRoomId() {
 		return roomId;
 	}
+
+
 
 
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
 
-	
 
 
-	
-	
+
+	public String getRoomPriceTotal() {
+		return roomPriceTotal;
+	}
+
+
+
+
+	public void setRoomPriceTotal(String roomPriceTotal) {
+		this.roomPriceTotal = roomPriceTotal;
+	}
+
 }
