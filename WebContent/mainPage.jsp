@@ -1,3 +1,4 @@
+
 <%@page import="javax.print.DocFlavor.URL"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -16,6 +17,7 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script> 
 	<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
+	
 	
 	<script src="js/subMenu.js"></script>
 
