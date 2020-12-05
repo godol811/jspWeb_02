@@ -220,8 +220,14 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 	
 	
 	// 예약현황 조회
-	public ArrayList<RoomReservationDto> hostReservationSearch(String roomId) {
+	public ArrayList<RoomReservationDto> hostReservationSearch(String roomId, String search, String searchWord) {
 		ArrayList<RoomReservationDto> dtos = new ArrayList<RoomReservationDto>();
+		
+		if(search == null) {
+			search = "bookcheckindate";
+			searchWord ="";
+		}
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -230,7 +236,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		try {
 			connection = dataSource.getConnection();
 			String query = "select userinfo_userid, bookcheckindate, bookcheckoutdate, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal ";
-			String query2 = "from book b, room r where b.room_roomid = r.roomid and room_roomid= ?";
+			String query2 = "from book b, room r where b.room_roomid = r.roomid and room_roomid= ? and " + search + " like '%" + searchWord + "%' order by bookcheckindate desc";
 			preparedStatement = connection.prepareStatement(query+query2);
 			preparedStatement.setInt(1, Integer.parseInt(roomId));
 			resultSet = preparedStatement.executeQuery();

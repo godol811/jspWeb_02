@@ -23,11 +23,13 @@ public class HostRoomReservationSelectCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		String search = request.getParameter("search");
-//		String searchWord = request.getParameter("reservationSearch");
+		String search = request.getParameter("search");
+		String searchWord = request.getParameter("reservationSearch");
 		String roomId = request.getParameter("roomId");
+//		session.setAttribute("ROOMIDSEARCH", roomId);
+		 
 		RoomReservationDao dao = new RoomReservationDao();
-		ArrayList<RoomReservationDto> dtos = dao.hostReservationSearch(roomId);
+		ArrayList<RoomReservationDto> dtos = dao.hostReservationSearch(roomId, search, searchWord);
 		
 		request.setAttribute("hostRoomReservationList", dtos);
 		
