@@ -8,30 +8,20 @@
 <head>
 <link rel="stylesheet" type="text/css" href="Review.css" />
 <meta charset="UTF-8">
-<title>평점</title>
+<title>후기 보기</title>
 </head>
 <body>
 
 	<table style="margin-top: 100px; margin-left: auto; margin-right: auto;">
-	<tr>
-		<th>ID</th>
-		<th>호텔</th>
-		<th>제목</th>
-		<th>내용</th>
-		<th>평점</th>
-		<th>날짜</th>
-		<th></th>
-	</tr>
-	<c:forEach items="${rate}" var="dto">
-	<tr>
-		<td>${dto.userinfo_Userid }</td>
-		<td>${dto.room_Roomid }</td>
-		<td>${dto.reviewTitle }</td>
-		<td>${dto.reviewContent }</td>
-		<td>${dto.reviewRate }</td>
-		<td>${dto.reviewDate }</td>
-	</c:forEach>
-		<tr><td colspan="3"><button  type="button" onclick="location.href='Rating_Insert.room'"  style="margin-top: 100px; margin-left: auto; margin-right: auto;">평점 남기기</button></td></tr>
+	
+		<c:forEach items="${reviewList}" var="dto2">	
+			<tr>
+				<td>${dto2.userinfo_Userid}</td><td> ${dto2.reviewDate}</td>
+			</tr>
+			<tr>
+				<td>${dto2.reviewContent}</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

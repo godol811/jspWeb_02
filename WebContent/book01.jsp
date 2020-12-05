@@ -119,7 +119,10 @@
 			return false;
 		} 
     } 
-      
+    function reviewWindow(){
+        var url="Rating_list.jsp";
+        window.open(url,"","width=400,height=400,left=600");
+    }
       
     </script>
 </head>
@@ -204,18 +207,18 @@
 			<tr>
 				<td colspan="2">후기</td>
 			</tr>
-<%-- 			<c:forEach items="${##}" var="dto">
+			<c:forEach items="${reviewList}" var="dto2" begin="0" end="4" step="1">
 				<tr>
-					<td>${dto.userId}</td>
+					<td>${dto2.userinfo_Userid}</td><td> ${dto2.reviewDate}</td>
 				</tr>
 				<tr>
-					<td> ${dto.reviewDate}</td>
-				</tr>
-				<tr>
-					<td>${dto.reviewContent}</td>
+					<td>${dto2.reviewContent}</td>
 				</tr>
 			</c:forEach>
- --%>	</table>
+			<tr>
+				<td><input type="button" value="모든 후기 보기" onclick="location.href='Rating_list.room?roomId=${dto2.room_Roomid}'"> </td>
+			</tr>
+ 	</table>
  </form>
 </body>
 </html>

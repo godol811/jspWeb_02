@@ -3,7 +3,6 @@ package com.room.bbc.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -30,8 +29,8 @@ public class RoomReviewDao {
 			e.printStackTrace();
 		}
 	}
-//List 	목록 불러오기
-	public ArrayList<RoomReviewDto> list() {
+	// 해당 숙소의 리뷰 불러오기
+	public ArrayList<RoomReviewDto> list(String roomId) {
 		
 		ArrayList<RoomReviewDto> dtos = new ArrayList<RoomReviewDto>();
 		
@@ -41,20 +40,20 @@ public class RoomReviewDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select reviewid, userinfo_userid,room_roomid,reviewtitle,reviewcontent,reviewrate,reviewdate from review";
+			String query = "select reviewid, userinfo_userid,room_roomid,reviewcontent,reviewrate,DATE_FORMAT(reviewdate, '%Y/%m/%d') as reviewdate from review where room_roomid=? order by reviewid desc";
 			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, roomId);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
 				int reviewId = resultSet.getInt("reviewid");
 				String userinfo_Userid = resultSet.getString("userinfo_userid");
 				int room_Roomid = resultSet.getInt("room_roomid");
-				String reviewTitle = resultSet.getString("reviewtitle");
 				String reviewContent = resultSet.getString("reviewcontent");
 				double reviewRate = resultSet.getDouble("reviewrate");
-				Timestamp reviewDate = resultSet.getTimestamp("reviewdate");
+				String reviewDate = resultSet.getString("reviewdate");
 				
-			RoomReviewDto dto = new RoomReviewDto(reviewId, userinfo_Userid, room_Roomid, reviewTitle, reviewContent, reviewRate, reviewDate);
+			RoomReviewDto dto = new RoomReviewDto(reviewId, userinfo_Userid, room_Roomid, reviewContent, reviewRate, reviewDate);
 			dtos.add(dto);
 				
 			}
@@ -77,22 +76,23 @@ public class RoomReviewDao {
 // 리뷰 입력하기
 // 리뷰 아이디는 자동으로 생성(AI)userinfo_userid와 room_Roomid 를 받아와서 넣을것
 	
-	public void write(String userinfo_Userid, int room_Roomid, String ReviewTitle, String ReviewContent, double ReviewRate) {
+	public int write(String bookId, String userinfo_Userid, int room_Roomid, String ReviewContent, double ReviewRate) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		
+		int reviewCheck = 0;
 		
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "insert into review  (room_Roomid, reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now())";
+			String query = "insert into review (bookid, room_Roomid, userinfo_Userid, reviewContent, reviewRate, reviewDate) values (?,?,?,?,?,now())";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
-			preparedStatement.setInt(1, room_Roomid);
-			preparedStatement.setString(2, ReviewTitle);
-			preparedStatement.setString(3, ReviewContent);
-			preparedStatement.setDouble(4, ReviewRate);
+			preparedStatement.setInt(1, Integer.parseInt(bookId));
+			preparedStatement.setInt(2, room_Roomid);
+			preparedStatement.setString(3, userinfo_Userid);
+			preparedStatement.setString(4, ReviewContent);
+			preparedStatement.setDouble(5, ReviewRate);
 			preparedStatement.executeUpdate();
-			
+			reviewCheck = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -102,7 +102,7 @@ public class RoomReviewDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		}return reviewCheck;
 	}
 	
 //리뷰 삭제하기

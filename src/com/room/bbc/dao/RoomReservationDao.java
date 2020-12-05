@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import com.room.bbc.dto.RoomListDto;
 import com.room.bbc.dto.RoomReservationDto;
+import com.room.bbc.dto.RoomReviewDto;
 import com.room.bbc.dto.UserDto;
 
 public class RoomReservationDao {
@@ -131,13 +132,14 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select bookid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
+			String query = "select bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
 				String bookId = Integer.toString(resultSet.getInt("bookid"));
+				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				String roomTitle = resultSet.getString("roomtitle");
 				String roomContent = resultSet.getString("roomcontent");
 				String bookCheckInDate = resultSet.getString("bookcheckindate");
@@ -146,7 +148,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 				String roomImage = resultSet.getString("roomimage");
 				
 				// bean 선언
-				RoomReservationDto dto = new RoomReservationDto(bookId, roomTitle, roomContent, bookCheckInDate, bookCheckOutDate, bookCapa, roomImage);
+				RoomReservationDto dto = new RoomReservationDto(bookId, roomTitle, roomContent, bookCheckInDate, bookCheckOutDate, bookCapa, roomImage, roomId);
 				dtos.add(dto); //arraylist에 추가
 				
 			}
@@ -216,5 +218,87 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		return dto;
 	}
 	
+	
+	// 예약현황 조회
+	public ArrayList<RoomReservationDto> hostReservationSearch(String roomId) {
+		ArrayList<RoomReservationDto> dtos = new ArrayList<RoomReservationDto>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		//--->
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select userinfo_userid, bookcheckindate, bookcheckoutdate, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal ";
+			String query2 = "from book b, room r where b.room_roomid = r.roomid and room_roomid= ?";
+			preparedStatement = connection.prepareStatement(query+query2);
+			preparedStatement.setString(1, roomId);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String bookUserId = resultSet.getString("userinfo_userid");
+				String bookCheckInDate = resultSet.getString("bookcheckindate");
+				String bookCheckOutDate = resultSet.getString("bookcheckoutdate");
+				String bookCapa = Integer.toString(resultSet.getInt("bookcapa"));
+				String bookPriceTotal = Integer.toString(resultSet.getInt("pricetotal"));
+				
+				// bean 선언
+				RoomReservationDto dto = new RoomReservationDto(bookUserId, bookCheckInDate, bookCheckOutDate, bookCapa, roomId, bookPriceTotal);
+				dtos.add(dto); //arraylist에 추가
+				
+			}
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {   //error가 걸렸든 안걸렸든 일로 마지막에는 온다. 쓰레기가 안쌓이도록. 다 close해서 
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace(); //화면상에 보이는 에러는 여기서 찍히는 것이다.  
+			}
+		}
+		return dtos;
+		
+	}
+	
+	public ArrayList<RoomReviewDto> roomReviewSearch(String userId) {
+		
+		ArrayList<RoomReviewDto> dtos = new ArrayList<RoomReviewDto>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		//--->
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select reviewid, bookid from review where userinfo_userid = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, userId);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int reviewId = resultSet.getInt("reviewid");
+				int bookId = resultSet.getInt("bookid");
+				
+				// bean 선언
+				RoomReviewDto dto = new RoomReviewDto(reviewId, bookId);
+				dtos.add(dto);
+			}
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {   //error가 걸렸든 안걸렸든 일로 마지막에는 온다. 쓰레기가 안쌓이도록. 다 close해서 
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace(); //화면상에 보이는 에러는 여기서 찍히는 것이다.  
+			}
+		}
+		return dtos;
+	}
 	
 }

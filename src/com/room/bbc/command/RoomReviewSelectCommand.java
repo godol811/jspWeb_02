@@ -18,9 +18,9 @@ public class RoomReviewSelectCommand implements Command {
 		// TODO Auto-generated method stub
 		
 		RoomReviewDao dao = new RoomReviewDao();
-		ArrayList<RoomReviewDto> dtos = dao.list();
+		//ArrayList<RoomReviewDto> dtos = dao.list();
 		
-		request.setAttribute("rate", dtos);
+		//request.setAttribute("rate", dtos);
 		
 	}
 
