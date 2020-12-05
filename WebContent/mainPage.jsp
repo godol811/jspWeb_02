@@ -185,9 +185,9 @@
 		</colgroup>
 		
 		<tr>
-			<td><a href="roomSearchDirect.room?location=서울"><img src="./images/busan.jpg" width="70px" height="70px"></a></td>
+			<td><a href="roomSearchDirect.room?location=부산"><img src="./images/busan.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="roomSearchDirect.room?location=서울">서울 <br>차로 5시간 거리</a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=부산">부산 <br>차로 5시간 거리</a></td>
 			<td><a href="roomSearchDirect.room?location=전주"><img src="./images/jeonju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
 			<td align="left"><a href="roomSearchDirect.room?location=전주">전주시<br>차로 3시간 거리</a></td>

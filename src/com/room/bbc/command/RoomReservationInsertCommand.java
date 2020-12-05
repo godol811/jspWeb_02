@@ -30,7 +30,7 @@ public class RoomReservationInsertCommand implements Command {
 		System.out.println(bookCheckindate);
 	
 		
-		String roomCapa = request.getParameter("guest");
+		String roomCapa = request.getParameter("roomCapa");
 		String roomPriceTotal = request.getParameter("roomPriceTotal");
 		
 		RoomReservationDao dao = new RoomReservationDao();

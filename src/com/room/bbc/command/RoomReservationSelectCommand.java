@@ -28,6 +28,9 @@ public class RoomReservationSelectCommand implements Command {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	String roomId = request.getParameter("roomId");	
+	String date1  = request.getParameter("date1");
+	String date2  = request.getParameter("date2");
+	String guest  = request.getParameter("guest");
 	session.setAttribute("ROOMID", roomId);
 //	System.out.println(roomId);
 	RoomReservationDao dao = new RoomReservationDao();
@@ -35,6 +38,10 @@ public class RoomReservationSelectCommand implements Command {
 	
 	
 	request.setAttribute("list", dtos);
+	request.setAttribute("DATE1direct", date1);
+	request.setAttribute("DATE2direct", date2);
+	request.setAttribute("GUESTdirect", guest);
+	
 //	System.out.println(dtos);
 
 		

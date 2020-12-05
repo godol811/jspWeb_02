@@ -63,6 +63,10 @@
 	  		});
 
 	  	});
+
+	  	function goBack(){
+			window.history.back();
+		  	}
 	      
 	</script>
 	<form name="book02" action="bookInsert.room" method="post" onsubmit="return cardCheck()">
@@ -73,16 +77,27 @@
 				<td>체크아웃</td>
 			</tr>
 			<tr>
-				<td> ${DATE1}  ${dto.roomCheckIn }</td>
-				<td> ${DATE2}  ${dto.roomCheckOut }</td>
+						<c:choose>
+							
+							<c:when test ="${empty sessionScope.DATE1 }">
+							<td><input type="text" name="date1" value="${DATE1direct}" readonly="readonly"> ${dto.roomCheckIn }</td>
+							<td><input type="text" name="date2" value="${DATE2direct}" readonly="readonly">  ${dto.roomCheckOut }</td>
+								<fmt:parseDate value="${DATE1direct}" var="strPlanDate" pattern="yyyy-MM-dd"/>
+								<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+								<fmt:parseDate value="${DATE2direct}" var="endPlanDate" pattern="yyyy-MM-dd"/>
+								<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber></c:when>
+							
+							<c:when test ="${not empty sessionScope.DATE1 }" >
+							<td><input type="text" name="date1" value="${DATE1}" readonly="readonly"> ${dto.roomCheckIn }</td>
+							<td><input type="text" name="date2" value="${DATE2}" readonly="readonly">  ${dto.roomCheckOut }</td>
+								<fmt:parseDate value="${DATE1}" var="strPlanDate" pattern="yyyy-MM-dd"/>
+								<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+								<fmt:parseDate value="${DATE2}" var="endPlanDate" pattern="yyyy-MM-dd"/>
+								<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber></c:when>
+						</c:choose>
 			</tr>
 			
-			<fmt:parseDate value="${DATE1}" var="strPlanDate" pattern="yyyy-MM-dd"/>
-			<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
-			<fmt:parseDate value="${DATE2}" var="endPlanDate" pattern="yyyy-MM-dd"/>
-			<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
 					
-
 
 			
 			
@@ -95,7 +110,12 @@
 			</tr>
 			<tr>
 			<!--  수정 필요(앞에서 roomCapa 값 가져오기) -->
-				<td><td align="center"><input type="number" name="guest" id="guest" max="${dto.roomCapa}" min="1" step="1" value="<%=session.getAttribute("GUEST")%>"> 명 </td>
+						<c:choose>
+							<c:when test ="${not empty sessionScope.DATE1 }">
+							<td><input type="text" name="roomCapa" value="<%=session.getAttribute("GUEST")%>"> 명 </td></c:when>
+							<c:when test ="${empty sessionScope.DATE1 }">
+							<td><input type="text" name="roomCapa" value="${GUESTdirect}">명 </td></c:when>
+						</c:choose>
 			</tr>
 			
 			<tr>
@@ -104,7 +124,7 @@
 			</tr>
 			<tr>
 				<!--  수정 필요 -->
-				<td>합 계</td><td>₩ ${dto.roomPrice*(endDate - strDate) }<%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
+				<td>합 계</td><td>₩ <input type="text" name="roomPriceTotal" value="${dto.roomPrice*(endDate - strDate) }" readonly="readonly"> <%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
 			</tr>
 			<tr>
 				<td>결제수단</td>
@@ -119,7 +139,7 @@
 				<td>CVC</td><td><input type="text" name="cardInfoDetail02" placeholder="123"></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="확인 및 결제하기" >
+				<td><input type="submit" value="확인 및 결제하기" ></td><td><input type="button" value="돌아가기" onclick="goBack();">
 			</tr>
 			</c:forEach>
 		</table>
