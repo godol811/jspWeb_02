@@ -86,19 +86,21 @@ public class HomeFrontController extends HttpServlet {
 		switch(com) {
 
 		//리뷰 CRUD-------------------------------
+		// 리뷰 더보기 메뉴
 		case ("/Rating_list.room"):
 			command = new RoomReviewSelectCommand();
 			command.execute(request, response, session);
 			viewPage = "Rating_list.jsp";
 			break;
 		
-			
+		// 리뷰 입력
 		case ("/Rating_InsertAction.room"):
 			command = new RoomReviewInsertCommand();
 			command.execute(request, response, session);
 			viewPage = "bookList.room";
 			break;
-			
+		
+		// 리뷰 삭제
 		case ("/delete.do"):
 			command = new RoomReviewDeleteCommand();
 			command.execute(request, response);

@@ -111,7 +111,7 @@ public class RoomListDao {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, ";
+			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, roomimage, ";
 			String query2 = "roomid, roomimagereal from room where roomdeletedate is null and userid = ?";
 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			preparedStatement.setString(1, userId);
@@ -166,8 +166,10 @@ public class RoomListDao {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select * from room where roomid = ?";
-			preparedStatement = connection.prepareStatement(query); // query 문장 연결
+			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, ";
+			String query2 = "roomimage, roomid, roomimagereal from room where roomid = ?";
+			
+			preparedStatement = connection.prepareStatement(query+query2); // query 문장 연결
 			preparedStatement.setInt(1, Integer.parseInt(stroomId));
 			resultSet = preparedStatement.executeQuery();
 			
@@ -239,7 +241,7 @@ public class RoomListDao {
 	
 	//-------------------------------
 	// 호스트 숙소 수정
-	public void roomRevise(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa, String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage, String roomImageReal) {
+	public void roomRevise(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa, String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -248,7 +250,7 @@ public class RoomListDao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "update room set roomtitle=?, roomcontent=?, roomprice=?, roomcapa=?, roomaddress=?, roomaddressdetail=?, roomcheckin=?, ";
-			String query2 = "roomcheckout=?, roomimage=?, roomimagereal=? where roomid = ?";
+			String query2 = "roomcheckout=?, roomimage=? where roomid = ?";
 			preparedStatement = connection.prepareStatement(query+query2);
 			preparedStatement.setString(1, roomTitle);
 			preparedStatement.setString(2, roomContent);
@@ -259,8 +261,7 @@ public class RoomListDao {
 			preparedStatement.setString(7, roomCheckIn);
 			preparedStatement.setString(8, roomCheckOut);
 			preparedStatement.setString(9, roomImage);
-			preparedStatement.setString(10, roomImageReal);
-			preparedStatement.setString(11, roomId);
+			preparedStatement.setString(10, roomId);
 			preparedStatement.executeUpdate();
 			
 			
@@ -290,7 +291,7 @@ public class RoomListDao {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomcheckin, roomcheckout, roomimage,  ";
+			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, roomimage,  ";
 			String query2 = "roomid, roomimagereal, roomdeletedate from room ";
 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			resultSet = preparedStatement.executeQuery();
@@ -348,7 +349,7 @@ public class RoomListDao {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomcheckin, roomcheckout, roomimage,  ";
+			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, roomimage,  ";
 			String query2 = " roomimagereal, roomdeletedate from room where roomid = ? ";
 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			preparedStatement.setInt(1, Integer.parseInt(roomId));

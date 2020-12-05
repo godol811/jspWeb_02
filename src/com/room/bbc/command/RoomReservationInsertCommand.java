@@ -26,8 +26,6 @@ public class RoomReservationInsertCommand implements Command {
 		String roomId = (String)session.getAttribute("ROOMID");
 		String bookCheckindate= request.getParameter("date1");
 		String bookCheckoutdate = request.getParameter("date2");
-		System.out.println(userId);
-		System.out.println(bookCheckindate);
 	
 		
 		String roomCapa = request.getParameter("roomCapa");

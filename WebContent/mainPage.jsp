@@ -154,7 +154,8 @@
 		</tr>
 		<tr>
 			<td align="center"><input type="text" name="location" id="location" placeholder="어디로 여행가세요?"/></td>
-			<td align="center"><input type="text" name="date1" id="date1" placeholder="날짜 추가" readonly="readonly"/></td>
+			<td align="center"><input type="text" name="d
+			ate1" id="date1" placeholder="날짜 추가" readonly="readonly"/></td>
 			<td align="center">~</td>
 			<td align="center"><input type="text" name="date2" id="date2" placeholder="날짜 추가" readonly="readonly"/> </td>
 			<td align="center"><input type="number" name="guest" id="guest" max="16" min="1" step="1" placeholder="게스트 추가" /> </td>

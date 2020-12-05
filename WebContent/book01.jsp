@@ -119,11 +119,13 @@
 			return false;
 		} 
     } 
-    function reviewWindow(){
-        var url="Rating_list.jsp";
-        window.open(url,"","width=400,height=400,left=600");
+ 
+    function openWindowPop(url, name){
+        var options = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no';
+        window.open(url, name, options);
     }
-      
+    
+    
     </script>
 </head>
 	
@@ -216,7 +218,7 @@
 				</tr>
 			</c:forEach>
 			<tr>
-				<td><input type="button" value="모든 후기 보기" onclick="location.href='Rating_list.room?roomId=${dto2.room_Roomid}'"> </td>
+				<td><input type="button" value="모든 후기 보기" onclick="window.open('Rating_list.room?roomId=<%=session.getAttribute("ROOMID")%>','','width=800, height=800, scrollbars=yes')"></td>
 			</tr>
  	</table>
  </form>

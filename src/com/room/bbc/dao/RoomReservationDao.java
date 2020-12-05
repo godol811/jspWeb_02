@@ -79,7 +79,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select roomcontent,roomtitle, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, ";
+			String query = "select roomcontent,roomtitle, roomprice, roomcapa, roomaddress, roomaddressdetail, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, roomimage, ";
 			String query2 = " roomimagereal from room where roomid = ? ";
 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			preparedStatement.setString(1, roomId);
@@ -232,18 +232,18 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 			String query = "select userinfo_userid, bookcheckindate, bookcheckoutdate, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal ";
 			String query2 = "from book b, room r where b.room_roomid = r.roomid and room_roomid= ?";
 			preparedStatement = connection.prepareStatement(query+query2);
-			preparedStatement.setString(1, roomId);
+			preparedStatement.setInt(1, Integer.parseInt(roomId));
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				String bookUserId = resultSet.getString("userinfo_userid");
-				String bookCheckInDate = resultSet.getString("bookcheckindate");
-				String bookCheckOutDate = resultSet.getString("bookcheckoutdate");
-				String bookCapa = Integer.toString(resultSet.getInt("bookcapa"));
+				String userinfo_userid = resultSet.getString("userinfo_userid");
+				String bookcheckindate = resultSet.getString("bookcheckindate");
+				String bookcheckoutdate = resultSet.getString("bookcheckoutdate");
+				String bookcapa = Integer.toString(resultSet.getInt("bookcapa"));
 				String bookPriceTotal = Integer.toString(resultSet.getInt("pricetotal"));
 				
 				// bean 선언
-				RoomReservationDto dto = new RoomReservationDto(bookUserId, bookCheckInDate, bookCheckOutDate, bookCapa, roomId, bookPriceTotal);
+				RoomReservationDto dto = new RoomReservationDto(userinfo_userid, bookcheckindate, bookcheckoutdate, bookcapa, roomId, bookPriceTotal);
 				dtos.add(dto); //arraylist에 추가
 				
 			}
@@ -263,6 +263,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		
 	}
 	
+	// 리뷰 찾기
 	public ArrayList<RoomReviewDto> roomReviewSearch(String userId) {
 		
 		ArrayList<RoomReviewDto> dtos = new ArrayList<RoomReviewDto>();
@@ -301,4 +302,54 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		return dtos;
 	}
 	
+//	// 예약현황 조건 검색
+//	public ArrayList<RoomReservationDto> hostReservationSearch( String roomId){
+//		
+//		ArrayList<RoomReservationDto> dtos = new ArrayList<RoomReservationDto>();
+//		
+////		if(search == null) {
+////			search = "bookcheckindate";
+////			searchWord ="";
+////		}
+////		
+//		Connection connection = null;
+//		PreparedStatement preparedStatement = null;
+//		ResultSet resultSet = null;
+//		//--->
+//		
+//		try {
+//			connection = dataSource.getConnection();
+//			String query = "select userinfo_userid, bookcheckindate, bookcheckoutdate, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal";
+//			String query2 = "from book b, room r where b.room_roomid = r.roomid and room_roomid= ?";
+//					// and " + search + " like '%"+searchWord + "'%";
+//			preparedStatement = connection.prepareStatement(query+query2);
+//			preparedStatement.setString(1,roomId));
+//			resultSet = preparedStatement.executeQuery();
+//			
+//			while(resultSet.next()) {
+//				String userinfo_userid = resultSet.getString("userinfo_userid");
+//				String bookcheckindate = resultSet.getString("bookcheckindate");
+//				String bookcheckoutdate = resultSet.getString("bookcheckoutdate");
+//				String bookcapa = resultSet.getString("bookcapa");
+//				String pricetotal = resultSet.getString("pricetotal");
+//				
+//				// bean 선언
+//				RoomReservationDto dto = new RoomReservationDto(userinfo_userid, bookcheckindate, bookcheckoutdate, bookcapa, roomId, pricetotal);
+//				dtos.add(dto);
+//			}
+//	
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {   //error가 걸렸든 안걸렸든 일로 마지막에는 온다. 쓰레기가 안쌓이도록. 다 close해서 
+//			try {
+//				if(preparedStatement != null) preparedStatement.close();
+//				if(connection != null) connection.close();
+//			} catch (Exception e) {
+//				e.printStackTrace(); //화면상에 보이는 에러는 여기서 찍히는 것이다.  
+//			}
+//		}
+//		return dtos;
+//	}
+//	
 }
