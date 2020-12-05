@@ -130,6 +130,7 @@
 			return false;
 		}
 		
+		
 		if(theForm.guest.value.trim().length==0){
 			alert("인원을 입력해주세요.");
 			theForm.guest.focus();
@@ -149,6 +150,7 @@
 			<td></td>
 			<td align="center"><h4>체크아웃</h4></td>
 			<td align="center"><h4>인원</h4></td>
+			
 		</tr>
 		<tr>
 			<td align="center"><input type="text" name="location" id="location" placeholder="어디로 여행가세요?"/></td>

@@ -25,6 +25,7 @@
 			<tr>
 				<td rowspan="5"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 				<td>숙소명</td><td>${dto.roomTitle }</td>
+				<td rowspan="5"><input type="button" name="detail" value="예약현황" onclick="location.href='hostRoomReservation.room?roomId=${dto.roomId}'"></td>
 				<td rowspan="5"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
 				<td rowspan="5"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
 			<tr>

@@ -15,16 +15,6 @@ public class RoomReviewInsertCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//자동생성 필요없음
-//		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
-		String userinfo_Userid = request.getParameter("userinfo_Userid");
-		int room_Roomid = Integer.parseInt(request.getParameter("room_Roomid"));
-		String reviewTitle = request.getParameter("reviewTitle");
-		String reviewContent = request.getParameter("reviewContent");
-		double reviewRate = Double.parseDouble(request.getParameter("reviewRate"));
-		
-		RoomReviewDao dao = new RoomReviewDao();
-		dao.write(userinfo_Userid, room_Roomid, reviewTitle, reviewContent, reviewRate);
 		
 		
 	}
@@ -34,6 +24,16 @@ public class RoomReviewInsertCommand implements Command {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		//자동생성 필요없음
+//		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		String bookId= request.getParameter("bookId");
+		String userinfo_Userid = (String)session.getAttribute("USERID");
+		int room_Roomid = Integer.parseInt(request.getParameter("room_Roomid"));
+		String reviewContent = request.getParameter("reviewContent");
+		double reviewRate = Double.parseDouble(request.getParameter("reviewRate"));
+		
+		RoomReviewDao dao = new RoomReviewDao();
+		dao.write(bookId, userinfo_Userid, room_Roomid, reviewContent, reviewRate);
 	}
 
 }

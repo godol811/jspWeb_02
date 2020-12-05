@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.room.bbc.command.Command;
 import com.room.bbc.command.HostRoomListCommand;
+import com.room.bbc.command.HostRoomReservationSelectCommand;
 import com.room.bbc.command.HostRoomViewCommand;
 import com.room.bbc.command.JoinCheckCommand;
 import com.room.bbc.command.PagingCommand1;
@@ -86,19 +87,16 @@ public class HomeFrontController extends HttpServlet {
 
 		//리뷰 CRUD-------------------------------
 		case ("/Rating_list.room"):
-			command = new RoomReviewSelectCommand();
-			command.execute(request, response);
+			command = new RoomReservationSelectCommand();
+			command.execute(request, response, session);
 			viewPage = "Rating_list.jsp";
 			break;
 		
-		case ("/Rating_Write.room"): // 입력화면
-			viewPage = "Rating_write.jsp";
-		break;
 			
 		case ("/Rating_InsertAction.room"):
 			command = new RoomReviewInsertCommand();
-			command.execute(request, response);
-			viewPage = "Rating_list.room";
+			command.execute(request, response, session);
+			viewPage = "bookList.room";
 			break;
 			
 		case ("/delete.do"):
@@ -128,7 +126,7 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "book02.jsp"; 
 			break;	
 		
-			// 숙소 예약 조회(회원)
+		// 숙소 예약 조회(회원)
 		case ("/bookList.room"):
 			command = new UserRoomReservationSelectCommand();
 			command.execute(request, response, session);
@@ -218,6 +216,13 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "mainPage.jsp";
 			break;
 			
+		//호스트 예약현황 조회
+		case ("/hostRoomReservation.room"):
+			command = new HostRoomReservationSelectCommand();
+			command.execute(request, response, session);
+			viewPage = "HostRoomReservationSelect.jsp";
+			break;
+		
 		//호스트 숙소 리스트
 		case ("/hostRoomList.room"):
 			command = new HostRoomListCommand();

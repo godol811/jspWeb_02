@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.room.bbc.dao.RoomReservationDao;
 import com.room.bbc.dto.RoomReservationDto;
+import com.room.bbc.dto.RoomReviewDto;
 
 public class UserRoomReservationSelectCommand implements Command {
 
@@ -31,6 +32,10 @@ public class UserRoomReservationSelectCommand implements Command {
 		
 		request.setAttribute("roomReservationList", dtos);
 		
+		
+		ArrayList<RoomReviewDto> dtos2= dao.roomReviewSearch(userId);
+		
+		request.setAttribute("REVIEWID", dtos2);
 	}
 
 }

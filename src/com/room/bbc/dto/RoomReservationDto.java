@@ -27,8 +27,36 @@ public class RoomReservationDto {
 	
 	
 	
-	
-	
+	public RoomReservationDto(String bookId, String roomTitle, String roomContent, String bookCheckInDate,
+			String bookCheckOutDate, String bookCapa, String roomImage, String roomId) {
+		super();
+		this.bookId = bookId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.bookCheckInDate = bookCheckInDate;
+		this.bookCheckOutDate = bookCheckOutDate;
+		this.bookCapa = bookCapa;
+		this.roomImage = roomImage;
+		this.roomId = roomId;
+	}
+
+
+
+
+
+	public RoomReservationDto(String userId, String bookCheckInDate, String bookCheckOutDate, String bookCapa,
+			String roomId, String roomPriceTotal) {
+		super();
+		this.userId = userId;
+		this.bookCheckInDate = bookCheckInDate;
+		this.bookCheckOutDate = bookCheckOutDate;
+		this.bookCapa = bookCapa;
+		this.roomId = roomId;
+		this.roomPriceTotal = roomPriceTotal;
+	}
+
+
+
 	public RoomReservationDto(String userId, String roomTitle, String roomContent, String bookCheckInDate,
 			String bookCheckOutDate, String bookCapa, String roomImage, String roomAddress, String roomAddressDetail,
 			String roomPriceTotal) {
