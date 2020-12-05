@@ -28,10 +28,5 @@ public class RoomDeleteCommand implements Command {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'master' of https://github.com/godol811/jspWeb_02.git
 	}
-
 }
