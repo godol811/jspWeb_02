@@ -42,15 +42,11 @@ public class RoomReservationSelectCommand implements Command {
 	
 	
 	request.setAttribute("list", dtos);
-<<<<<<< HEAD
 	request.setAttribute("DATE1direct", date1);
 	request.setAttribute("DATE2direct", date2);
 	request.setAttribute("GUESTdirect", guest);
 	
-=======
 	request.setAttribute("reviewList", dtos2);
->>>>>>> branch 'master' of https://github.com/godol811/jspWeb_02.git
-//	System.out.println(dtos);
 
 		
 	}

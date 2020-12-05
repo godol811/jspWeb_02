@@ -50,6 +50,7 @@
         }
         
         else if(userState.equals("관리자")){
+        	session.setAttribute("USERID", userId);
         	msg = "adminCheck.jsp";
         }
         

@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class MessegeSelectCommand implements Command {
+import com.room.bbc.command.Command;
+import com.room.bbc.dao.BoardDao;
+
+public class AdminNotifyDeleteCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +22,10 @@ public class MessegeSelectCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String boardId = (String)request.getParameter("boardId");
+		BoardDao dao = new BoardDao();
+		dao.delete(boardId);
+		
 	}
 
 }

@@ -2,22 +2,63 @@ package com.room.bbc.dto;
 
 import java.sql.Timestamp;
 
-public class MessegeDto {
+public class MessageDto {
 	
 	String messageId;
-	String messageContent;
-	String userinfo_userId;
-	String room_roomId;
-	String room_userId;
 	Timestamp messageDate;
+	String userinfo_userId;
+	String messageContent;
+	String room_userId;
+	String room_roomId;
+	String bookId;
 	
-	
-	public MessegeDto() {
+	public MessageDto() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+
+
+	public MessageDto(String room_userId, Timestamp messageDate) {
+		super();
+		this.room_userId = room_userId;
+		this.messageDate = messageDate;
+	}
+
+	
+
+
+
+	public MessageDto(String room_userId, String room_roomId, String bookId) {
+		super();
+		this.room_userId = room_userId;
+		this.room_roomId = room_roomId;
+		this.bookId = bookId;
 	}
 
 
-	public MessegeDto(String messageId, String messageContent, String userinfo_userId, String room_roomId,
+
+
+
+	public MessageDto(Timestamp messageDate, String userinfo_userId, String messageContent) {
+		super();
+		this.messageDate = messageDate;
+		this.userinfo_userId = userinfo_userId;
+		this.messageContent = messageContent;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public MessageDto(String messageId, String messageContent, String userinfo_userId, String room_roomId,
 			String room_userId, Timestamp messageDate) {
 		super();
 		this.messageId = messageId;
@@ -27,6 +68,22 @@ public class MessegeDto {
 		this.room_userId = room_userId;
 		this.messageDate = messageDate;
 	}
+
+
+	public String getBookId() {
+		return bookId;
+	}
+
+
+
+
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
+
+
+
 
 
 	public String getMessageId() {
