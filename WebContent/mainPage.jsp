@@ -183,32 +183,32 @@
 		</colgroup>
 		
 		<tr>
-			<td><a href="login.jsp?location=%ed%95%9c%ea%b8%80%0d%0a"><img src="./images/busan.jpg" width="70px" height="70px"></a></td>
+			<td><a href="roomSearchDirect.room?location=서울"><img src="./images/busan.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=%ed%95%9c%ea%b8%80%0d%0a">부산 <br>차로 5시간 거리</a></td>
-			<td><a href="login.jsp?location=전주"><img src="./images/jeonju.jpg" width="70px" height="70px"></a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=서울">서울 <br>차로 5시간 거리</a></td>
+			<td><a href="roomSearchDirect.room?location=전주"><img src="./images/jeonju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=전주">전주시<br>차로 3시간 거리</a></td>
-			<td><a href="login.jsp?location=양양"><img src="./images/yangyang.jpg" width="70px" height="70px"></a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=전주">전주시<br>차로 3시간 거리</a></td>
+			<td><a href="roomSearchDirect.room?location=양양"><img src="./images/yangyang.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=양양">양양군<br>차로 2.5시간 거리</a></td>
-			<td><a href="login.jsp?location=속초"><img src="./images/cho.jpg" width="70px" height="70px"></a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=양양">양양군<br>차로 2.5시간 거리</a></td>
+			<td><a href="roomSearchDirect.room?location=속초"><img src="./images/cho.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=속초">속초시<br>차로 2.5시간 거리</a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=속초">속초시<br>차로 2.5시간 거리</a></td>
 		</tr>
 		<tr>
-			<td><a href="login.jsp?location=대구"><img src="./images/daegu.jpg" width="70px" height="70px"></a></td>
+			<td><a href="roomSearchDirect.room?location=대구"><img src="./images/daegu.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=대구">대구<br>차로 4시간 거리</a></td>
-			<td><a href="login.jsp?location=완주"><img src="./images/wanju.jpg" width="70px" height="70px"></a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=대구">대구<br>차로 4시간 거리</a></td>
+			<td><a href="roomSearchDirect.room?location=완주"><img src="./images/wanju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=완주">완주군<br>차로 2.5시간 거리</a></td>
-			<td><a href="login.jsp?location=강릉"><img src="./images/gangneung.jpg" width="70px" height="70px"></a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=완주">완주군<br>차로 2.5시간 거리</a></td>
+			<td><a href="roomSearchDirect.room?location=강릉"><img src="./images/gangneung.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=강릉">강릉시</a><br>차로 3시간 거리</td>
-			<td><a href="login.jsp?location=경주"><img src="./images/gyeongju.jpg" width="70px" height="70px"></a></td>
+			<td align="left"><a href="roomSearch.room??location=강릉">강릉시</a><br>차로 3시간 거리</td>
+			<td><a href="roomSearchDirect.room?location=경주"><img src="./images/gyeongju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="login.jsp?location=경주">경주시<br>차로 4시간 거리</a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=경주">경주시<br>차로 4시간 거리</a></td>
 		</tr>
 		
 		</table>

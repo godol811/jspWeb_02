@@ -41,13 +41,21 @@
 			</c:forEach>
 			<tr>
 			<td colspan="7" width="50" align="center" >
-			<c:forEach  begin="1" end="${totalPage}" varStatus="status"> 	
-			<a href="roomSearchPaging.room?page=${status.count}&location=<%=session.getAttribute("LOCATION")%>&guest=<%=session.getAttribute("GUEST")%>">[${status.count}]</a>
+			<c:forEach  begin="1" end="${totalPage}" varStatus="status"> 
+			
+			<c:choose>
+				<c:when test ="${empty sessionScope.DATE1 }">
+				<a href="roomSearchPagingDirect.room?page=${status.count}&location=<%=session.getAttribute("LOCATION")%>">[${status.count}]</a></c:when>
+				<c:when test ="${not empty sessionScope.DATE1 }" >
+				<a href="roomSearchPaging.room?page=${status.count}&location=<%=session.getAttribute("LOCATION")%>&guest=<%=session.getAttribute("GUEST")%>">[${status.count}]</a></c:when>
+			</c:choose>
+			
+				
 			</c:forEach></td>
 			
 			</tr>
 			</table>
-			
+
 			
 			
 			

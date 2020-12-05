@@ -17,6 +17,8 @@ import com.room.bbc.command.HostRoomViewCommand;
 import com.room.bbc.command.JoinCheckCommand;
 import com.room.bbc.command.PagingCommand1;
 import com.room.bbc.command.PagingCommand2;
+import com.room.bbc.command.PagingCommandDirect1;
+import com.room.bbc.command.PagingCommandDirect2;
 import com.room.bbc.command.RoomAdminDeleteCommand;
 import com.room.bbc.command.RoomAdminSelectCommand;
 import com.room.bbc.command.RoomAdminUpdateCommand;
@@ -262,6 +264,24 @@ public class HomeFrontController extends HttpServlet {
 			break;
 
 		
+			
+		//-----------------검색결과 링크 다이렉트-------------------------
+		// 검색	
+		case ("/roomSearchPagingDirect.room"):
+			command = new PagingCommandDirect2();  //페이징
+			command.execute(request, response, session);
+			viewPage = "RoomSearchList.jsp";
+			break;
+		
+		
+		
+		case ("/roomSearchDirect.room"):
+			command = new PagingCommandDirect1(); //리스트 첫번째 페이지
+			command.execute(request, response, session);
+			viewPage = "RoomSearchList.jsp";
+			break;
+			
+			
 		default :
 			viewPage = "mainPage.jsp";
 			break; 

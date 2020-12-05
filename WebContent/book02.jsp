@@ -73,8 +73,8 @@
 				<td>체크아웃</td>
 			</tr>
 			<tr>
-				<td><input type="text" id="date1" name="date1" class="form-control" value="${DATE1}" style="width:100px; font-size: 10px;"> ${dto.roomCheckIn }</td>
-				<td><input type="text" id="date2" name="date2" class="form-control" value="${DATE2}"  style="width:100px; font-size: 10px;"> ${dto.roomCheckOut }</td>
+				<td> ${DATE1}  ${dto.roomCheckIn }</td>
+				<td> ${DATE2}  ${dto.roomCheckOut }</td>
 			</tr>
 			
 			<fmt:parseDate value="${DATE1}" var="strPlanDate" pattern="yyyy-MM-dd"/>
@@ -87,7 +87,7 @@
 			
 			
 			<tr>
-				<td colspan="2" align="center"><h2>총${endDate - strDate }박</h2></td>
+				<td colspan="2" align="center">총${endDate - strDate }박</td>
 				
 			</tr>
 			<tr>
@@ -100,7 +100,11 @@
 			
 			<tr>
 				<!--  수정 필요 -->
-				<td>합 계</td><td>₩<input type="text"name="roomPriceTotal" value="${dto.roomPrice*(endDate - strDate) }"> <%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
+				<td>1박 /</td><td>₩ ${dto.roomPrice} <%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
+			</tr>
+			<tr>
+				<!--  수정 필요 -->
+				<td>합 계</td><td>₩ ${dto.roomPrice*(endDate - strDate) }<%-- <%=roomPrice*(checkinTime - checkoutTime) --%></td>
 			</tr>
 			<tr>
 				<td>결제수단</td>
