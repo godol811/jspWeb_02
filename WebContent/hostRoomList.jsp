@@ -11,6 +11,7 @@
 </head>
 <body>
 <input type="button" name="insertRoom" onclick="location.href='hostRegisterRoom01.jsp'" value="숙소등록">
+	<form action="hostRoomDelete.room?roomId=${dto.roomId}" method="post">
 	<table border="1">
 	  <colgroup>
 			<col width="80px">
@@ -26,7 +27,6 @@
 				<td>숙소명</td><td>${dto.roomTitle }</td>
 				<td rowspan="5"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
 				<td rowspan="5"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
-			</tr>
 			<tr>
 				<td>숙소설명</td><td>${dto.roomContent }</td>
 			</tr>
@@ -42,5 +42,6 @@
 			
 		</c:forEach>
 	</table>
+	</form>
 </body>
 </html>

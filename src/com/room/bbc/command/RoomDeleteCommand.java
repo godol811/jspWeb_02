@@ -17,9 +17,9 @@ public class RoomDeleteCommand implements Command {
 		
 		
 		String roomId = request.getParameter("roomId");
-		
+		System.out.println(roomId);
 		RoomListDao dao = new RoomListDao();
-		dao.roomDelete(roomId);
+		dao.adminRoomDelte(roomId);
 		
 	}
 
@@ -28,6 +28,10 @@ public class RoomDeleteCommand implements Command {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> branch 'master' of https://github.com/godol811/jspWeb_02.git
 	}
 
 }
