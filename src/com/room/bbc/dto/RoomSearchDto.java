@@ -17,6 +17,8 @@ public class RoomSearchDto {
 	String roomImage;
 	String roomImageReal;
 	Timestamp roomDeleteDate;
+	String roomGpsx;
+	String roomGpsy;
 	
 	int rowCount;
 	
@@ -51,6 +53,26 @@ public class RoomSearchDto {
 		this.roomImage = roomImage;
 		this.roomImageReal = roomImageReal;
 	}
+
+	public RoomSearchDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
+			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
+			String roomImageReal, String roomGpsx, String roomGpsy) {
+		super();
+		this.roomId = roomId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.roomPrice = roomPrice;
+		this.roomCapa = roomCapa;
+		this.roomAddress = roomAddress;
+		this.roomAddressDetail = roomAddressDetail;
+		this.roomCheckIn = roomCheckIn;
+		this.roomCheckOut = roomCheckOut;
+		this.roomImage = roomImage;
+		this.roomImageReal = roomImageReal;
+		this.roomGpsx = roomGpsx;
+		this.roomGpsy = roomGpsy;
+	}
+
 
 	public RoomSearchDto(int rowCount) {
 		super();
@@ -219,6 +241,26 @@ public class RoomSearchDto {
 
 	public void setSearchBox(String searchBox) {
 		SearchBox = searchBox;
+	}
+
+
+	public String getRoomGpsx() {
+		return roomGpsx;
+	}
+
+
+	public void setRoomGpsx(String roomGpsx) {
+		this.roomGpsx = roomGpsx;
+	}
+
+
+	public String getRoomGpsy() {
+		return roomGpsy;
+	}
+
+
+	public void setRoomGpsy(String roomGpsy) {
+		this.roomGpsy = roomGpsy;
 	}
 	
 	

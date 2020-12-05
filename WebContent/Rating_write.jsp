@@ -52,6 +52,8 @@
 				<td><input type="number" step="0.5" max="5" min="0" size="30" name="reviewRate" placeholder="0-5 사이를 입력하세요">
 			</tr>	
 			<tr>
+			<tr>
+				<td><input type="submit" value="입력" name="submit"></td>
 				<td align="center">내용</td>
 				<td></td>
 				<td><textarea name="reviewContent" ></textarea></td>

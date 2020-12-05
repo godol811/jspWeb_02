@@ -21,5 +21,5 @@ public class BoardInsertCommand implements Command {
 		// TODO Auto-generated method stub
 
 	}
-
+		
 }

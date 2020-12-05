@@ -79,7 +79,7 @@ DataSource dataSource;
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
 			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, ";
-			String query2 = "roomid, roomimagereal from room.room where roomaddress like  '%"+ location + "%' and roomcapa>= '" + guest + "' and roomdeletedate is null ";
+			String query2 = "roomid, roomimagereal,roomgpsx,roomgpsy from room.room where roomaddress like  '%"+ location + "%' and roomcapa>= '" + guest + "' and roomdeletedate is null ";
 			String query3 = "and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "'>= bookcheckindate and '"+ roomCheckoutDate+"' <=bookcheckoutdate) ";
 			preparedStatement = connection.prepareStatement(query + query2 + query3); // query 문장 연결
 			resultSet = preparedStatement.executeQuery();
@@ -96,9 +96,11 @@ DataSource dataSource;
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
+				String roomGpsx = resultSet.getString("roomgpsx");
+				String roomGpsy = resultSet.getString("roomgpsy");
 				
 				// bean 선언
-				RoomSearchDto dto = new RoomSearchDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				RoomSearchDto dto = new RoomSearchDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal, roomGpsx, roomGpsy);
 				dtos.add(dto);  //arraylist에 추가
 				
 			}
@@ -129,7 +131,7 @@ DataSource dataSource;
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
 			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, roomcheckin, roomcheckout, roomimage, ";
-			String query2 = "roomid, roomimagereal from room.room where roomaddress like  '%"+ location + "%' and roomdeletedate is null ";
+			String query2 = "roomid, roomimagereal,roomgpsx,roomgpsy from room.room where roomaddress like  '%"+ location + "%' and roomdeletedate is null ";
 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			resultSet = preparedStatement.executeQuery();
 			
@@ -145,9 +147,10 @@ DataSource dataSource;
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
-				
+				String roomGpsx = resultSet.getString("roomgpsx");
+				String roomGpsy = resultSet.getString("roomgpsy");
 				// bean 선언
-				RoomSearchDto dto = new RoomSearchDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				RoomSearchDto dto = new RoomSearchDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal, roomGpsx, roomGpsy);
 				dtos.add(dto);  //arraylist에 추가
 				
 			}

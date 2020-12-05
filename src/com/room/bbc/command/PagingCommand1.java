@@ -60,6 +60,7 @@ public class PagingCommand1 implements Command {
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("location", location);
 		request.setAttribute("guest", guest);
+		
 
 	}
 

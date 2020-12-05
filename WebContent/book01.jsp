@@ -165,17 +165,33 @@
 				<td>체크인</td><td>체크아웃</td>
 			</tr>
 			<tr>
-				<td align="center"><input type="text" name="date1" id="date1" value="<%=session.getAttribute("DATE1")%>" placeholder="날짜 추가" readonly="readonly"/></td>
-				<td align="center"><input type="text" name="date2" id="date2" value="<%=session.getAttribute("DATE2")%>" placeholder="날짜 추가" readonly="readonly"/></td>
+			<c:choose>
+				<c:when test ="${empty sessionScope.DATE1 }">
+				<td align="center"><input type="text" name="date1" id="date1" value="체크인 날짜를 입력하세요" placeholder="" readonly="readonly"/></td>
+				<td align="center"><input type="text" name="date2" id="date2" value="체크아웃 날짜를 입력하세요" placeholder="" readonly="readonly"/></td></c:when>
+				
+				<c:when test ="${not empty sessionScope.DATE1 }" >
+				<td align="center"><input type="text" name="date1" id="date1" value="<%=session.getAttribute("DATE1")%>" placeholder="" readonly="readonly"/></td>
+				<td align="center"><input type="text" name="date2" id="date2" value="<%=session.getAttribute("DATE2")%>" placeholder="" readonly="readonly"/></td></c:when>
+			</c:choose>
+			
 			</tr>
 			</c:forEach>
+			
 			
 			
 			
 			<tr>
 			<!-- -------------------------------- -->
 			<!--  수정 해야되는 부분 -->
-				<td align="left" colspan="2">게스트<input type="number" name="guest" id="guest" value="<%=session.getAttribute("GUEST")%>" max="${dto.roomCapa} " min="1" step="1"/> 명 </td>
+			<c:choose>
+				<c:when test ="${empty sessionScope.DATE1 }">
+				<td align="left" colspan="2">게스트<input type="number" name="guest" id="guest" value=""									  placeholder="인원수를 입력하세요" max="${dto.roomCapa} " min="1" step="1"/> 명 </td></c:when>
+				<c:when test ="${not empty sessionScope.DATE1 }" >
+				<td align="left" colspan="2">게스트<input type="number" name="guest" id="guest" value="<%=session.getAttribute("GUEST") %>" placeholder="인원수를 입력하세요" max="${dto.roomCapa} " min="1" step="1"/> 명 </td></c:when>
+			</c:choose>	
+			
+			
 			</tr>
 			<tr>
 				<c:choose>
