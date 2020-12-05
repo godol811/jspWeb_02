@@ -47,8 +47,6 @@ public class RoomReservationSelectCommand implements Command {
 	request.setAttribute("GUESTdirect", guest);
 	
 	request.setAttribute("reviewList", dtos2);
-	
-//	System.out.println(dtos);
 
 		
 	}

@@ -10,6 +10,7 @@
 
 <button type="button" onclick="location.href='AdminUserList.room'"><h2>회원 리스트 보기</h2></button>
 <button type="button" onclick="location.href='AdminRoomList.room'"><h2>숙소 리스트 보기</h2></button>
+<button type="button" onclick="location.href='AdminNotifyList.room'"><h2>공지사항</h2></button>
 
 
 

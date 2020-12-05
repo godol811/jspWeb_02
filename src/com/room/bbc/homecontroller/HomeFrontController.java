@@ -11,11 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.room.bbc.command.AdminNotifyDeleteCommand;
+import com.room.bbc.command.AdminNotifyInsertCommand;
+import com.room.bbc.command.AdminNotifyListCommand;
+import com.room.bbc.command.AdminNotifyModifyListCommand;
+import com.room.bbc.command.AdminNotifyUpdateCommand;
 import com.room.bbc.command.Command;
 import com.room.bbc.command.HostRoomListCommand;
 import com.room.bbc.command.HostRoomReservationSelectCommand;
 import com.room.bbc.command.HostRoomViewCommand;
 import com.room.bbc.command.JoinCheckCommand;
+import com.room.bbc.command.MessageInsertCommand;
+import com.room.bbc.command.MessageListCommand;
+import com.room.bbc.command.MessageSelectCommand;
+import com.room.bbc.command.MessageSelectHostCommand;
 import com.room.bbc.command.PagingCommand1;
 import com.room.bbc.command.PagingCommand2;
 import com.room.bbc.command.PagingCommandDirect1;
@@ -210,6 +219,34 @@ public class HomeFrontController extends HttpServlet {
 		viewPage="AdminRoomList.room";
 		break;
 		
+		case("/AdminNotifyList.room"):		
+			command = new AdminNotifyListCommand();
+		command.execute(request, response, session);
+		viewPage="AdminNotifyList.jsp";
+		break;
+		case("/AdminNotifyModify.room"):		
+			command = new AdminNotifyModifyListCommand();
+			command.execute(request, response, session);
+		viewPage="AdminNotifyModify.jsp";
+		break;
+		case("/AdminNotifyModifyAction.room"):		
+			command = new AdminNotifyUpdateCommand();
+			command.execute(request, response, session);
+		viewPage="AdminNotifyList.room";
+		break;
+		case("/AdminNotifyDelete.room"):		
+			command = new AdminNotifyDeleteCommand();
+		command.execute(request, response, session);		
+		viewPage="AdminNotifyList.room";
+		break;
+		case("/AdminNotifyInsert.room"):		
+			command = new AdminNotifyInsertCommand();
+		command.execute(request, response, session);
+		viewPage="AdminNotifyList.room";
+		break;
+		
+		
+		
 		//----------------- 호스트 메뉴-------------------------
 		//호스트 숙소 등록
 		case ("/hostRegister.room"):
@@ -286,6 +323,37 @@ public class HomeFrontController extends HttpServlet {
 			command = new PagingCommandDirect1(); //리스트 첫번째 페이지
 			command.execute(request, response, session);
 			viewPage = "RoomSearchList.jsp";
+			break;
+			
+			//-----------------메세지-------------------------
+			// 검색	
+			
+			
+		case("/userMessage.room"):
+			command = new MessageListCommand();
+			command.execute(request, response);
+			command = new MessageSelectHostCommand();
+			command.execute(request, response);
+			viewPage = "div2.jsp";//@@@@@@@@@@@@@@@@@
+			break;
+		
+		case ("/view.room"): //메세지 보내기.
+			viewPage = "sendMessage.jsp";
+		
+			break;
+			
+		case ("/sendMessage.room")://DB주고받은 메세지 입력.
+			command = new MessageInsertCommand();
+			command.execute(request, response);
+			viewPage = "messageList.room";
+			break;
+			
+		case ("/messageList.room"): //주고 받은 메세지 보이기
+			command = new MessageSelectCommand();
+			command .execute(request, response);
+			command = new MessageListCommand();//@@@@@@@
+			command.execute(request, response);//@@@@@@@
+			viewPage = "div2.jsp"; //@@@@@@@@@@@@@@@@@@@@
 			break;
 			
 			
