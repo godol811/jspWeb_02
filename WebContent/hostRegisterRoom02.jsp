@@ -96,7 +96,7 @@
 				<td colspan="2">3. 멋진 사진으로 숙소가 돋보이게 해주세요.</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="file" name="roomImage01"/></td>
+				<td colspan="2"><input type="file" name="roomImage01"/></td><td><input type="text" name="originImage" value="<%=roomImage %>" readonly="readonly"> </td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="file" name="roomImage02"/></td>

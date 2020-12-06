@@ -29,6 +29,7 @@ public class RoomReviewDao {
 			e.printStackTrace();
 		}
 	}
+	
 	// 해당 숙소의 리뷰 불러오기
 	public ArrayList<RoomReviewDto> list(String roomId) {
 		
@@ -134,7 +135,7 @@ public class RoomReviewDao {
 	}
 	
 	//reviewTitle, reviewContent, reviewRate, reviewDate) values (?,?,?,?,now()
-//리뷰 수정하기
+	//리뷰 수정하기
 	public int update(String ReviewTitle,String ReviewContent, double ReviewRate,int ReviewId) {
 		int check=0;
 		Connection connection = null;
@@ -166,7 +167,5 @@ public class RoomReviewDao {
 		return check;
 	}
 	
-	
-		
 	
 }

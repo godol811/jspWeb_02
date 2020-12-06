@@ -11,13 +11,13 @@
 <title>예약 목록</title>
 </head>
 <body>
-
+	
 	<table border="1">
-		<c:forEach items="${roomReservationList }" var = "dto" >
+		<c:forEach items="${roomReservationList }" var = "dto" varStatus="status">
 			<tr>
 				<td rowspan="2"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 				<td><a href="bookView.room?bookId=${dto.bookId }"> ${dto.roomTitle }</a></td>
-				<td rowspan="2"><input type="button" value="리뷰 작성하기" onclick="location.href='Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }'"></td>
+						<td rowspan="2"><input type="button" value="리뷰 작성하기" onclick="location.href='Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }'"></td>
 			</tr>
 			<tr>
 				<td>${dto.bookCheckInDate } ~ ${dto.bookCheckOutDate }</td>
@@ -27,5 +27,6 @@
 			<td><input type="button" value="목록보기" onClick="history.go(-1)" style="align-items: right"></td>
 		</tr>
 	</table>
+	
 </body>
 </html>

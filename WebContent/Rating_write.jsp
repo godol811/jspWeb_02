@@ -53,9 +53,7 @@
 			</tr>	
 			<tr>
 			<tr>
-				<td><input type="submit" value="입력" name="submit"></td>
 				<td align="center">내용</td>
-				<td></td>
 				<td><textarea name="reviewContent" ></textarea></td>
 			<tr>
 				<td><input type="submit" value="입력" name="submit"></td>
