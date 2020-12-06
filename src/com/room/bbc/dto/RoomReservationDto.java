@@ -6,21 +6,22 @@ public class RoomReservationDto {
 	String bookId;
 	String roomTitle;
 	String roomContent;
-	String roomPrice;
-	String roomCapa;
-	String roomAddress;
-	String roomAddressDetail;
 	String roomCheckIn;
 	String roomCheckOut;
+	String bookCapa;
 	String roomImage;
+	String roomAddress;
+	String roomAddressDetail;
+	String roomPriceTotal;
+	String roomPrice;
+	String roomCapa;
 	String roomImageReal;
 	String roomId;
 	String roomGpsx;
 	String roomGpsy;
 	String bookCheckInDate;
 	String bookCheckOutDate;
-	String bookCapa;
-	String roomPriceTotal;
+	String roomuserId;
 	
 	public RoomReservationDto() {
 		// TODO Auto-generated constructor stub
@@ -28,6 +29,27 @@ public class RoomReservationDto {
 	
 	
 	
+	public RoomReservationDto(String userId, String bookId, String roomTitle, String roomContent, String roomCheckIn,
+			String roomCheckOut, String bookCapa, String roomImage, String roomAddress, String roomAddressDetail,
+			String roomPriceTotal, String roomImageReal,String roomuserId) {
+		super();
+		this.userId = userId;
+		this.bookId = bookId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.roomCheckIn = roomCheckIn;
+		this.roomCheckOut = roomCheckOut;
+		this.bookCapa = bookCapa;
+		this.roomImage = roomImage;
+		this.roomAddress = roomAddress;
+		this.roomAddressDetail = roomAddressDetail;
+		this.roomPriceTotal = roomPriceTotal;
+		this.roomImageReal = roomImageReal;
+		this.roomuserId = roomuserId;
+	}
+
+
+
 	public RoomReservationDto(String bookId, String roomTitle, String roomContent, String bookCheckInDate,
 			String bookCheckOutDate, String bookCapa, String roomImage, String roomId) {
 		super();
@@ -45,23 +67,17 @@ public class RoomReservationDto {
 
 
 
-	public RoomReservationDto(String roomTitle, String roomContent, String roomPrice, String roomCapa,
-			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
-			String roomImageReal, String roomId, String roomGpsx, String roomGpsy) {
-		super();
-		this.roomTitle = roomTitle;
-		this.roomContent = roomContent;
-		this.roomPrice = roomPrice;
-		this.roomCapa = roomCapa;
-		this.roomAddress = roomAddress;
-		this.roomAddressDetail = roomAddressDetail;
-		this.roomCheckIn = roomCheckIn;
-		this.roomCheckOut = roomCheckOut;
-		this.roomImage = roomImage;
-		this.roomImageReal = roomImageReal;
-		this.roomId = roomId;
-		this.roomGpsx = roomGpsx;
-		this.roomGpsy = roomGpsy;
+
+
+
+	public String getRoomuserId() {
+		return roomuserId;
+	}
+
+
+
+	public void setRoomuserId(String roomuserId) {
+		this.roomuserId = roomuserId;
 	}
 
 

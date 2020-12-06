@@ -134,13 +134,13 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
+			String query = "select b.bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				String bookId = Integer.toString(resultSet.getInt("bookid"));
+				String bookId = Integer.toString(resultSet.getInt("b.bookid"));
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				String roomTitle = resultSet.getString("roomtitle");
 				String roomContent = resultSet.getString("roomcontent");
@@ -181,11 +181,10 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select userid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomaddress, roomaddressdetail, roomimage, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal";
-			String query2 =" from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ? and bookid = ?";
+			String query = "select userid, r.userId, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomaddress, roomaddressdetail, roomimage, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal, roomimagereal";
+			String query2 =" from book b, room r where b.room_roomid = r.roomid and bookid = ?";
 			preparedStatement = connection.prepareStatement(query+query2); // query 문장 연결
-			preparedStatement.setString(1, userId);
-			preparedStatement.setInt(2, Integer.parseInt(bookId));
+			preparedStatement.setInt(1, Integer.parseInt(bookId));
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
@@ -198,8 +197,10 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 				String roomCheckIn = resultSet.getString("bookcheckindate");
 				String roomCheckOut = resultSet.getString("bookcheckoutdate");
 				String roomImage = resultSet.getString("roomimage");
+				String roomImageReal = resultSet.getString("roomimageReal");
+				String roomuserId = resultSet.getString("r.userid");
 				
-				dto = new RoomReservationDto(userId, roomTitle, roomContent, roomCheckIn, roomCheckOut, bookCapa, roomImage, roomAddress, roomAddressDetail, roomPriceTotal);
+				dto = new RoomReservationDto(userId,bookId,roomTitle, roomContent, roomCheckIn, roomCheckOut, bookCapa, roomImage, roomAddress, roomAddressDetail, roomPriceTotal,roomImageReal,roomuserId);
 				
 			}
 			

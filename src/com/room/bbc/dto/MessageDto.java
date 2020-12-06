@@ -20,8 +20,9 @@ public class MessageDto {
 	
 
 
-	public MessageDto(String room_userId, Timestamp messageDate) {
+	public MessageDto(String userinfo_userId,String room_userId, Timestamp messageDate) {
 		super();
+		this.userinfo_userId = userinfo_userId;
 		this.room_userId = room_userId;
 		this.messageDate = messageDate;
 	}

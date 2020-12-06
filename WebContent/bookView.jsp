@@ -32,7 +32,7 @@
 				<td colspan="2">주소 : ${bookView.roomAddress } &nbsp; ${bookView.roomAddressDetail }  </td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="#">호스트에게 연락하기 </a></td>
+				<td colspan="2"><a href="HostMessage.room?userId=${bookView.userId }&bookId=${BOOKID}&roomuserId=${bookView.roomuserId}">호스트에게 연락하기 </a></td>
 			</tr>
 			<tr>
 				<td><input type="button" value="이전" onClick="history.go(-1)" style="align-items: right"></td>

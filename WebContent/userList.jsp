@@ -13,7 +13,7 @@
 
 		<c:forEach items="${userList}" var="dto2"> <!--setAttribute에서 선언된 list -->
 		<tr>	
-			<td><a href="messageList.room?roomUserId=${dto.room_userId}&userId=${USERID}">${dto.room_userId}</a></td>
+			<td><a href="messageList.room?roomUserId=${dto.room_userId}&userId=${dto.userInfo_userId}">${dto.room_userId}</a></td>
 			<td> <font size=0.3>${dto.messageDate}</font></td>
 		</tr>
 		
