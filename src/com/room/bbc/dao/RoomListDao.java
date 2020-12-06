@@ -167,7 +167,7 @@ public class RoomListDao {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
 			String query = "select roomtitle, roomcontent, roomprice, roomcapa, roomaddress, roomaddressdetail, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, ";
-			String query2 = "roomimage, roomid, roomimagereal from room where roomid = ?";
+			String query2 = "roomimage, roomimagereal from room where roomid = ?";
 			
 			preparedStatement = connection.prepareStatement(query+query2); // query 문장 연결
 			preparedStatement.setInt(1, Integer.parseInt(stroomId));
@@ -184,9 +184,8 @@ public class RoomListDao {
 				String roomCheckOut = resultSet.getString("roomcheckout");
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
-				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				
-				dto = new RoomListDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
+				dto = new RoomListDto(stroomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal);
 				
 			}
 			

@@ -38,7 +38,7 @@ public class RoomReviseCommand implements Command {
 			String roomTitle = multi.getParameter("roomTitle"); //jsp에 있는 내용을 여기서 받아주는 것이다.
 			String roomContent = multi.getParameter("roomContent");
 			
-			String userId = (String)session.getAttribute("USERID");
+			String roomId = (String)session.getAttribute("ROOMID");
 			String roomPrice = (String)session.getAttribute("ROOMPRICE");
 			String roomCapa = (String)session.getAttribute("ROOMCAPA");
 			String roomAddress = (String)session.getAttribute("ROOMADDRESS");
@@ -66,15 +66,15 @@ public class RoomReviseCommand implements Command {
 			     		filename = file1.getName();
 			     		filename2 = file2.getName();
 			     	}
-			     	else {
-						 filename = roomImage;
-						 filename2 = "0";
-					 }
-			 } 
+			     
+			 } else {
+				 filename = roomImage;
+				 filename2 = "0";
+			 }
 			 
 			 RoomListDao dao = new RoomListDao();
 			 // filename2가 들어간 부분은 roomImageReal이다.
-			 dao.roomRevise(userId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail ,roomCheckIn, roomCheckOut, filename);	
+			 dao.roomRevise(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail ,roomCheckIn, roomCheckOut, filename);	
 			//file 이란 이름은 wineList.jsp에 있는 name ="file" / DB에 넣기위해 스트링 변환
 //			String roomImage = multi.getOriginalFileName("roomImage");
 //			String roomImageReal = multi.getFilesystemName ("roomImage");
