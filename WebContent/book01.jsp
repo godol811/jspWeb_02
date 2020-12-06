@@ -35,10 +35,32 @@
         padding: 0;
       }
     </style>
- 
+    <script>
+    "use strict";
+
+    function initMap() {
+      const myLatLng = {
+        lat: 37.4221,
+        lng: -122.0841
+      };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 13,
+        center: myLatLng,
+        fullscreenControl: true,
+        zoomControl: true,
+        streetViewControl: false
+      });
+      new google.maps.Marker({
+        position: myLatLng,
+        map,
+        title: "Hello World!"
+      });
+    }
 
 
-	<script>
+
+
+
     
     function check(){
     	theForm = document.book;
@@ -86,36 +108,7 @@
 			</tr>
 			
 			<tr>
-				<td colspan="2"><div id="map" style="width: 100%; height: 400px">
-				
-			   <script>
-				    "use strict";
-				
-				    function initMap() {
-				      const myLatLng = {
-				        lat: ${dto.roomGpsx},
-				        lng: ${dto.roomGpsy}
-				      };
-				      const map = new google.maps.Map(document.getElementById("map"), {
-				        zoom: 13,
-				        center: myLatLng,
-				        fullscreenControl: true,
-				        zoomControl: true,
-				        streetViewControl: false
-				      });
-				      new google.maps.Marker({
-				        position: myLatLng,
-				        map,
-				        title: "Hello World!"
-				      });
-				    }
-					</script>
-					
-				
-				
-				
-				
-				</div></td>
+				<td colspan="2"><div id="map" style="width: 100%; height: 400px"></div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><a href="#">호스트에게 연락하기 </a></td>
