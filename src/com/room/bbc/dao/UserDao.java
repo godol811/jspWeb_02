@@ -252,4 +252,46 @@ public void DeleteUser(String userId) {
 			}
 			return userState;
 	}
+//	----잃어버린 ID 찾기 가져오기----------------------	
+public ArrayList<UserDto> findId(String userName, String userTel) {
+		
+		ArrayList<UserDto> dtos = new ArrayList<UserDto>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select userId  from userinfo where username = ? and usertel = ? ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, userName);
+			preparedStatement.setString(2, userTel);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String userId = resultSet.getString("userId");
+				
+			UserDto dto = new UserDto(userId);
+			dtos.add(dto);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(connection != null) connection.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(resultSet != null) resultSet.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+	
+	
+	
 }

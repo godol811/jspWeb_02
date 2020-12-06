@@ -29,6 +29,20 @@ public class UserDto {
 		this.userState = userState;
 		this.userDeleteDate = userDeleteDate;
 	}
+	
+	public UserDto(String userId) {
+		super();
+		this.userId = userId;
+	
+	}
+
+	
+	
+	public UserDto(String userId,String userPw) {
+		super();
+		this.userId = userId;
+		this.userPw = userPw;
+	}
 
 	public String getUserId() {
 		return userId;

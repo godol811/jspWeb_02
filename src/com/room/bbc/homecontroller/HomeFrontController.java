@@ -48,6 +48,7 @@ import com.room.bbc.command.UserInsertCommand;
 import com.room.bbc.command.UserRoomReservationSelectCommand;
 import com.room.bbc.command.UserSelectCommand;
 import com.room.bbc.command.UserAdminDeleteCommand;
+import com.room.bbc.command.UserIDFindCommand;
 
 /**
  * Servlet implementation class HomeFrontController
@@ -157,6 +158,12 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "login.jsp";
 		break;	
 			
+		case("/findIdAction.room"):		
+			command = new UserIDFindCommand();
+		command.execute(request, response);
+		viewPage="findIdresult.jsp";
+		break;
+	
 			
 		case("/SignUpCheck.room"):		
 			command = new JoinCheckCommand();
