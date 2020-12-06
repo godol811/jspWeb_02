@@ -4,12 +4,94 @@
     pageEncoding="UTF-8"%>
     
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta charset="UTF-8">
+
+<style type="text/css">
+	
+	.banner{
+		background-image: url("./images/mainBackground.jpg");
+		background-size: 100% 700px;
+		width: auto;
+		height: 700px;
+		text-align: center;
+		padding-top:10px;
+		
+	}
+	
+	img { display: block; margin: 0px auto; }
+	/* #mainMenuBoxItem{
+		list-style: none;
+		height:40px;
+		background: blue;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	} */
+	#mainMenuBoxItem,
+	#subMenuItem{
+		background-color: #87cdfa;
+		text-align: center;
+		padding-top:10px;
+		padding-bottom:10px;
+		margin-top:10px;
+		width: auto;
+		height: 50px;
+		
+	}
+	#mainMenuBoxItem > li{
+		float:right;
+		border:1px solid red;
+	}
+	
+	#mainMenuBoxItem > li > a{
+		display: block;
+		height: 30px;
+		padding: 16px 36px;
+		text-align: center;
+		text-decoration: none;
+		
+	}
+	#subMenuItem{
+		margin-right:30%;
+	}
+	
+	#subMenuItem > li{
+		padding: 16px 36px;
+		border-bottom: 1px sold black;
+	}
+	
+	#subMenuItem > li > a{
+		text-decoration: none;
+	}
+	
+	#notice{
+		margin-top:80px;
+		margin-left: auto; 
+		margin-right: auto;
+		width: auto;
+		height: 400px;
+		text-align: center;
+
+	}
+	
+	#bottom{
+		background-color: #87cdfa;
+		text-align: center;
+		padding-top:10px;
+		padding-bottom:10px;
+		margin-top:100px;
+		width: auto;
+		height: 50px;
+		font-size: 15px;
+	}
+
+</style>
+
 <title>Main Page</title>
 	<link rel="stylesheet" href="./css/date.css">
 	<link rel="stylesheet" href="./css/common.css">
@@ -30,7 +112,6 @@
 
 	// 입력란 클릭하여 날짜 선택
 	//<![CDATA[
-		
 	$(function(){
 			
 		$("#date1").datepicker({
@@ -42,8 +123,6 @@
 				$("#date2").datepicker("option","minDate", selectedDate);
 			}
 		
-		
-			
 		});
 		
 		$("#date2").datepicker({
@@ -53,62 +132,13 @@
 			onClose:function(selectedDate){
 				$("#date1").datepicker("option","maxDate", selectedDate);
 			}
-			
 		});
 
 	});
 	
-	
 	//]]> */
 	
-	</script>
-
-</head>
-
-<body>
-	<div id="wrap">
- 		<div id="header">
-        	<div id="mainMenuBox">
-            	<ul id="menuItem">
-            		<c:choose>
-	            		<c:when test = "${empty sessionScope.USERSTATE}">
-	                    	<li><a href="login.jsp">호스트 되기</a></li>
-	                     </c:when>
-	            		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
-		                   	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
-	                     </c:when>
-		                 <c:when test = "${sessionScope.USERSTATE == '회원'}">
-	                    	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
-		                 </c:when>
-                    </c:choose>
-                    
-                    <li class="menuItemHover"><a href="#"><img src="./images/menuBar.svg"></a></li>
-                </ul>
-            </div>
-            
-            <div id="subMenuBox">
-                <div class="subMenuItem" id="subMenuItem1">
-                	<ul>
-                   	 <c:choose>
-	                    <c:when test = "${empty sessionScope.USERID}">
-	                   	    <li><a href="login.jsp">로그인</a></li>
-	                   	    <li><a href="SignUp.jsp">회원가입</a></li>
-	                   	    <li><a href="login.jsp">숙소 호스트 되기</a></li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li><a href="logout.room">로그아웃</a></li>
-	                    	<li><a href="userMessage.room">메세지</a></li>
-	                    	<li><a href="bookList.room">예약목록</a></li>
-	                    </c:otherwise>
-                    </c:choose>
-                    </ul>
-                </div>
-            </div>
-        </div>
-	   
-	   
-	 <!-- 검색 시 공란 체크 -->  
-	<script type="text/javascript">
+		 /* 검색 시 공란 체크 */  
 	function searchCheck(){
 		theForm = document.search;
 		
@@ -139,11 +169,59 @@
 		
 	}
 	</script>   
+</head>
+
+<body>
+<div class=banner>
+	
+        	<div id="mainMenuBox">
+            	<ul id="mainMenuBoxItem">
+            		<c:choose>
+	            		<c:when test = "${empty sessionScope.USERSTATE}">
+	                    	<li><a href="login.jsp">호스트 되기</a></li>
+	                     </c:when>
+	            		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
+		                   	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
+	                     </c:when>
+		                 <c:when test = "${sessionScope.USERSTATE == '회원'}">
+	                    	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
+		                 </c:when>
+                    </c:choose>
+                    
+                    <li class="menuItemHover"><a href="#"><img align="middle" src="./images/menuBar.svg"></a></li>
+                </ul>
+            </div>
+            
+            <div id="subMenuBox">
+                	<ul id="subMenuItem">
+                   	 <c:choose>
+	                    <c:when test = "${empty sessionScope.USERID}">
+	                   	    <li><a href="login.jsp">로그인</a></li>
+	                   	    <li><a href="SignUp.jsp">회원가입</a></li>
+	                   	    <li><a href="login.jsp">숙소 호스트 되기</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li><a href="logout.room">로그아웃</a></li>
+	                    	<li><a href="userMessage.room">메세지</a></li>
+	                    	<li><a href="bookList.room">예약목록</a></li>
+	                    </c:otherwise>
+                    </c:choose>
+                   </ul>
+           	 </div>
+   
 	    
 	 <!-- 검색창 -->   
 	<div class="box">
 		<form action="roomSearch.room" method="post" name="search" onsubmit="return searchCheck()">
-		<table style="margin-top: 100px; margin-left: auto; margin-right: auto; text-align: center;">
+		<table style="margin-top: 200px; margin-left: auto; margin-right: auto; text-align: center;">
+		<colgroup>
+			<col width="100px"/>
+			<col width="100px"/>
+			<col width="30px"/>
+			<col width="100px"/>
+			<col width="50px"/>
+		</colgroup>
+		
 		<tr>
 			<td align="center"><h4>위치</h4></td>
 			<td align="center"><h4>체크인</h4></td>
@@ -154,8 +232,7 @@
 		</tr>
 		<tr>
 			<td align="center"><input type="text" name="location" id="location" placeholder="어디로 여행가세요?"/></td>
-			<td align="center"><input type="text" name="d
-			ate1" id="date1" placeholder="날짜 추가" readonly="readonly"/></td>
+			<td align="center"><input type="text" name="date1" id="date1" placeholder="날짜 추가" readonly="readonly"/></td>
 			<td align="center">~</td>
 			<td align="center"><input type="text" name="date2" id="date2" placeholder="날짜 추가" readonly="readonly"/> </td>
 			<td align="center"><input type="number" name="guest" id="guest" max="16" min="1" step="1" placeholder="게스트 추가" /> </td>
@@ -164,7 +241,7 @@
 		</table>
 		</form>
 	</div>
-	
+</div>
 	
 	
 	<!-- ---------------페이지 구분------------------- -->
@@ -218,11 +295,23 @@
 		
 		</table>
 	</div>
+	
+	
+	
+	<div id="notice">
 		
-		</div>
+		<h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br>
 		
-
+		  <%@include file="AdminNotifyList.jsp"%>
 		
+	</div>
+	
+	<div id="bottom">
+		OWNER. 고종찬 & 박경미 &nbsp; TEL. 1500-2020 &nbsp; ADDRESS. 서울 서초구 강남대로 441 <br> 
+		Copyright 2020. 2조 All pictures cannot be copied without permission.
+	
+	</div>
+	
 	
 </body>
 </html>

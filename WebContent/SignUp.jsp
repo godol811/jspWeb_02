@@ -5,21 +5,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-<style type="text/css">
-input::-webkit-input-placeholder { font-size: 50%; }
-input::-moz-placeholder { font-size: 50%; }
-input:-ms-input-placeholder { font-size: 50%; }
-input:-moz-placeholder { font-size: 50%; }
-input::p
 
-.laceholder { font-size: 50%; }
+<link rel="stylesheet" href="./css/signup.css"> 
 
 <%
 
 	request.setCharacterEncoding("utf-8");
 %>
-</style>
-<title>Insert title here</title>
+
+<title>회원가입</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -43,18 +37,18 @@ input::p
 <c:set var="fieldCheck" value="${joinfield.fieldCheckmessage}"></c:set>
 
 <form id="form" name="form" action="SignUpCheck.room" method="post">
-<center>
-
-	<table >
+<div class="wrap">
+    <h1>회원가입</h1>
+	<table> 
 		<!--  아이디 입력창       -->
 		<tr>
-			<td colspan="2">아이디</td>
+			<td colspan="3">아이디</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="text" name="userId" value="${joinfield.userId}" placeholder="아이디를 입력해주세요." style="width:400px;height:40px;font-size:18px;"></td>
+			<td colspan="3"><input type="text" name="userId" value="${joinfield.userId}" placeholder="아이디를 입력해주세요." style="width:400px;height:40px;font-size:15px;"></td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="3">
 				<c:if test="${fieldCheck eq '아이디를 입력해 주세요.'||fieldCheck eq '중복된 아이디 입니다.' ||fieldCheck eq '올바른 아이디(이메일)가 아닙니다.'}" ><font size="2" color="red"><c:out value="${fieldCheck }"></c:out></font></c:if>
 				<font size="2" color="green">${IDC}</font>
 			</td>
@@ -64,27 +58,26 @@ input::p
 		
 		<!--  비밀번호 입력창       -->
 		<tr>
-			<td colspan="2">비밀번호</td>
+			<td colspan="3">비밀번호</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="password" name="userPw" value="${joinfield.userPw}" placeholder="비밀번호를 입력해주세요." style="width:400px;height:40px;font-size:18px;"></td>
+			<td colspan="3"><input type="password" name="userPw" value="${joinfield.userPw}" placeholder="비밀번호를 입력해주세요." style="width:400px;height:40px;font-size:15px;"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><c:if test="${fieldCheck eq '비밀번호를 입력해 주세요.'}" ><font size="2" color="red"><c:out value="${fieldCheck}"></c:out></font></c:if></td>
+			<td colspan="3"><c:if test="${fieldCheck eq '비밀번호를 입력해 주세요.'}" ><font size="2" color="red"><c:out value="${fieldCheck}"></c:out></font></c:if></td>
 		</tr>
 		<!--  비밀번호 입력창       -->
 			
 		<!--  비밀번호 확인창       -->
 		<tr>
-			<td colspan="2">비밀번호 확인</td>
+			<td colspan="3">비밀번호 확인</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="password" name="userPwCheck" value="${PWCFIELD}" placeholder="비밀번호 확인." style="width:400px;height:40px;font-size:18px;"></td>
+			<td colspan="3"><input type="password" name="userPwCheck" value="${PWCFIELD}" placeholder="비밀번호 확인을 위해 다시 입력해주세요." style="width:400px;height:40px;font-size:15px;"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><font size="2" color="red">${ PWCMSG}</font>
+			<td colspan="3"><font size="2" color="red">${ PWCMSG}</font>
 			<font size="2" color="green">${PWC}</font>
-			
 			</td>
 		</tr>
 		
@@ -93,21 +86,21 @@ input::p
 		<!--  이름입력       -->
 		
 		<tr>
-			<td colspan="2">이름</td>
+			<td colspan="3">이름</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="text" name="userName" value="${joinfield.userName }" placeholder="이름을 입력해주세요." style="width:400px;height:40px;font-size:18px;"></td>
+			<td colspan="3"><input type="text" name="userName" value="${joinfield.userName }" placeholder="이름을 입력해주세요." style="width:400px;height:40px;font-size:15px;"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><c:if test="${fieldCheck eq '이름을 입력해 주세요.'}" ><font size="2" color="red"><c:out value="${fieldCheck }"></c:out></font></c:if></td>		
+			<td colspan="3"><c:if test="${fieldCheck eq '이름을 입력해 주세요.'}" ><font size="2" color="red"><c:out value="${fieldCheck }"></c:out></font></c:if></td>		
 		</tr>
 		
 		<tr>
 			<td>전화번호  <font size="2">( - 포함해서 적어주세요.)</font></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<input type="text" name="userTel" value="${joinfield.userTel}" style="width:400px;height:40px;font-size:18px;">
+			<td colspan="3">
+				<input type="text" name="userTel" value="${joinfield.userTel}" style="width:400px;height:40px;font-size:15px;" placeholder="010-0000-0000">
 			</td>
 		</tr>
 		<tr>
@@ -121,27 +114,34 @@ input::p
 			<td>주소 입력</td>
 		</tr>
 		<tr>
-			<td><input placeholder="도로명 주소" type="text"  style="width:500px;" id="roadAddrPart1"  name="userAddress" readonly="readonly"  onClick="goPopup();" value="${joinfield.userAddress}"/>
-			&nbsp;
-			<input type="button" onClick="goPopup();" value="주소 찾기" style="width:500px;"/>
+			<td colspan="2"><input placeholder="도로명 주소" type="text" style="width:400px;height:40px;font-size:15px;" id="roadAddrPart1"  name="userAddress" readonly="readonly"  onClick="goPopup();" value="${joinfield.userAddress}"/>
+			</td>
+			<td>
+			<input type="button" onClick="goPopup();" value="주소 찾기" style="width:70px;height:30px;font-size:14px;"/>
 			</td>
 		</tr>
 		<tr>
 			<td>상세 주소</td>
 		</tr>
 		<tr>
-			<td><input placeholder="상세주소" type="text"  style="width:500px;" id="addrDetail" value="${joinfield.userAddressDetail }"  name="userAddressDetail" style="width:500px;" /></td>
+			<td colspan="3"><input placeholder="상세주소" type="text" style="width:400px;height:40px;font-size:15px;" id="addrDetail" value="${joinfield.userAddressDetail }"  name="userAddressDetail" style="width:500px;" /></td>
 		</tr>
 		<!-- 주소 입력 -->
 		<tr>
+			<td><input type="button" value="이 전" 
+			id="input_submit"
+	        class="input_field"
+	        onClick="history.go(-1)" style="width:100px; height:30px;">
+	        </td>
+			<td align="right"><input type="submit" value="완 료" 
+			id="input_submit"
+	        class="input_field"
+	        style="width:100px; height:30px;">
+	        </td>
 			<td></td>
 		</tr>
-		
-		<tr>
-			<td colspan="2" align="center"><input type="submit" value="회원가입 완료"></td>
-		</tr>
 	</table>
+</div>
 </form>
-</center>
 </body>
 </html>

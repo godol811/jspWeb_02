@@ -8,13 +8,13 @@
 	font-weight: normal;
 	font-family: sans-serif;	
 } */
-h1{
+/* h1{
 	margin: 0 0 10px;
 	padding:0;
 	color: black;
 	font-size: 24px;	
 }
-]
+ */
 .box {
 	
 	position:absolute;
@@ -36,7 +36,7 @@ input[type="text"]
 {	
 	font-size: 14px;
 	font-weight: bold;
-	width: 150px;
+	/* width: 150px; */
 	height: 60px;
 	border : none;
 	outline : none;
@@ -45,7 +45,7 @@ input[type="text"]
 }
 input[type="text"]:hover
 {
-	background: lightgrey;
+	background-color: #CCEEFF ;
 	border-radius: 25px 25px 25px 25px;
 }
 input[type="number"]

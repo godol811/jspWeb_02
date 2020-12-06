@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+input::-webkit-input-placeholder { font-size: 50%; }
+input::-moz-placeholder { font-size: 50%; }
+input:-ms-input-placeholder { font-size: 50%; }
+input:-moz-placeholder { font-size: 50%; }
+input::p
+
+.laceholder { font-size: 50%; }
+
+:root {
+  	--submit_bg: #87cdfa;
+ 	 --submit_hover: #1e90ff;
+}
+
+table {
+	grid-template-columns: 1fr;
+    margin-left: 500px;
+    margin-right: auto;
+    padding-top:10px;
+  }
+td {
+	padding: 3px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input_container,
+#input_submit {
+  height: 60px;
+  /* make the borders more round */
+  border-radius: 30px;
+  width: 100%;
+}
+
+#input_submit {
+  /* submit button has a different color and different padding */
+  background-color: var(--submit_bg);
+  padding-left: 0;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+#input_submit:hover {
+  background-color: var(--submit_hover);
+  /* simple color transition on hover */
+  transition: background-color, 1s;
+  cursor: pointer;
+}
+
+.input_field {
+  /* customize the input tag with lighter font and some padding*/
+  color: var(--icon_color);
+  background-color: inherit;
+  width: 90%;
+  border: none;
+  font-size: 1rem;
+  font-weight: 400;
+  padding-left: 30px;
+  color: black;
+  

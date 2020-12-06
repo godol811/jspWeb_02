@@ -7,12 +7,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style type="text/css">
+	body{
+	margin:0px;
+	padding:0px;
+	/* background-color: #ffaa75; */
+	}
+	
+
+</style>
+
 <title>호스트 등록 숙소 리스트</title>
 </head>
 <body>
 <input type="button" name="insertRoom" onclick="location.href='hostRegisterRoom01.jsp'" value="숙소등록">
 	<form action="hostRoomDelete.room?roomId=${dto.roomId}" method="post">
-	<table border="1">
+	<table width="100%" cellpadding="0" ceollspacing="0">
 	  <colgroup>
 			<col width="80px">
 			<col width="80px">
@@ -40,7 +50,6 @@
 			<tr>
 				<td>주소</td><td>${dto.roomAddress } &nbsp; ${dto.roomAddressDetail }</td>
 			</tr>
-			
 		</c:forEach>
 	</table>
 	</form>
