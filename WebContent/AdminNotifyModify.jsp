@@ -42,7 +42,7 @@
 	<c:forEach items="${list}" var="dto">
 	<tr>
 		<td><input type="text" name="boardTitle" value="${dto.boardTitle }"></td>
-		<td><input type="text" name="boardContent" value="${dto.boardContent }"></td>
+		<td><textarea name="boardContent">${dto.boardContent }</textarea></td>
 		<td><input type="text" value="${dto.boardInsertDate }" readonly="readonly"></td> 
 		<td><input type="text" name="userInfo_userID" value="${USERID }" readonly="readonly"></td>
 		<td><input type="text" name="boardId" value="${dto.boardId }" readonly="readonly"></td>

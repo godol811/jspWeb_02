@@ -23,10 +23,11 @@ public class MessageListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userId = (String) session.getAttribute("USERID");
+		String userId = request.getParameter("userId");
+		String bookId = request.getParameter("bookId");
 		MessageDao dao = new MessageDao();
 		
-		ArrayList<MessageDto> dtos = dao.userList(userId);
+		ArrayList<MessageDto> dtos = dao.bookMessage(userId, bookId);
 		request.setAttribute("userList", dtos);
 		
 		

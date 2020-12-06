@@ -38,10 +38,6 @@
 		        {
 		            msg = "login.jsp?msg=-1";
 		        }
-		        else if(check ==99)   //관리자 로그인
-		        {
-		            msg = "adminCheck.jsp";
-		        }
 		         
 		        else if(check == 0) // 비밀번호가 틀릴경우
 		        {
@@ -50,17 +46,48 @@
         }
         
         else if(userState.equals("관리자")){
-        	session.setAttribute("USERID", userId);
-        	msg = "adminCheck.jsp";
+        	
+        	
+        	 if(check == 1)    // 로그인 성공
+		        { 
+		            // 세션에 현재 아이디 세팅
+        		 session.setAttribute("USERID", userId);
+             		msg = "adminCheck.jsp";
+		        }
+		        else if(check ==-1)  // 아이디가 틀릴경우
+		        {
+		            msg = "login.jsp?msg=-1";
+		        }
+		         
+		        else if(check == 0) // 비밀번호가 틀릴경우
+		        {
+		            msg = "login.jsp?msg=0";
+		        }
+        	
         }
         
         
         else if(userState.equals("호스트")){
         	 // 세션에 현재 아이디 세팅
-            session.setAttribute("USERID", userId);
-            session.setAttribute("USERSTATE", userState);
-            msg = "mainPage.jsp";
-        	}
+        	  if(check == 1)    // 로그인 성공
+		        { 
+		            // 세션에 현재 아이디 세팅
+        		  session.setAttribute("USERID", userId);
+                  session.setAttribute("USERSTATE", userState);
+                  msg = "mainPage.jsp";
+              	}
+		        
+		        else if(check ==-1)  // 아이디가 틀릴경우
+		        {
+		            msg = "login.jsp?msg=-1";
+		        }
+		         
+		        else if(check == 0) // 비밀번호가 틀릴경우
+		        {
+		            msg = "login.jsp?msg=0";
+		        }
+        }
+          
 
         else if(userState.equals("탈퇴")){
         	msg = "login.jsp?msg=2";

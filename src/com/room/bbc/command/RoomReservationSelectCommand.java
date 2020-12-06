@@ -40,6 +40,7 @@ public class RoomReservationSelectCommand implements Command {
 	RoomReviewDao dao2 = new RoomReviewDao();
 	ArrayList<RoomReviewDto> dtos2 = dao2.list(roomId);
 	
+	session.setAttribute("LIST", dtos);
 	
 	request.setAttribute("list", dtos);
 	request.setAttribute("DATE1direct", date1);
@@ -47,7 +48,6 @@ public class RoomReservationSelectCommand implements Command {
 	request.setAttribute("GUESTdirect", guest);
 	
 	request.setAttribute("reviewList", dtos2);
-
 		
 	}
 

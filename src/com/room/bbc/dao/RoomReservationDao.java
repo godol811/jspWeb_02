@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.room.bbc.command.RoomReservationSelectCommand;
 import com.room.bbc.dto.RoomListDto;
 import com.room.bbc.dto.RoomReservationDto;
 import com.room.bbc.dto.RoomReviewDto;
@@ -80,8 +81,8 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
 			String query = "select roomcontent,roomtitle, roomprice, roomcapa, roomaddress, roomaddressdetail, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, roomimage, ";
-			String query2 = " roomimagereal from room where roomid = ? ";
-			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
+			String query2 = " roomimagereal, roomgpsx,roomgpsy from room where roomid = ? ";
+ 			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			preparedStatement.setString(1, roomId);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -96,10 +97,11 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 				String roomCheckOut = resultSet.getString("roomcheckout");
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
-				
 				// bean 선언
 				RoomReservationDto dto = new RoomReservationDto(roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal, roomId);
 				dtos.add(dto); //arraylist에 추가
+				
+				
 				
 			}
 			
@@ -132,13 +134,13 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
+			String query = "select b.bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				String bookId = Integer.toString(resultSet.getInt("bookid"));
+				String bookId = Integer.toString(resultSet.getInt("b.bookid"));
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				String roomTitle = resultSet.getString("roomtitle");
 				String roomContent = resultSet.getString("roomcontent");
@@ -179,11 +181,10 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select userid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomaddress, roomaddressdetail, roomimage, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal";
-			String query2 =" from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ? and bookid = ?";
+			String query = "select userid, r.userId, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomaddress, roomaddressdetail, roomimage, bookcapa, roomprice*(bookcheckoutdate-bookcheckindate) as pricetotal, roomimagereal";
+			String query2 =" from book b, room r where b.room_roomid = r.roomid and bookid = ?";
 			preparedStatement = connection.prepareStatement(query+query2); // query 문장 연결
-			preparedStatement.setString(1, userId);
-			preparedStatement.setInt(2, Integer.parseInt(bookId));
+			preparedStatement.setInt(1, Integer.parseInt(bookId));
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
@@ -196,8 +197,10 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 				String roomCheckIn = resultSet.getString("bookcheckindate");
 				String roomCheckOut = resultSet.getString("bookcheckoutdate");
 				String roomImage = resultSet.getString("roomimage");
+				String roomImageReal = resultSet.getString("roomimageReal");
+				String roomuserId = resultSet.getString("r.userid");
 				
-				dto = new RoomReservationDto(userId, roomTitle, roomContent, roomCheckIn, roomCheckOut, bookCapa, roomImage, roomAddress, roomAddressDetail, roomPriceTotal);
+				dto = new RoomReservationDto(userId,bookId,roomTitle, roomContent, roomCheckIn, roomCheckOut, bookCapa, roomImage, roomAddress, roomAddressDetail, roomPriceTotal,roomImageReal,roomuserId);
 				
 			}
 			

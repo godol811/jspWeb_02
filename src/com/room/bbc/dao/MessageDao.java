@@ -25,7 +25,7 @@ public MessageDao() {
 		//javax.naming 사용
 		Context context = new InitialContext();
 		// /.env 뒤에 context.xml의 source 이름을 적어준다.
-		dataSource = (DataSource) context.lookup("java:comp/env/jdbc/room_test");
+		dataSource = (DataSource) context.lookup("java:comp/env/jdbc/room");
 
 	} catch(Exception e) {
 		e.printStackTrace();
@@ -97,7 +97,7 @@ public ArrayList<MessageDto> messageListforReservation(String userId){
 
 
 //------------------------------------------
-	public void insert(String userId, String roomUserId, String messageContent) {
+	public void insert(String userId, String roomUserId, String messageContent, String bookId) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -105,12 +105,12 @@ public ArrayList<MessageDto> messageListforReservation(String userId){
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "insert into message(userinfo_userid, room_userid, messagecontent, messageDate) values (?,?,?,now())";
-			//insert into message(userinfo_userid, room_userid, messagecontent, messageDate) values ('fdfds','gfhf','vbc',now());
+			String query = "insert into message (userinfo_userid, room_userid, messageContent, messageinsertdate, book_bookid) values (?,?,?,now(),?)";
 			preparedStatement = connection.prepareStatement(query); // query 문장 연결
 			preparedStatement.setString(1, userId);
 			preparedStatement.setString(2, roomUserId);
 			preparedStatement.setString(3, messageContent);
+			preparedStatement.setInt(4, Integer.parseInt(bookId));
 			preparedStatement.executeUpdate();
 			
 //			System.out.println(userInfoUserId);
@@ -192,7 +192,7 @@ public ArrayList<MessageDto> messageListforReservation(String userId){
 	
 	//---------메세지 주고 받는 사람들 리스트.
 	
-		public ArrayList<MessageDto> userList(String userId){
+		public ArrayList<MessageDto> bookMessage(String userId, String bookId){
 			ArrayList<MessageDto> dtos = new ArrayList<MessageDto>();
 			// java.sql 사용
 			Connection connection = null;
@@ -202,11 +202,12 @@ public ArrayList<MessageDto> messageListforReservation(String userId){
 			try {
 				// 위에 선언된 dataSource 사용
 				connection = dataSource.getConnection();
-				String query = "select room_userid, messagedate from message where (userinfo_userid=? or room_userid=?) and (room_userid, messagedate) in (select room_userid, max(messagedate) as messagedate from message group by room_userid) order by messagedate desc";
+				String query = "select room_userid, messagedate from message where (userinfo_userid=? or room_userid=?) and (room_userid, messagedate) in (select room_userid, max(messagedate) as messagedate from message group by room_userid) order by messagedate desc and bookid = ? ";
 				//select room_userid, messagedate from message where (userinfo_userid='imkanghoo' or room_userid='imkanghoo') and (room_userid, messagedate) in (select room_userid, max(messagedate) as messagedate from message group by room_userid) order by messagedate desc;
 				preparedStatement = connection.prepareStatement(query); // query 문장 연결
 				preparedStatement.setString(1, userId);
 				preparedStatement.setString(2, userId);
+				preparedStatement.setString(3, bookId);
 				
 				resultSet = preparedStatement.executeQuery();
 				
@@ -214,13 +215,13 @@ public ArrayList<MessageDto> messageListforReservation(String userId){
 					
 					String room_userId = resultSet.getString("room_userid");
 					Timestamp messageDate = resultSet.getTimestamp("messagedate");
-				
+					String userInfo_userId = userId;
 					
 //					System.out.println(room_userId);
 //					System.out.println(messageDate);
 								
 					// bean 선언
-					MessageDto dto = new MessageDto(room_userId, messageDate);
+					MessageDto dto = new MessageDto(userInfo_userId ,room_userId, messageDate);
 					dtos.add(dto); //arraylist에 추가
 					
 				}

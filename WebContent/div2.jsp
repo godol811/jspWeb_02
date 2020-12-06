@@ -32,9 +32,9 @@
  
 <body>
 
-
+		
+        <div class=""><%@include file="sendMessage.jsp" %></div>
         <div class="left"><%@include file="userList.jsp" %></div>
-        <div class="center"><%@include file="sendMessage.jsp" %></div>
         <div class="right"><%@include file="messageList.jsp" %></div>
     
 </body>

@@ -6,20 +6,22 @@ public class RoomReservationDto {
 	String bookId;
 	String roomTitle;
 	String roomContent;
-	String bookCheckInDate;
-	String bookCheckOutDate;
-	String bookCapa;
-	String roomImage;
-	String roomPrice;
-	String roomCapa;
-	String roomAddress;
-	String roomAddressDetail;
 	String roomCheckIn;
 	String roomCheckOut;
+	String bookCapa;
+	String roomImage;
+	String roomAddress;
+	String roomAddressDetail;
+	String roomPriceTotal;
+	String roomPrice;
+	String roomCapa;
 	String roomImageReal;
 	String roomId;
-	String roomPriceTotal;
-	
+	String roomGpsx;
+	String roomGpsy;
+	String bookCheckInDate;
+	String bookCheckOutDate;
+	String roomuserId;
 	
 	public RoomReservationDto() {
 		// TODO Auto-generated constructor stub
@@ -27,6 +29,27 @@ public class RoomReservationDto {
 	
 	
 	
+	public RoomReservationDto(String userId, String bookId, String roomTitle, String roomContent, String roomCheckIn,
+			String roomCheckOut, String bookCapa, String roomImage, String roomAddress, String roomAddressDetail,
+			String roomPriceTotal, String roomImageReal,String roomuserId) {
+		super();
+		this.userId = userId;
+		this.bookId = bookId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.roomCheckIn = roomCheckIn;
+		this.roomCheckOut = roomCheckOut;
+		this.bookCapa = bookCapa;
+		this.roomImage = roomImage;
+		this.roomAddress = roomAddress;
+		this.roomAddressDetail = roomAddressDetail;
+		this.roomPriceTotal = roomPriceTotal;
+		this.roomImageReal = roomImageReal;
+		this.roomuserId = roomuserId;
+	}
+
+
+
 	public RoomReservationDto(String bookId, String roomTitle, String roomContent, String bookCheckInDate,
 			String bookCheckOutDate, String bookCapa, String roomImage, String roomId) {
 		super();
@@ -41,6 +64,45 @@ public class RoomReservationDto {
 	}
 
 
+
+
+
+
+
+
+	public String getRoomuserId() {
+		return roomuserId;
+	}
+
+
+
+	public void setRoomuserId(String roomuserId) {
+		this.roomuserId = roomuserId;
+	}
+
+
+
+	public String getRoomGpsx() {
+		return roomGpsx;
+	}
+
+
+
+	public void setRoomGpsx(String roomGpsx) {
+		this.roomGpsx = roomGpsx;
+	}
+
+
+
+	public String getRoomGpsy() {
+		return roomGpsy;
+	}
+
+
+
+	public void setRoomGpsy(String roomGpsy) {
+		this.roomGpsy = roomGpsy;
+	}
 
 
 

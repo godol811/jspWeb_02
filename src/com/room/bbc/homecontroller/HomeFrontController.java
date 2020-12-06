@@ -329,37 +329,37 @@ public class HomeFrontController extends HttpServlet {
 			// 검색	
 			
 			
-		case("/userMessage.room"):
+		case("/HostMessage.room"):
 			command = new MessageListCommand();
-			command.execute(request, response);
+			command.execute(request, response, session);
 			command = new MessageSelectHostCommand();
-			command.execute(request, response);
+			command.execute(request, response, session);
 			viewPage = "div2.jsp";//@@@@@@@@@@@@@@@@@
 			break;
 		
-		case ("/view.room"): //메세지 보내기.
-			viewPage = "sendMessage.jsp";
 		
-			break;
-			
 		case ("/sendMessage.room")://DB주고받은 메세지 입력.
 			command = new MessageInsertCommand();
-			command.execute(request, response);
-			viewPage = "messageList.room";
+			command.execute(request, response, session);
+			viewPage = "div2.jsp";
 			break;
 			
 		case ("/messageList.room"): //주고 받은 메세지 보이기
 			command = new MessageSelectCommand();
-			command .execute(request, response);
+			command .execute(request, response, session);
 			command = new MessageListCommand();//@@@@@@@
-			command.execute(request, response);//@@@@@@@
+			command.execute(request, response, session);//@@@@@@@
 			viewPage = "div2.jsp"; //@@@@@@@@@@@@@@@@@@@@
 			break;
 			
 			
-		default :
+			case ("/mainPage.room"):
+			command = new AdminNotifyListCommand();
+			command.execute(request, response, session);
 			viewPage = "mainPage.jsp";
 			break; 
+		default :
+			viewPage = "mainPage.room";
 			
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

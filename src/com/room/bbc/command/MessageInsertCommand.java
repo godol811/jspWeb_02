@@ -20,13 +20,15 @@ public class MessageInsertCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws ServletException, IOException {
-		String userId = (String) session.getAttribute("USERID");
+		String userId = request.getParameter("userId");
 		String roomUserId = request.getParameter("roomUserId");
 		String messageContent = request.getParameter("messageContent");
+		String bookId = request.getParameter("bookId");
+		System.out.println(userId + roomUserId +messageContent+bookId);
 		
 		
 		MessageDao dao = new MessageDao();
-		dao.insert(userId, roomUserId, messageContent);
+		dao.insert(userId, roomUserId, messageContent, bookId);
 		
 	}
 

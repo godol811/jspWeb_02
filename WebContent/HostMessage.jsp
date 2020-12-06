@@ -7,23 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<body>
-		<form action="sendMessage.room" method="get">
+		<form action="sendMessage.room" method="post">
 	<table>
-		
-		
 			<tr>
-				<td>예약번호 </td>
-				<td><input type="text" name="bookId" value="<%=request.getParameter("bookId") %>" readonly="readonly" size="30"></td>
+			<td> 예약번호 </td>
+			<td><%=request.getParameter("bookid") %>
+			
 			</tr>
+		
 			<tr>
 				<td>보내는 사람 </td>
 				<td><input type="text" name="userId" value="<%=request.getParameter("userId") %>" readonly="readonly" size="30"></td>
 			</tr>
 			<tr>
 				<td>받는 사람 </td>
-				<td><input type="text" name="roomUserId" value="<%=request.getParameter("roomuserId")%>" size="30"></td>
+				<td><input type="text" name="roomUserId" size="30"></td>
 			</tr>
 				<td>내용</td>
 				<td><textarea rows="10" cols="50" name="messageContent"></textarea> </td>
@@ -33,7 +31,7 @@
 			</tr>
 	</table>
 		</form>
-</body>
+
 
 </body>
 </html>
