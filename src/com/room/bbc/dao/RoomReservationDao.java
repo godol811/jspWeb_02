@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.room.bbc.command.RoomReservationSelectCommand;
 import com.room.bbc.dto.RoomListDto;
 import com.room.bbc.dto.RoomReservationDto;
 import com.room.bbc.dto.RoomReviewDto;
@@ -80,7 +81,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
 			String query = "select roomcontent,roomtitle, roomprice, roomcapa, roomaddress, roomaddressdetail, DATE_FORMAT(roomcheckin,'%H:%i') as roomcheckin, DATE_FORMAT(roomcheckout,'%H:%i') as roomcheckout, roomimage, ";
-			String query2 = " roomimagereal from room where roomid = ? ";
+			String query2 = " roomimagereal, roomgpsx,roomgpsy from room where roomid = ? ";
  			preparedStatement = connection.prepareStatement(query + query2); // query 문장 연결
 			preparedStatement.setString(1, roomId);
 			resultSet = preparedStatement.executeQuery();
@@ -96,12 +97,11 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 				String roomCheckOut = resultSet.getString("roomcheckout");
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
-				String roomGpsx = resultSet.getString("roomGpsx");
-				String roomGpsy = resultSet.getString("roomGpsy");
-				
 				// bean 선언
-				RoomReservationDto dto = new RoomReservationDto(roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal, roomId,roomGpsx,roomGpsy);
+				RoomReservationDto dto = new RoomReservationDto(roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal, roomId);
 				dtos.add(dto); //arraylist에 추가
+				
+				
 				
 			}
 			

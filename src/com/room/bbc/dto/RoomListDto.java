@@ -17,12 +17,23 @@ public class RoomListDto {
 	String roomImageReal;
 	Timestamp roomDeleteDate;
 
+	String roomGpsx;
+	String roomGpsy;
+	
 
 	public RoomListDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
+
+	public RoomListDto(String roomGpsx, String roomGpsy) {
+		super();
+		this.roomGpsx = roomGpsx;
+		this.roomGpsy = roomGpsy;
+	}
+
+
 
 	public RoomListDto(String roomId, String roomTitle, String roomContent, String roomPrice,
 			String roomCapa, String roomAddress, String roomCheckIn, String roomCheckOut, String roomImage,
@@ -214,6 +225,30 @@ public class RoomListDto {
 
 	public void setRoomDeleteDate(Timestamp roomDeleteDate) {
 		this.roomDeleteDate = roomDeleteDate;
+	}
+
+
+
+	public String getRoomGpsx() {
+		return roomGpsx;
+	}
+
+
+
+	public void setRoomGpsx(String roomGpsx) {
+		this.roomGpsx = roomGpsx;
+	}
+
+
+
+	public String getRoomGpsy() {
+		return roomGpsy;
+	}
+
+
+
+	public void setRoomGpsy(String roomGpsy) {
+		this.roomGpsy = roomGpsy;
 	}
 
 

@@ -357,9 +357,13 @@ public class HomeFrontController extends HttpServlet {
 			break;
 			
 			
-		default :
+			case ("/mainPage.room"):
+			command = new AdminNotifyListCommand();
+			command.execute(request, response, session);
 			viewPage = "mainPage.jsp";
 			break; 
+		default :
+			viewPage = "mainPage.room";
 			
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

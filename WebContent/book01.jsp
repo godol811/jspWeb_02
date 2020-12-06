@@ -79,7 +79,36 @@
         var options = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no';
         window.open(url, name, options);
     }
-    
+
+
+
+	$(function(){
+		
+		$("#date1").datepicker({
+			numberOfMonths:[1,2],
+			minDate:0,
+			nextText:"다음",
+			prevText:"이전",
+			onClose:function(selectedDate){
+				$("#date2").datepicker("option","minDate", selectedDate);
+			}
+		
+		
+			
+		});
+		
+		$("#date2").datepicker({
+			numberOfMonths:[1,2],
+			nextText:"다음",
+			prevText:"이전",
+			onClose:function(selectedDate){
+				$("#date1").datepicker("option","maxDate", selectedDate);
+			}
+			
+		});
+
+	});
+	
     
     </script>
 </head>
@@ -116,20 +145,21 @@
 				<td colspan="2"><a href="#">호스트에게 연락하기 </a></td>
 			</tr>
 			<tr>
+				
 				<td colspan="2">숙박 기간을 선택하세요.</td>
 			</tr>
 			<tr>
-				<td>체크인</td><td>체크아웃</td>
+				<td align="right">체크인</td><td>체크아웃</td>
 			</tr>
 			<tr>
 			<c:choose>
 				<c:when test ="${empty sessionScope.DATE1 }">
-				<td align="center"><input type="text" name="date1" id="date1" value="체크인 날짜를 입력하세요" placeholder="" readonly="readonly"/></td>
-				<td align="center"><input type="text" name="date2" id="date2" value="체크아웃 날짜를 입력하세요" placeholder="" readonly="readonly"/></td></c:when>
+				<td align="right"><input type="text" name="date1" id="date1" value="" placeholder="체크인 날짜를 입력하세요" /></td>
+				<td align="right"><input type="text" name="date2" id="date2" value="" placeholder="체크아웃 날짜를 입력하세요" /></td></c:when>
 				
 				<c:when test ="${not empty sessionScope.DATE1 }" >
-				<td align="center"><input type="text" name="date1" id="date1" value="<%=session.getAttribute("DATE1")%>" placeholder="" readonly="readonly"/></td>
-				<td align="center"><input type="text" name="date2" id="date2" value="<%=session.getAttribute("DATE2")%>" placeholder="" readonly="readonly"/></td></c:when>
+				<td align="right"><input type="text" name="date1" id="date1" value="<%=session.getAttribute("DATE1")%>" placeholder="" readonly="readonly"/></td>
+				<td align="right"><input type="text" name="date2" id="date2" value="<%=session.getAttribute("DATE2")%>" placeholder="" readonly="readonly"/></td></c:when>
 			</c:choose>
 			
 			</tr>
@@ -143,7 +173,7 @@
 			<!--  수정 해야되는 부분 -->
 			<c:choose>
 				<c:when test ="${empty sessionScope.DATE1 }">
-				<td align="left" colspan="2">게스트<input type="number" name="guest" id="guest" value=""									  placeholder="인원수를 입력하세요" max="${dto.roomCapa} " min="1" step="1"/> 명 </td></c:when>
+				<td align="left" colspan="2">게스트<input type="number" name="guest" id="guest" value="" placeholder="인원수를 입력하세요" max="${dto.roomCapa} " min="1" step="1"/> 명 </td></c:when>
 				<c:when test ="${not empty sessionScope.DATE1 }" >
 				<td align="left" colspan="2">게스트<input type="number" name="guest" id="guest" value="<%=session.getAttribute("GUEST") %>" placeholder="인원수를 입력하세요" max="${dto.roomCapa} " min="1" step="1"/> 명 </td></c:when>
 			</c:choose>	

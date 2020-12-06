@@ -10,7 +10,7 @@
 <body>
 
 
-<table border="1">   
+	<table border="1">   
 	<tr>
 		<th>게시판 ID</th>
 		<th>제목</th>
@@ -23,10 +23,10 @@
 	<c:forEach items="${list}" var="dto">
 	<tr>
 		<td><input type="text" name="boardId" value="${dto.boardId }" readonly="readonly"></td>
-		<td>${dto.boardTitle }</td>
-		<td>${dto.boardContent }</td>
-		<td>${dto.boardInsertDate }</td>
-		<td>${dto.userInfo_userId }</td>
+		<td><input type="text" name="boardTitle" value="${dto.boardTitle }" readonly="readonly"></td>
+		<td><textarea rows="3" cols="10"  readonly="readonly">${dto.boardContent }</textarea></td>
+		<td><input type="text" name="boardInsertDate" value="${dto.boardInsertDate }" readonly="readonly"></td>
+		<td><input type="text" name="userId" value="${dto.userInfo_userId }" readonly="readonly"></td>
 		<td><a href="AdminNotifyModify.room?
 		boardId=${dto.boardId}"> 수정 </a></td>
 		<td><a href="AdminNotifyDelete.room?boardId=${dto.boardId}"> 삭제 </a></td>

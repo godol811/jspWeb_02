@@ -21,6 +21,7 @@ public class RoomSelectCommand implements Command {
 		
 		request.setAttribute("list", dtos);
 		
+		
 	}
 
 	@Override

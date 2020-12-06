@@ -218,8 +218,30 @@
 		
 		</table>
 	</div>
-		
 		</div>
+		
+		<br> <br>
+		<br> <br>
+		<br> <br>
+		<h1 align="center">공지사항 </h1>
+		<table style="margin-top: 100px; margin-left: auto; margin-right: auto; text-align: left;">
+	<tr>
+		<th>게시판 ID</th>
+		<th>제목</th>
+		<th>내용</th>
+		<th>작성일</th>
+		<th>작성자</th>
+	</tr>
+	<c:forEach items="${list}" var="dto">
+	<tr>
+		<td><input type="text" name="boardId" value="${dto.boardId }" readonly="readonly"></td>
+		<td><input type="text" name="boardTitle" value="${dto.boardTitle }" readonly="readonly"></td>
+		<td><textarea rows="3" cols="10"  readonly="readonly">${dto.boardContent }</textarea></td>
+		<td><input type="text" name="boardInsertDate" value="${dto.boardInsertDate }" readonly="readonly"></td>
+		<td><input type="text" name="userId" value="${dto.userInfo_userId }" readonly="readonly"></td>
+	</tr>
+	</c:forEach>
+	</table>
 		
 
 		
