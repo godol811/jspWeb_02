@@ -14,7 +14,7 @@ img { border:0; }
 		width:100%;
 }
 
-#topMenuBox {
+/* #topMenuBox {
 	width:300px;
 	height:20px;
 	line-height:20px;
@@ -42,7 +42,7 @@ img { border:0; }
 	display:block; 
 	
 }
-
+ */
 #header {
 	height:60px;
 	line-height:60px;
@@ -70,7 +70,7 @@ img { border:0; }
 #mainMenuBox ul li {
 	float:left;
 	text-align:center;
-	width:200px;
+	width:150px;
 }
 
 #mainMenuBox a {
@@ -79,10 +79,12 @@ img { border:0; }
 	color:black;
 	font-family:midnight;
 	font-size:18px;
+	border-radius: 25px 25px 25px 25px;
 }
-
+]
 #mainMenuBox a:hover {
-	background-color:white;
+	border-radius: 25px 25px 25px 25px;
+	
 }
 
 
@@ -104,7 +106,7 @@ img { border:0; }
 .subMenuItem {
 	width:200px;
 	padding:0;
-	background-color:pink;
+	background-color:white;
 
 }
 
