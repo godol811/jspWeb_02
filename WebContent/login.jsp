@@ -114,6 +114,7 @@
             <br>
             <input type="submit" value="로그인"/>
             <input type="button" value="회원가입" onclick="location.href='SignUp.jsp'">
+            <input type="button" value="아이디찾기" onclick="location.href='FindID.jsp'">
         </form>
          -->
         <% 
@@ -158,7 +159,11 @@
         console.log('Family Name: ' + profile.getFamilyName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
+>>>>>>> branch 'master' of https://github.com/godol811/jspWeb_02.git
 
+<<<<<<< HEAD
+
+=======
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);

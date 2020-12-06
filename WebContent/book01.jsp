@@ -3,6 +3,7 @@
     
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="com.room.bbc.dao.RoomListDao" %>
 
     
 <!DOCTYPE html>
@@ -35,12 +36,17 @@
         padding: 0;
       }
     </style>
+    
+    
+    <%
+    request.setCharacterEncoding("utf-8"); 
+    %>
     <script>
     "use strict";
 
     function initMap() {
       const myLatLng = {
-        lat: 37.4221,
+        lat: <%=request.getParameter("roomGpsx")%>,
         lng: -122.0841
       };
       const map = new google.maps.Map(document.getElementById("map"), {
