@@ -6,20 +6,21 @@ public class RoomReservationDto {
 	String bookId;
 	String roomTitle;
 	String roomContent;
-	String bookCheckInDate;
-	String bookCheckOutDate;
-	String bookCapa;
-	String roomImage;
 	String roomPrice;
 	String roomCapa;
 	String roomAddress;
 	String roomAddressDetail;
 	String roomCheckIn;
 	String roomCheckOut;
+	String roomImage;
 	String roomImageReal;
 	String roomId;
+	String roomGpsx;
+	String roomGpsy;
+	String bookCheckInDate;
+	String bookCheckOutDate;
+	String bookCapa;
 	String roomPriceTotal;
-	
 	
 	public RoomReservationDto() {
 		// TODO Auto-generated constructor stub
@@ -41,6 +42,51 @@ public class RoomReservationDto {
 	}
 
 
+
+
+
+	public RoomReservationDto(String roomTitle, String roomContent, String roomPrice, String roomCapa,
+			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
+			String roomImageReal, String roomId, String roomGpsx, String roomGpsy) {
+		super();
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.roomPrice = roomPrice;
+		this.roomCapa = roomCapa;
+		this.roomAddress = roomAddress;
+		this.roomAddressDetail = roomAddressDetail;
+		this.roomCheckIn = roomCheckIn;
+		this.roomCheckOut = roomCheckOut;
+		this.roomImage = roomImage;
+		this.roomImageReal = roomImageReal;
+		this.roomId = roomId;
+		this.roomGpsx = roomGpsx;
+		this.roomGpsy = roomGpsy;
+	}
+
+
+
+	public String getRoomGpsx() {
+		return roomGpsx;
+	}
+
+
+
+	public void setRoomGpsx(String roomGpsx) {
+		this.roomGpsx = roomGpsx;
+	}
+
+
+
+	public String getRoomGpsy() {
+		return roomGpsy;
+	}
+
+
+
+	public void setRoomGpsy(String roomGpsy) {
+		this.roomGpsy = roomGpsy;
+	}
 
 
 
