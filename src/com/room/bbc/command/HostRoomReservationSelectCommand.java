@@ -30,7 +30,6 @@ public class HostRoomReservationSelectCommand implements Command {
 		 
 		RoomReservationDao dao = new RoomReservationDao();
 		ArrayList<RoomReservationDto> dtos = dao.hostReservationSearch(roomId, search, searchWord);
-		
 		request.setAttribute("hostRoomReservationList", dtos);
 		
 	}

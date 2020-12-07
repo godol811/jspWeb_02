@@ -31,9 +31,16 @@
 		
 	}
 	
+	.roomlist_wrap .registerBtn{
+		margin-bottom: 10px;
+		padding: 10px;
+		
+	}
+	
 	.sub_news{
 		width: 80%;
 		border-top: 2px solid #999;
+		border-bottom: 2px solid #999;
 	
 	}
 	.sub_news tr{
@@ -57,19 +64,34 @@
 		vertical-align: top;
 	}
 	
+	.sub_news .thth{
+		border-right: solid 1px #999;
+	}
+	
 	.sub_news td{
 		text-align: center;
 	}
 	
-	.sub_news .room{
-		text-align: left;
-		padding-left: 15px;
-		font-size: 13px;
-		
+	.sub_news .tdtd{
+		text-align: center;
+		border-right: solid 1px #999;
 	}
-	.sub_news .room :hover{
-		text-decoration: underline;
-		
+	
+	.sub_news .one{
+		border-top: 2px solid #999;
+	}
+	.sub_news .bot{
+		border-bottom: 2px solid #999;
+	}
+	
+	#btn {
+       margin-left: 85%;
+       width: 84px;
+       height: 45px;   
+       font-size:14px;
+       font-weight:700;
+       margin-bottom: 10px;
+	   padding: 10px;
 	}
 
 </style>
@@ -78,38 +100,37 @@
 </head>
 <body>
 <div class ="roomlist_wrap">
-<input type="button" name="insertRoom" onclick="location.href='hostRegisterRoom01.jsp'" value="숙소등록">
+	<input id="btn" type="button" name="insertRoom" onclick="location.href='hostRegisterRoom01.jsp'" value="숙소 등록">
 	<form action="hostRoomDelete.room?roomId=${dto.roomId}" method="post">
 	<table class="sub_news">
 	  <colgroup>
 			<col width="80px">
+			<col width="100px">
+			<col width="200px">
+			<col width="600px">
 			<col width="80px">
 			<col width="80px">
-			<col width="300px">
-			<col width="50px">
-			<col width="50px">
-			<col width="50px">
+			<col width="80px">
 		</colgroup>
 		<tr>
-			<th colspan="2" scope="col">숙소</th><th colspan="2" scope="col">상세항목</th><th scope="col"></th><th scope="col"></th><th scope="col"></th><th scope="col"></th>
+			<th class="thth" colspan="2" scope="col">숙소</th><th class="thth" colspan="2" scope="col">상세 항목</th><th scope="col">예약 현황</th><th scope="col">숙소 수정</th><th scope="col">숙소 삭제</th>
 		</tr>
 		<c:forEach items="${hostRoomList}" var="dto">
-			<tr>
-				<td rowspan="4"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
-				<td rowspan="4">${dto.roomTitle }</td>
-				<td ></td>
-				<td rowspan="4"><input type="button" name="detail" value="예약현황" onclick="location.href='hostRoomReservation.room?roomId=${dto.roomId}'"></td>
-				<td rowspan="4"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
-				<td rowspan="4"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
+			<tr class="one">
+				<td  rowspan="4" ><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
+				<td class="tdtd" rowspan="4">${dto.roomTitle }</td>
+				<td class="tdtd">숙소설명</td><td class="tdtd">${dto.roomContent }</td>
+				<td  rowspan="4"><input class ="registerBtn" type="button" name="detail" value="예약현황" onclick="location.href='hostRoomReservation.room?roomId=${dto.roomId}'"></td>
+				<td  rowspan="4"><input class ="registerBtn" type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
+				<td rowspan="4"><input type="button" class ="registerBtn" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
 			</tr>
 			<tr>
-				<td>숙소설명</td><td>${dto.roomContent }</td>
-			</tr>
-			<tr>
-				<td>체크인 / 체크아웃 </td> <td>${dto.roomCheckIn } / ${dto.roomCheckOut }</td>				
+				<td class="tdtd">체크인 / 체크아웃 </td> <td class="tdtd">${dto.roomCheckIn } / ${dto.roomCheckOut }</td>				
 			</tr>				
+			<tr class="bot">
+				<td class="tdtd">주소</td><td>${dto.roomAddress } &nbsp; ${dto.roomAddressDetail }</td>
+			</tr>
 			<tr>
-				<td>주소</td><td>${dto.roomAddress } &nbsp; ${dto.roomAddressDetail }</td>
 			</tr>
 				
 		</c:forEach>
