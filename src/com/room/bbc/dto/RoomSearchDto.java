@@ -19,6 +19,7 @@ public class RoomSearchDto {
 	Timestamp roomDeleteDate;
 	String roomGpsx;
 	String roomGpsy;
+	String roomReviewRate;
 	
 	int rowCount;
 	
@@ -39,7 +40,7 @@ public class RoomSearchDto {
 
 	public RoomSearchDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
 			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
-			String roomImageReal) {
+			String roomImageReal, String roomReviewRate) {
 		super();
 		this.roomId = roomId;
 		this.roomTitle = roomTitle;
@@ -52,6 +53,7 @@ public class RoomSearchDto {
 		this.roomCheckOut = roomCheckOut;
 		this.roomImage = roomImage;
 		this.roomImageReal = roomImageReal;
+		this.roomReviewRate =roomReviewRate;
 	}
 
 	public RoomSearchDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
@@ -91,6 +93,26 @@ public class RoomSearchDto {
 	
 	
 	
+
+	public Timestamp getRoomDeleteDate() {
+		return roomDeleteDate;
+	}
+
+
+	public void setRoomDeleteDate(Timestamp roomDeleteDate) {
+		this.roomDeleteDate = roomDeleteDate;
+	}
+
+
+	public String getRoomReviewRate() {
+		return roomReviewRate;
+	}
+
+
+	public void setRoomReviewRate(String roomReviewRate) {
+		this.roomReviewRate = roomReviewRate;
+	}
+
 
 	public String getUserId() {
 		return userId;

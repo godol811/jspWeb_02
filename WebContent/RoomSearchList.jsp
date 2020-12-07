@@ -38,6 +38,9 @@
 			<tr>
 			<td colspan="2" align="right">가격 : ${dto.roomPrice } <br></td>
 			</tr>
+			<tr>
+			<td colspan="2" align="right">평점 : ${dto.roomReviewRate} <br></td>
+			</tr>
 			</c:forEach>
 			<tr>
 			<td colspan="7" width="50" align="center" >

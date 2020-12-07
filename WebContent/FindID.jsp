@@ -8,7 +8,6 @@
 <title> 아이디 찾기</title>
 
  <script type="text/javascript">
-    
         function checkValue()
         {
             inputForm = eval("document.loginInfo");

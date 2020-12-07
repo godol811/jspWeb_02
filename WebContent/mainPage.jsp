@@ -219,7 +219,7 @@
 			<td align="left"><a href="roomSearchDirect.room?location=완주">완주군<br>차로 2.5시간 거리</a></td>
 			<td><a href="roomSearchDirect.room?location=강릉"><img src="./images/gangneung.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="roomSearch.room??location=강릉">강릉시</a><br>차로 3시간 거리</td>
+			<td align="left"><a href="roomSearch.room?location=강릉">강릉시</a><br>차로 3시간 거리</td>
 			<td><a href="roomSearchDirect.room?location=경주"><img src="./images/gyeongju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
 			<td align="left"><a href="roomSearchDirect.room?location=경주">경주시<br>차로 4시간 거리</a></td>
@@ -234,29 +234,11 @@
 		
 		<h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br>
 		
-		<%-- <%@include file="FAQ.jsp"%> --%>
+		<%@include file="FAQ.jsp"%>
 		<br> <br>
 		<br> <br>
 		<br> <br>
 		<h1 align="center">공지사항 </h1>
-		<table style="margin-top: 100px; margin-left: auto; margin-right: auto; text-align: left;">
-	<tr>
-		<th>게시판 ID</th>
-		<th>제목</th>
-		<th>내용</th>
-		<th>작성일</th>
-		<th>작성자</th>
-	</tr>
-	<c:forEach items="${list}" var="dto">
-	<tr>
-		<td><input type="text" name="boardId" value="${dto.boardId }" readonly="readonly"></td>
-		<td><input type="text" name="boardTitle" value="${dto.boardTitle }" readonly="readonly"></td>
-		<td><textarea rows="3" cols="10"  readonly="readonly">${dto.boardContent }</textarea></td>
-		<td><input type="text" name="boardInsertDate" value="${dto.boardInsertDate }" readonly="readonly"></td>
-		<td><input type="text" name="userId" value="${dto.userInfo_userId }" readonly="readonly"></td>
-	</tr>
-	</c:forEach>
-	</table>
 
 	</div>
 	

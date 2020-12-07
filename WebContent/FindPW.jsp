@@ -34,7 +34,7 @@
     </script>
 </head>
 <body>
-<form action="findPwAction.room" method="post" onsubmit="return checkValue()">
+<form action="FindPwAction.room" method="post" onsubmit="return checkValue()">
 
 <div class="wrap">
 ID<br>

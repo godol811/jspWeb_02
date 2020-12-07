@@ -19,9 +19,9 @@ public class UserIDFindCommand implements Command {
 		String userName = request.getParameter("userName");
 		String userTel = request.getParameter("userTel");
 		UserDao dao = new UserDao();
-		ArrayList<UserDto> dtos = dao.findId(userName, userTel);
+		String userId = dao.findId(userName, userTel);
 	
-		request.setAttribute("list", dtos);
+		request.setAttribute("USERID",userId);
 	}
 
 	@Override

@@ -20,9 +20,9 @@ public class UserPWFindCommand implements Command {
 		String userTel = request.getParameter("userTel");
 		String userId = request.getParameter("userId");
 		UserDao dao = new UserDao();
-		ArrayList<UserDto> dtos = dao.findPw(userName, userTel, userId);
+		String userPw = dao.findPw(userName, userTel, userId);
 	
-		request.setAttribute("list", dtos);
+		request.setAttribute("USERPW", userPw);
 	}
 
 	@Override
