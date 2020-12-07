@@ -3,13 +3,13 @@
 
 
 
-#wrap {
-		margin:0 auto;
-		width:100%;
-}
+	#wrap {
+			margin:0 auto;
+			width:100%;
+	}
 
 	
-	img {
+ 	img {
 	 display: block; 
 	 margin: 0px auto;
 	}
@@ -40,10 +40,11 @@
 		background:white;
 		border-radius: 25px 25px 25px 25px;
 		width:200px;
+		opacity: 0;
+		visibility: hidden;
 	}
 	
 	#subMenuItem > li{
-	
 		padding: 16px 28px;
 	}
 	
@@ -55,13 +56,14 @@
 	#mainMenuBox a:hover {
 		border-radius: 25px 25px 25px 25px;
 		background: white;
-	}
 
-/* 	#subMenuItem a:hover {
+	}
+ 
+ 	#subMenuItem a:hover {
 		text-decoration:none;
 		background:lightgrey;
 		
-} */
+	} 
 
 	#notice{
 		margin-top:80px;
@@ -83,17 +85,18 @@
 		height: 50px;
 		font-size: 15px;
 	}
+ 
 
-
-.hrefLocation{
-	font-family:font;
-}
-
-.hrefLocation a {
-	display:inline-block;
-	color:black;
-	text-decoration:none;
-	font-family:midnight;
-}
+	.hrefLocation{
+		font-family:font;
+	}
+	
+	.hrefLocation a {
+		display:inline-block;
+		color:black;
+		text-decoration:none;
+		font-family:midnight;
+	}
+ 
 
 

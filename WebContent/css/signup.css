@@ -12,18 +12,25 @@ input::p
   	--submit_bg: #87cdfa;
  	 --submit_hover: #1e90ff;
 }
+*{
+	padding-top:7px;
+	margin-top: 10px;
+	
+}
 
 table {
 	grid-template-columns: 1fr;
-    margin-left: 500px;
+    margin-left: 800px;
     margin-right: auto;
     padding-top:10px;
   }
+  
 td {
 	padding: 3px;
 }
 
 h1 {
+
   text-align: center;
   margin-bottom: 20px;
 }

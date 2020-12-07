@@ -15,8 +15,8 @@
     cursor: default;
   }
   li.active {
-    background: black;
-    color: white;
+    background: white;
+    color: black;
   }
   span {
     color:red;
@@ -28,11 +28,11 @@
  
 <ul>
   <li>Room 에서 최저가를 예약하는 방법은 무엇입니까?</li>
-  		<li>알아서하세요</li>
+  <li>알아서하세요</li>
   <li>Room 의 회원 전용 혜택은 무엇입니까?</li>
-  		<li>예약이 된다는거 ?</li>
+  <li>예약이 된다는거 ?</li>
   <li>Room 앱(app)이 있습니까?</li>
- 		 <li>물론 없습니다. 조만간 안드로이드와 애플앱 공부를 마치고 만들예정입니다</li>
+  <li>물론 없습니다. 조만간 안드로이드와 애플앱 공부를 마치고 만들예정입니다</li>
 </ul>
  
 <script>

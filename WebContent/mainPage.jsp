@@ -13,18 +13,19 @@
 <meta charset="UTF-8">
 
 <style type="text/css">
-.banner{
+	.banner{
 	background-image: url("./images/mainBackground.jpg");
 	background-size: 100% 700px;
 	width: auto;
 	height: 700px;
 	text-align: center;
 	padding-top:10px;
-	
 	}
+		
+	
 </style>
 
-<title>Main Page</title>
+	<title>Main Page</title>
 	<link rel="stylesheet" href="./css/date.css">
 	<link rel="stylesheet" href="./css/common.css">
 	<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
@@ -33,7 +34,7 @@
 	<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 	
 	
-	<script src="js/subMenu.js"></script>
+	 <script src="js/subMenu.js"></script>
 
 	<!-- 연결 확인 후 삭제  --> 
 <!-- 	 	 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -136,7 +137,6 @@
               	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
             </c:when>
              </c:choose>
-             
          </ul>
      </div>
      
@@ -234,7 +234,7 @@
 		
 		<h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br>
 		
-		<%--   <%@include file="AdminNotifyList.jsp"%> --%>
+		<%-- <%@include file="FAQ.jsp"%> --%>
 		<br> <br>
 		<br> <br>
 		<br> <br>
