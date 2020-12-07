@@ -495,6 +495,81 @@ public int noticeViewRowCount() {
 }
 
 //-------------------------------//-------------------------------//-------------------------------//-------------------------------	
+public Double gpsX(String roomId) {
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	Double roomGpsx = 0.0;
 	
+	try {
+		connection = dataSource.getConnection();
+		String query = "select roomgpsx from room where roomId =? ";
+		preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, roomId);
+		resultSet = preparedStatement.executeQuery();
+		
+		
+		while (resultSet.next()) {
+			roomGpsx=resultSet.getDouble(1);
+
+			
+		}
+	}catch (Exception e) {
+	e.printStackTrace();
+	}finally {
+		try {
+			if(resultSet != null) resultSet.close();
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	return roomGpsx;
+	
+	
+	
+}
+
+public Double gpsY(String roomId) {
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	Double roomGpsx = 0.0;
+	
+	try {
+		connection = dataSource.getConnection();
+		String query = "select roomgpsy from room where roomId =? ";
+		preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, roomId);
+		resultSet = preparedStatement.executeQuery();
+		
+		
+		while (resultSet.next()) {
+			roomGpsx=resultSet.getDouble(1);
+
+			
+		}
+	}catch (Exception e) {
+	e.printStackTrace();
+	}finally {
+		try {
+			if(resultSet != null) resultSet.close();
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	return roomGpsx;
+	
+	
+	
+}
+
+
+
 	
 }

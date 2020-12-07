@@ -292,6 +292,46 @@ public ArrayList<UserDto> findId(String userName, String userTel) {
 		return dtos;
 	}
 	
+public ArrayList<UserDto> findPw(String userName, String userTel, String userId) {
+	
+	ArrayList<UserDto> dtos = new ArrayList<UserDto>();
+	
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSet = null;
+	
+	try {
+		connection = dataSource.getConnection();
+		String query = "select userpw  from userinfo where username = ? and usertel = ? and userID = ?";
+		preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, userName);
+		preparedStatement.setString(2, userTel);
+		preparedStatement.setString(3, userId);
+		resultSet = preparedStatement.executeQuery();
+		
+		while(resultSet.next()) {
+			String userPw = resultSet.getString("userpw");
+			
+		UserDto dto = new UserDto(userId,userPw);
+		dtos.add(dto);
+			
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally{
+		try {
+			if(connection != null) connection.close();
+			if(preparedStatement != null) preparedStatement.close();
+			if(resultSet != null) resultSet.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	return dtos;
+}
+
 	
 	
 }

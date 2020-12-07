@@ -46,11 +46,11 @@
 
     function initMap() {
       const myLatLng = {
-        lat: <%=request.getParameter("roomGpsx")%>,
-        lng: -122.0841
+        lat: <%=session.getAttribute("GPSX")%>,
+        lng: <%=session.getAttribute("GPSY")%>
       };
       const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 13,
+        zoom: 15,
         center: myLatLng,
         fullscreenControl: true,
         zoomControl: true,
@@ -70,7 +70,7 @@
     
     function check(){
     	theForm = document.book;
-		
+		 
 		if(theForm.date1.value.trim()==0){
 			alert("체크인 날짜를 선택해주세요.");
 			return false;

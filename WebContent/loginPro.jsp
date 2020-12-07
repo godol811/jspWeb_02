@@ -32,7 +32,7 @@
 		            // 세션에 현재 아이디 세팅
 		            session.setAttribute("USERID", userId);
 		            session.setAttribute("USERSTATE", userState);
-		            msg = "mainPage.jsp";
+		            msg = "mainPage.room";
 		        }
 		        else if(check ==-1)  // 아이디가 틀릴경우
 		        {
@@ -74,7 +74,7 @@
 		            // 세션에 현재 아이디 세팅
         		  session.setAttribute("USERID", userId);
                   session.setAttribute("USERSTATE", userState);
-                  msg = "mainPage.jsp";
+                  msg = "mainPage.room";
               	}
 		        
 		        else if(check ==-1)  // 아이디가 틀릴경우
