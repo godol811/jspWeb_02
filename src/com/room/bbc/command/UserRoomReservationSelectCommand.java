@@ -26,8 +26,6 @@ public class UserRoomReservationSelectCommand implements Command {
 		// TODO Auto-generated method stub
 
 		String userId = (String)session.getAttribute("USERID");
-		String bookId = request.getParameter("bookId");
-		
 		RoomReservationDao dao = new RoomReservationDao();
 		ArrayList<RoomReservationDto> dtos = dao.roomReservationList(userId);
 		
@@ -38,8 +36,9 @@ public class UserRoomReservationSelectCommand implements Command {
 		
 		request.setAttribute("REVIEWID", dtos2);
 		
-		int reviewCheck = dao.reviewCheck(userId, bookId);
-		
+		boolean reviewCheck = dao.reviewCheck(userId);
+		request.setAttribute("REVIEW", reviewCheck);
+		System.out.println(reviewCheck);
 	}
 
 }

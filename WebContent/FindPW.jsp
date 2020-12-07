@@ -34,42 +34,19 @@
     </script>
 </head>
 <body>
-<h1>아이디를 찾기위해 이름과 전화번호를 입력해주세요</h1>
 <form action="findPwAction.room" method="post" onsubmit="return checkValue()">
 
 <div class="wrap">
-<table>
-<tr>
-<th colspan="2">ID</th>
-<td></td>
-</tr>
-<tr>
-<td colspan="2"><input type="text" id="userId"  name="userId"  style="width:400px;height:40px;font-size:15px;"></td>
-<td></td>
-</tr>
-<tr>
-<th colspan="2">회원이름</th>
-<td></td>
-</tr>
-<tr>
-<td colspan="2"><input type="text" id="userName" name="userName" style="width:400px;height:40px;font-size:15px;"></td>
-<td></td>
-</tr>
-<tr>
-<th colspan="2">전화번호</th>
-<td></td>
-</tr>
-<tr>
-<td colspan="2"><input type="text" id="userTel" name="userTel" style="width:400px;height:40px;font-size:15px;"></td>
-<td></td>
-</tr>
-<tr>
-<td><input type="submit" id="input_submit"
-	        class="input_field" value="찾기"></td>
-<td><input type="button" id="input_submit"
-	        class="input_field" value="돌아가기" onclick="location.href='login.jsp'"></td>
-</tr>
-</table>
+ID<br>
+<input type="text" id="userId"  name="userId"  style="width:400px;height:40px;font-size:15px;"> <br>
+회원이름<br>
+<input type="text" id="userName" name="userName" style="width:400px;height:40px;font-size:15px;"><br>
+전화번호<br>
+<input type="text" id="userTel" name="userTel" style="width:400px;height:40px;font-size:15px;"><br>
+<input type="submit" id="input_submit"
+	        class="input_field" value="찾기"><br>
+<input type="button" id="input_submit"
+	        class="input_field" value="돌아가기" onclick="location.href='FindIDPWSELECT.jsp'"><br>
 </div>
 </form>
 

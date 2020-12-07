@@ -100,16 +100,13 @@
 					<td class="room"><a href="bookView.room?bookId=${dto.bookId }"> ${dto.roomTitle }</a></td>
 					<td class="stay">${dto.bookCheckInDate } ~ ${dto.bookCheckOutDate }</td>
 					 <c:choose>
-			              <c:when test = "${REVIEW eq 1}">
-		             	   <td> 리뷰 작성 완료</td>
-			              </c:when>
-			              <c:when test = "${REVIEW eq 0}">
+			              <c:when test = "${REVIEW eq true}">
 			              	<td class="btn"><input type="button" value="리뷰 작성하기" onclick="location.href='Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }'"></td>
 			              </c:when>
+			              <c:when test = "${REVIEW eq false}">
+		             	   <td> 리뷰 작성 완료</td>
+			              </c:when>
 			            </c:choose>
-					
-					
-					
 				</tr>
 			</c:forEach>
 		</table>

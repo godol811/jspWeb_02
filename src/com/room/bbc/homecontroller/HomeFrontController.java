@@ -172,16 +172,16 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "login.jsp";
 		break;	
 			
-		case("/findIdAction.room"):		
+		case("/FindIdAction.room"):		
 			command = new UserIDFindCommand();
 		command.execute(request, response);
-		viewPage="findIdresult.jsp";
+		viewPage="FindIdresult.jsp";
 		break;
 		
-		case("/findPwAction.room"):		
+		case("/FindPwAction.room"):		
 			command = new UserPWFindCommand();
 		command.execute(request, response);
-		viewPage="findPwresult.jsp";
+		viewPage="FindPwresult.jsp";
 		break;
 	
 	
@@ -378,7 +378,7 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "messageList.jsp";
 			break;	
 			
-		case ("/messageHistory.room")://DB주고받은 메세지 입력.
+		case ("/messageHistory.room")://
 			command = new MessageHistoryCommand();
 			command.execute(request, response, session);
 			viewPage = "messageHistory.jsp";
