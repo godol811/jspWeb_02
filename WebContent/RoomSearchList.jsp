@@ -146,10 +146,7 @@
 				<td colspan="2">체크아웃 : ${DATE2} </td>
 			</tr> --%>
 			<tr>
-				<td class="tdtd" id="trtr">평점  점</td>
-			</tr>
-			<tr>
-			<td colspan="2" align="right">평점 : ${dto.roomReviewRate} <br></td>
+				<td class="tdtd" id="trtr">평점  ${dto.roomReviewRate} 점</td>
 			</tr>
 			</c:forEach>
 			<tr class="page">
