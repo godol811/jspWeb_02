@@ -23,6 +23,12 @@
 		
 	}
 	
+	h1 {
+	  text-align: center;
+	  margin-top: 40px;
+	  margin-bottom: 20px;
+	}
+	
 	a{
 		text-decoration: none;
 		color: inherit;
@@ -30,6 +36,18 @@
 	
 	.booklikst_wrap{
 		padding: 50px;
+		
+	}
+	
+	.booklist_wrap .registerBtn{
+	margin-bottom: 10px;
+	padding: 10px;
+	margin-left: 85%;
+       width: 84px;
+       height: 45px;   
+       font-size:14px;
+       font-weight:700;
+	   padding: 10px;
 		
 	}
 	
@@ -78,12 +96,13 @@
 	}
 	
 	
+	
 </style>
 
 </head>
 <body>
 	<div class ="booklikst_wrap">
-		<h1 style="margin-left: 180px; padding-top: 40px;">여행 예약</h1>
+		<h1>여행 예약</h1>
 		<table class="sub_news">
 			<colgroup>
 				<col width="60"/>
@@ -99,7 +118,7 @@
 					<td class="image"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 					<td class="room"><a href="bookView.room?bookId=${dto.bookId }"> ${dto.roomTitle }</a></td>
 					<td class="stay">${dto.bookCheckInDate } ~ ${dto.bookCheckOutDate }</td>
-					<td class="btn"><input type="button" value="리뷰 작성하기" onclick="location.href='Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }'"></td>
+					<td class="btn"><input type="button" class ="registerBtn" value="리뷰 작성하기" onclick="location.href='Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }'"></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -14,14 +14,13 @@
 
 <style type="text/css">
 	.banner{
-	background-image: url("./images/mainBackground.jpg");
-	background-size: 100% 700px;
-	width: auto;
-	height: 700px;
-	text-align: center;
-	padding-top:10px;
+		background-image: url("./images/mainBackground.jpg");
+		background-size: 100% 700px;
+		width: auto;
+		height: 700px;
+		text-align: center;
+		padding-top:10px;
 	}
-		
 	
 </style>
 
@@ -132,9 +131,21 @@
                </c:when>
       		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
               	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
+              	
+              	
                </c:when>
             <c:when test = "${sessionScope.USERSTATE == '회원'}">
               	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
+            </c:when>
+            <c:when test = "${sessionScope.USERSTATE == '관리자'}">
+              	<li class="menuItemHover"> <a href="adminCheck.jsp">관리자 메뉴</a></li>
+              		<div id="subMenuBox">
+			         <ul id="subMenuItem">
+	             	    <li><a href="AdminUserList.room">회원 관리</a></li>
+	             	    <li><a href="AdminRoomList.room">숙소 관리</a></li>
+	             	    <li><a href="AdminNotifyList.room">공지사항</a></li>
+			         </ul>
+			    	</div>
             </c:when>
              </c:choose>
          </ul>
@@ -232,10 +243,10 @@
 	
 	<div id="notice">
 		
-		<h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br>
+		<!-- <h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br> -->
 		
-		<%-- <%@include file="FAQ.jsp"%> --%>
-		<br> <br>
+		<%--  <%@include file="FAQ.jsp"%> --%>
+<%-- 		<br> <br>
 		<br> <br>
 		<br> <br>
 		<h1 align="center">공지사항 </h1>
@@ -256,13 +267,13 @@
 		<td><input type="text" name="userId" value="${dto.userInfo_userId }" readonly="readonly"></td>
 	</tr>
 	</c:forEach>
-	</table>
+	</table> --%>
 
 	</div>
 	
 	<div id="bottom">
 		OWNER. 고종찬 & 박경미 &nbsp; TEL. 1500-2020 &nbsp; ADDRESS. 서울 서초구 강남대로 441 <br> 
-		Copyright 2020. 2조 All pictures cannot be copied without permission.
+		Copyright 2020. 고종찬 박경미 All pictures cannot be copied without permission.
 	
 	</div>
 	

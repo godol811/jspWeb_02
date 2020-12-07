@@ -16,6 +16,52 @@
 <style type = "text/css">
 .ui-timepicker { font-size:9pt !important}
 
+*{
+	padding-top:5px;
+	/* margin-top: 5px; */
+	
+}
+
+.all {
+	grid-template-columns: 1fr;
+    margin-left: 800px;
+    margin-right: auto;
+    padding-top:10px;
+  }
+.head {
+	grid-template-columns: 1fr;
+    margin-left: 900px;
+    margin-right: auto;
+    padding-top:10px;
+  }
+
+.head_table th td{
+	text-align: center;
+}
+
+h3 {
+	margin-top: 30px;
+   margin-bottom: 10px;
+}
+
+	#btnIndex{
+		margin-top: 80px;
+		margin-bottom: 10px;
+		padding: 10px;
+		margin-left: 1%;
+		width: 80px;
+		
+	} 
+
+	#btnIndex1{
+		margin-top: 80px;
+		margin-bottom: 10px;
+		padding: 10px;
+		margin-left: 25%;
+		width: 80px;
+		
+	} 
+
 </style>
 
 <script type="text/javascript">
@@ -99,10 +145,17 @@
 
 
 <body>
-	<h2>숙소 등록 시작하기</h2>
-
-		<h5>1단계</h5> <br>
-	
+<div class="head">
+	<table class="head_table">
+		<tr>
+			<th>숙소 등록 시작하기</th>
+		</tr>
+		<tr>
+			<td>1단계</td><td>2단계</td>
+		</tr>	
+	</table>
+</div>
+<div class="all">	
 		<h3>1. 숙박 가능 인원을 선택하세요</h3>
 	<form id="form" name="form" action="hostRegisterRoom02.jsp?roomTitle=${roomView.roomTitle }&roomContent=${roomView.roomContent }&roomImage=${roomView.roomImage }&roomImageReal=${roomView.roomImageReal }" method="post" onsubmit="return registerCheck()">	
 		<div class="combo">
@@ -126,7 +179,6 @@
 				<option value="16" <c:if test="${roomView.roomCapa == 16}">selected</c:if>>최대 16명 숙박 가능</option>
 			</select> <br><br>
 	
-	<p>	
 		<h3>2. 이용시간을 선택하세요.</h3>
 		<table>
 			<tr>
@@ -138,10 +190,9 @@
 				<td><input type="text" id="checkoutTime" name="checkoutTime" class="form-control" value="${roomView.roomCheckOut }"  style="width:100px; font-size: 10px;"></td>
 			</tr>
 		</table>
-	</p>
 			
 		</div>
-		<p>
+
 		 <h3>3. 숙소 위치를 알려주세요.</h3> <br>
 		<table>
 			<tr>
@@ -161,15 +212,15 @@
 			</tr>
 		
 		</table>
-		</p>
+	
 		
 		
 		<h3>4. 숙소 요금을 알려주세요.</h3> <br>
-		<input type="text" name="roomPrice" id="roomPrice" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="text-align: right;padding-right: 10px" value="${roomView.roomPrice }">원 
+		<input type="text" name="roomPrice" id="roomPrice" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="text-align: right;padding-right: 10px" value="${roomView.roomPrice }">원  <br>
 		
-		<input type="submit" value="다음">
+		<input id="btnIndex" onClick="history.go(-1)" type="button" value="목록가기"><input id="btnIndex1" type="submit" value="다음">
 	</form>
-	
+</div>	
 </body>
 
 </html>

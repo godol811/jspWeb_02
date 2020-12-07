@@ -8,11 +8,69 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+*{
+	padding-top:5px;
+	/* margin-top: 5px; */
+	
+}
+
+.all {
+	grid-template-columns: 1fr;
+    margin-left: 800px;
+    margin-right: auto;
+    padding-top:10px;
+  }
+.head {
+	grid-template-columns: 1fr;
+    margin-left: 900px;
+    margin-right: auto;
+    padding-top:10px;
+  }
+
+.head_table tr, .head_table td{
+	text-align: center;
+}
+
+
+	#btnIndex{
+		margin-top: 80px;
+		margin-bottom: 10px;
+		padding: 10px;
+		margin-left: 1%;
+		width: 80px;
+		
+	} 
+
+	#btnIndex1{
+		margin-top: 80px;
+		margin-bottom: 10px;
+		padding: 10px;
+		margin-left: 20%;
+		width: 80px;
+		
+	} 
+.all .one{
+
+	margin-bottom: 10px;
+
+}
+
+</style>
+
 </head>
 <body>
-	<h2>숙소 등록 시작하기</h2>
+	<div class="head">
+	<table class="head_table">
+		<tr>
+			<th>숙소 등록 시작하기</th>
+		</tr>
+		<tr>
+			<td>1단계</td><td>2단계</td>
+		</tr>	
+	</table>
+</div>
 
-		<h5>2단계</h5> <br>
 	<%
 	request.setCharacterEncoding("utf-8");
 	
@@ -68,7 +126,7 @@
 	</script>
 	
 		<!-- 사진 업로드 -->
-		<table>
+		<table class="all">
 			<colgroup>
 				<col width="500px"/>
 			</colgroup>
@@ -81,36 +139,33 @@
 				<form name="load" method="post" enctype="multipart/form-data" action="hostRoomRevise.room" onsubmit="return uploadCheck()">
 				</c:otherwise>
 		</c:choose>
-			<tr>
-				<td colspan="2">1. 숙소의 제목을 만드세요.</td>
+			<tr >
+				<td colspan="2" style="font-weight: bold;">1. 숙소의 제목을 만드세요.</td>
+			</tr>
+			<tr >
+				<td colspan="2" class="one"><input type="text" name="roomTitle" placeholder="50자 이내" value="<%=roomTitle%>"/></td>
+			</tr>
+			<tr >
+				<td colspan="2" style="font-weight: bold;">2. 게스트에게 숙소에 대해 설명해주세요.</td>
+			</tr>
+			<tr ><td colspan="2" class="one"><textarea rows="40" cols="70" name="roomContent"><%=roomContent%></textarea></td>
+			</tr>
+			<tr >
+				<td colspan="2" style="font-weight: bold;">3. 멋진 사진으로 숙소가 돋보이게 해주세요.</td>
+			</tr>
+			<tr >
+				<td colspan="2" class="one"><input type="file" name="roomImage01" value="<%=roomImage %>"/></td><td><input type="hidden" name="originImage" value="<%=roomImage %>" readonly="readonly"> </td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="text" name="roomTitle" placeholder="50자 이내" value="<%=roomTitle%>"/></td>
-			</tr>
-			<tr>
-				<td colspan="2">2. 게스트에게 숙소에 대해 설명해주세요.</td>
-			</tr>
-			<tr><td colspan="2"><textarea rows="20" cols="50" name="roomContent"><%=roomContent%></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2">3. 멋진 사진으로 숙소가 돋보이게 해주세요.</td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="file" name="roomImage01"/></td><td><input type="text" name="originImage" value="<%=roomImage %>" readonly="readonly"> </td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="file" name="roomImage02"/></td>
-			</tr>
-			<tr>
-				<td><input type="button" value="이전" onClick="history.go(-1)" style="align-items: right"></td>
+				<td><input type="button" id="btnIndex" value="이전" onClick="history.go(-1)" style="align-items: right"></td>
 				<c:choose>
 					<c:when test="${empty sessionScope.ROOMID}">
-						<td><input type="submit" value="등록"/></td>
+						<td><input id="btnIndex1" type="submit" value="등록"/></td>
 						</form>
 					</c:when>
 					<c:otherwise>
 					<!-- 	<td><input type="button" value="수정" enctype="multipart/form-data" onclick="location.href='hostRoomRevise.room'"></td> -->
-						<td><input type="submit" value="수정" /></td>
+						<td><input id="btnIndex1" type="submit" value="수정" /></td>
 						</form>
 					</c:otherwise>
 				</c:choose>

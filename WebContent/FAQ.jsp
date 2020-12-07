@@ -6,15 +6,15 @@
   <meta charset="utf-8">
   <title>FAQ</title>
   <style>
-  ul {
+  .faq ul {
   	text-align: center;
    	 color: Black;
   }
-  li {
+  .faq ul li {
   	text-align: center;
     cursor: default;
   }
-  li.active {
+   .faq ul li.active {
     background: white;
     color: black;
   }
@@ -26,7 +26,7 @@
 </head>
 <body>
  
-<ul>
+<ul class="faq">
   <li>Room 에서 최저가를 예약하는 방법은 무엇입니까?</li>
   <li>알아서하세요</li>
   <li>Room 의 회원 전용 혜택은 무엇입니까?</li>
