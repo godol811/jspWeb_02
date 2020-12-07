@@ -41,7 +41,7 @@
     <%
     request.setCharacterEncoding("utf-8"); 
     %>
-    <script>
+   <script>
     "use strict";
 
     function initMap() {
@@ -62,6 +62,7 @@
         title: "Hello World!"
       });
     }
+
 
 
 
@@ -122,7 +123,7 @@
 <body>
 
 <form name="book" action="bookPage2.room?roomId=<%=session.getAttribute("ROOMID") %>" method="post" onsubmit="return check()">
-	<table border="1">
+	<table class="sub_news">
 		<c:forEach items = "${list }" var = "dto">
 		<colgroup>
 			<col width="80%">

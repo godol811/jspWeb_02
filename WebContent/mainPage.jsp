@@ -242,11 +242,9 @@
 	
 	<div id="notice">
 		
-		<!-- <h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br> -->
+		 <h1 style="font-size: 40px; margin-bottom: 20px; margin-top: 200px; text-decoration: underline;" >예약에 대해 자주 묻는 질문 (FAQ)</h1> <br>
 		
-		<%@include file="FAQ.jsp"%>
-		<br> <br>
-		<%--  <%@include file="FAQ.jsp"%> --%>
+		 <%@include file="FAQ.jsp"%>
 <%-- 		<br> <br>
 >>>>>>> refs/remotes/origin/master
 		<br> <br>

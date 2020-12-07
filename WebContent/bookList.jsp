@@ -103,20 +103,22 @@
 		<h1>여행 예약</h1>
 		<table class="sub_news">
 			<colgroup>
+				<col width="30"/>
 				<col width="60"/>
 				<col width="70" />
 				<col width="200" />
 				<col width="50" />
 			</colgroup>
 			<tr>
-				<th colspan="2" scope="col">숙소</th><th scope="col">여행 기간</th><th scope="col">리뷰</th>
+				<th scope="col">No</th><th colspan="2" scope="col">숙소</th><th scope="col">여행 기간</th><th scope="col">리뷰</th>
 			</tr>
 			<c:forEach items="${roomReservationList }" var = "dto" varStatus="status">
 				<tr>
+					<td>${status.count}</td>
 					<td class="image"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 					<td class="room"><a href="bookView.room?bookId=${dto.bookId }"> ${dto.roomTitle }</a></td>
 					<td class="stay">${dto.bookCheckInDate } ~ ${dto.bookCheckOutDate }</td>
-					<td><input type="button" class ="registerBtn" value="리뷰 작성하기" onclick="location.href='Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }'"></td>
+					<td><input type="button" class ="registerBtn" value="리뷰 작성하기" onclick="window.open('Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }','','width=800, height=800, scrollbars=yes')"></td>
 				</tr>
 			</c:forEach>
 		</table>
