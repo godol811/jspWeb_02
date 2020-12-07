@@ -83,7 +83,7 @@
 	        class="input_field"
 	      />
 	      </form>
-	      <span>Forgot <a href="FindIDPWSELECT.jsp" style="font-size: 20px;"> Email / Password </a></span>
+	      <span>Forgot <a style="font-size: 20px;" onclick="window.open('FindIDPWSELECT.jsp','','width=500, height=500,status=no,toolbar=no,scrollbars=no')"> Email / Password </a></span>
 	      <span id="create_account">
 	        <a href="SignUp.jsp">회원가입 ➡ </a>
 	      </span>

@@ -21,6 +21,7 @@ import com.room.bbc.command.HostRoomListCommand;
 import com.room.bbc.command.HostRoomReservationSelectCommand;
 import com.room.bbc.command.HostRoomViewCommand;
 import com.room.bbc.command.JoinCheckCommand;
+import com.room.bbc.command.MessageHistoryCommand;
 import com.room.bbc.command.MessageInsertCommand;
 import com.room.bbc.command.MessageListCommand;
 import com.room.bbc.command.MessageSelectCommand;
@@ -171,16 +172,16 @@ public class HomeFrontController extends HttpServlet {
 			viewPage = "login.jsp";
 		break;	
 			
-		case("/findIdAction.room"):		
+		case("/FindIdAction.room"):		
 			command = new UserIDFindCommand();
 		command.execute(request, response);
-		viewPage="findIdresult.jsp";
+		viewPage="FindIdresult.jsp";
 		break;
 		
-		case("/findPwAction.room"):		
+		case("/FindPwAction.room"):		
 			command = new UserPWFindCommand();
 		command.execute(request, response);
-		viewPage="findPwresult.jsp";
+		viewPage="FindPwresult.jsp";
 		break;
 	
 	
@@ -370,6 +371,18 @@ public class HomeFrontController extends HttpServlet {
 			command.execute(request, response, session);
 			viewPage = "div2.jsp";
 			break;
+			
+		case ("/userMessage.room")://DB주고받은 메세지 입력.
+			command = new MessageListCommand();
+			command.execute(request, response, session);
+			viewPage = "messageList.jsp";
+			break;	
+			
+		case ("/messageHistory.room")://
+			command = new MessageHistoryCommand();
+			command.execute(request, response, session);
+			viewPage = "messageHistory.jsp";
+			break;		
 			
 		case ("/messageList.room"): //주고 받은 메세지 보이기
 			command = new MessageSelectCommand();
