@@ -41,7 +41,7 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query1  = "select count(*) from room.room  where roomaddress like  '%"+ location + "%' and roomcapa>= '"+ guest +"' and roomdeletedate is null";
+			String query1  = "select count(*) from room r left outer join review re on re.room_roomid = r.roomid  where roomaddress like  '%"+ location +"%' and roomcapa>= '" + guest + "' and roomdeletedate is null ";
 			String query2  = " and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "'>= bookcheckindate and '"+ roomCheckoutDate+"' <=bookcheckoutdate)";
 			preparedStatement = connection.prepareStatement(query1+ query2);
 			resultSet = preparedStatement.executeQuery();
@@ -80,8 +80,8 @@ DataSource dataSource;
 			connection = dataSource.getConnection();
 			String query = "select avg(re.reviewrate),r.roomtitle, r.roomcontent, r.roomprice, r.roomcapa, r.roomaddress, r.roomaddressdetail, ";
 			String query2 = "r.roomcheckin, r.roomcheckout, r.roomimage, r.roomid, r.roomimagereal from room r left outer join review re on re.room_roomid = r.roomid  where roomaddress like  '%"+ location + "%' and roomcapa>= '" + guest + "' and roomdeletedate is null ";
-			String query3 = "and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "'>= bookcheckindate and '"+ roomCheckoutDate+"' <=bookcheckoutdate) ";
-			String query4 =" group by r.roomid,re.room_roomid";
+			String query3 = "and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "' >= bookcheckindate and '"+ roomCheckoutDate+"' <= bookcheckoutdate) ";
+			String query4 =" group by r.roomid, re.room_roomid";
 			preparedStatement = connection.prepareStatement(query + query2 + query3 + query4); // query 문장 연결
 			resultSet = preparedStatement.executeQuery();
 			
@@ -96,7 +96,7 @@ DataSource dataSource;
 				String roomCheckOut = resultSet.getString("roomcheckout");
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
-				String roomReviewRate = resultSet.getString("(avg(re.reviewrate)");
+				String roomReviewRate = resultSet.getString("avg(re.reviewrate)");
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				
 				// bean 선언
@@ -178,7 +178,7 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query1  = "select count(*) from room.room  where roomaddress like  '%"+ location + "%' and roomdeletedate is null";
+			String query1  = "select count(*)  from room r left outer join review re on re.room_roomid = r.roomid where roomaddress like  '%"+ location + "%' and roomdeletedate is null";
 			preparedStatement = connection.prepareStatement(query1);
 			resultSet = preparedStatement.executeQuery();
 			

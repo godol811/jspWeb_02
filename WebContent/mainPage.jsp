@@ -244,7 +244,7 @@
 		
 		<!-- <h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br> -->
 		
-		<%@include file="FAQ.jsp"%>
+	<%-- 	<%@include file="FAQ.jsp"%> --%>
 		<br> <br>
 		<%--  <%@include file="FAQ.jsp"%> --%>
 <%-- 		<br> <br>
