@@ -47,9 +47,9 @@ public class RoomReviewDao {
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				int reviewId = resultSet.getInt("reviewid");
+				String reviewId = resultSet.getString("reviewid");
 				String userinfo_Userid = resultSet.getString("userinfo_userid");
-				int room_Roomid = resultSet.getInt("room_roomid");
+				String room_Roomid = resultSet.getString("room_roomid");
 				String reviewContent = resultSet.getString("reviewcontent");
 				double reviewRate = resultSet.getDouble("reviewrate");
 				String reviewDate = resultSet.getString("reviewdate");

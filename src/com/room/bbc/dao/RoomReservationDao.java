@@ -134,13 +134,13 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select b.bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
+			String query = "select bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				String bookId = Integer.toString(resultSet.getInt("b.bookid"));
+				String bookId = resultSet.getString("bookid");
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				String roomTitle = resultSet.getString("roomtitle");
 				String roomContent = resultSet.getString("roomcontent");
@@ -150,7 +150,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 				String roomImage = resultSet.getString("roomimage");
 				
 				// bean 선언
-				RoomReservationDto dto = new RoomReservationDto(bookId, roomTitle, roomContent, bookCheckInDate, bookCheckOutDate, bookCapa, roomImage, roomId);
+				RoomReservationDto dto = new RoomReservationDto(bookId,roomTitle, roomContent, bookCheckInDate, bookCheckOutDate, bookCapa, roomImage, roomId);
 				dtos.add(dto); //arraylist에 추가
 				
 			}
@@ -289,8 +289,8 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				int reviewId = resultSet.getInt("reviewid");
-				int bookId = resultSet.getInt("bookid");
+				String reviewId = resultSet.getString("reviewid");
+				String bookId = resultSet.getString("bookid");
 				
 				// bean 선언
 				RoomReviewDto dto = new RoomReviewDto(reviewId, bookId);

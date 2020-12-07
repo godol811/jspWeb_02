@@ -136,7 +136,11 @@ public ArrayList<MessageDto> messageListforReservation(String userId){
 	
 	//-----------
 	
-	// 선택된 사람의 전체 list 목록 보기
+	// 선택된 사람의 전체 list 목록 보기 
+	
+	
+	
+	//하다 만 부분
 	public ArrayList<MessageDto> messageList(String userId){
 		ArrayList<MessageDto> dtos = new ArrayList<MessageDto>();
 		// java.sql 사용
