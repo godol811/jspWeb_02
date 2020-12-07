@@ -8,9 +8,7 @@
 <title>ID 찾기 결과</title>
 </head>
 <body>
-<c:forEach items = "${list }" var = "dto">
-당신의 ID는 ${dto.userId } 입니다.
-</c:forEach>
+<h1 style="text-align: center;">당신의 ID는 ${USERID} 입니다.</h1>
 
 
 

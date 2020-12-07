@@ -253,13 +253,13 @@ public void DeleteUser(String userId) {
 			return userState;
 	}
 //	----잃어버린 ID 찾기 가져오기----------------------	
-public ArrayList<UserDto> findId(String userName, String userTel) {
+public String findId(String userName, String userTel) {
 		
-		ArrayList<UserDto> dtos = new ArrayList<UserDto>();
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
+		String userId="";
 		
 		try {
 			connection = dataSource.getConnection();
@@ -270,10 +270,7 @@ public ArrayList<UserDto> findId(String userName, String userTel) {
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				String userId = resultSet.getString("userId");
-				
-			UserDto dto = new UserDto(userId);
-			dtos.add(dto);
+			userId = resultSet.getString("userId");
 				
 			}
 			
@@ -289,16 +286,16 @@ public ArrayList<UserDto> findId(String userName, String userTel) {
 				e.printStackTrace();
 			}
 		}
-		return dtos;
+		return userId;
 	}
 	
-public ArrayList<UserDto> findPw(String userName, String userTel, String userId) {
+public String findPw(String userName, String userTel, String userId) {
 	
-	ArrayList<UserDto> dtos = new ArrayList<UserDto>();
 	
 	Connection connection = null;
 	PreparedStatement preparedStatement = null;
 	ResultSet resultSet = null;
+	String userPw= "";
 	
 	try {
 		connection = dataSource.getConnection();
@@ -310,10 +307,8 @@ public ArrayList<UserDto> findPw(String userName, String userTel, String userId)
 		resultSet = preparedStatement.executeQuery();
 		
 		while(resultSet.next()) {
-			String userPw = resultSet.getString("userpw");
+			userPw = resultSet.getString("userpw");
 			
-		UserDto dto = new UserDto(userId,userPw);
-		dtos.add(dto);
 			
 		}
 		
@@ -329,7 +324,7 @@ public ArrayList<UserDto> findPw(String userName, String userTel, String userId)
 			e.printStackTrace();
 		}
 	}
-	return dtos;
+	return userPw;
 }
 
 	

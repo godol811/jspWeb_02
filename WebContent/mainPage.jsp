@@ -229,7 +229,7 @@
 			<td align="left"><a href="roomSearchDirect.room?location=완주">완주군<br>차로 2.5시간 거리</a></td>
 			<td><a href="roomSearchDirect.room?location=강릉"><img src="./images/gangneung.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="roomSearch.room??location=강릉">강릉시</a><br>차로 3시간 거리</td>
+			<td align="left"><a href="roomSearch.room?location=강릉">강릉시</a><br>차로 3시간 거리</td>
 			<td><a href="roomSearchDirect.room?location=경주"><img src="./images/gyeongju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
 			<td align="left"><a href="roomSearchDirect.room?location=경주">경주시<br>차로 4시간 거리</a></td>
@@ -244,11 +244,16 @@
 		
 		<!-- <h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br> -->
 		
+		<%@include file="FAQ.jsp"%>
+		<br> <br>
 		<%--  <%@include file="FAQ.jsp"%> --%>
 <%-- 		<br> <br>
+>>>>>>> refs/remotes/origin/master
 		<br> <br>
 		<br> <br>
 		<h1 align="center">공지사항 </h1>
+<<<<<<< HEAD
+=======
 		<table style="margin-top: 100px; margin-left: auto; margin-right: auto; text-align: left;">
 	<tr>
 		<th>게시판 ID</th>

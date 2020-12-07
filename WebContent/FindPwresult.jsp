@@ -8,9 +8,8 @@
 <title>PW 찾기 결과</title>
 </head>
 <body>
-<c:forEach items = "${list }" var = "dto">
-	당신의 PW는 ${dto.userPw } 입니다.
-</c:forEach>
+
+<h1 style="text-align: center;">당신의 PW는 ${USERPW} 입니다.</h1>	
 
 
 </body>
