@@ -137,7 +137,7 @@
               	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
             </c:when>
             <c:when test = "${sessionScope.USERSTATE == '관리자'}">
-              	<li class="menuItemHover"> <a href="adminCheck.jsp">관리자 메뉴</a></li>
+              	<li class="menuItemHover"> <a href="AdminCheck.room">관리자 메뉴</a></li>
               		<div id="subMenuBox">
 			         <ul id="subMenuItem">
 	             	    <li><a href="AdminUserList.room">회원 관리</a></li>
@@ -210,9 +210,9 @@
 			<td><a href="roomSearchDirect.room?location=부산"><img src="./images/busan.jpg" width="70px" height="70px"></a></td>
 			<td></td>
 			<td align="left"><a href="roomSearchDirect.room?location=부산">부산 <br>차로 5시간 거리</a></td>
-			<td><a href="roomSearchDirect.room?location=전주"><img src="./images/jeonju.jpg" width="70px" height="70px"></a></td>
+			<td><a href="roomSearchDirect.room?location=강원도"><img src="./images/jeonju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="roomSearchDirect.room?location=전주">전주시<br>차로 3시간 거리</a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=강원">강원<br>차로 3시간 거리</a></td>
 			<td><a href="roomSearchDirect.room?location=양양"><img src="./images/yangyang.jpg" width="70px" height="70px"></a></td>
 			<td></td>
 			<td align="left"><a href="roomSearchDirect.room?location=양양">양양군<br>차로 2.5시간 거리</a></td>
@@ -224,9 +224,9 @@
 			<td><a href="roomSearchDirect.room?location=대구"><img src="./images/daegu.jpg" width="70px" height="70px"></a></td>
 			<td></td>
 			<td align="left"><a href="roomSearchDirect.room?location=대구">대구<br>차로 4시간 거리</a></td>
-			<td><a href="roomSearchDirect.room?location=완주"><img src="./images/wanju.jpg" width="70px" height="70px"></a></td>
+			<td><a href="roomSearchDirect.room?location=경상북도"><img src="./images/wanju.jpg" width="70px" height="70px"></a></td>
 			<td></td>
-			<td align="left"><a href="roomSearchDirect.room?location=완주">완주군<br>차로 2.5시간 거리</a></td>
+			<td align="left"><a href="roomSearchDirect.room?location=경상북도">경상북도<br>차로 2.5시간 거리</a></td>
 			<td><a href="roomSearchDirect.room?location=강릉"><img src="./images/gangneung.jpg" width="70px" height="70px"></a></td>
 			<td></td>
 			<td align="left"><a href="roomSearch.room?location=강릉">강릉시</a><br>차로 3시간 거리</td>
@@ -245,6 +245,9 @@
 		 <h1 style="font-size: 40px; margin-bottom: 20px; margin-top: 200px; text-decoration: underline;" >예약에 대해 자주 묻는 질문 (FAQ)</h1> <br>
 		
 		 <%@include file="FAQ.jsp"%>
+	<%-- 	<%@include file="FAQ.jsp"%> --%>
+		<br> <br>
+		<%--  <%@include file="FAQ.jsp"%> --%>
 <%-- 		<br> <br>
 >>>>>>> refs/remotes/origin/master
 		<br> <br>

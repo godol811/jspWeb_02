@@ -47,6 +47,8 @@ ID<br>
 	        class="input_field" value="찾기"><br>
 <input type="button" id="input_submit"
 	        class="input_field" value="돌아가기" onclick="location.href='FindIDPWSELECT.jsp'"><br>
+<input type="button" id="input_submit"
+	        class="input_field"value="창 닫기" onclick="window.close()"><br>
 </div>
 </form>
 

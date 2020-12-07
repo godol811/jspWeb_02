@@ -210,7 +210,8 @@
 				</tr>
 			</c:forEach>
 			<tr>
-				<td><input type="button" value="모든 후기 보기" onclick="window.open('Rating_list.room?roomId=<%=session.getAttribute("ROOMID")%>','','width=800, height=800, scrollbars=yes')"></td>
+				<td><input type="button" value="모든 후기 보기" onclick="window.open('Rating_list.room?roomId=<%=session.getAttribute("ROOMID")%>','','width=500, height=500, scrollbars=yes')"></td>
+				<td><input type="button" class ="registerBtn" value="뒤로가기" onclick="history.back();"></td></td>
 			</tr>
  	</table>
  </form>

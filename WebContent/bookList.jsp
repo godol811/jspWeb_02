@@ -93,7 +93,17 @@
 		
 	}
 	
-	
+	 .btn2{
+		margin-left: 10%;
+		margin-right:auto;
+		width: 84px;
+       height: 40px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 30px;
+       margin-bottom: 10px;
+	   padding: 0px;
+	}
 	
 </style>
 
@@ -121,8 +131,11 @@
 					<td><input type="button" class ="registerBtn" value="리뷰 작성하기" onclick="window.open('Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }','','width=800, height=800, scrollbars=yes')"></td>
 				</tr>
 			</c:forEach>
+				<!-- <tr>
+					<td colspan="4"><input type="button" class ="registerBtn" value="뒤로가기" onclick="location.href='mainPage.room'"></td>
+				</tr> -->
 		</table>
-			<!-- <input class="btn" type="button" value="목록보기" onClick="history.go(-1)" style="align-items: right"> -->
+			 <input class="btn2" type="button" value="이 전" onClick="location.href='mainPage.room'">
 	</div>
 </body>
 </html>
