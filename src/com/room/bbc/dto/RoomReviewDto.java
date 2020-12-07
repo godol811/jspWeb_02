@@ -3,14 +3,14 @@ package com.room.bbc.dto;
 import java.sql.Timestamp;
 
 public class RoomReviewDto {
-	int reviewId;
+	String reviewId;
 	String userinfo_Userid;
-	int room_Roomid;
+	String room_Roomid;
 	String reviewTitle;
 	String reviewContent;
 	double reviewRate;
     String reviewDate;
-    int bookId;
+    String bookId;
 	
     public RoomReviewDto() {
 		// TODO Auto-generated constructor stub
@@ -19,7 +19,7 @@ public class RoomReviewDto {
 
 
 
-	public RoomReviewDto(int reviewId, int bookId) {
+	public RoomReviewDto(String reviewId, String bookId) {
 		super();
 		this.reviewId = reviewId;
 		this.bookId = bookId;
@@ -28,7 +28,7 @@ public class RoomReviewDto {
 
 
 
-	public RoomReviewDto(int reviewId, String userinfo_Userid, int room_Roomid,
+	public RoomReviewDto(String reviewId, String userinfo_Userid, String room_Roomid,
 			String reviewContent, double reviewRate, String reviewDate) {
 		super();
 		this.reviewId = reviewId;
@@ -42,14 +42,14 @@ public class RoomReviewDto {
 
 
 
-	public int getReviewId() {
+	public String getReviewId() {
 		return reviewId;
 	}
 
 
 
 
-	public void setReviewId(int reviewId) {
+	public void setReviewId(String reviewId) {
 		this.reviewId = reviewId;
 	}
 
@@ -70,14 +70,14 @@ public class RoomReviewDto {
 
 
 
-	public int getRoom_Roomid() {
+	public String getRoom_Roomid() {
 		return room_Roomid;
 	}
 
 
 
 
-	public void setRoom_Roomid(int room_Roomid) {
+	public void setRoom_Roomid(String room_Roomid) {
 		this.room_Roomid = room_Roomid;
 	}
 
@@ -140,14 +140,14 @@ public class RoomReviewDto {
 
 
 
-	public int getBookId() {
+	public String getBookId() {
 		return bookId;
 	}
 
 
 
 
-	public void setBookId(int bookId) {
+	public void setBookId(String bookId) {
 		this.bookId = bookId;
 	}
 
