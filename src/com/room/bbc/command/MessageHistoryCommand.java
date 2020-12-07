@@ -11,12 +11,12 @@ import javax.servlet.http.HttpSession;
 import com.room.bbc.dao.MessageDao;
 import com.room.bbc.dto.MessageDto;
 
-public class MessageListCommand implements Command {
+public class MessageHistoryCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			
+
 	}
 
 	@Override
@@ -25,13 +25,20 @@ public class MessageListCommand implements Command {
 		// TODO Auto-generated method stub
 		String userId = (String) session.getAttribute("USERID");
 		String bookId = request.getParameter("bookId");
+//		String roomUserId = request.getParameter("roomUserId");
+		
+		
+		
+//		String userInfoUserId = (String) session.getAttribute("USERINFOUSERID");
+//		String roomUserId = (String) session.getAttribute("ROOMUSERID");
+
 		MessageDao dao = new MessageDao();
+	
 		
-		ArrayList<MessageDto> dtos = dao.bookMessage(userId);
-		request.setAttribute("messageList", dtos);
+		ArrayList<MessageDto> dtos = dao.messageHistory(userId,bookId);
 		
-		
-		
+		request.setAttribute("messageHistory", dtos);
+				
 	}
 
 }

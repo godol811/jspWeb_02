@@ -360,5 +360,40 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 //		}
 //		return dtos;
 //	}
-//	
+//
+	public int reviewCheck(String userId, String bookId) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int reviewResult = 0 ; 
+		//--->
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select reviewid, bookid from review where userinfo_userid = ? and bookid = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, userId);
+			preparedStatement.setString(2, bookId);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()); 
+				reviewResult = 1;
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {   //error가 걸렸든 안걸렸든 일로 마지막에는 온다. 쓰레기가 안쌓이도록. 다 close해서 
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace(); //화면상에 보이는 에러는 여기서 찍히는 것이다.  
+			}
+		}
+		return reviewResult;
+	}
+		
+	
+	
 }

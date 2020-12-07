@@ -5,12 +5,13 @@ import java.sql.Timestamp;
 public class MessageDto {
 	
 	String messageId;
-	Timestamp messageDate;
+	Timestamp messageInsertDate;
 	String userinfo_userId;
 	String messageContent;
+	String bookId;
 	String room_userId;
 	String room_roomId;
-	String bookId;
+	String roomTitle;
 	
 	public MessageDto() {
 		// TODO Auto-generated constructor stub
@@ -20,11 +21,11 @@ public class MessageDto {
 	
 
 
-	public MessageDto(String userinfo_userId,String room_userId, Timestamp messageDate) {
+	public MessageDto(String messageContent,  String bookId, Timestamp messageInsertDate) {
 		super();
-		this.userinfo_userId = userinfo_userId;
-		this.room_userId = room_userId;
-		this.messageDate = messageDate;
+		this.messageContent = messageContent;
+		this.bookId    = bookId;
+		this.messageInsertDate = messageInsertDate;
 	}
 
 	
@@ -42,9 +43,9 @@ public class MessageDto {
 
 
 
-	public MessageDto(Timestamp messageDate, String userinfo_userId, String messageContent) {
+	public MessageDto(Timestamp messageInsertDate, String userinfo_userId, String messageContent) {
 		super();
-		this.messageDate = messageDate;
+		this.messageInsertDate = messageInsertDate;
 		this.userinfo_userId = userinfo_userId;
 		this.messageContent = messageContent;
 	}
@@ -60,14 +61,14 @@ public class MessageDto {
 
 
 	public MessageDto(String messageId, String messageContent, String userinfo_userId, String room_roomId,
-			String room_userId, Timestamp messageDate) {
+			String room_userId, Timestamp messageInsertDate) {
 		super();
 		this.messageId = messageId;
 		this.messageContent = messageContent;
 		this.userinfo_userId = userinfo_userId;
 		this.room_roomId = room_roomId;
 		this.room_userId = room_userId;
-		this.messageDate = messageDate;
+		this.messageInsertDate = messageInsertDate;
 	}
 
 
@@ -138,12 +139,44 @@ public class MessageDto {
 
 
 	public Timestamp getMessageDate() {
-		return messageDate;
+		return messageInsertDate;
 	}
 
 
 	public void setMessageDate(Timestamp messageDate) {
-		this.messageDate = messageDate;
+		this.messageInsertDate = messageDate;
+	}
+
+
+
+
+
+	public Timestamp getMessageInsertDate() {
+		return messageInsertDate;
+	}
+
+
+
+
+
+	public void setMessageInsertDate(Timestamp messageInsertDate) {
+		this.messageInsertDate = messageInsertDate;
+	}
+
+
+
+
+
+	public String getRoomTitle() {
+		return roomTitle;
+	}
+
+
+
+
+
+	public void setRoomTitle(String roomTitle) {
+		this.roomTitle = roomTitle;
 	}
 	
 	
