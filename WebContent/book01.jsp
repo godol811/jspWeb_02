@@ -148,7 +148,7 @@
 				<td colspan="2"><div id="map" style="width: 100%; height: 400px"></div></td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="#">호스트에게 연락하기 </a></td>
+				<td colspan="2">전화 문의 주세요!</td>
 			</tr>
 			<tr>
 				

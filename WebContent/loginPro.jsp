@@ -44,7 +44,7 @@
 		            msg = "login.jsp?msg=0";
 		        }
         }
-     /*    
+         
         else if(userState.equals("관리자")){
         	
         	
@@ -52,7 +52,8 @@
 		        { 
 		            // 세션에 현재 아이디 세팅
         		 session.setAttribute("USERID", userId);
-             		msg = "adminCheck.jsp";
+                 session.setAttribute("USERSTATE", userState);
+                 msg = "mainPage.room";
 		        }
 		        else if(check ==-1)  // 아이디가 틀릴경우
 		        {
@@ -65,9 +66,9 @@
 		        }
         	
         }
-         */
+         
         
-        else if(userState.equals("호스트") || (userState.equals("관리자"))){
+        else if(userState.equals("호스트")){
         	 // 세션에 현재 아이디 세팅
         	  if(check == 1)    // 로그인 성공
 		        { 

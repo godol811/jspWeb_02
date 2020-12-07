@@ -46,6 +46,7 @@ public class RoomInsertCommand implements Command {
 			String roomAddressDetail = (String)session.getAttribute("ROOMADDRESSDETAIL");
 			String roomCheckIn = (String)session.getAttribute("ROOMCHECKIN");;
 			String roomCheckOut = (String)session.getAttribute("ROOMCHECKOUT");
+			System.out.println(userId);
 			
 			 String filename = "";
 			 String filename2 = "";

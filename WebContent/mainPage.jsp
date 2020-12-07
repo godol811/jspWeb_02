@@ -118,7 +118,6 @@
 			              </c:when>
 			              <c:otherwise>
 			              	<li><a href="logout.room">로그아웃</a></li>
-			              	<li><a href="userMessage.room">메세지</a></li>
 			              	<li><a href="bookList.room">예약목록</a></li>
 			              </c:otherwise>
 			            </c:choose>

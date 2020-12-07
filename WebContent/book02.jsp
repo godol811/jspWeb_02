@@ -112,7 +112,7 @@
 			<!--  수정 필요(앞에서 roomCapa 값 가져오기) -->
 						<c:choose>
 							<c:when test ="${not empty sessionScope.DATE1 }">
-							<td><input type="text" name="roomCapa" value="<%=session.getAttribute("GUEST")%>"> 명 </td></c:when>
+							<td><input type="text" name="roomCapa" value="<%=session.getAttribute("GUEST")%>" readonly="readonly"> 명 </td></c:when>
 							<c:when test ="${empty sessionScope.DATE1 }">
 							<td><input type="text" name="roomCapa" value="${GUESTdirect}">명 </td></c:when>
 						</c:choose>
