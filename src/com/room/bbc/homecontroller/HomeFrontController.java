@@ -33,6 +33,7 @@ import com.room.bbc.command.RoomAdminDeleteCommand;
 import com.room.bbc.command.RoomAdminSelectCommand;
 import com.room.bbc.command.RoomAdminUpdateCommand;
 import com.room.bbc.command.RoomDeleteCommand;
+import com.room.bbc.command.RoomGPSSelectCommand;
 import com.room.bbc.command.RoomInsertCommand;
 import com.room.bbc.command.RoomReservationInsertCommand;
 import com.room.bbc.command.RoomReservationSelectCommand;
@@ -45,6 +46,7 @@ import com.room.bbc.command.RoomReviseCommand;
 import com.room.bbc.command.RoomSelectCommand;
 import com.room.bbc.command.RoomUpdateCommand;
 import com.room.bbc.command.UserInsertCommand;
+import com.room.bbc.command.UserPWFindCommand;
 import com.room.bbc.command.UserRoomReservationSelectCommand;
 import com.room.bbc.command.UserSelectCommand;
 import com.room.bbc.command.UserAdminDeleteCommand;
@@ -97,6 +99,15 @@ public class HomeFrontController extends HttpServlet {
 
 		//리뷰 CRUD-------------------------------
 		// 리뷰 더보기 메뉴
+		
+		case ("/mainPage.room"):
+		command = new AdminNotifyListCommand();
+		command.execute(request, response, session);
+		viewPage = "mainPage.jsp";
+		break; 
+	
+		
+		
 		case ("/Rating_list.room"):
 			command = new RoomReviewSelectCommand();
 			command.execute(request, response, session);
@@ -128,6 +139,8 @@ public class HomeFrontController extends HttpServlet {
 			
 		case ("/bookPage.room"):
 			command = new RoomReservationSelectCommand();
+			command.execute(request, response, session);
+			command = new RoomGPSSelectCommand();
 			command.execute(request, response, session);
 			viewPage = "book01.jsp"; 
 			break;	
@@ -163,6 +176,13 @@ public class HomeFrontController extends HttpServlet {
 		command.execute(request, response);
 		viewPage="findIdresult.jsp";
 		break;
+		
+		case("/findPwAction.room"):		
+			command = new UserPWFindCommand();
+		command.execute(request, response);
+		viewPage="findPwresult.jsp";
+		break;
+	
 	
 			
 		case("/SignUpCheck.room"):		
@@ -360,12 +380,7 @@ public class HomeFrontController extends HttpServlet {
 			break;
 			
 			
-			case ("/mainPage.room"):
-			command = new AdminNotifyListCommand();
-			command.execute(request, response, session);
-			viewPage = "mainPage.jsp";
-			break; 
-		default :
+			default:
 			viewPage = "mainPage.room";
 			
 		}
