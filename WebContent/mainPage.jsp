@@ -13,86 +13,19 @@
 <meta charset="UTF-8">
 
 <style type="text/css">
-	
 	.banner{
-		background-image: url("./images/mainBackground.jpg");
-		background-size: 100% 700px;
-		width: auto;
-		height: 700px;
-		text-align: center;
-		padding-top:10px;
+	background-image: url("./images/mainBackground.jpg");
+	background-size: 100% 700px;
+	width: auto;
+	height: 700px;
+	text-align: center;
+	padding-top:10px;
+	}
 		
-	}
 	
-	img { display: block; margin: 0px auto; }
-	/* #mainMenuBoxItem{
-		list-style: none;
-		height:40px;
-		background: blue;
-		padding-top: 10px;
-		padding-bottom: 10px;
-	} */
-	#mainMenuBoxItem,
-	#subMenuItem{
-		background-color: #87cdfa;
-		text-align: center;
-		padding-top:10px;
-		padding-bottom:10px;
-		margin-top:10px;
-		width: auto;
-		height: 50px;
-		
-	}
-	#mainMenuBoxItem > li{
-		float:right;
-		border:1px solid red;
-	}
-	
-	#mainMenuBoxItem > li > a{
-		display: block;
-		height: 30px;
-		padding: 16px 36px;
-		text-align: center;
-		text-decoration: none;
-		
-	}
-	#subMenuItem{
-		margin-right:30%;
-	}
-	
-	#subMenuItem > li{
-		padding: 16px 36px;
-		border-bottom: 1px sold black;
-	}
-	
-	#subMenuItem > li > a{
-		text-decoration: none;
-	}
-	
-	#notice{
-		margin-top:80px;
-		margin-left: auto; 
-		margin-right: auto;
-		width: auto;
-		height: 400px;
-		text-align: center;
-
-	}
-	
-	#bottom{
-		background-color: #87cdfa;
-		text-align: center;
-		padding-top:10px;
-		padding-bottom:10px;
-		margin-top:100px;
-		width: auto;
-		height: 50px;
-		font-size: 15px;
-	}
-
 </style>
 
-<title>Main Page</title>
+	<title>Main Page</title>
 	<link rel="stylesheet" href="./css/date.css">
 	<link rel="stylesheet" href="./css/common.css">
 	<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
@@ -101,7 +34,7 @@
 	<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 	
 	
-	<script src="js/subMenu.js"></script>
+	 <script src="js/subMenu.js"></script>
 
 	<!-- 연결 확인 후 삭제  --> 
 <!-- 	 	 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -173,41 +106,40 @@
 
 <body>
 <div class=banner>
-	
-        	<div id="mainMenuBox">
-            	<ul id="mainMenuBoxItem">
-            		<c:choose>
-	            		<c:when test = "${empty sessionScope.USERSTATE}">
-	                    	<li><a href="login.jsp">호스트 되기</a></li>
-	                     </c:when>
-	            		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
-		                   	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
-	                     </c:when>
-		                 <c:when test = "${sessionScope.USERSTATE == '회원'}">
-	                    	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
-		                 </c:when>
-                    </c:choose>
-                    
-                    <li class="menuItemHover"><a href="#"><img align="middle" src="./images/menuBar.svg"></a></li>
-                </ul>
-            </div>
-            
-            <div id="subMenuBox">
-                	<ul id="subMenuItem">
-                   	 <c:choose>
-	                    <c:when test = "${empty sessionScope.USERID}">
-	                   	    <li><a href="login.jsp">로그인</a></li>
-	                   	    <li><a href="SignUp.jsp">회원가입</a></li>
-	                   	    <li><a href="login.jsp">숙소 호스트 되기</a></li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li><a href="logout.room">로그아웃</a></li>
-	                    	<li><a href="userMessage.room">메세지</a></li>
-	                    	<li><a href="bookList.room">예약목록</a></li>
-	                    </c:otherwise>
-                    </c:choose>
-                   </ul>
-           	 </div>
+ 	<div id="mainMenuBox">
+     	<ul id="mainMenuBoxItem">
+             <li class="menuItemHover"><a href="#"><img height="20px" align="middle" src="./images/menuBar.svg"></a>
+			     <div id="subMenuBox">
+			         <ul id="subMenuItem">
+			            <c:choose>
+			              <c:when test = "${empty sessionScope.USERID}">
+		             	    <li><a href="login.jsp">로그인</a></li>
+		             	    <li><a href="SignUp.jsp">회원가입</a></li>
+		             	    <li><a href="login.jsp">숙소 호스트 되기</a></li>
+			              </c:when>
+			              <c:otherwise>
+			              	<li><a href="logout.room">로그아웃</a></li>
+			              	<li><a href="userMessage.room">메세지</a></li>
+			              	<li><a href="bookList.room">예약목록</a></li>
+			              </c:otherwise>
+			            </c:choose>
+			         </ul>
+			    </div>
+			 </li>
+     		<c:choose>
+      		<c:when test = "${empty sessionScope.USERSTATE}">
+              	<li><a href="login.jsp">호스트 되기</a></li>
+               </c:when>
+      		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
+              	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
+               </c:when>
+            <c:when test = "${sessionScope.USERSTATE == '회원'}">
+              	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
+            </c:when>
+             </c:choose>
+         </ul>
+     </div>
+     
    
 	    
 	 <!-- 검색창 -->   
@@ -302,7 +234,7 @@
 		
 		<h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br>
 		
-		<%--   <%@include file="AdminNotifyList.jsp"%> --%>
+		<%-- <%@include file="FAQ.jsp"%> --%>
 		<br> <br>
 		<br> <br>
 		<br> <br>
