@@ -188,8 +188,8 @@
 						<c:choose>
 							
 							<c:when test ="${empty sessionScope.DATE1 }">
-							<td style="border-right:1px solid #999;"><input type="text" name="date1" value="${DATE1direct}" readonly="readonly"> ${dto.roomCheckIn }</td>
-							<td><input type="text" name="date2" value="${DATE2direct}" readonly="readonly">  ${dto.roomCheckOut }</td>
+							<td style="border-right:1px solid #999;"><input style="text-align: center;" type="text" name="date1" value="${DATE1direct}" readonly="readonly"> ${dto.roomCheckIn }</td>
+							<td><input style="text-align: center;" type="text" name="date2" value="${DATE2direct}" readonly="readonly">  ${dto.roomCheckOut }</td>
 								<fmt:parseDate value="${DATE1direct}" var="strPlanDate" pattern="yyyy-MM-dd"/>
 								<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
 								<fmt:parseDate value="${DATE2direct}" var="endPlanDate" pattern="yyyy-MM-dd"/>
@@ -203,8 +203,6 @@
 								<fmt:parseDate value="${DATE2}" var="endPlanDate" pattern="yyyy-MM-dd"/>
 								<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber></c:when>
 						</c:choose>
-					<%-- 	<td style="border-right:1px solid #999;"><input type="text" name="date1" value="${DATE1}" readonly="readonly"> ${dto.roomCheckIn }</td>
-							<td><input type="text" name="date2" value="${DATE2}" readonly="readonly">  ${dto.roomCheckOut }</td> --%>
 			</tr>
 			<tr>
 				<td colspan="2" style="border-top: 2px solid #999; font-weight: bold; background-color: #f1f1f4;">인&nbsp;원</td>
@@ -215,7 +213,7 @@
 							<c:when test ="${not empty sessionScope.DATE1 }">
 							<td colspan="2"><%=session.getAttribute("GUEST")%> &nbsp; 명 </td></c:when>
 							<c:when test ="${empty sessionScope.DATE1 }">
- 							<td colspan="2"><input style="text-align: right;" type="text" name="roomCapa" value="${GUESTdirect}">명 </td></c:when> 
+ 							<td colspan="2"><input style="text-align: center;" style="text-align: right;" type="text" name="roomCapa" value="${GUESTdirect}">명 </td></c:when> 
 						</c:choose>
 			</tr>
 			<tr>
