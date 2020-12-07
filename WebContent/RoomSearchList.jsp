@@ -5,64 +5,168 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>숙소 검색</title>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	table{
+		border-collapse: collapse;
+		margin-top: 20px;
+		margin-left: auto;
+  	  	margin-right: auto;
+		
+	}
+	
+	a{
+		text-decoration: none;
+		color: inherit;
+	}
+	
+	h1 {
+	  text-align: center;
+	  margin-bottom: 20px;
+	}
+		
+	.wrap{
+		padding: 50px;
+		
+	}
+	
+	.wrap .registerBtn{
+		margin-bottom: 10px;
+		padding: 10px;
+		
+	}
+	
+	.sub_news{
+		width: 80%;
+		border-top: 2px solid #999;
+	
+	}
+	.sub_news tr{
+		/* border-bottom: 1px solid #999; */
+	}
+	.sub_news #trtr{
+		border-bottom: 1px solid #999;
+	
+	}
+	
+	.sub_news th, .sub_news td{
+		padding: 10px;
+		font-size: 14px;
+	}
+	
+	.sub_news th{
+		padding: 5px 0 6px;
+		border-top: solid 2px #999;
+		border-bottom: solid 2px #b2b2b2;
+		background-color: #f1f1f4;
+		color: #333;
+		font-weight: bold;
+		line-height: 20px;
+		vertical-align: top;
+	}
+	
+	.sub_news .thth{
+		border-right: solid 1px #999;
+	}
+	
+	.sub_news td{
+		text-align: center;
+	}
+	
+	.sub_news .tdtd{
+		text-align: left;
+	}
+	
+	.sub_news .one{
+		border-top: 2px solid #999;
+	}
+	.sub_news .bot{
+		border-bottom: 2px solid #999;
+	}
+	
+	.sub_news .page{
+		border-bottom: 0;
+		border-top: 2px solid #999;
+	}
+	
+	.sub_news .page a{
+		font-size: 18px;
+		padding-right: 10px;
+	
+	}
+	
+	#btn {
+       margin-left: 85%;
+       width: 84px;
+       height: 45px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 100px;
+       margin-bottom: 10px;
+	   padding: 10px;
+	}
+
+</style>
+
 </head>
 <body>
 
-
-
 <!-- ------------------------------- -->
-
-	
-		<table border="1">
+<div class ="wrap">
+		<table class="sub_news">
+			<tr>
+				<th colspan="2">숙소</th><th>가격</th>
+			</tr>
 			<c:forEach items = "${list }" var = "dto" begin="${beginNum}" end="${endNum }">
-		<colgroup>
-			<col width="60%">
-		</colgroup>
+			<colgroup>
+				<col width="200px">
+				<col width="500px">
+				<col width="100px">
+			</colgroup>
 			<tr>
-			<td rowspan="6"><img width="120px" height="120px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td><td colspan="2"><a href="bookPage.room?roomId=${dto.roomId }">${dto.roomTitle }</a></td>
-			
+				<td rowspan="4" id="trtr"><img width="150px" height="150px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
+				<td class="tdtd"><a href="bookPage.room?roomId=${dto.roomId }">${dto.roomTitle }</a></td>
+				<td rowspan="4"id="trtr"> ${dto.roomPrice } / 박 </td>
 			</tr>
 			<tr>
-			<td colspan="2">최대 인원 ${dto.roomCapa }명</td>
+				<td class="tdtd">${dto.roomContent }</td>
 			</tr>
 			<tr>
-			<td colspan="2">체크인 : ${DATE1} </td>
+				<td class="tdtd">최대 인원 ${dto.roomCapa }명</td>
 			</tr>
+			<%-- <tr>
+				<td colspan="2">체크인 : ${DATE1} </td>
+			</tr> 
 			<tr>
-			<td colspan="2">체크아웃 : ${DATE2} </td>
-			</tr>
+				<td colspan="2">체크아웃 : ${DATE2} </td>
+			</tr> --%>
 			<tr>
-			<td colspan="2">${dto.roomContent }</td>
-			</tr>
-			<tr>
-			<td colspan="2" align="right">가격 : ${dto.roomPrice } <br></td>
+				<td class="tdtd" id="trtr">평점  점</td>
 			</tr>
 			<tr>
 			<td colspan="2" align="right">평점 : ${dto.roomReviewRate} <br></td>
 			</tr>
 			</c:forEach>
-			<tr>
-			<td colspan="7" width="50" align="center" >
-			<c:forEach  begin="1" end="${totalPage}" varStatus="status"> 
-			
-			<c:choose>
-				<c:when test ="${empty sessionScope.DATE1 }">
-				<a href="roomSearchPagingDirect.room?page=${status.count}&location=<%=session.getAttribute("LOCATION")%>">[${status.count}]</a></c:when>
-				<c:when test ="${not empty sessionScope.DATE1 }" >
-				<a href="roomSearchPaging.room?page=${status.count}&location=<%=session.getAttribute("LOCATION")%>&guest=<%=session.getAttribute("GUEST")%>">[${status.count}]</a></c:when>
-			</c:choose>
-			
-				
-			</c:forEach></td>
-			
+			<tr class="page">
+				<td colspan="3" width="50" align="center" >
+				<c:forEach  begin="1" end="${totalPage}" varStatus="status"> 
+					<c:choose>
+						<c:when test ="${empty sessionScope.DATE1 }">
+						<a href="roomSearchPagingDirect.room?page=${status.count}&location=<%=session.getAttribute("LOCATION")%>">[${status.count}]</a></c:when>
+						<c:when test ="${not empty sessionScope.DATE1 }" >
+						<a href="roomSearchPaging.room?page=${status.count}&location=<%=session.getAttribute("LOCATION")%>&guest=<%=session.getAttribute("GUEST")%>">[${status.count}]</a></c:when>
+					</c:choose>
+				</c:forEach>
+				</td>
 			</tr>
-			</table>
-
-			
-			
-			
-			  <script>
+	  </table>
+</div>
+ <script>
 
     function initialize() {
         var mapLocation = new google.maps.LatLng('36.322473', '127.412501'); // 지도에서 가운데로 위치할 위도와 경도
@@ -148,7 +252,7 @@
     } 
       
       
-    </script>
+</script>
 
 
 

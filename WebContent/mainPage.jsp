@@ -14,14 +14,13 @@
 
 <style type="text/css">
 	.banner{
-	background-image: url("./images/mainBackground.jpg");
-	background-size: 100% 700px;
-	width: auto;
-	height: 700px;
-	text-align: center;
-	padding-top:10px;
+		background-image: url("./images/mainBackground.jpg");
+		background-size: 100% 700px;
+		width: auto;
+		height: 700px;
+		text-align: center;
+		padding-top:10px;
 	}
-		
 	
 </style>
 
@@ -119,7 +118,6 @@
 			              </c:when>
 			              <c:otherwise>
 			              	<li><a href="logout.room">로그아웃</a></li>
-			              	<li><a href="userMessage.room">메세지</a></li>
 			              	<li><a href="bookList.room">예약목록</a></li>
 			              </c:otherwise>
 			            </c:choose>
@@ -132,9 +130,21 @@
                </c:when>
       		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
               	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
+              	
+              	
                </c:when>
             <c:when test = "${sessionScope.USERSTATE == '회원'}">
               	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
+            </c:when>
+            <c:when test = "${sessionScope.USERSTATE == '관리자'}">
+              	<li class="menuItemHover"> <a href="adminCheck.jsp">관리자 메뉴</a></li>
+              		<div id="subMenuBox">
+			         <ul id="subMenuItem">
+	             	    <li><a href="AdminUserList.room">회원 관리</a></li>
+	             	    <li><a href="AdminRoomList.room">숙소 관리</a></li>
+	             	    <li><a href="AdminNotifyList.room">공지사항</a></li>
+			         </ul>
+			    	</div>
             </c:when>
              </c:choose>
          </ul>
@@ -232,19 +242,42 @@
 	
 	<div id="notice">
 		
-		<h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br>
+		<!-- <h3>예약을 위한 자주 묻는 질문 (FAQ)</h3><br> -->
 		
 		<%@include file="FAQ.jsp"%>
 		<br> <br>
+		<%--  <%@include file="FAQ.jsp"%> --%>
+<%-- 		<br> <br>
+>>>>>>> refs/remotes/origin/master
 		<br> <br>
 		<br> <br>
 		<h1 align="center">공지사항 </h1>
+<<<<<<< HEAD
+=======
+		<table style="margin-top: 100px; margin-left: auto; margin-right: auto; text-align: left;">
+	<tr>
+		<th>게시판 ID</th>
+		<th>제목</th>
+		<th>내용</th>
+		<th>작성일</th>
+		<th>작성자</th>
+	</tr>
+	<c:forEach items="${list}" var="dto">
+	<tr>
+		<td><input type="text" name="boardId" value="${dto.boardId }" readonly="readonly"></td>
+		<td><input type="text" name="boardTitle" value="${dto.boardTitle }" readonly="readonly"></td>
+		<td><textarea rows="3" cols="10"  readonly="readonly">${dto.boardContent }</textarea></td>
+		<td><input type="text" name="boardInsertDate" value="${dto.boardInsertDate }" readonly="readonly"></td>
+		<td><input type="text" name="userId" value="${dto.userInfo_userId }" readonly="readonly"></td>
+	</tr>
+	</c:forEach>
+	</table> --%>
 
 	</div>
 	
 	<div id="bottom">
 		OWNER. 고종찬 & 박경미 &nbsp; TEL. 1500-2020 &nbsp; ADDRESS. 서울 서초구 강남대로 441 <br> 
-		Copyright 2020. 2조 All pictures cannot be copied without permission.
+		Copyright 2020. 고종찬 박경미 All pictures cannot be copied without permission.
 	
 	</div>
 	

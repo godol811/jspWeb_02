@@ -21,7 +21,7 @@
 	
 	table{
 		border-collapse: collapse;
-		margin-top: 100px;
+		margin-top: 50px;
 		margin-left: auto;
   	  	margin-right: auto;
 		
@@ -33,14 +33,14 @@
 	}
 	
 	.wrap{
-		padding: 50px;
+		padding: 100px;
 		margin-left: auto;
 		margin-right: auto;
 		
 	}
 	
 	#btnIndex{
-		margin-top: 10px;
+		margin-top: 30px;
 		margin-bottom: 10px;
 		padding: 10px;
 		margin-left: 85%;
@@ -74,28 +74,73 @@
 		vertical-align: top;
 	}
 	
-	.sub_news .thth{
-		border-right: solid 1px #999;
-	}
-	
+
 	.sub_news td{
 		text-align: center;
+		margin-left:10px; 
 	}
 	
 	.sub_news .tdtd{
 		text-align: center;
-		border-right: solid 1px #999;
+		border-right: 1px solid #999;
 	}
 	
 	.sub_news .one{
 		border-top: 2px solid #999;
 	}
+	
+	.search1{
+		width: 50%;
+	   	 margin: 4px auto;
+	     text-align: center;
+	     display: inline-block;
+	     margin-left: 35%;
+	     margin-right: auto;
+	     margin-top: 100px;
+		
+	}
+	
+	.search1 #search_select{
+		width: 120px;
+	     font-size: 16px;
+	     height: 35px;
+	     margin-right: 0;
+	     float: left;
+	     box-sizing: border-box;
+	     transition: all 0.15s;
+	}
+	.search1 #search_submit{
+		width: 80px;
+	     padding: 0px;
+	     font-size: 16px;
+	     height: 30px;
+	     margin-right: 0;
+	     float: left;
+	     box-sizing: border-box;
+	     transition: all 0.15s;
+	     margin-left: 10px;
+	     
+	}
+	.search1 #search_text{
+		width: 350px;
+	     padding: 15px 0 15px 20px;
+	     font-size: 16px;
+	     height: 35px;
+	     float: left;
+	     box-sizing: border-box;
+	     transition: all 0.15s;
+	     text-align: left;
+	     margin-left: 10px;
+	}
 
-
-
+	h1 {
+	  text-align: center;
+	  margin-bottom: 20px;
+	}
+	
 
 </style>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(function(){
 	 calendarEvent();
 	});
@@ -134,29 +179,32 @@
 	   events : eventData,
 	   timeFormat : "HH:mm",
 	 });
-</script>
+</script> -->
 
 </head>
 <body>
 	<!--  수정 필요 -->
 <div class="wrap">
+	<h1>예약 상세 현황</h1>
 	<form action="hostRoomReservation.room?roomId=<%=request.getParameter("roomId") %>" method="post">
-	<table class="search">
+	<table class="search1">
 			<tr >
-				<td><select name="search">
-					<option value="bookcheckindate" selected="selected">월</option>
+				<td><select id="search_select" name="search">
+					<option value="bookcheckindate" selected="selected">체크인날짜</option>
 					<option value="userinfo_userid">예약자</option>
 				</select></td>
-				<td><input type="text" name="reservationSearch"></td>
-				<td><input type="submit" value="검색"></td>
+				<td><input id="search_text" type="text" name="reservationSearch" placeholder="검색어를 입력해주세요."></td>
+				<td><input id="search_submit" type="submit" value="검색"></td>
 			</tr>
-		</table>
+	</table>
+	
 	<table class="sub_news">
 			<tr class="one">
-				<th >예약 기간</th><th>예약자</th><th>예약인원</th><th>예약 결제 금액</th>
+				<th>No</th><th >예약 기간</th><th>예약자</th><th>예약인원</th><th>예약 결제 금액</th>
 			</tr>
-			<c:forEach items="${hostRoomReservationList }" var = "dto" >
+			<c:forEach items="${hostRoomReservationList }" var = "dto" varStatus="status">
 			<tr>
+				<td>${status.count}</td>
 				<td>${dto.bookCheckInDate } ~ ${dto.bookCheckOutDate }</td>
 				<td>${dto.userId } </td>
 				<td>${dto.bookCapa } </td>
@@ -165,7 +213,7 @@
 		
 			</c:forEach>
 	</table>
-			<input id="btnIndex" type="button" value="목록보기" onClick="history.go(-1)" style="align-items: right">
+			<input id="btnIndex" type="button" value="목록보기" onClick="location.href='hostRoomList.room'" style="align-items: right">
 	</form>
 	
 </div>

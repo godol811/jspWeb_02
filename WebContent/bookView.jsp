@@ -14,7 +14,7 @@
 				<col width="100px"/>
 			</colgroup>
 			<tr>
-				<td colspan="2"><img width="500px" height="500px" src="${pageContext.request.contextPath}/upload/${bookView.roomImage}"></td>
+				<td colspan="2"><img width="300px" height="300px" src="${pageContext.request.contextPath}/upload/${bookView.roomImage}"></td>
 			</tr>
 			<tr>
 				<td colspan="2">${bookView.roomTitle }</td>
@@ -32,7 +32,7 @@
 				<td colspan="2">주소 : ${bookView.roomAddress } &nbsp; ${bookView.roomAddressDetail }  </td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="HostMessage.room?userId=${bookView.userId }&bookId=${BOOKID}&roomuserId=${bookView.roomuserId}">호스트에게 연락하기 </a></td>
+				<td colspan="2"><a href="HostMessage.room?userId=${bookView.userId }&bookId=${BOOKID}&roomuserId=${bookView.roomuserId}"> 문의사항은 전화 문의 주세요! </a></td>
 			</tr>
 			<tr>
 				<td><input type="button" value="이전" onClick="history.go(-1)" style="align-items: right"></td>
