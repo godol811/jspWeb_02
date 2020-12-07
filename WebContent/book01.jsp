@@ -35,13 +35,128 @@
         margin: 0;
         padding: 0;
       }
+      
+      	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	table{
+		border-collapse: collapse;
+		margin-top: 10px;
+		margin-left: auto;
+  	  	margin-right: auto;
+		
+	}
+	
+	a{
+		text-decoration: none;
+		color: inherit;
+	}
+	
+	h1 {
+	  text-align: center;
+	  margin-bottom: 20px;
+	}
+		
+	.wrap{
+		padding: 30px;
+		
+	}
+	
+	.wrap .registerBtn{
+		margin-bottom: 10px;
+		padding: 10px;
+		
+	}
+	
+	.sub_news{
+		width: 50%;
+	
+	}
+	
+	.sub_news #trtr{
+		border-bottom: 1px solid #999;
+	
+	}
+	
+	.sub_news th, .sub_news td{
+		padding: 20px;
+		font-size: 15px;
+	}
+	
+	.sub_news th{
+		padding: 5px 0 6px;
+		border-top: solid 2px #999;
+		border-bottom: solid 2px #b2b2b2;
+		background-color: #f1f1f4;
+		color: #333;
+		font-weight: bold;
+		line-height: 20px;
+		vertical-align: top;
+	}
+	
+	.sub_news .thth{
+		border-right: solid 1px #999;
+	}
+	.sub_news .title{
+		border-top: solid 2px #999;
+		border-bottom: solid 2px #999;
+		text-align: left;
+	}
+	
+	.sub_news td{
+		text-align: center;
+	}
+	
+	.sub_news .tdtd{
+		text-align: left;
+	}
+	
+
+	.sub_news .bold{
+		border-top: 1px solid #999;
+	}
+	
+	.sub_news #bold1{
+		border-right: 1px solid #999;
+	}
+	.sub_news .bold2{
+		border-bottom: 1px solid #999;
+	}
+	
+	.sub_news .img{
+		padding-bottom: 40px;
+	}
+	
+	.sub_news .page a{
+		font-size: 18px;
+		padding-right: 10px;
+	
+	}
+	
+	#btn {
+       margin-left: 25%;
+       width: 84px;
+       height: 40px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 10px;
+       margin-bottom: 10px;
+	   padding: 0px;
+	}
+      
+      
+      
+      
+      
     </style>
     
     
     <%
     request.setCharacterEncoding("utf-8"); 
     %>
-    <script>
+   <script>
     "use strict";
 
     function initMap() {
@@ -62,6 +177,7 @@
         title: "Hello World!"
       });
     }
+
 
 
 
@@ -98,8 +214,6 @@
 			onClose:function(selectedDate){
 				$("#date2").datepicker("option","minDate", selectedDate);
 			}
-		
-		
 			
 		});
 		
@@ -122,7 +236,7 @@
 <body>
 
 <form name="book" action="bookPage2.room?roomId=<%=session.getAttribute("ROOMID") %>" method="post" onsubmit="return check()">
-	<table border="1">
+	<table class="sub_news">
 		<c:forEach items = "${list }" var = "dto">
 		<colgroup>
 			<col width="80%">

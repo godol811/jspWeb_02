@@ -95,7 +95,7 @@
        height: 45px;   
        font-size:14px;
        font-weight:700;
-       margin-top: 100px;
+       margin-top: 50px;
        margin-bottom: 10px;
 	   padding: 10px;
 	}

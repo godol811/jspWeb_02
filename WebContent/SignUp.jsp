@@ -131,7 +131,7 @@
 			<td><input type="button" value="이 전" 
 			id="input_submit"
 	        class="input_field"
-	        onClick="history.go(-1)" style="width:100px; height:30px;">
+	        onClick="login.jsp" style="width:100px; height:30px;">
 	        </td>
 			<td align="right"><input type="submit" value="완 료" 
 			id="input_submit"

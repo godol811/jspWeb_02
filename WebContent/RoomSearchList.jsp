@@ -130,7 +130,7 @@
 			</colgroup>
 			<tr>
 				<td rowspan="4" id="trtr"><img width="150px" height="150px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
-				<td class="tdtd"><a href="bookPage.room?roomId=${dto.roomId }">${dto.roomTitle }</a></td>
+				<td class="tdtd"><a href="bookPage.room?roomId=${dto.roomId }" style="font-weight: bold; font-size: 20px;">${dto.roomTitle }</a></td>
 				<td rowspan="4"id="trtr"> ${dto.roomPrice } / 박 </td>
 			</tr>
 			<tr>

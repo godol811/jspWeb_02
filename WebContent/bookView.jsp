@@ -70,6 +70,7 @@
 		border-right: solid 1px #999;
 	}
 	.sub_news .title{
+		border-top: solid 2px #999;
 		border-bottom: solid 2px #999;
 		text-align: left;
 	}
@@ -110,7 +111,7 @@
        height: 40px;   
        font-size:14px;
        font-weight:700;
-       margin-top: 30px;
+       margin-top: 10px;
        margin-bottom: 10px;
 	   padding: 0px;
 	}
@@ -140,7 +141,7 @@
 				<td id="bold1" class="bold2"> ${bookView.bookCheckInDate }</td><td class="bold2"> ${bookView.bookCheckOutDate }</td>
 			</tr>
 			<tr>
-				<td id="bold1" class="bold2">총 합계</td><td class="bold2">${bookView.roomPriceTotal }</td>
+				<td id="bold1" class="bold2">총 합계</td><td class="bold2">${bookView.roomPriceTotal } 원</td>
 			</tr>
 			<tr>
 				<td id="bold1" class="bold2">주소</td><td class="bold2"> ${bookView.roomAddress } &nbsp; ${bookView.roomAddressDetail }  </td>

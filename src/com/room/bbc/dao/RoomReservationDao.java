@@ -134,7 +134,7 @@ public ArrayList<RoomReservationDto> ReservationData(String roomId) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ?";
+			String query = "select bookid, roomid, roomtitle, roomcontent, bookcheckindate, bookcheckoutdate, roomimage, bookcapa from book b, room r where b.room_roomid = r.roomid and userinfo_userid = ? order by bookid desc";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userId);
 			resultSet = preparedStatement.executeQuery();
