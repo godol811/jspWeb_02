@@ -26,7 +26,7 @@
 		color: inherit;
 	}
 	
-	.booklikst_wrap{
+	.roomlist_wrap{
 		padding: 50px;
 		
 	}
@@ -77,38 +77,44 @@
 <title>호스트 등록 숙소 리스트</title>
 </head>
 <body>
+<div class ="roomlist_wrap">
 <input type="button" name="insertRoom" onclick="location.href='hostRegisterRoom01.jsp'" value="숙소등록">
 	<form action="hostRoomDelete.room?roomId=${dto.roomId}" method="post">
-	<table width="100%" cellpadding="0" ceollspacing="0">
+	<table class="sub_news">
 	  <colgroup>
 			<col width="80px">
 			<col width="80px">
-			<col width="500px">
+			<col width="80px">
+			<col width="300px">
+			<col width="50px">
 			<col width="50px">
 			<col width="50px">
 		</colgroup>
-		
+		<tr>
+			<th colspan="2" scope="col">숙소</th><th colspan="2" scope="col">상세항목</th><th scope="col"></th><th scope="col"></th><th scope="col"></th><th scope="col"></th>
+		</tr>
 		<c:forEach items="${hostRoomList}" var="dto">
 			<tr>
-				<td rowspan="5"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
-				<td>숙소명</td><td>${dto.roomTitle }</td>
-				<td rowspan="5"><input type="button" name="detail" value="예약현황" onclick="location.href='hostRoomReservation.room?roomId=${dto.roomId}'"></td>
-				<td rowspan="5"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
-				<td rowspan="5"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
+				<td rowspan="4"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
+				<td rowspan="4">${dto.roomTitle }</td>
+				<td ></td>
+				<td rowspan="4"><input type="button" name="detail" value="예약현황" onclick="location.href='hostRoomReservation.room?roomId=${dto.roomId}'"></td>
+				<td rowspan="4"><input type="button" name="revise" value="수정" onclick="location.href='roomListView.room?roomId=${dto.roomId}'"></td>
+				<td rowspan="4"><input type="button" name="delete" value="삭제" onclick="location.href='hostRoomDelete.room?roomId=${dto.roomId}'"></td>
+			</tr>
 			<tr>
 				<td>숙소설명</td><td>${dto.roomContent }</td>
 			</tr>
 			<tr>
-				<td>체크인</td><td>${dto.roomCheckIn }</td>
-			</tr>
-			<tr>
-				<td>체크아웃</td><td>${dto.roomCheckOut }</td>
-			</tr>
+				<td>체크인 / 체크아웃 </td> <td>${dto.roomCheckIn } / ${dto.roomCheckOut }</td>				
+			</tr>				
 			<tr>
 				<td>주소</td><td>${dto.roomAddress } &nbsp; ${dto.roomAddressDetail }</td>
 			</tr>
+				
 		</c:forEach>
 	</table>
 	</form>
+</div>
 </body>
 </html>

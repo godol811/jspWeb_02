@@ -33,8 +33,7 @@
 	<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script> 
 	<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 	
-	
-	 <script src="js/subMenu.js"></script>
+	<script src="./js/subMenu.js"></script>
 
 	<!-- 연결 확인 후 삭제  --> 
 <!-- 	 	 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -103,6 +102,7 @@
 	}
 	</script>   
 </head>
+
 
 <body>
 <div class=banner>

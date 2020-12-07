@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
+	* {
+	   padding:0;
+	   margin:0;
+	   font-family:font;
+	}
 
 
 	#wrap {
@@ -10,8 +15,8 @@
 
 	
  	img {
-	 display: block; 
-	 margin: 0px auto;
+	 	display: block; 
+	 	margin: 0px auto;
 	}
 	
 	#mainMenuBoxItem,
@@ -34,14 +39,23 @@
 		padding: 12px 36px;
 	}
 	
+	#subMenuBox {
+	   width:1250px;
+	   line-height:60px;
+	   text-align:center;
+	   padding-bottom:0;
+	   margin:0 auto;
+	   visibility:hidden;
+	   position:relative;
+	}
+	
 	
 	#subMenuItem{
 		position: absolute;
 		background:white;
 		border-radius: 25px 25px 25px 25px;
 		width:200px;
-		opacity: 0;
-		visibility: hidden;
+		
 	}
 	
 	#subMenuItem > li{
@@ -51,6 +65,7 @@
 	#subMenuItem > li > a {
 		font-size: 1rem;
 		text-decoration: none;
+		display: block;
 	}
 	
 	#mainMenuBox a:hover {
@@ -62,6 +77,7 @@
  	#subMenuItem a:hover {
 		text-decoration:none;
 		background:lightgrey;
+		display: block;
 		
 	} 
 
