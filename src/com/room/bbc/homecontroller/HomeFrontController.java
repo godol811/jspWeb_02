@@ -211,6 +211,10 @@ public class HomeFrontController extends HttpServlet {
 		break;
 		 
 		//----------------- 관리자---------------------------------
+		case("/AdminCheck.room"):		
+		viewPage="AdminCheck.jsp";
+		break;
+		//----------------- 관리자---------------------------------
 		case("/AdminUserList.room"):		
 			command = new UserSelectCommand();
 		command.execute(request, response);

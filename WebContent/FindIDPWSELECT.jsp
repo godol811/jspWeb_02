@@ -12,6 +12,8 @@
 	        class="input_field"value="Email 찾기" onclick="location.href='FindID.jsp'">
 <input type="button" id="input_submit"
 	        class="input_field"value="PW 찾기" onclick="location.href='FindPW.jsp'">
+<input type="button" id="input_submit"
+	        class="input_field"value="창 닫기" onclick="window.close()">
 
 
 

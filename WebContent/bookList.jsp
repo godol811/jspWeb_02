@@ -109,7 +109,7 @@
 				<col width="50" />
 			</colgroup>
 			<tr>
-				<th colspan="2" scope="col">숙소</th><th scope="col">여행 기간</th><th scope="col">리뷰</th>
+				<th colspan="2" scope="col">숙소</th><th scope="col">여행 기간</th><th scope="col" >리뷰</th>
 			</tr>
 			<c:forEach items="${roomReservationList }" var = "dto" varStatus="status">
 				<tr>
@@ -119,6 +119,9 @@
 					<td><input type="button" class ="registerBtn" value="리뷰 작성하기" onclick="location.href='Rating_write.jsp?bookId=${dto.bookId }&roomId=${dto.roomId}&roomImage=${dto.roomImage}&roomTitle=${dto.roomTitle }'"></td>
 				</tr>
 			</c:forEach>
+				<tr>
+					<td colspan="4"><input type="button" class ="registerBtn" value="뒤로가기" onclick="location.href='mainPage.room'"></td>
+				</tr>
 		</table>
 			<!-- <input class="btn" type="button" value="목록보기" onClick="history.go(-1)" style="align-items: right"> -->
 	</div>

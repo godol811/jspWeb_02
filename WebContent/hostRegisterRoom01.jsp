@@ -218,7 +218,7 @@ h3 {
 		<h3>4. 숙소 요금을 알려주세요.</h3> <br>
 		<input type="text" name="roomPrice" id="roomPrice" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="text-align: right;padding-right: 10px" value="${roomView.roomPrice }">원  <br>
 		
-		<input id="btnIndex" onClick="history.go(-1)" type="button" value="목록가기"><input id="btnIndex1" type="submit" value="다음">
+		<input id="btnIndex" onClick="history.go(-1)" type="button" value="뒤로가기"><input id="btnIndex1" type="submit" value="다음">
 	</form>
 </div>	
 </body>
