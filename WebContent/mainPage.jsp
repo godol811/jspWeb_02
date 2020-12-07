@@ -106,6 +106,7 @@
 <body>
 <div class=banner>
  	<div id="mainMenuBox">
+ 	<nav role="navigation">
      	<ul id="mainMenuBoxItem">
              <li class="menuItemHover"><a href="#"><img height="20px" align="middle" src="./images/menuBar.svg"></a>
 			     <div id="subMenuBox">
@@ -139,15 +140,16 @@
             <c:when test = "${sessionScope.USERSTATE == '관리자'}">
               	<li class="menuItemHover"> <a href="AdminCheck.room">관리자 메뉴</a></li>
               		<div id="subMenuBox">
-			         <ul id="subMenuItem">
-	             	    <li><a href="AdminUserList.room">회원 관리</a></li>
-	             	    <li><a href="AdminRoomList.room">숙소 관리</a></li>
-	             	    <li><a href="AdminNotifyList.room">공지사항</a></li>
-			         </ul>
+				         <ul id="subMenuItem">
+		             	    <li><a href="AdminUserList.room">회원 관리</a></li>
+		             	    <li><a href="AdminRoomList.room">숙소 관리</a></li>
+		             	    <li><a href="AdminNotifyList.room">공지사항</a></li>
+				         </ul>
 			    	</div>
             </c:when>
              </c:choose>
          </ul>
+         </nav>
      </div>
      
    
@@ -243,8 +245,8 @@
 	<div id="notice">
 		
 		 <h1 style="font-size: 40px; margin-bottom: 20px; margin-top: 200px; text-decoration: underline;" >예약에 대해 자주 묻는 질문 (FAQ)</h1> <br>
-		
-		 <%@include file="FAQ.jsp"%>
+		<%-- 
+		 <%@include file="FAQ.jsp"%> --%>
 	<%-- 	<%@include file="FAQ.jsp"%> --%>
 		<br> <br>
 		<%--  <%@include file="FAQ.jsp"%> --%>

@@ -147,7 +147,7 @@
 				<td id="bold1" class="bold2">주소</td><td class="bold2"> ${bookView.roomAddress } &nbsp; ${bookView.roomAddressDetail }  </td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="#"> 문의사항은 전화 문의 주세요! </a></td>
+				<td colspan="2"><a href="#"> 문의 사항은 전화 문의 주세요! </a></td>
 				<!-- HostMessage.room?userId=${bookView.userId }&bookId=${BOOKID}&roomuserId=${bookView.roomuserId} -->
 			</tr>
 		</table>

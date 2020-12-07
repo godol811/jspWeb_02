@@ -7,7 +7,12 @@
 	   font-family:font;
 	}
 
-
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
 	#wrap {
 			margin:0 auto;
 			width:100%;
@@ -29,6 +34,7 @@
 	#mainMenuBoxItem > li{
 		float: right;
 		width:200px;
+		position: relative;
 	}
 	
 	#mainMenuBoxItem > li > a{
@@ -45,8 +51,8 @@
 	   text-align:center;
 	   padding-bottom:0;
 	   margin:0 auto;
-	   visibility:hidden;
-	   position:relative;
+	   /* visibility:hidden; */
+	   position:absolute;
 	}
 	
 	
