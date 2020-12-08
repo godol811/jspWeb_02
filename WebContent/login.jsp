@@ -5,7 +5,16 @@
     <%
         // 인코딩 처리
         request.setCharacterEncoding("utf-8"); 
-    %>
+ 
+    // LoginPro.jsp에서 로그인 처리 결과에 따른 메시지를 보낸다.
+    String msg=request.getParameter("msg");
+    
+  
+%>    
+    
+    
+    
+    
     <title>로그인 화면</title>
     
     <!-- css 파일 분리 -->
@@ -75,6 +84,23 @@
 	          maxlength="50"
 	        />
 	      </div>
+	      <div><h1 style="font-size: 10px">
+	      <%  
+	      if(msg!=null && msg.equals("0")) 
+	      {
+	          out.println("<font color='purple' size='5'>비밀번호를 확인해 주세요.</font>");
+	      }
+	      else if(msg!=null && msg.equals("-1"))
+	      {    
+	          out.println("<font color='green' size='5'>아이디를 확인해 주세요.</font>");
+	      }
+	      else if(msg!=null && msg.equals("2"))
+	      {    
+	          out.println("<font color='blue' size='5'>이미 탈퇴된 회원입니다. 다시 가입 해주세요</font>");
+	      }
+	      %>
+	      </h1>
+	      </div>
 	      
 	      <input
 	        type="submit"
@@ -117,28 +143,7 @@
             <input type="button" value="아이디찾기" onclick="location.href='FindID.jsp'">
         </form>
          -->
-        <% 
-            // 아이디, 비밀번호가 틀릴경우 화면에 메시지 표시
-            // LoginPro.jsp에서 로그인 처리 결과에 따른 메시지를 보낸다.
-            String msg=request.getParameter("msg");
-            
-            if(msg!=null && msg.equals("0")) 
-            {
-                out.println("<br>");
-                out.println("<font color='purple' size='5'>비밀번호를 확인해 주세요.</font>");
-            }
-            else if(msg!=null && msg.equals("-1"))
-            {    
-                out.println("<br>");
-                out.println("<font color='green' size='5'>아이디를 확인해 주세요.</font>");
-            }
-            else if(msg!=null && msg.equals("2"))
-            {    
-                out.println("<br>");
-                out.println("<font color='blue' size='5'>이미 탈퇴된 회원입니다. 다시 가입 해주세요</font>");
-            }
-        %>    
-    </div>    
+
 </body>
 </html>
 <!-- <html lang="en">

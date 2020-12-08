@@ -154,9 +154,6 @@
 	
 
 </style>
-
-</head>
-<body>
 <script type="text/javascript">
 	function check(){
 		the Form = document.input;
@@ -172,15 +169,19 @@
 			return false;
 			
 		alert("입력이 완료되었습니다.");
+
 	}
 
 </script>
+
+</head>
+<body>
 	<h2>리뷰 작성</h2>
 		<form name="input" action="Rating_InsertAction.room" method="post" onsubmit="return check()">
 		<table class="sub_news">
 			<colgroup>
-				<col width="50px;" />
-				<col width="100px;" />
+				<col width="50px;"/>
+				<col width="100px;"/>
 			</colgroup>
 			<tr>
 				<td class="content"><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/<%=request.getParameter("roomImage")%>"></td>
@@ -207,7 +208,7 @@
 			</tr>
 		</table>
 				<input id="btn1" type="button" value="닫 기"  onclick="window.close()" >
-				<input id="btn2" type="submit" value="입 력" >
+				<input id="btn2" type="submit" value="입 력"	 onclick="window.close()">
 		</form>
 </body>
 </html>
