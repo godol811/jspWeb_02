@@ -152,7 +152,7 @@
 		<td>${dto.userInsertDate }</td>
 		<td>${dto.userState }</td>
 		<td>${dto.userDeleteDate }</td>
-		<td><a href="AdminUserDelete.room?userId=${dto.userId}"> 삭제 </a></td>
+		<td><input class ="registerBtn"  type="button" onclick="location.href='AdminUserDelete.room?userId=${dto.userId}'" value="삭제"></td>
 	</tr>
 	</c:forEach>
 	</table>

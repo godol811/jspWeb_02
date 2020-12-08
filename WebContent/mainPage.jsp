@@ -20,9 +20,9 @@
 		height: 700px;
 		text-align: center;
 		padding-top:10px;
+	}
 		
-		
-	  .faq{
+	.faq{
   	padding-bottom: 10px;
   }
   
@@ -42,7 +42,7 @@
     /* color:red; */
   }
   
-  #head{
+  .faq #head{
   	font-weight: bold;
   	font-size: 25px;
   	margin-bottom: 20px;
@@ -53,17 +53,22 @@
   
   }
   
-  #content{
+  .faq #content1{
   	font-size: 20px;
-  	color:#4269e1;
+  	color:#blue;
   	margin-bottom: 20px;
   	margin-left:35%;
   	margin-right: atuo;
   	text-align: left;
   	list-style-type: none;
+  	opacity: 0;
   	
   }
-		
+	.faq #head:hover #content1 {
+  	opacity: 0.5;
+  	display: block;
+  	color:#4269e1;
+  	
 		
 	}
 	
@@ -153,7 +158,7 @@
 <body>
 <div class=banner>
  	<div id="mainMenuBox">
- 	<nav role="navigation">
+
      	<ul id="mainMenuBoxItem">
              <li class="menuItemHover"><a href="#"><img height="20px" align="middle" src="./images/menuBar.svg"></a>
 			     <div id="subMenuBox">
@@ -167,6 +172,14 @@
 			              <c:otherwise>
 			              	<li><a href="logout.room">로그아웃</a></li>
 			              	<li><a href="bookList.room">예약목록</a></li>
+			              	<c:choose>
+			              	 <c:when test = "${sessionScope.USERSTATE == '관리자'}">
+			              		<li style="font-weight: bold; color: #1e90ff;">---- 관리자 메뉴 ----</li>
+			              		<li><a href="AdminUserList.room">회원 관리</a></li>
+		             	    	<li><a href="AdminRoomList.room">숙소 관리</a></li>
+		             	    	<li><a href="AdminNotifyList.room">공지사항</a></li>
+		             	     </c:when>
+		             	     </c:choose>
 			              </c:otherwise>
 			            </c:choose>
 			         </ul>
@@ -177,6 +190,7 @@
               	<li><a href="login.jsp">호스트 되기</a></li>
                </c:when>
       		<c:when test = "${sessionScope.USERSTATE == '호스트'}">
+      		
               	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
               	
               	
@@ -184,19 +198,9 @@
             <c:when test = "${sessionScope.USERSTATE == '회원'}">
               	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
             </c:when>
-            <c:when test = "${sessionScope.USERSTATE == '관리자'}">
-              	<li class="menuItemHover"> <a href="AdminCheck.room">관리자 메뉴</a></li>
-              		<div id="subMenuBox">
-				         <ul id="subMenuItem">
-		             	    <li><a href="AdminUserList.room">회원 관리</a></li>
-		             	    <li><a href="AdminRoomList.room">숙소 관리</a></li>
-		             	    <li><a href="AdminNotifyList.room">공지사항</a></li>
-				         </ul>
-			    	</div>
-            </c:when>
              </c:choose>
          </ul>
-         </nav>
+        
      </div>
      
    
@@ -291,9 +295,24 @@
 	
 	<div id="notice">
 		
-		 <h1 style="font-size: 40px; margin-bottom: 20px; margin-top: 200px; text-decoration: underline;" >예약에 대해 자주 묻는 질문 (FAQ)</h1> <br>
-	
-		 <%@include file="FAQ.jsp"%>  
+	<h1 style="font-size: 40px; margin-bottom: 20px; margin-top: 200px; text-decoration: underline;" >예약에 대해 자주 묻는 질문 (FAQ)</h1> <br>
+		<ul class="faq">
+		  <li id="head">Room 에서 최저가를 예약하는 방법은 무엇입니까?
+		  	<ul id="content1">
+		  		<li id="content"> ➡ 알아서하세요</li>
+		  	</ul>
+		  </li>
+		  <li id="head">Room 의 회원 전용 혜택은 무엇입니까?
+		  	<ul id="content1">
+		  	<li id="content"> ➡ 예약이 된다는거 ?</li>
+		  </ul>
+		  </li >
+		  <li id="head">Room 앱(app)이 있습니까?
+		  <ul id="content1">
+		  <li id="content"> ➡ 물론 없습니다. 조만간 안드로이드와 애플앱 공부를 마치고 만들예정입니다</li>
+		  </ul>
+		  </li>
+		</ul>
 		<br> <br>
 		<%--  <%@include file="FAQ.jsp"%> --%>
 <%-- 		<br> <br>
