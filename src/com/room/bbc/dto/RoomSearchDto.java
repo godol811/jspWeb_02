@@ -58,6 +58,24 @@ public class RoomSearchDto {
 
 	public RoomSearchDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
 			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
+			String roomImageReal) {
+		super();
+		this.roomId = roomId;
+		this.roomTitle = roomTitle;
+		this.roomContent = roomContent;
+		this.roomPrice = roomPrice;
+		this.roomCapa = roomCapa;
+		this.roomAddress = roomAddress;
+		this.roomAddressDetail = roomAddressDetail;
+		this.roomCheckIn = roomCheckIn;
+		this.roomCheckOut = roomCheckOut;
+		this.roomImage = roomImage;
+		this.roomImageReal = roomImageReal;
+	}
+
+
+	public RoomSearchDto(String roomId, String roomTitle, String roomContent, String roomPrice, String roomCapa,
+			String roomAddress, String roomAddressDetail, String roomCheckIn, String roomCheckOut, String roomImage,
 			String roomImageReal, String roomGpsx, String roomGpsy) {
 		super();
 		this.roomId = roomId;

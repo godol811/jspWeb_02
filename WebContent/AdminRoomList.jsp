@@ -109,16 +109,21 @@
 
  		<colgroup>
 		 	<col width="30px">
-			<col width="80px">
+			<col width="300px">
 			<col width="100px">
 			<col width="200px">
 			<col width="600px">
-			<col width="80px">
-			<col width="80px">
-			<col width="80px">
+			<col width="300px">
+			<col width="250px">
+			<col width="250px">
+			<col width="250px">
+			<col width="250px">
+			<col width="250px">
+			<col width="250px">
+			<col width="250px">
 		</colgroup>
 	<tr>
-		<th>No</th>
+	<!-- 	<th>No</th> -->
 		<th>ID</th>
 		<th>숙소 이름</th>
 		<th>숙소 내용</th>
@@ -132,9 +137,9 @@
 		<th>숙소 수정</th>
 		<th>숙소 삭제</th>
 	</tr>
-	<c:forEach items="${list}" var="dto"  varStatus="status">
+	<c:forEach items = "${list }" var = "dto" begin="${beginNum}" end="${endNum }">
 	<tr>
-		<td>${status.count}</td>
+<%-- 		<td>${status.count}</td> --%>
 		<td>${dto.roomId }</td>
 		<td>${dto.roomTitle }</td>
 		<td>${dto.roomContent }</td>
@@ -150,6 +155,13 @@
 		<td><a href="AdminRoomDelete.room?roomId=${dto.roomId}"> 삭제 </a></td>
 	</tr>
 	</c:forEach>
+		<tr class="page">
+				<td colspan="13" width="50" align="center" >
+				<c:forEach  begin="1" end="${totalPage}" varStatus="status"> 
+						<a href="AdminRoomListPaging.room?page=${status.count}">[${status.count}]</a>
+				</c:forEach>
+				</td>
+			</tr>
 	</table>
 		<button type="button" onclick="location.href='adminCheck.jsp' ">돌아가기</button>
 </div>
