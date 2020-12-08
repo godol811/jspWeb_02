@@ -23,7 +23,7 @@
     color: black;
   }
   span {
-    color:red;
+   /*  color:red; */
   }
   
   #head{
@@ -36,6 +36,9 @@
   	list-style-type: none;
   
   }
+  #head:hover #content{
+  	opacity: 0.5
+  }
   
   #content{
   	font-size: 20px;
@@ -45,12 +48,13 @@
   	margin-right: atuo;
   	text-align: left;
   	list-style-type: none;
+  	opacity: 0;
   	
   }
   
   </style>
-  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-</head>
+<!--   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+ --></head>
 <body>
  
 <ul class="faq">
@@ -62,7 +66,7 @@
   <li id="content"> ➡ 물론 없습니다. 조만간 안드로이드와 애플앱 공부를 마치고 만들예정입니다</li>
 </ul>
  
-<script>
+ <!-- <script>
 $( ".faq li" )
   .odd()
     .hide()
@@ -76,6 +80,6 @@ $( ".faq li" )
           .slideToggle();
     });
 </script>
- 
+  -->
 </body>
 </html>

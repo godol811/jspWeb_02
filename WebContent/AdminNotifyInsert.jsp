@@ -5,6 +5,130 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 입력</title>
+
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	table{
+		border-collapse: collapse;
+		margin-top: 20px;
+		margin-left: auto;
+  	  	margin-right: auto;
+		
+	}
+	
+	a{
+		text-decoration: none;
+		color: inherit;
+	}
+	
+	h1 {
+	  text-align: center;
+	  margin-bottom: 20px;
+	  margin-top: 50px;
+	}
+		
+	.wrap{
+		padding: 50px;
+		
+	}
+	
+	.wrap .registerBtn{
+		margin-bottom: 10px;
+		padding: 10px;
+		
+	}
+	
+	.sub_news{
+		width: 80%;
+		border-top: 2px solid #999;
+		border-bottom: 2px solid #999;
+	
+	}
+	.sub_news tr{
+		border-bottom: 1px solid #999;
+	}
+	
+	
+	.sub_news th, .sub_news td{
+		padding: 10px;
+		font-size: 14px;
+	}
+	
+	.sub_news th{
+		padding: 5px 0 6px;
+		border-top: solid 1px #999;
+		border-bottom: solid 1px #b2b2b2;
+		background-color: #f1f1f4;
+		color: #333;
+		font-weight: bold;
+		line-height: 20px;
+		vertical-align: top;
+		text-align: center;
+	}
+	
+	.sub_news .thth{
+		border-right: solid 1px #999;
+	}
+	
+	.sub_news td{
+		text-align: center;
+	}
+	
+	.sub_news .tdtd{
+		text-align: center;
+		border-right: solid 1px #999;
+	}
+	
+	.sub_news .one{
+		border-top: 2px solid #999;
+	}
+	.sub_news .bot{
+		border-bottom: 2px solid #999;
+	}
+	
+	#btn {
+       margin-left: 85%;
+       width: 84px;
+       height: 45px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 100px;
+       margin-bottom: 10px;
+	   padding: 10px;
+	}
+
+	 .btn1{
+		margin-right:30%;
+		
+		width: 84px;
+       height: 40px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 30px;
+       margin-bottom: 10px;
+	   padding: 0px;
+	}
+	 .btn2{
+		margin-left: 10%;
+		margin-right:auto;
+		width: 84px;
+       height: 40px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 30px;
+       margin-bottom: 10px;
+	   padding: 0px;
+	}
+	
+
+
+
+
+</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -25,25 +149,22 @@
 	}
 
 </script>
-
+<h1>공지사항 작성</h1>
 <form name="input" action="AdminNotifyInsert.room" method="post" onsubmit="return check()">
-<table border="1">   
-	<tr>
-		<th>제목</th>
-		<th>내용</th>
-		<th>작성자</th>
-	</tr>
-	<tr>
-		<td><input type="text" name="boardTitle"></td>
-
-		<td><input type="text" name="boardContent"></td>
-		<td><input type="text" value="${USERID }" name="userId"></td>
-	</tr>
-	<tr><td><input type="submit" value="입력"></td>
-		<td><button type="button" onclick="location.href='AdminNotifyList.room'">돌아가기</button></td>
-	<tr>
+<table class="sub_news">   
 	
+	<tr>
+		<td style="text-align:center; font-weight: bold; font-size: 18px;">제목</td><td><input width="100px" type="text" name="boardTitle"></td>
+	</tr>
+	<tr>
+		<td style="text-align:center; font-weight: bold; font-size: 18px;">작성자</td><td><input type="text" value="${USERID }" name="userId" readonly="readonly"></td>
+	</tr>
+	<tr>
+		<td style="text-align:center; font-weight: bold; font-size: 18px;">내용</td><td><textarea rows="40" cols="70" name="boardContent"></textarea></td>
+	</tr>
 	</table>
+		<button class="btn2" type="button" type="button" onclick="location.href='AdminNotifyList.room'">돌아가기</button>
+		<input class="btn1" type="submit" value="입력">
 	</form>
 
 

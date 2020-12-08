@@ -15,7 +15,7 @@
 	
 	table{
 		border-collapse: collapse;
-		margin-top: 100px;
+		margin-top: 10px;
 		margin-left: auto;
   	  	margin-right: auto;
 		
@@ -76,10 +76,11 @@
 	}
 	h1 {
 	  text-align: center;
+	  margin-top: 40px;
 	  margin-bottom: 20px;
 	}
 
-#btn1 {
+	#btn1 {
        margin-left: 85%;
        width: 84px;
        height: 45px;   
@@ -90,6 +91,35 @@
 	   padding: 10px;
 	}
 
+	.wrap .registerBtn{
+		margin-bottom: 10px;
+		padding: 10px;
+		
+	}
+
+
+	#btn {
+       margin-left: 85%;
+       width: 84px;
+       height: 45px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 50px;
+       margin-bottom: 10px;
+	   padding: 10px;
+	}
+	
+	 .btn2{
+		margin-left: 10%;
+		margin-right:auto;
+		width: 84px;
+       height: 40px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 30px;
+       margin-bottom: 10px;
+	   padding: 0px;
+	}
 
 </style>
 
@@ -98,7 +128,8 @@
 </head>
 <body>
 <div class ="wrap">
-
+<h1>공지사항 </h1>
+	<button id="btn" type="button" onclick="location.href='AdminNotifyInsert.jsp'">글쓰기</button>
 	<table class="sub_news">   
 	<tr>
 		<th>No</th>
@@ -109,20 +140,22 @@
 		<th>수정</th>
 		<th>삭제</th>
 	</tr>
-	<c:forEach items="${list}" var="dto">
+	<c:forEach items="${list}" var="dto"  varStatus="status">
 	<tr>
-		<td><input type="text" name="boardId" readonly="readonly"></td> <!-- value="${dto.boardId }"  -->
-		<td><input type="text" name="boardTitle" value="${dto.boardTitle }" readonly="readonly"></td>
-		<td><textarea rows="3" cols="10"  readonly="readonly">${dto.boardContent }</textarea></td>
-		<td><input type="text" name="boardInsertDate" value="${dto.boardInsertDate }" readonly="readonly"></td>
-		<td><input type="text" name="userId" value="${dto.userInfo_userId }" readonly="readonly"></td>
-		<td><a href="AdminNotifyModify.room?boardId=${dto.boardId}"> 수정 </a></td>
-		<td><a href="AdminNotifyDelete.room?boardId=${dto.boardId}"> 삭제 </a></td>
+		<td>${status.count}</td>
+		<td>${dto.boardTitle }</td>
+		<td><textarea rows="6" cols="20"  readonly="readonly">${dto.boardContent }</textarea></td>
+		<td>${dto.boardInsertDate }</td>
+		<td>${dto.userInfo_userId }</td>
+<%-- 		<td><a href="AdminNotifyModify.room?boardId=${dto.boardId}"> 수정 </a></td>
+		<td><a href="AdminNotifyDelete.room?boardId=${dto.boardId}"> 삭제 </a></td> --%>
+		<td><input class ="registerBtn"  type="button" onclick="location.href='AdminNotifyModify.room?boardId=${dto.boardId}'" value="수정"></td>
+		<td><input class ="registerBtn"  type="button" onclick="location.href='AdminNotifyDelete.room?boardId=${dto.boardId}'" value="삭제"></td>
 	</tr>
 	</c:forEach>
 	</table>
-		<button class = "btn1" type="button" onclick="location.href='AdminNotifyInsert.jsp'">글쓰기</button>
-		<button class = "btn2" type="button" onclick="location.href='adminCheck.jsp' ">돌아가기</button>
+		
+		<button class = "btn2" type="button" onclick="location.href='mainPage.jsp' ">돌아가기</button>
 	</div>
 </body>
 </html>

@@ -7,7 +7,12 @@
 	   font-family:font;
 	}
 
-
+/* nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+} */
 	#wrap {
 			margin:0 auto;
 			width:100%;
@@ -29,6 +34,8 @@
 	#mainMenuBoxItem > li{
 		float: right;
 		width:200px;
+		position: relative;
+		display: inline-block; /* 추가*/
 	}
 	
 	#mainMenuBoxItem > li > a{
@@ -37,6 +44,7 @@
 		text-align: center;
 		text-decoration: none;
 		padding: 12px 36px;
+		color: black;
 	}
 	
 	#subMenuBox {
@@ -45,8 +53,8 @@
 	   text-align:center;
 	   padding-bottom:0;
 	   margin:0 auto;
-	   visibility:hidden;
-	   position:relative;
+	   /* visibility:hidden; */
+	   position:absolute;
 	}
 	
 	
@@ -66,6 +74,7 @@
 		font-size: 1rem;
 		text-decoration: none;
 		display: block;
+		color: black;
 	}
 	
 
@@ -73,12 +82,13 @@
 	#mainMenuBox a:hover {
 		border-radius: 25px 25px 25px 25px;
 		background: white;
+		color: black;
 
 	}
  
  	#subMenuItem a:hover {
-		text-decoration:none;
-		background:lightgrey;
+		text-decoration:underline;
+		color: black;
 		display: block;
 		
 	} 
