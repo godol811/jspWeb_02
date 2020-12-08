@@ -16,6 +16,8 @@ import com.room.bbc.command.AdminNotifyInsertCommand;
 import com.room.bbc.command.AdminNotifyListCommand;
 import com.room.bbc.command.AdminNotifyModifyListCommand;
 import com.room.bbc.command.AdminNotifyUpdateCommand;
+import com.room.bbc.command.AdminPagingCommand1;
+import com.room.bbc.command.AdminPagingCommand2;
 import com.room.bbc.command.Command;
 import com.room.bbc.command.HostRoomListCommand;
 import com.room.bbc.command.HostRoomReservationSelectCommand;
@@ -227,9 +229,14 @@ public class HomeFrontController extends HttpServlet {
 		viewPage="AdminUserList.room";
 		break;
 		
+		case("/AdminRoomListPaging.room"):		
+			command = new AdminPagingCommand2();
+		command.execute(request, response,session);
+		viewPage="AdminRoomList.jsp";
+		break;
 		case("/AdminRoomList.room"):		
-			command = new RoomSelectCommand();
-		command.execute(request, response);
+			command = new AdminPagingCommand1();
+		command.execute(request, response,session);
 		viewPage="AdminRoomList.jsp";
 		break;
 		

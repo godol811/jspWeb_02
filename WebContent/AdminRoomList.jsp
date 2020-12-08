@@ -146,9 +146,10 @@
 		<th>숙소 수정</th>
 		<th>숙소 삭제</th>
 	</tr>
-	<c:forEach items="${list}" var="dto"  varStatus="status">
+	<c:forEach items = "${list }" var = "dto" begin="${beginNum}" end="${endNum }">
 	<tr>
-		<td>${status.count}</td>
+<%-- 		<td>${status.count}</td> --%>
+		<td>${dto.roomId }</td>
 		<td>${dto.roomTitle }</td>
 		<td>${dto.roomContent }</td>
 		<td>${dto.roomPrice }</td>
@@ -163,6 +164,13 @@
 		<td><a href="AdminRoomDelete.room?roomId=${dto.roomId}"> 삭제 </a></td> --%>
 	</tr>
 	</c:forEach>
+		<tr class="page">
+				<td colspan="13" width="50" align="center" >
+				<c:forEach  begin="1" end="${totalPage}" varStatus="status"> 
+						<a href="AdminRoomListPaging.room?page=${status.count}">[${status.count}]</a>
+				</c:forEach>
+				</td>
+			</tr>
 	</table>
 		<input class="btn2" type="button" value="이 전" onClick="location.href='mainPage.room'">
 </div>
