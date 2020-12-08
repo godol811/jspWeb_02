@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>등록 숙소 리스트</title>
 <style type="text/css">
 	*{
 		margin: 0;
@@ -66,6 +66,7 @@
 		font-weight: bold;
 		line-height: 20px;
 		vertical-align: top;
+		text-align: center;
 	}
 	
 	.sub_news .thth{
@@ -99,34 +100,47 @@
 	   padding: 10px;
 	}
 
+	 .btn2{
+		margin-left: 10%;
+		margin-right:auto;
+		width: 84px;
+       height: 40px;   
+       font-size:14px;
+       font-weight:700;
+       margin-top: 30px;
+       margin-bottom: 10px;
+	   padding: 0px;
+	}
+	
 
 </style>
 </head>
 <body>
 
 <div class ="wrap">
+<h1>등록 숙소 리스트</h1>
 <table class="sub_news">   
-
  		<colgroup>
 		 	<col width="30px">
-			<col width="80px">
-			<col width="100px">
 			<col width="200px">
-			<col width="600px">
+			<col width="300px">
+			<col width="30px">
+			<col width="30px">
+			<col width="200px">
+			<col width="80px">
+			<col width="80px">
 			<col width="80px">
 			<col width="80px">
 			<col width="80px">
 		</colgroup>
 	<tr>
 		<th>No</th>
-		<th>ID</th>
 		<th>숙소 이름</th>
 		<th>숙소 내용</th>
 		<th>숙소 가격</th>
 		<th>숙소 인원</th>
 		<th>숙소 주소</th>
-		<th>숙소 체크인</th>
-		<th>숙소 체크아웃</th>
+		<th>체크인 시간 / 체크아웃 시간</th>
 		<th>숙소 이미지</th>
 		<th>숙소 삭제날짜</th>
 		<th>숙소 수정</th>
@@ -135,23 +149,22 @@
 	<c:forEach items="${list}" var="dto"  varStatus="status">
 	<tr>
 		<td>${status.count}</td>
-		<td>${dto.roomId }</td>
 		<td>${dto.roomTitle }</td>
 		<td>${dto.roomContent }</td>
 		<td>${dto.roomPrice }</td>
 		<td>${dto.roomCapa }</td>
 		<td>${dto.roomAddress }</td>
-		<td>${dto.roomCheckIn }</td>
-		<td>${dto.roomCheckOut }</td>
-		<td>${dto.roomImage }</td>
+		<td>${dto.roomCheckIn } / ${dto.roomCheckOut }</td>
+		<td><img width="80px" height="80px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 		<td>${dto.roomDeleteDate }</td>
-		<td><a href="AdminRoomModifyList.room?
-		roomId=${dto.roomId}"> 수정 </a></td>
-		<td><a href="AdminRoomDelete.room?roomId=${dto.roomId}"> 삭제 </a></td>
+		<td><input class ="registerBtn"  type="button" onclick="location.href='AdminRoomModifyList.room?roomId=${dto.roomId}'" value="수정"></td>
+		<td><input class ="registerBtn"  type="button" onclick="location.href='AdminRoomDelete.room?roomId=${dto.roomId}'" value="삭제"></td>
+<%-- 		<td><a href="AdminRoomModifyList.room?roomId=${dto.roomId}"> 수정 </a></td>
+		<td><a href="AdminRoomDelete.room?roomId=${dto.roomId}"> 삭제 </a></td> --%>
 	</tr>
 	</c:forEach>
 	</table>
-		<button type="button" onclick="location.href='adminCheck.jsp' ">돌아가기</button>
+		<input class="btn2" type="button" value="이 전" onClick="location.href='mainPage.room'">
 </div>
 </body>
 </html>

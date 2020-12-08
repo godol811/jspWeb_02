@@ -30,7 +30,7 @@
   }
 .head {
 	grid-template-columns: 1fr;
-    margin-left: 900px;
+    margin-left: 800px;
     margin-right: auto;
     padding-top:10px;
   }
@@ -148,10 +148,10 @@ h3 {
 <div class="head">
 	<table class="head_table">
 		<tr>
-			<th>숙소 등록 시작하기</th>
+			<th style="font-size: 40px; font-weight: bold; ">숙소 등록 시작하기</th>
 		</tr>
 		<tr>
-			<td>1단계</td><td>2단계</td>
+			<td style="font-weight: bold; text-align: left; font-size: 30px; color: gray;">1단계</td><td></td>
 		</tr>	
 	</table>
 </div>

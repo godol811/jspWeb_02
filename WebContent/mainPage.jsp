@@ -20,6 +20,51 @@
 		height: 700px;
 		text-align: center;
 		padding-top:10px;
+		
+		
+	  .faq{
+  	padding-bottom: 10px;
+  }
+  
+  .faq ul {
+  	text-align: center;
+   	 color: Black;
+  }
+  .faq ul li {
+  	text-align: left;
+    cursor: default;
+  }
+   .faq ul li.active {
+    background: white;
+    color: black;
+  }
+  span {
+    /* color:red; */
+  }
+  
+  #head{
+  	font-weight: bold;
+  	font-size: 25px;
+  	margin-bottom: 20px;
+  	margin-left:32%;
+  	margin-right: atuo;
+  	text-align: left;
+  	list-style-type: none;
+  
+  }
+  
+  #content{
+  	font-size: 20px;
+  	color:#4269e1;
+  	margin-bottom: 20px;
+  	margin-left:35%;
+  	margin-right: atuo;
+  	text-align: left;
+  	list-style-type: none;
+  	
+  }
+		
+		
 	}
 	
 </style>
@@ -31,8 +76,8 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script> 
 	<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
-	
 	<script src="./js/subMenu.js"></script>
+	
 
 	<!-- 연결 확인 후 삭제  --> 
 <!-- 	 	 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -99,6 +144,8 @@
 		}
 		
 	}
+	
+	
 	</script>   
 </head>
 
@@ -133,7 +180,7 @@
               	<li><a href="hostRoomList.room">호스트 모드 전환</a></li>
               	
               	
-               </c:when>
+            </c:when>
             <c:when test = "${sessionScope.USERSTATE == '회원'}">
               	<li><a href="hostRegisterRoom01.jsp">호스트 되기</a></li>
             </c:when>
@@ -245,9 +292,8 @@
 	<div id="notice">
 		
 		 <h1 style="font-size: 40px; margin-bottom: 20px; margin-top: 200px; text-decoration: underline;" >예약에 대해 자주 묻는 질문 (FAQ)</h1> <br>
-		<%-- 
-		 <%@include file="FAQ.jsp"%> --%>
-	<%-- 	<%@include file="FAQ.jsp"%> --%>
+	
+		 <%@include file="FAQ.jsp"%>  
 		<br> <br>
 		<%--  <%@include file="FAQ.jsp"%> --%>
 <%-- 		<br> <br>
