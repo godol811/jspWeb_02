@@ -101,34 +101,26 @@
 	   padding: 10px;
 	}
 
-	 .btn1{
-		margin-right:30%;
-		
-		width: 84px;
-       height: 40px;   
-       font-size:14px;
-       font-weight:700;
-       margin-top: 30px;
-       margin-bottom: 10px;
-	   padding: 0px;
-	}
-	 .btn2{
+		.btn2{
+		margin-top: 80px;
+		margin-bottom: 10px;
+		padding: 10px;
 		margin-left: 10%;
-		margin-right:auto;
-		width: 84px;
-       height: 40px;   
-       font-size:14px;
-       font-weight:700;
-       margin-top: 30px;
-       margin-bottom: 10px;
-	   padding: 0px;
-	}
+		width: 80px;
+		
+	} 
+
+	.btn1{
+		margin-top: 80px;
+		margin-bottom: 10px;
+		padding: 10px;
+		margin-left: 70%;
+		width: 80px;
+		
+	} 
+</style>
 	
 
-
-
-
-</style>
 </head>
 <body>
 <script type="text/javascript">

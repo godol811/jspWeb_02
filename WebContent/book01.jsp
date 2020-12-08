@@ -45,7 +45,7 @@
 		margin-top: 10px;
 		margin-left: 10%;
   	  	margin-right: auto;
-  	  	border-spacing: 0 30px;
+  	  /* 	border-spacing: 0 10px; */
 		
 	}
 	
@@ -68,7 +68,7 @@
 	
 	.sub_news{
 		width: 50%;
-	
+	}
 	
 	
 	.sub_news #trtr{
@@ -98,7 +98,8 @@
 	
 	
 	.sub_news .td{
-		margin-bottom: 20px;
+		margin-bottom: 5px;
+		border-bottom: solid 1px #999;
 	}
 	
 
@@ -123,9 +124,9 @@
 	
 	}
 	
-	.btn1{
-		margin-left: 67%;
-		margin-right:8%;
+	 .btn2{
+		margin-left: 10%;
+		margin-right:auto;
 		width: 84px;
        height: 40px;   
        font-size:14px;
@@ -134,17 +135,16 @@
        margin-bottom: 10px;
 	   padding: 0px;
 	}
-	
-	 .btn2{
-		margin-left: 10%;
-		width: 90px;
-       height: 40px;   
-       font-size:14px;
-       font-weight:700;
-       margin-top: 30px;
-       margin-bottom: 10px;
-	   padding: 0px;
-	}
+
+
+	.btn1{
+		margin-top: 80px;
+		margin-bottom: 10px;
+		padding: 10px;
+		margin-left: 70%;
+		width: 80px;
+		
+	} 
 	 .btnreg{
 		margin-left: 10%;
 		width: 90px;
@@ -246,13 +246,13 @@
 			<col width="80px">
 		</colgroup>
 			<tr>
-				<td colspan="2" style="font-size: 35px; font-weight: bold;">${dto.roomTitle }</td>
+				<td colspan="2" style="font-size: 35px; font-weight: bold; width: 500px;">${dto.roomTitle }</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="font-size: 20px; color:#696969; border-bottom: 1px solid #999;">최대 인원 ${dto.roomCapa }명</td>
+				<td colspan="2" style="font-size: 20px; color:#696969; border-bottom: 2px solid #999;">최대 인원 ${dto.roomCapa }명</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="border-bottom: 1px solid #999;"><img width="500px" height="300px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
+				<td colspan="2" style="border-bottom: 2px solid #999;"><img width="500px" height="300px" src="${pageContext.request.contextPath}/upload/${dto.roomImage}"></td>
 			</tr>
 			<tr>
 				<td colspan="2">${dto.roomContent }</td>
@@ -266,14 +266,14 @@
 				<td style="text-align: center;">${dto.roomCheckOut }</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;" colspan="2">전화 문의 주세요!</td>
+				<td style="text-align: center; font-weight: bold; font-size: 20px;" colspan="2">문의사항 있으면 전화 문의 주세요!</td>
 			</tr>
 			<tr>
 				
-				<td colspan="2" style="font-weight: bold; font-size: 20px;">숙박 기간을 선택하세요.</td>
+				<td colspan="2" style="font-weight: bold; font-size: 20px; border-bottom: 2px solid #999;">숙박 기간을 선택하세요.</td>
 			</tr>
 			<tr>
-				<td style="text-align: center; ">체크인</td><td style="text-align: center; ">체크아웃</td>
+				<td style="text-align: center; font-weight: bold;">체크인</td><td style="text-align: center; font-weight: bold;">체크아웃</td>
 			</tr>
 			<tr>
 				<c:choose>
@@ -305,10 +305,24 @@
 			<tr>
 				<c:choose>
 					<c:when test="${empty sessionScope.USERID}">
-						<td colspan="2"><input class="btnreg" type="button" onclick="location.href='login.jsp'" value="예약하기"></td>
+						<td colspan="2"><input style="margin-left: 5%;
+				margin-right:auto;
+				width: 100px;
+		       height: 40px;   
+		       font-size:14px;
+		       margin-top: 30px;
+		       margin-bottom: 10px;
+			   padding: 0px;"  type="button" onclick="location.href='login.jsp'" value="예약하기"></td>
 					</c:when>
 					<c:otherwise>
-						<td colspan="2"><input class="btnreg" type="submit" value="예약하기"></td>
+						<td colspan="2"><input style="margin-left: 5%;
+				margin-right:auto;
+				width: 100px;
+		       height: 40px;   
+		       font-size:14px;
+		       margin-top: 30px;
+		       margin-bottom: 10px;
+			   padding: 0px;" type="submit" value="예약하기"></td>
 
 					</c:otherwise>
 				</c:choose>
@@ -316,11 +330,14 @@
 			
 			
 			<tr>
-				<td colspan="2"><div id="map" style="width: 100%; height: 400px"></div></td>
+				<td colspan="2" style="font-weight: bold; font-size: 20px; border-bottom: 2px solid #999;">지도</td>
+			</tr>
+			<tr>
+				<td colspan="2" ><div id="map" style="width: 100%; height: 400px"></div></td>
 			</tr>
 			
 			<tr>
-				<td colspan="2"  style="font-weight: bold; font-size: 20px;">후기</td>
+				<td colspan="2"  style="font-weight: bold; font-size: 20px; border-bottom: 2px solid #999;">후기</td>
 			</tr>
 			<c:forEach items="${reviewList}" var="dto2" begin="0" end="4" step="1">
 				<tr>
@@ -330,10 +347,27 @@
 					<td colspan="2">${dto2.reviewContent}</td>
 				</tr>
 			</c:forEach>
+			<tr>
+			<td>	<input style="margin-left: 5%;
+				margin-right:auto;
+				width: 100px;
+		       height: 40px;   
+		       font-size:14px;
+		       margin-top: 30px;
+		       margin-bottom: 10px;
+			   padding: 0px;" type="button" value="모든 후기 보기" onclick="window.open('Rating_list.room?roomId=<%=session.getAttribute("ROOMID")%>','','width=500, height=500, scrollbars=yes')">
+			</td>
+			</tr>
+			<!-- <tr>
+				<td style="border-top: 2px solid #999;"><input style="margin-top: 80px;
+				margin-bottom: 10px;
+				padding: 10px;
+				margin-left: 15%;
+				width: 80px;" type="button" value="이 전" onclick="history.back();"></td>
 			
+			</tr> -->
+		
  	</table>
-				<input class="btn2" type="button" value="모든 후기 보기" onclick="window.open('Rating_list.room?roomId=<%=session.getAttribute("ROOMID")%>','','width=500, height=500, scrollbars=yes')">
-				<input class="btn1" type="button" value="이 전" onclick="history.back();">
  </form>
  </div>
 </body>
