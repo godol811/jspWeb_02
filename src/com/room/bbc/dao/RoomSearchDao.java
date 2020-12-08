@@ -78,7 +78,7 @@ DataSource dataSource;
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select avg(re.reviewrate),r.roomtitle, r.roomcontent, r.roomprice, r.roomcapa, r.roomaddress, r.roomaddressdetail, ";
+			String query = "select round(avg(re.reviewrate),1),r.roomtitle, r.roomcontent, r.roomprice, r.roomcapa, r.roomaddress, r.roomaddressdetail, ";
 			String query2 = "r.roomcheckin, r.roomcheckout, r.roomimage, r.roomid, r.roomimagereal from room r left outer join review re on re.room_roomid = r.roomid  where roomaddress like  '%"+ location + "%' and roomcapa>= '" + guest + "' and roomdeletedate is null ";
 			String query3 = "and roomid not in (select room_roomid from room.book where '" + roomCheckinDate + "' >= bookcheckindate and '"+ roomCheckoutDate+"' <= bookcheckoutdate) ";
 			String query4 =" group by r.roomid, re.room_roomid";
@@ -96,7 +96,7 @@ DataSource dataSource;
 				String roomCheckOut = resultSet.getString("roomcheckout");
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
-				String roomReviewRate = resultSet.getString("avg(re.reviewrate)");
+				String roomReviewRate = resultSet.getString("round(avg(re.reviewrate),1)");
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
 				
 				// bean 선언
@@ -130,7 +130,7 @@ DataSource dataSource;
 		try {
 			// 위에 선언된 dataSource 사용
 			connection = dataSource.getConnection();
-			String query = "select avg(re.reviewrate),r.roomtitle, r.roomcontent, r.roomprice, r.roomcapa, r.roomaddress, r.roomaddressdetail,  ";
+			String query = "select round(avg(re.reviewrate),1),r.roomtitle, r.roomcontent, r.roomprice, r.roomcapa, r.roomaddress, r.roomaddressdetail,  ";
 			String query2 = "r.roomcheckin, r.roomcheckout, r.roomimage, r.roomid, r.roomimagereal from room r left outer join review re on re.room_roomid = r.roomid ";
 			String query3 ="  where roomaddress like '%"+location+"%' and roomdeletedate is null group by r.roomid,re.room_roomid";
 			preparedStatement = connection.prepareStatement(query + query2 + query3); // query 문장 연결
@@ -148,7 +148,7 @@ DataSource dataSource;
 				String roomImage = resultSet.getString("roomimage");
 				String roomImageReal = resultSet.getString("roomimagereal");
 				String roomId = Integer.toString(resultSet.getInt("roomid"));
-				String roomReviewRate = resultSet.getString("avg(re.reviewrate)");
+				String roomReviewRate = resultSet.getString("round(avg(re.reviewrate),1)");
 				// bean 선언
 				RoomSearchDto dto = new RoomSearchDto(roomId, roomTitle, roomContent, roomPrice, roomCapa, roomAddress, roomAddressDetail, roomCheckIn, roomCheckOut, roomImage, roomImageReal,roomReviewRate);
 				dtos.add(dto);  //arraylist에 추가

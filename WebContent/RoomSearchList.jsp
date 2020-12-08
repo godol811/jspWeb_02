@@ -118,6 +118,7 @@
 
 <!-- ------------------------------- -->
 <div class ="wrap">
+	<h1>숙소 리스트</h1>
 		<table class="sub_news">
 			<tr>
 				<th colspan="2">숙소</th><th>가격</th>
@@ -146,7 +147,7 @@
 				<td colspan="2">체크아웃 : ${DATE2} </td>
 			</tr> --%>
 			<tr>
-				<td class="tdtd" id="trtr">평점  ${dto.roomReviewRate} 점</td>
+				<td class="tdtd" id="trtr">⭐ ${dto.roomReviewRate} 점</td>
 			</tr>
 			</c:forEach>
 			<tr class="page">

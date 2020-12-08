@@ -299,12 +299,12 @@
 		<ul class="faq">
 		  <li id="head">Room 에서 최저가를 예약하는 방법은 무엇입니까?
 		  	<ul id="content1">
-		  		<li id="content"> ➡ 알아서하세요</li>
+		  		<li id="content"> ➡ 이미 Room은 최저가 입니다. 다른 사이트 보다 저렴한 이유는 다른 사이트와 다르게 중개료를 받지 않기 때문입니다.</li>
 		  	</ul>
 		  </li>
 		  <li id="head">Room 의 회원 전용 혜택은 무엇입니까?
 		  	<ul id="content1">
-		  	<li id="content"> ➡ 예약이 된다는거 ?</li>
+		  	<li id="content"> ➡ 예약을 신속하게 진행이 가능하기 때문입니다</li>
 		  </ul>
 		  </li >
 		  <li id="head">Room 앱(app)이 있습니까?

@@ -160,8 +160,7 @@ h3 {
 	<form id="form" name="form" action="hostRegisterRoom02.jsp?roomTitle=${roomView.roomTitle }&roomContent=${roomView.roomContent }&roomImage=${roomView.roomImage }&roomImageReal=${roomView.roomImageReal }" method="post" onsubmit="return registerCheck()">	
 		<div class="combo">
 			<select name="roomCapa" >
-				<option value="1" 
-					<c:if test="${roomView.roomCapa == 1}">selected</c:if>>최대 1명 숙박 가능</option>
+				<option value="1" <c:if test="${roomView.roomCapa == 1}">selected</c:if>>최대 1명 숙박 가능</option>
 				<option value="2" <c:if test="${roomView.roomCapa == 2}">selected</c:if>>최대 2명 숙박 가능</option>
 				<option value="3" <c:if test="${roomView.roomCapa == 3}">selected</c:if>>최대 3명 숙박 가능</option>
 				<option value="4" <c:if test="${roomView.roomCapa == 4}">selected</c:if>>최대 4명 숙박 가능</option>

@@ -135,9 +135,9 @@
 			<c:when test="${empty sessionScope.ROOMID}">
 				<form name="load" method="post" enctype="multipart/form-data" action="hostRegister.room" onsubmit="return uploadCheck()">
 			</c:when>
-				<c:otherwise>
+			<c:otherwise>
 				<form name="load" method="post" enctype="multipart/form-data" action="hostRoomRevise.room" onsubmit="return uploadCheck()">
-				</c:otherwise>
+			</c:otherwise>
 		</c:choose>
 			<tr >
 				<td colspan="2" style="font-weight: bold;">1. 숙소의 제목을 만드세요.</td>
@@ -148,7 +148,7 @@
 			<tr >
 				<td colspan="2" style="font-weight: bold;">2. 게스트에게 숙소에 대해 설명해주세요.</td>
 			</tr>
-			<tr ><td colspan="2" class="one"><textarea rows="40" cols="70" name="roomContent"><%=roomContent%></textarea></td>
+			<tr ><td colspan="2" class="one"><textarea rows="40" cols="70" name="roomContent" > <%=roomContent%></textarea></td>
 			</tr>
 			<tr >
 				<td colspan="2" style="font-weight: bold;">3. 멋진 사진으로 숙소가 돋보이게 해주세요.</td>

@@ -208,7 +208,7 @@
 			</tr>
 		</table>
 				<input id="btn1" type="button" value="닫 기"  onclick="window.close()" >
-				<input id="btn2" type="submit" value="입 력"	 onclick="window.close()">
+				<input id="btn2" type="submit" value="입 력">
 		</form>
 </body>
 </html>

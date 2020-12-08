@@ -142,9 +142,11 @@
 			</tr>
 			<tr>
 			</tr>
+			
 				
 		</c:forEach>
 	</table>
+	 <input id="btn" type="button" name="insertRoom" onclick="location.href='mainPage.jsp'" value="뒤로가기">
 	</form>
 </div>
 </body>
