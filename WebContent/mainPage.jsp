@@ -172,10 +172,14 @@
 			              <c:otherwise>
 			              	<li><a href="logout.room">로그아웃</a></li>
 			              	<li><a href="bookList.room">예약목록</a></li>
-			              	<li style="font-weight: bold; color: #1e90ff;">---- 관리자 메뉴 ----</li>
-			              	<li><a href="AdminUserList.room">회원 관리</a></li>
-		             	    <li><a href="AdminRoomList.room">숙소 관리</a></li>
-		             	    <li><a href="AdminNotifyList.room">공지사항</a></li>
+			              	<c:choose>
+			              	 <c:when test = "${sessionScope.USERSTATE == '관리자'}">
+			              		<li style="font-weight: bold; color: #1e90ff;">---- 관리자 메뉴 ----</li>
+			              		<li><a href="AdminUserList.room">회원 관리</a></li>
+		             	    	<li><a href="AdminRoomList.room">숙소 관리</a></li>
+		             	    	<li><a href="AdminNotifyList.room">공지사항</a></li>
+		             	     </c:when>
+		             	     </c:choose>
 			              </c:otherwise>
 			            </c:choose>
 			         </ul>
